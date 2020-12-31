@@ -1,0 +1,90 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Open Index or Markdown</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=contain">
+	<meta name="description"
+		content="File wrangler. Default index.html file. Opens HTML or Markdown files. Passes location.hash.">
+	<meta name="keywords" content="ShowDown,Markdown,AJAX,JavaScript,HTML,CSS,GitHub,FOSS">
+	<meta name="version" content="2020-11-07">
+
+	<link rel="stylesheet" href="../../lib/style/style-2020-10-06.css" />
+
+	<style>
+		:root {
+			--main-hue: 0;
+			/* 0 to 360 0=red 120=green 240=blue Should match hue of parent*/
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- https://github.com/showdownjs/showdown -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+
+	<div id=divContent class=divContent></div>
+
+	<script>
+
+		const defaultFile = "README.md";
+
+		init();
+
+		function init() {
+
+			if ( !location.hash ) { location.hash = defaultFile; }
+
+			onHashChange();
+
+			window.addEventListener( "hashchange", onHashChange, false );
+
+		}
+
+		function onHashChange() {
+
+			const url = location.hash.slice( 1 );
+			const title = url.split( "/" ).pop();
+			const extension = title.toLowerCase().split( '.' ).pop();
+
+			document.title = title;
+
+
+			if ( extension === "md" ) {
+
+				showdown.setFlavor( "github" );
+
+				const options = { excludeTrailingPunctuationFromURLs: true, ghMention: true, parseImgDimensions: true, simplifiedAutoLink: true, simpleLineBreaks: true, emoji: true, openLinksInNewWindow: true };
+
+				const xhr = new XMLHttpRequest();
+				xhr.open( "get", url, true );
+				xhr.onload = () => {
+					const txt = xhr.responseText.replace( /\<!--@@@/, "" ).replace( /\@@@-->/, "" );
+					divContent.innerHTML = new showdown.Converter( options ).makeHtml( txt );
+					window.scrollTo( 0, 0 );
+				};
+				xhr.send( null );
+
+				return;
+
+			}
+
+			if ( [ "gif", "jpg", "png", "svg" ].includes( extension ) ) {
+
+				divContent.innerHTML = `<img src="${ url }" style=max-width:100% >`;
+
+				return;
+
+			}
+
+			divContent.innerHTML = `<iframe src="${ url }" height=${ window.innerHeight } width=100% ></iframe>`;
+
+		}
+
+	</script>
+</body>
+
+</html>

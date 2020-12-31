@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang = "en" >
+<head>
+<meta charset = "utf-8" >
+<meta name = "viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
+<meta name = "description" content = "Basic TooToo HTML template" >
+<meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
+
+<link rel="stylesheet" href="../style/style-2020-09-17.css">
+
+<style>
+
+
+</style>
+
+<title></title>
+
+</head>
+<body>
+
+	<script src="../fo-file-open/foo-file-open-object-2020-07-17.js"></script>
+	<script src="../fo-file-open/foz-file-open-zip-2020-06-12.js"></script>
+	<script src="../fo-file-open/fr-file-reader-2020-06-12.js"></script>
+
+	<details id=navMenuDet class="gmd-2">
+
+		<summary id=navMenuSum class="summary-secondary gmd-1">show || hide menu</summary>
+
+		<nav id="navMenu" class="gmd-4" open>
+
+			<header id="hdrTitle">
+
+				<h2>
+
+					<a id=aGithub href="https://github.com/theo-armour/2020/tree/master/lib/htm/" target="_top" title="Source code on GitHub">
+						<img src="../octicon.svg">
+					</a>
+
+					<a id=aTitle href="" title="Click to reload this page">
+						2020 Test Style HTML
+					</a>
+					&nbsp;
+					<span class="info"><img class=infoImg  src="../noun_Information_585560.svg"> <span id="divDescription" class="infoTooltip gmd-5">
+
+					</span></span>
+
+				</h2>
+
+			</header>
+
+			<div id=divNavLog ></div>
+
+			<details id=detFile >
+
+				<summary class="summary-primary gmd-1" title="Open files on your device: ">file menu</summary>
+
+				<div id=FRdivMenuFileReader></div>
+
+				<p>
+					<input type=file id=FRinpFile onchange=FR.readFile(this); accept = "*" >
+				</p>
+
+				<div id=FOOdivLog >to be reset</div>
+
+				<div id=FOZdivFileOpenZip ></div>
+
+				<div id=divLog ></div>
+
+			</details>
+
+			<details ontoggle="" >
+
+				<summary class="summary-primary gmd-1" title="View selected items" >sample files gallery</summary>
+
+				<div class=divNavResize >
+
+					<p>Sample files you can load, view and experiment with:</p>
+
+					<div id=GFFdivGithubFoldersFiles></div>
+
+					<div id=GFFdivFileInfo></div>
+
+					<br>
+
+				</div>
+
+			</details>
+
+			<details class=detNavMenu id=detView ontoggle="">
+
+				<summary class="summary-primary gmd-1" title="View selected model aspects" >view menu</summary>
+
+				<div class=divNavResize >
+
+					<div id=VTdivViewTypes ></div>
+
+					<div id=VTdivAttributes></div>
+
+				</div>
+
+			</details>
+
+			<details class=detNavMenu id=detData ontoggle=JTV.init();JTV.onLoad(); >
+
+				<summary class="summary-primary gmd-1" title="Browse the data in the file" >data menu</summary>
+
+				<div class=divNavResize >
+
+					<p>
+						<i>We need to decide what data should appear here & and how best to format it. Work-in-progress.</i>
+					</p>
+
+					<div id=JTHdivJsonTreeHelper ></div>
+
+					<div id=JTFdivJsonTreeFinder ></div>
+
+					<div id=JTEdivJsonTreeEdit ></div>
+
+					<div id=JTVdivJsonTreeView ></div>
+
+					<hr>
+
+				</div>
+
+			</details>
+
+			<br>
+
+			<footer>
+
+				<div title="go to top of menu" style=text-align:center; >
+					<a class=aDingbat href=javascript:navMenu.scrollTo(0,0); >❦</a>
+				</div>
+
+			</footer>
+
+		</nav>
+
+	</details>
+
+
+<main>
+
+	<div id="divContentMainvvv" >
+
+		<!-- <details open >
+
+			<summary class=sumMenuTitle >
+				Summary
+				<span class="info" >&#x24d8;<span id=divDetails class="infoTooltip" >How can I help you?</span></span>
+			</summary>
+
+			<p>Can be here or in the menu</p>
+
+		</details> -->
+
+		<article id=mmmartMain >
+
+
+				<iframe id=ifr src="style-sample-tags.html" style="border: 0 solid red;height:100vh;width:100%;" ></iframe>
+
+			</div>
+
+		</article>
+
+		<!-- <footer>
+
+			<hr>
+
+			<div title="go to top of menu" style=text-align:center; >
+				<a class=aDingbat href=javascript:window.scrollTo(0,0); >❦</a>
+			</div>
+
+		</footer> -->
+	</div>
+
+
+
+</main>
+
+
+
+<script>
+
+
+divDescription.innerHTML = document.head.querySelector( "[ name=description ]" ).content;
+
+
+init();
+
+function init() {
+
+	txt = "<h3>Title</h3><p>orem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>";
+
+	txtX = Array( 1 ).fill( txt ).join( "<hr>");
+
+	//artMain.innerHTML =  `${ ( new Date ) } ${ txtX }`;
+
+	//divNavLog.innerHTML = txtX;
+
+	//requestFile( "style-sample-tags.html" );
+
+	// var cssLink = ifr.contentDocument.createElement("link");
+	// cssLink.href = "../style/style-2020-07-05.css";
+	// cssLink.rel = "stylesheet";
+	// cssLink.type = "text/css";
+	// //frames['iframe1'].document.head.appendChild(cssLink);
+	// ifr.contentDocument.head.appendChild( cssLink );
+
+
+	if ( window.innerWidth < 800 || window.innerHeight < 500 ) {
+
+		document.documentElement.style.setProperty("--mnu-width", "18rem");
+
+	} else {
+
+		navMenuDet.open = true;
+
+	}
+
+}
+
+
+function setIt() {
+
+	divContent.innerHTML += `<p>${ ( performance.now() ) } - Howdy! </p>`;
+
+}
+
+
+function requestFile( url = "https://example.com" , callback = onLoad ) {
+
+	const urlCORS = "https://cors-anywhere.herokuapp.com/";
+
+	const xhr = new XMLHttpRequest();
+	xhr.open( "GET", urlCORS + url, true );
+	xhr.responseType = "text";
+	xhr.onerror = ( xhr ) => console.log( "error:", xhr  );
+	//xhr.onprogress = ( xhr ) => console.log( "bytes loaded:", xhr.loaded );
+	xhr.onload = ( xhr ) => callback( xhr.target.response );
+	xhr.send( null );
+
+}
+
+
+
+function onLoad( response ) {
+
+	console.log( "response", response );
+
+}
+
+
+
+</script>
+</body>
+</html>

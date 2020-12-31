@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Interactive hackable 3D map for anywhere in the world in your broswer - now!">
+	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS">
+
+	<!-- Copyright 2020 Theo Armour. MIT License -->
+
+	<title>MAP 2020-08-20</title>
+
+	<style>
+		:root {
+			font: 100% monospace;
+		}
+
+		body {
+			margin: 0;
+			overflow: hidden;
+		}
+
+		input {
+			width: 100%;
+		}
+
+		#detNavMenu {
+			background-color: aliceblue;
+			border-radius: 1rem;
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+			margin: 1rem;
+			max-height: 90vh;
+			overflow: auto;
+			padding: 1rem;
+			position: absolute;
+			resize: both;
+			width: 22rem;
+		}
+	</style>
+</head>
+
+<body>
+
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r122/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r122/examples/js/controls/OrbitControls.js"></script>
+
+	<script src="../../../lib3d/thr-three/thr-threejs-2020-08-02.js"></script>
+	<script src="../../../lib3d/thru-three-utilities/thru-three-utilities-2020-07-13.js"></script>
+	<script src="../../../lib3d/thru-three-utilities/hrt-heart-2020-05-27.js"></script>
+
+	<script src="map-world.js"></script>
+
+	<script src="../../../lib3d/gcd-geocoder/gcd-geocoder-2020-07-24-1634.js"></script>
+
+	<script
+		src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyC08xQ2xRy3k5IHkEuuSWasdViOkk489Y0"></script>
+
+
+	<nav>
+
+		<details id=detNavMenu>
+
+			<summary>show|hide menu</summary>
+
+			<h1>
+				<a id=aGithub href="https://github.com/theo-armour/2020/tree/master/lib/map/" target="_top"
+					title="Source code on GitHub">
+					<img src="https://theo-armour.github.io/2020/assets/icons/octicon.svg">
+				</a>
+				<a href=""><span id=sTitle></span></a>
+			</h1>
+
+			<div id="GCDdivGeocoder"></div>
+
+			<div id=divMessage ></div>
+
+			<details open>
+
+				<summary>Settings</summary>
+
+				<p>
+					zoom level: <select id=selZoom oninput=MAP.zoom=+this.value;MAP.update();>
+						<option>7</option>
+						<option>8</option>
+						<option>9</option>
+						<option>10</option>
+						<option selected>11</option>
+						<option>12</option>
+						<option>13</option>
+						<option>14</option>
+						<option>15</option>
+						<option>16</option>
+						<option>17</option>
+						<option>18</option>
+					</select>
+				</p>
+				<p>
+					<select id=selMap size=7 onchange=MAP.overlayIndex=this.selectedIndex;;MAP.update(); style=width:100%;></select>
+				</p>
+
+				<p>
+					height scale: <output id=outScale>50</output>
+					<input type=range id="rngScale"
+						onchange=MAP.heightScale=+this.value;MAP.update();outScale.value=this.value>
+				</p>
+
+				<p>
+					Go
+					<button onclick="MAP.deltaX -=1;MAP.update();" title="Go west|left">&#8678;</button>
+					<button onclick="MAP.deltaX +=1;MAP.update();" title="Go east|right">&#8680;</button>
+
+					<button onclick="MAP.deltaY -=1;MAP.update();" title="Go north" |up>&#8679;</button>
+					<button onclick="MAP.deltaY +=1;MAP.update();" title="Go south|down">&#8681;</button>
+				</p>
+
+				<p>
+					rows: <input type="number" id=inpRows onchange=MAP.rows=+this.value;MAP.update(); style=width:2rem;>
+					columns: <input id=inpCols type="number" onchange=MAP.cols=+this.value;MAP.update();
+						style=width:2rem;>
+				</p>
+
+			</details>
+
+			<details ontoggle=MAP.setStats() >
+
+				<summary>statistics</summary>
+
+				<div id="divStats"></div>
+
+			</details>
+
+			<details open>
+
+				<summary>locations</summary>
+
+				<p><a href='#"title":"","latitude":37.796,"longitude":-122.398,"zoom":11'>San Francisco Bay</a></p>
+
+				<p><a href='#"title":"Golden Gate Bridge","latitude":37.8199,"longitude":-122.4783,"zoom":14'>
+						Golden Gate Bridge</a></p>
+
+				<p><a
+						href='#"title":"California","latitude":36.7783,"longitude":-119.4179,"zoom":7,"scale":50,"rows":6,"columns":3'>
+						California</a></p>
+
+				<p><a href='#"title":"Burning Man","latitude":40.786944,"longitude":-119.204444,"zoom":12'>
+						Burning Man</a></p>
+
+				<p><a
+						href='#"title":"Half%20Dome,%20California,%20USA","latitude":37.7459192,"longitude":-119.5331992,"zoom":14,"offsetUTC":-420'>
+						Half Dome, Yosemite</a></p>
+
+				<p><a
+						href='#"title":"Grand%20Canyon,%20Arizona,%20USA","latitude":36.11276399999999,"longitude":-113.9960696,"zoom":11,"offsetUTC":-420'>
+						The Grand Canyon</a></p>
+
+				<p><a href='#"title":"Greenwich Observatory","latitude":51.4779,"longitude":-0.0015,"zoom":15'>
+						Greenwich Observatory</a></p>
+
+				<p><a
+						href='#"title":"Skye,%20United%20Kingdom","latitude":57.2736277,"rows":5,"longitude":-6.2155023,"zoom":10,"offsetUTC":60'>
+						Isles of Skye</a></p>
+
+				<p><a href='#"title":"Tenzing Hillary Airport","latitude":27.6874,"longitude":86.7322,"zoom":12'>Tenzing
+						Hillary Airport</a></p>
+
+				<p>
+					<a href='#"title":"Hong%20Kong","latitude":22.3193039,"longitude":114.1693611,"zoom":11,"offsetUTC":480'>
+						Hong Kong</a></p>
+
+				<p><a
+						href='#"title":"Sidney Harbour","latitude":-33.8675,"longitude":151.207,"zoom":13,"scale":50,"offsetUTC":-600'>
+						Sydney Harbour</a></p>
+
+				<p><a
+						href='#"title":"Queenstown,%20New%20Zealand","latitude":-45.0301511,"longitude":168.6616206,"zoom":13,"index":3,"offsetUTC":720'>
+						Queenstown, New Zealand</a></p>
+
+				<p><a href='#"title":"Moorea","latitude":-17.5388,"longitude":-149.8295,"zoom":13,"index":3'>Moorea</a></p>
+
+				<p><a href=''>
+					</a></p>
+
+			</details>
+
+			<details ontoggle=divBitmaps.appendChild(MAP.canvasBitmap);>
+
+				<summary>bitmap image</summary>
+
+				<p>Right-click image to download at full size</p>
+
+				<div id=divBitmaps></div>
+
+			</details>
+
+			<details ontoggle=divHeightMaps.appendChild(MAP.canvasHeightMaps);>
+
+				<summary>height map image</summary>
+
+				<p>Right-click image to download at full size</p>
+
+				<div id=divHeightMaps></div>
+
+			</details>
+
+			<hr>
+
+			<center title="hello! Click me to go up to the top"><a href=javascript:window.scrollTo(0,0);
+				style=font-size:2ch;text-decoration:none;> ❦ </a></center>
+
+		</details>
+
+	</nav>
+
+	<script>
+
+		let mesh, geometry, material;
+
+		init()
+
+		function init() {
+
+			sTitle.innerHTML = document.title;
+
+			THR.init();
+
+			THR.renderer.outputEncoding = THREE.LinearEncoding;
+
+			THR.animate();
+
+			// THR.group = THR.setSceneNew();
+
+			// THR.axesHelper.visible = false;
+
+			THR.addGround();
+
+			THR.ground.position.z = -1;
+
+			THR.addLights();
+
+			// const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+			// const material = new THREE.MeshNormalMaterial();
+			// const mesh = new THREE.Mesh( geometry, material );
+			// mesh.castShadow = true;
+
+			// THR.group.add( mesh );
+
+			const options = MAP.mapOverlays.map( overlay => `<option>${ overlay[ 0 ] }</option>` );
+
+			selMap.innerHTML = options.join( "" );
+
+			selMap.selectedIndex = 0;
+
+			window.addEventListener( "hashchange", onHashChange );
+
+
+			MAP.init();
+
+			onHashChange();
+
+			GCD.init(); // geocoder
+
+			HRT.init(); // easter egg heart
+
+			if ( window.innerWidth > 640 && window.innerHeight > 640 ) { detNavMenu.open = true; }
+
+			// keeps address bar pointed to latest dev. can comment out while developing stop annoying message
+
+			if ( location.protocol === "https:" ) {
+
+				window.history.pushState( "", "", "/2020/lib/map/" );
+
+			} else {
+
+				THR.controls.autoRotate = false;
+
+			}
+
+		}
+
+
+
+		function onHashChange() {
+
+			const str = decodeURI( location.hash.slice( 1 ) );
+			const json = JSON.parse( `{ ${ str } }` )
+			//console.log( "json", json );
+
+
+			 //reset?
+
+			if ( json.latitude && json.latitude !== MAP.latitude ) {
+
+				MAP.rows = MAP.defaultRows;
+								console.log( "", 3 );
+
+
+			}
+
+			if ( json.longitude && json.longitude !== MAP.longitude ) {
+
+				MAP.cols = MAP.defaultCols;
+				console.log( "", 23 );
+
+			}
+
+			MAP.latitude = json.latitude ? json.latitude : MAP.latitude;
+			MAP.longitude = json.longitude ? json.longitude : MAP.longitude;
+
+			MAP.zoom = json.zoom ? json.zoom : MAP.zoom;
+			MAP.overlayIndex = json.index ? json.index : MAP.overlayIndex
+			MAP.heightScale = json.scale ? json.scale : MAP.heightScale;
+
+			MAP.cols = json.columns ? json.columns : MAP.cols;
+			MAP.rows = json.rows ? json.rows : MAP.rows;
+
+			MAP.deltaX = 0;
+			MAP.deltaY = 0;
+
+			selZoom.selectedIndex = MAP.zoom - 7;
+			selMap.selectedIndex = MAP.overlayIndex;
+			rngScale.value = MAP.heightScale;
+
+			inpRows.value = MAP.rows;
+			inpCols.value = MAP.cols;
+
+			divMessage.innerHTML = "";
+
+			MAP.update();
+
+		}
+
+	</script>
+
+</body>
+
+</html>

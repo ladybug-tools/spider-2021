@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang=en>
+
+<head>
+	<title></title>
+	<meta charset=utf-8 />
+	<style>
+		body {
+			font: bold 12pt monospace;
+		}
+	</style>
+</head>
+
+<body>
+
+	<a href="" >ZZZZZ</a>
+
+	<script>
+
+		init();
+
+		function init() {
+
+			requestFile();
+
+		}
+
+		function requestFile( url = "https://example.com", callback = onLoad ) {
+
+			// urlDefaultFile = "https://cdn.jsdelivr.net/gh/pushme-pullyou/tootoo-2020@master/README.md";
+			const urlCORS = "https://cors-anywhere.herokuapp.com/";
+
+			xhr = new XMLHttpRequest();
+			xhr.open( "GET", urlCORS + url, true );
+			xhr.responseType = "text";
+			xhr.onerror = ( xhr ) => console.log( "error:", xhr );
+			//xhr.onprogress = ( xhr ) => console.log( "bytes loaded:", xhr.loaded );
+			xhr.onload = ( xhr ) => callback( xhr.target.response );
+			xhr.send( null );
+
+		}
+
+
+
+		function onLoad( response ) {
+
+			console.log( "response", response );
+
+		}
+
+	</script>
+
+
+</body>
+
+</html>

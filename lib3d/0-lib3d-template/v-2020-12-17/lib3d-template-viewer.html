@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
+	<meta name="description"
+		content="Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
+	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
+	<meta name="version" content="2020-12-17">
+	<title>Lib 3D Template Viewer</title>
+
+	<!-- Copyright 2020 Theo Armour. MIT license -->
+	<link rel="stylesheet" href="../../lib/style/style-2020-11-29.css">
+
+	<style>
+		:root {
+			--main-hue: 120;
+			/* 0 to 360 0=red 120=green 240=blue */
+		}
+
+		body {
+			overflow: hidden;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<details id=detNavMenu class="gmd-4">
+
+		<summary id=sumNavMenu class="summary-secondary gmd-1">show || hide menu</summary>
+
+		<nav id="navMenu" class="gmd-2">
+
+			<header>
+
+				<h2>
+					<a id=aGithub target="_top" title="Source code on GitHub">
+						<img src="../../lib/assets/icons/mark-github.svg">
+					</a>
+
+					<a href="" title="Click to reload this page">
+						Lib3D Template Viewer
+						<span id=spnVersion></span>
+					</a>
+					&nbsp;
+					<span class="info">
+						<img class=infoImg src="../../lib/assets/icons/noun_Information_585560.svg">
+						<span id="divDescription" class="infoTooltip gmd-5">
+						</span>
+					</span>
+
+				</h2>
+
+			</header>
+
+			<p>Click or touch a surface to view its details. Click &sdotb; icon to display all the surfaces.</p>
+
+			<!-- <details id=detFile>
+
+				<summary class="summary-primary gmd-1" title="Open files on your device: ">file menu</summary>
+
+				<div id=FRdivMenuFileReader></div>
+
+				<p>
+					<input type=file id=FRinpFile onchange=FR.readFile(this); accept="*">
+				</p>
+
+				<div id=FOOdivLog>to be reset</div>
+
+				<div id=FOZdivFileOpenZip></div>
+
+				<div id=divLog></div>
+
+			</details> -->
+
+			<div id=divGFF ></div>
+
+			<details ontoggle=GFFdivGithubFoldersFiles.innerHTML=GFF.getMenuGithubFoldersFiles() class=divNavResize>
+
+				<summary class="summary-primary gmd-1" title="View selected items">sample files gallery</summary>
+
+				<div>
+
+					<p>Sample files you can load, view and experiment with:</p>
+
+					<div id=GFFdivGithubFoldersFiles></div>
+
+					<div id=GFFdivFileInfo></div>
+
+					<br>
+
+				</div>
+
+			</details>
+
+			<!--
+			<details ontoggle=GGFFdivGithubFoldersFiles.innerHTML=GGFF.getMenuGithubFoldersFiles()>
+
+				<summary class="summary-primary gmd-1" title="View selected items">gltf sample files gallery</summary>
+
+				<div class=divNavResize>
+
+					<p>Sample files you can load, view and experiment with:</p>
+
+					<div id=GGFFdivGithubFoldersFiles></div>
+
+					<div id=GGFFdivFileInfo></div>
+
+					<br>
+
+				</div>
+
+			</details> -->
+
+			<!-- <details class=detNavMenu id=detView ontoggle=JTV.setMessage();>
+
+				<summary class="summary-primary gmd-1" title="View selected model aspects" >view menu</summary>
+
+					<div class=divNavResize >
+
+					<div id=VTdivViewTypes ></div>
+
+					<div id=VTdivAttributes></div>
+
+				</div>
+
+			</details>
+
+			<details class=detNavMenu id=detData ontoggle=JTV.setMessage();>
+
+				<summary class="summary-primary gmd-1" title="Browse the data in the file">data menu</summary>
+
+				<div class=divNavResize>
+
+					<div id=JTHdivJsonTreeHelper></div>
+
+					<div id=JTFdivJsonTreeFinder></div>
+
+					<div id=JTEdivJsonTreeEdit></div>
+
+					<div id=JTVdivJsonTreeView></div>
+
+					<hr>
+
+				</div>
+
+			</details>
+
+		-->
+
+			<br>
+
+
+			<center>
+				<a id=aMenuFooter href="javascript:navMenu.scrollTo(0,0);"></a>
+			</center>
+
+		</nav>
+
+	</details>
+
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/examples/js/utils/BufferGeometryUtils.js"></script>
+
+	<script src="../../lib3d/thr-three/thr-threejs-2020-08-02.js"></script>
+	<script src="../../lib3d/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
+	<script src="../../lib3d/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-09-11.js"></script>
+	<script src="../../lib3d/thru-three-utilities/thru-three-utilities-2020-07-13.js"></script>
+
+	<script src="../../lib/gff-github-folder-files/gff-github-folder-files-2020-12-17.js"></script>
+
+	<script src="lib3d-template-viewer.js"></script>
+
+	<script>
+
+		init(); // see script-template-viewer.js
+
+	</script>
+
+
+</body>
+
+</html>

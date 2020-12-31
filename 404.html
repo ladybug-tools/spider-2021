@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang=en >
+<head>
+<meta charset=utf-8 >
+<meta name=author content="Theo Armour" >
+<title></title>
+</head>
+<body>
+<script>
+// Welcome. Anybody who looks at the source code of other people's error pages must be wonderful!
+
+// Written in 'everything-JavaScript' style
+
+	document.body.style.cssText = `font: bold 12pt monospace; height: ${ window.innerHeight }px; overflow: hidden;`;
+
+	const user = "pushme-pullyou";
+	const repo = "tootoo-2021";
+	const info = document.body.appendChild( document.createElement( "div" ) );
+
+	document.title = `404 for ${ user }${ repo }`;
+	info.innerHTML = `
+<div style=background-color:white;left:0;margin:auto;max-width:50%;opacity:0.5;padding:1rem;right:0;text-align:center; >
+	<h1 title="This is the 404 error page" >Oops</h1>
+	<h2>Website: <a href="https://${ user }.github.io/${ repo }" title="Go to the app" >${ user }.github.io/${ repo }</a></h2>
+	<h2>Source code: <a href=https://github.com/${ user }/${ repo } title="Go to the source code" >github.com/${ user }/${ repo }</a></h2>
+	<p><i>Stuff here is rarely deleted, but it does move around. It's here somewhere.</i></p>
+</div>`;
+
+	toggleBackgroundGradient();
+
+
+	function toggleBackgroundGradient() {
+
+// 2020-12-26
+
+		const col = () => ( 0.5 + 0.5 * Math.random() ).toString( 16 ).slice( 2, 8 );
+		const pt = () => ( Math.random() * window.innerWidth ).toFixed( 0 );
+
+		document.body.style.backgroundImage = `radial-gradient( circle farthest-corner at ${ pt() }px
+		${ pt() }px, #${ col() } 0%, #${ col() } 50%, #${ col() } 100% )`;
+
+	}
+
+</script>
+</body>
+</html>
