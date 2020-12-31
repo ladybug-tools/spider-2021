@@ -7,7 +7,7 @@ value="You are now in a GitHub web page view - Click this button to view this re
 
 Your 2021 3D happy place for online browsing of many of the standard architecture, engineering and construction (AEC) [open data]( https://en.wikipedia.org/wiki/Open_data ) file types.
 
-## Full screen: [Spider gbXML Viewer]( https://ladybug.tools/spider-2021/spider-gbxml-viewer/)
+## Full screen: [Spider Viewer 2021 ]( https://ladybug.tools/spider-2021/spider-gbxml-viewer/)
 
 <!--@@@
 <iframe src=https://ladybug.tools/spider-2021/spider-gbxml-viewer/ class="iframe-resize" ></iframe>
@@ -44,7 +44,7 @@ _Spider gbXML Viewer_
 
 ## [Spider SAM Viewer]( https://ladybug.tools/spider-2021/spider-sam-viewer/)
 
-* 3D viewer for [Hoare Lea ]( https://hoarelea.com/" ) Sustainable Analytical Model (SAM) JSON files
+* 3D viewer for [Hoare Lea]( https://hoarelea.com/" ) Sustainable Analytical Model (SAM) JSON files
 * Schema: https://github.com/HoareLea/SAM
 * Hoare Lea fork: https://github.com/HoareLea/sam-viewer
 * [Spider SAM Viewer Read Me]( https://github.com/ladybug-tools/spider-2021/tree/master/spider-sam-viewer/)
@@ -87,6 +87,5 @@ _Where new Spider projects start_
 
 ***
 
-<center><img style=color:green; title="Your AEC 3D viewer happy place!" height="24" width="24"
-    src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico">
+<center><img style=color:green; title="Your AEC 3D viewer happy place!" height="24" width="24" src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico">
 </center>
