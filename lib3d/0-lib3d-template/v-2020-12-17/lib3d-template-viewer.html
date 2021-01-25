@@ -8,11 +8,24 @@
 	<meta name="description"
 		content="Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
 	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
-	<meta name="version" content="2020-12-17">
+	<meta name="version" content="2021-01-01">
 	<title>Lib 3D Template Viewer</title>
 
-	<!-- Copyright 2020 Theo Armour. MIT license -->
-	<link rel="stylesheet" href="../../lib/style/style-2020-11-29.css">
+	<!-- Copyright 2021 Theo Armour. MIT license -->
+	<link rel="stylesheet" href="../../../lib/style/style-2020-12-29.css">
+
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/examples/js/utils/BufferGeometryUtils.js"></script>
+
+	<script src="../../../lib3d/thr-three/thr-threejs-2020-12-23.js"></script>
+	<script src="../../../lib3d/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
+	<script src="../../../lib3d/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-09-11.js"></script>
+	<script src="../../../lib3d/thru-three-utilities/thru-three-utilities-2020-07-13.js"></script>
+
+	<!-- <script src="../../../lib/gff-github-folder-files/gff-github-folder-files-2020-12-17.js"></script> -->
+
+	<script src="lib3d-template-viewer.js"></script>
 
 	<style>
 		:root {
@@ -39,7 +52,7 @@
 
 				<h2>
 					<a id=aGithub target="_top" title="Source code on GitHub">
-						<img src="../../lib/assets/icons/mark-github.svg">
+						<img src="../../../lib/assets/icons/mark-github.svg">
 					</a>
 
 					<a href="" title="Click to reload this page">
@@ -48,7 +61,7 @@
 					</a>
 					&nbsp;
 					<span class="info">
-						<img class=infoImg src="../../lib/assets/icons/noun_Information_585560.svg">
+						<img class=infoImg src="../../../lib/assets/icons/noun_Information_585560.svg">
 						<span id="divDescription" class="infoTooltip gmd-5">
 						</span>
 					</span>
@@ -77,7 +90,7 @@
 
 			</details> -->
 
-			<div id=divGFF ></div>
+			<div id=divGFF></div>
 
 			<details ontoggle=GFFdivGithubFoldersFiles.innerHTML=GFF.getMenuGithubFoldersFiles() class=divNavResize>
 
@@ -163,18 +176,7 @@
 
 	</details>
 
-	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/build/three.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/examples/js/controls/OrbitControls.js"></script>
-	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/examples/js/utils/BufferGeometryUtils.js"></script>
 
-	<script src="../../lib3d/thr-three/thr-threejs-2020-08-02.js"></script>
-	<script src="../../lib3d/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
-	<script src="../../lib3d/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-09-11.js"></script>
-	<script src="../../lib3d/thru-three-utilities/thru-three-utilities-2020-07-13.js"></script>
-
-	<script src="../../lib/gff-github-folder-files/gff-github-folder-files-2020-12-17.js"></script>
-
-	<script src="lib3d-template-viewer.js"></script>
 
 	<script>
 

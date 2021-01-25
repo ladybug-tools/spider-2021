@@ -30,11 +30,11 @@ function init () {
 
 	THR.addGround();
 
-	THR.group = THR.setSceneNew();
+	THR.group = THR.getGroupNew();
 
 	THRU.addMeshes(100);
 
-	THRR.updateScene();
+	THR.zoomObjectBoundingSphere();
 
 	// FOO.init();
 

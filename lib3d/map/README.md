@@ -16,9 +16,9 @@ _MAP in a resizable window. One finger to rotate. Two to zoom._
 
 ## Concept
 
-This section follws the concept described in [A Pattern Language]( https://en.wikipedia.org/wiki/A_Pattern_Language ) in which a problem is described and then a solution is offered.
+This section follows the concept described in [A Pattern Language]( https://en.wikipedia.org/wiki/A_Pattern_Language ) in which a problem is described and then a solution is offered.
 
-_The folowing sections are all all still at an early stage._
+_The following sections are all all still at an early stage._
 
 ### Problems to be solved
 
@@ -28,7 +28,7 @@ _The folowing sections are all all still at an early stage._
 
 ### Propose solution
 
-* Interactive maps that display terrain in 3D overlaid by 2D bitmaps 
+* Interactive maps that display terrain in 3D overlaid by 2D bitmaps
 * Provide an address, place name or latitude & longitude and the map is displayed nearly instantly
 * Works on phone, tablet or workstation
 * Etc
@@ -82,7 +82,7 @@ Jaanga
 
 * https://jaanga.github.io/terrain3/elevations-core3/elevations-core3-r1.html
 
-OSM 
+OSM
 * https://wiki.openstreetmap.org/wiki/Zoom_levels
 * https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Resolution_and_Scale
 
@@ -120,7 +120,7 @@ Mostly working as expected
 
 ### 2020-07-31
 
-* Add: * Enable selecting from the various sources bitmap tile servers 
+* Add: Enable selecting from the various sources bitmap tile servers
 * Add: direction arrows and code to update location
 * Add: Update the height scale in real time with a slider
 

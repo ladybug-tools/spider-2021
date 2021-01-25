@@ -17,13 +17,19 @@
 			overflow: hidden;
 		}
 
-		nav {
-			background-color: #ccc;
-			border: 1px solid #888;
-			opacity: 0.85;
-			padding: 0.5rem;
+		.nav {
+			background: white;
+			border-radius: 10px;
+			box-shadow: 0 0 50px -25px black;
+			color: gray;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 100%;
+			margin: 1rem;
+			width: 15rem;
+			overflow: auto;
+			padding: 1rem;
 			position: absolute;
-			left: 1rem;
+			resize: both;
 		}
 
 		input[type=range],
@@ -38,7 +44,7 @@
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/examples/js/controls/OrbitControls.js"></script>
 
 	<script src="gjs-geojson.js"></script>
-	<nav id=navMenu>
+	<nav id=navMenu class=nav>
 
 		<details open>
 			<summary>show/hide</summary>
@@ -142,15 +148,14 @@
 				axesHelper = new THREE.AxesHelper( 50 );
 				scene.add( axesHelper );
 
-				// geometry = new THREE.BoxGeometry( 50, 50, 50 );
-				// material = new THREE.MeshNormalMaterial();
-				// mesh = new THREE.Mesh( geometry, material );
-				// scene.add( mesh );
-
+				geometry = new THREE.SphereGeometry( 50, 50, 25 );
+				material = new THREE.MeshNormalMaterial();
+				mesh = new THREE.Mesh( geometry, material );
+				scene.add( mesh );
 
 				GJS.initGeoJson();
 
-				const urlGeoJson = "../cb_2019_us_county_20m.geojson";
+				const urlGeoJson = "../../../lib/assets/geojson/cb_2019_us_county_20m.geojson";
 
 				GJS.requestFile( urlGeoJson, GJS.onLoadGeoJson );
 
