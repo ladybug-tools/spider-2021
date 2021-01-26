@@ -29,7 +29,7 @@ THRU.removeLines = function() {
 
 };
 
-THRU.addTellTale = function( siz = 0.5 ) { 
+THRU.addTellTale = function( siz = 0.5 ) {
 
 	const geometry = new THREE.BoxBufferGeometry( siz, siz, siz );
 	const material = new THREE.MeshNormalMaterial();
@@ -73,7 +73,7 @@ THRU.addMesh = function (size = 10) {
 	// geometry.applyMatrix4( new THREE.Matrix4().makeScale( 1, 1, 1 ) );
 	// geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( 0, 0, 0 ) );
 
-	//const material = new THREE.MeshNormalMaterial( { transparent: true });  
+	//const material = new THREE.MeshNormalMaterial( { transparent: true });
 	//const geometry = new THREE.BoxBufferGeometry(size, size, size);
 	const material = new THREE.MeshPhongMaterial({ color: 0xffffff * Math.random(), opacity: 0.85, side: 1, specular: 0x444444, side: 2, transparent: true });
 	mesh = new THREE.Mesh(geometry, material);
@@ -186,34 +186,34 @@ THRU.toggleMeshEdges = function( obj = THR.group) {
 THRU.toggleSurfaceNormalsVisible = function( obj = THR.group ) {
 
 	let material = new THREE.MeshNormalMaterial();
-	
+
 	const types = [ 'BoxBufferGeometry', 'BufferGeometry', 'ConeBufferGeometry', 'CylinderBufferGeometry',
 	'ShapeBufferGeometry', 'SphereBufferGeometry' ];
-	
+
 	if ( THR.scene.children.includes( THRU.helperNormalsFaces ) ) {
-		
+
 		THR.scene.remove( THRU.helperNormalsFaces );
-		
+
 	} else {
-		
-		
+
+
 		THRU.helperNormalsFaces = new THREE.Group();
-		
+
 		obj.traverse( function ( child ) {
-			
+
 			if ( child instanceof THREE.Mesh && child.visible ) {
-				
+
 				if ( child.geometry.type === 'ShapeGeometry' ) {
-					
+
 					child.geometry.computeFaceNormals();
-					
+
 					const helperNormalsFace = new THREE.FaceNormalsHelper( child, 2, 0xff00ff, 3 );
 					THRU.helperNormalsFaces.add( helperNormalsFace );
 					//THRU.helperNormalsFaces.visible = false;
 					console.log( 'helperNormalsFace', helperNormalsFace );
-					
+
 				} else if ( types.includes( child.geometry.type ) === true ) {
-					console.log( "", 23 ); 
+					console.log( "", 23 );
 
 					const geometry = new THREE.Geometry();
 					const geo = geometry.fromBufferGeometry( child.geometry );
@@ -433,7 +433,7 @@ THRU.addText = function( text = "Hello world!\n123", position = new THREE.Vector
 
 ////////// camera
 
-  THRU.toggleCameraOrthoPerspective = function() {
+THRU.toggleCameraOrthoPerspective = function() {
 
 
 	if ( THRU.cameraOrtho === undefined ) {
@@ -471,7 +471,7 @@ THRU.addText = function( text = "Hello world!\n123", position = new THREE.Vector
 		//GBX.THRUAllVisible();
 		THR.zoomObjectBoundingSphere();
 
-		THRUbutOrtho.style.backgroundColor = "";
+		//THRUbutOrtho.style.backgroundColor = "";
 
 		lblFOV.hidden = false;
 	}
@@ -496,12 +496,12 @@ THRU.setCameraPosition = function (view) {
 	THR.camera.position.copy( THR.controls.target.clone().add( views[ view ]));
 
 	// THR.camera.up.set(0, 0, 1);
-	
+
 	// if ( THR.camera.type === "PerspectiveCamera" ) {
 
 	// 	//THR.zoomToFitObject();
 
-	// } 
+	// }
 
 };
 
@@ -518,8 +518,8 @@ THRU.setFieldOfView = function( range ){
 
 THRU.setCameraNear = function( range) {
 
-	//console.log( "", range.value );        
-	
+	//console.log( "", range.value );
+
 	distance = THR.camera.position.distanceTo( THR.axesHelper.position ) + THR.radius;
 
 	THR.camera.near = + ( distance * ( + range.value / 100 ) );
@@ -541,9 +541,9 @@ THRU.setObjectExplode = function( range ) {
 	} } );
 
 	THR.group.children.forEach( obj => {
-		
-		obj.position.copy( obj.position.original.clone().multiplyScalar( 1 + scale ) ) 
-		
+
+		obj.position.copy( obj.position.original.clone().multiplyScalar( 1 + scale ) )
+
 	} );
 
 };

@@ -6,19 +6,56 @@
 	<meta charset=utf-8 />
 	<style>
 		body {
-			font: bold 12pt monospace;
+			font: 100% monospace;
+			margin: 0;
+		}
+
+		#main {
+			border: 1px solid red;
+			margin: 0 auto 0 20rem;
+			max-width: 40rem;
+
+		}
+
+		.nav {
+			background: white;
+			border-radius: 10px;
+			box-shadow: 0 0 50px -25px black;
+			color: gray;
+			margin: 1rem;
+			width: 16rem;
+			overflow: auto;
+			padding: 1rem;
+			position: absolute;
+			resize: both;
+		}
+
+		.full-width {
+			width: 100%;
 		}
 	</style>
 </head>
 
 <body>
 
-	<h1>
-		<a href="https://github.com/pushme-pullyou/tootoo-2021/tree/master/xxxxxx/" target="_blank"
-			title="source code on GitHub"><img
-				src=https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/mark-github.svg></a>
-		<a href="" id=aTitle title="Click this menu title to reset the model"></a>
-	</h1>
+	<nav id=navMenu class=nav>
+
+		<details open>
+
+			<summary>show&darr; || hide&uarr; </summary>
+
+			<h1>
+				<a href="https://github.com/pushme-pullyou/tootoo-2021/tree/master/xxxxxx/" target="_blank"
+					title="source code on GitHub"><img
+						src=https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/mark-github.svg></a>
+				<a href="" id=aTitle title="Click this menu title to reset the model"></a>
+			</h1>
+
+		</details>
+
+	</nav>
+
+	<main id=main></main>
 
 	<script>
 

@@ -7,7 +7,7 @@
 	<meta name="description"
 		content="TooToo 2021 uses the GitHub API to provide access to all the current files hosted with GitHub Pages.">
 	<meta name="keywords" content="JavaScript,Markdown,GitHub,FOSS">
-	<meta name="date" content="2020-12-30">
+	<meta name="date" content="2021-01-01">
 	<title>TooToo 2021</title>
 
 	<!-- Copyright 2021 Theo Armour. MIT license -->
@@ -67,15 +67,16 @@
 
 	<script>
 
-		const source = "https://github.com/pushme-pullyou/tootoo-2021/";
-
-		const version = document.head.querySelector( "[ name=date ]" ).content;
-
-		const description = document.head.querySelector( "[ name=description ]" ).content;
-
 		init();
 
 		function init() {
+
+			const source = "https://github.com/pushme-pullyou/tootoo-2021/";
+
+			const version = document.head.querySelector( "[ name=date ]" ).content;
+
+			const description = document.head.querySelector( "[ name=description ]" ).content;
+
 
 			GOR.path = GRV.path = MNU.path = "../../../";
 

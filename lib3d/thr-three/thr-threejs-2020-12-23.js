@@ -88,7 +88,9 @@ THR.onStart = function () {
 };
 
 
-THR.getGroupNew = function ( group ) {
+THR.getGroupNew = function ( group = THR.group ) {
+
+	if ( !THR.scene ) { return; }
 
 	THR.scene.remove( group );
 
@@ -178,6 +180,8 @@ THR.zoomObjectBoundingSphere = function ( obj = THR.group ) {
 	//window.addEventListener( "onrresetthree", doThings, false );
 	//window.dispatchEvent(event);
 };
+
+
 
 THR.zoomToFitObject = function ( obj = THR.group, fitOffset = 1 ) {
 
@@ -273,6 +277,7 @@ THR.addGround = function ( position = new THREE.Vector3( 0, 0, -0.02 ) ) {
 	geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( position.x, position.y, position.z ) );
 	const material = new THREE.MeshPhongMaterial( { color: 0xaaaaaa, side: 0 } );
 	THR.ground = new THREE.Mesh( geometry, material );
+	THR.ground.name = "THR.ground";
 	//THR.ground.position.copy(position);
 	THR.ground.receiveShadow = true;
 
@@ -314,6 +319,9 @@ THR.setStats = function () {
 	Three.js renderer statistics<br>
 	Draw calls: ${ render.calls }<br>
 	Triangles: ${ render.triangles.toLocaleString() }<br>
+	Geometries: ${ renderer.info.memory.geometries }<br>
+	Textures: ${ renderer.info.memory.textures }<br>
+
 </p>`;
 };
 

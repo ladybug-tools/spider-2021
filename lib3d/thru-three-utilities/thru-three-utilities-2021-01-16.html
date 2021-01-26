@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Basic HTML template">
+	<meta name="keywords" content="JavaScript,GitHub,FOSS">
+	<meta name=version content="2021-01-16">
+	<!-- Copyright 2021 Theo Armour. MIT License -->
+
+	<title></title>
+
+	<style>
+		body {
+			margin: 0;
+			overflow: hidden;
+		}
+
+		.nav {
+			background: white;
+			border-radius: 10px;
+			box-shadow: 0 0 50px -25px black;
+			color: gray;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 100%;
+			margin: 1rem;
+			width: 15rem;
+			overflow: auto;
+			padding: 1rem;
+			position: absolute;
+			resize: both;
+			/* height: 90%; */
+		}
+	</style>
+</head>
+
+<body>
+
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r124/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r124/examples/js/controls/OrbitControls.js"></script>
+
+	<script src="../../lib3d/thr-three/thr-threejs-2020-12-23.js"></script>
+	<script src="../../lib3d/thru-three-utilities/thru-three-utilities-2020-07-13.js"></script>
+	<!-- <script src="../../lib/thru-three-utilities/hrt-heart-2020-05-27.js"></script> -->
+
+
+	<nav class="nav">
+
+		<details open>
+
+			<summary>show &uarr; || hide &darr; </summary>
+
+			<h1>
+				<a href="https://github.com/pushme-pullyou/tootoo-2021/tree/master/lib3d/" target="_blank"
+					title="source code on GitHub"><img
+						src=https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/mark-github.svg></a>
+				<a href="" id=aTitle title="Click this menu title to reset the model"></a>
+			</h1>
+
+			<p><button onclick=map.setCenter([-122.431,37.803]);>San Francisco</button></p>
+
+			<p><button onclick=addBox()>addBox</button></p>
+
+			<pre id="coordinates" class="coordinates"></pre>
+
+		</details>
+
+	</nav>
+	<script>
+
+		aTitle.innerHTML = document.title ? document.title : location.href.split( '/' ).pop().slice( 0, - 5 ).replace( /-/g, ' ' );
+
+		THR.init();
+
+		THR.animate();
+
+		//THR.addGround();
+
+		THR.group = THR.getGroupNew();
+
+		THR.axesHelper.visible = false;
+
+		THR.addGround();
+
+		THR.addLights();
+
+		// const geometry = new THREE.BoxGeometry(10, 10, 10);
+		// const material = new THREE.MeshNormalMaterial();
+		// const mesh = new THREE.Mesh(geometry, material);
+		// mesh.castShadow = true;
+		// THR.group.add(mesh);
+
+		THRU.setSceneNew();
+
+		THRU.addMeshes();
+
+		THRU.toggleBoundingBoxHelper();
+
+		THRU.toggleMeshEdges();
+
+		//THRU.toggleSurfaceNormalsVisible()
+
+		THR.zoomObjectBoundingSphere()
+
+//HRT.init();
+
+//THR.updateScene();
+
+	</script>
+</body>
+
+</html>
