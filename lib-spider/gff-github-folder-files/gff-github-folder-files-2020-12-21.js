@@ -9,9 +9,9 @@ const GFF = {
 
 };
 
-GFF.iconGitHubMark = "../../../lib/assets/icons/octicon.svg";
+GFF.iconGitHubMark = "../../lib/assets/icons/octicon.svg";
 GFF.iconInfo = `<img src=${ GFF.iconGitHubMark } height=11 style=opacity:0.5 >`;
-GFF.iconExternalLink = `<img width=16 src="../../../lib/assets/icons/icon-link-external.svg">`;
+GFF.iconExternalLink = `<img width=16 src="../../lib/assets/icons/icon-link-external.svg">`;
 GFF.files = []; //GFF.items.map( item => [] );
 
 
@@ -79,11 +79,11 @@ GFF.getGbxml = function () {
 
 GFF.getGithubFoldersFiles = function ( index, items ) {
 
-	GFF.items = GFF.folders; //GFF[ items ];
-	//const item = GFF[ items ][ index ];
-	const item = GFF.folders[ index ];
+	GFF.items = GFF[ items ];
+	const item = GFF[ items ][ index ];
+	//const item = GFF.folders[ index ];
 
-	console.log( "item", item );
+	//console.log( "item", item );
 	item.urlGitHubApiContents = 'https://api.github.com/repos/' + item.user + item.repo + '/contents/' + item.pathRepo;
 
 	GFF.extension = item.extension;
