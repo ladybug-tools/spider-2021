@@ -11,69 +11,35 @@ Your 2021 3D happy place for online browsing of many of the standard architectur
 
 <!--@@@
 <iframe src=https://ladybug.tools/spider-2021/spider-viewer/ class="iframe-resize" ></iframe>
-_Spider gbXML Viewer_
+_Spider Viewer 2021_
 @@@-->
 
+## Concert
 
-* Schema: https://gbxml.org
-* [Read Me]( https://github.com/ladybug-tools/spider-2021/tree/master/spider-gbxml-viewer/)
-* Single page view example [ Gallery gbXML Files]( https://www.ladybug.tools/spider-2021/spider-gbxml-viewer-lt/gallery-gbxml-files.html )
+### Problems to be solved
 
+>The [2030 Agenda for Sustainable Development]( https://sustainabledevelopment.un.org/post2015/transformingourworld ), adopted by all United Nations Member States in 2015, provides a shared blueprint for peace and prosperity for people and the planet, now and into the future. At its heart are the 17 Sustainable Development Goals (SDGs), which are an urgent call for action by all countries - developed and developing - in a global partnership. They recognize that ending poverty and other deprivations must go hand-in-hand with strategies that improve health and education, reduce inequality, and spur economic growth – all while tackling climate change and working to preserve our oceans and forests.
 
-## [Spider IDF Viewer]( https://ladybug.tools/spider-2021/spider-idf-viewer/)
+All members of the AEC community must take an active role implementing the relevant goals. These may include:
 
-* originator: https://www.energyplus.net/
-* [Read Me]( https://github.com/ladybug-tools/spider-2021/tree/master/spider-idf-viewer/)
+* Goal 1: End poverty in all its forms everywhere
+	* Target 1.4: By 2030, ensure that all men and women, in particular the poor and the vulnerable, have equal rights to economic resources, as well as access to basic services, ownership and control over land and other forms of property, inheritance, natural resources, appropriate new technology and financial services, including microfinance &lt;br&gt;
+* Goal 11: Make cities and human settlements inclusive, safe, resilient and sustainable
 
-## [Spider Open Studio Viewer]( https://ladybug.tools/spider-2021/spider-open-studio-viewer/)
+_Further revisions of this document will highlight relevant goal, targets and indicators._
 
-* Schema: https://gbxml.org
-* code: Old code - many, issues, needs work
-* [Read Me]( https://github.com/ladybug-tools/spider-2021/tree/master/spider-open-studio-viewer/)
+### Proposed solutions / Benefits
 
-## [Spider Pollination Viewer]( https://ladybug.tools/spider-2021/spider-pollination-viewer/)
+* Help clients and developers get up to speed with with what has to be done and with radically more clear explanatiopns on how to do it
+* Help gifted, talented and experienced professionals be more productive, useful and
+* Guide students and learners into effective pathways for gaining domain expertise
+* Bridge the gaps between AEC professionals and computer programmers
 
-* schema: https://github.com/ladybug-tools/dragonfly-schema
-* schema: https://github.com/ladybug-tools/honeybee-schema
-* [Read Me]( https://github.com/ladybug-tools/spider-2021/tree/master/spider-pollinatuion-viewer/)
+### Features
 
-## [Spider Radiance Viewer]( https://ladybug.tools/spider-2021/spider-radiance-viewer/)
-
-* schema: https://radiance-online.org/
-* [Read Me]( https://github.com/ladybug-tools/spider-2021/tree/master/spider-radiance-viewer/)
-
-## [Spider SAM Viewer]( https://ladybug.tools/spider-2021/spider-sam-viewer/)
-
-* 3D viewer for [Hoare Lea]( https://hoarelea.com/" ) Sustainable Analytical Model (SAM) JSON files
-* Schema: https://github.com/HoareLea/SAM
-* Hoare Lea fork: https://github.com/HoareLea/sam-viewer
-* [Spider SAM Viewer Read Me]( https://github.com/ladybug-tools/spider-2021/tree/master/spider-sam-viewer/)
-
-## [Spider Template Viewer]( https://ladybug.tools/spider-2021/spider-template-viewer/)
-
-* A template for building your own 3D viewers
-* [Read Me]( https://github.com/ladybug-tools/spider-2021/tree/master/spider-template-viewer/)
-
-
-## [Spider 3D Re-Mixer]( https://www.ladybug.tools/spider-2021/spider-3d-remixer/ )
-
-* Work-in-progress
-* Many broken things; lousy user experience; no need to comment: And it just works
-
-## [Sandbox]( https://www.ladybug.tools/spider-2021/sandbox )
-
-_Where new Spider projects start_
-
-* [Sandbox Gallery]( https://ladybug.tools/spider-2021/sandbox/ )
-* [Spider IDF Viewer]( https://ladybug.tools/spider-2021/sandbox/spider-idf-viewer/ )
-* [Spider SQL Viewer]( https://ladybug.tools/spider-2021/sandbox/spider-sql-viewer/ )
-* [Spider CSV Viewer]( https://ladybug.tools/spider-2021/sandbox/spider-csv-viewer/ )
-
-
-
-## [Road Map]( https://www.ladybug.tools/spider-2021/#spider-3d-remixer-roadmap.md )
-
-
+* Load and display a variety of AEC industry standard file types for 3D building data
+* Enable a feature-rich 3D interaction with models
+* Export files into industry-standard rendering, animation and gaming formats
 * A major Spider project for this year
 * A single unified set of files for developing and testing the interaction between dozens of modules
 * Gather all the Spider 3D file viewers into a single cooperative framework
@@ -81,9 +47,39 @@ _Where new Spider projects start_
 * Simplify testing and adding features across the range of viewers
 * Create a standard user experience across the range of Spider apps
 
+## Road map / Import
+
+### gbXML
+* Schema: https://gbxml.org
+
+
+### IDF and OSM
+
+* originator: https://www.energyplus.net/
+
+
+## Honeybee JSON & VTK
+
+* schema: https://github.com/ladybug-tools/dragonfly-schema
+* schema: https://github.com/ladybug-tools/honeybee-schema
+
+## RAD
+
+* schema: https://radiance-online.org/
+
 ## Industry Foundation Classes (IFC)
 
 * Your 3D happy place for [IFC]( https://en.wikipedia.org/wiki/Industry_Foundation_Classes ) files is over at [xeoLabs]( https://xeolabs.com/ ). Tell Lindsay that Theo sent you.
+
+
+## Road map / Export
+
+* OBJ
+* STL
+* glTF
+* JSON
+* gbXML
+
 
 ***
 
