@@ -35,7 +35,7 @@ COR.files = [
 
 function init () {
 
-	const source = "https://github.com/theo-armour/2021/";
+	const source = "https://github.com/ladybug-tools/spider-2021/tree/main/spider-viewer";
 
 	const version = document.head.querySelector( "[ name=date ]" ).content;
 

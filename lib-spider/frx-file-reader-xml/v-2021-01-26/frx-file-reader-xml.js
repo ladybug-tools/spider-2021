@@ -22,7 +22,7 @@ FRX.init = function () {
 		<input type=file id=FRinpFile onchange=FRX.readFile(this); accept="*">
 	</p>
 
-	<div id=FRXdivLog>to be reset</div>
+	<div id=FRXdivLog></div>
 
 	<div id=FOZdivFileOpenZip></div>
 
