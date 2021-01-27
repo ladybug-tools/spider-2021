@@ -82,7 +82,9 @@ function init () {
 
 	GBX.init();
 
-	location.hash = COR.files[ 14 ];
+	GBX.onHashChange();
+
+	//location.hash = COR.files[ 14 ];
 
 	// if running on server, keeps address bar pointed to latest dev
 

@@ -42,7 +42,7 @@ GBX.init = function () {
 GBX.onHashChange = function () {
 
 	GBX.timeStart = performance.now();
-	const fileName = location.hash.slice( 1 );
+	const fileName = location.hash ? location.hash.slice( 1 ) : COR.files[ 14 ];
 	const fileTitle = fileName.split( "/" ).pop();
 	const extension = fileTitle.toLowerCase().split( '.' ).pop();
 
