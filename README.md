@@ -50,26 +50,32 @@ _Further revisions of this document will highlight relevant goal, targets and in
 ## Road map / Import
 
 ### gbXML
-* Schema: https://gbxml.org
 
+* Schema: https://gbxml.org
+* 2021-01-26: Gallery, URL and file reader all implemented
 
 ### IDF and OSM
 
 * originator: https://www.energyplus.net/
+* To add: Gallery, URL and file reader all
 
 
-## Honeybee JSON & VTK
+### Honeybee JSON & VTK
 
 * schema: https://github.com/ladybug-tools/dragonfly-schema
 * schema: https://github.com/ladybug-tools/honeybee-schema
+* https://vtk.org/Wiki/VTK
 
-## RAD
+### RAD
 
 * schema: https://radiance-online.org/
+* To add: Gallery, URL and file reader all
 
-## Industry Foundation Classes (IFC)
+
+### Industry Foundation Classes (IFC)
 
 * Your 3D happy place for [IFC]( https://en.wikipedia.org/wiki/Industry_Foundation_Classes ) files is over at [xeoLabs]( https://xeolabs.com/ ). Tell Lindsay that Theo sent you.
+* https://github.com/agviegas/IFC.js??
 
 
 ## Road map / Export
@@ -79,6 +85,16 @@ _Further revisions of this document will highlight relevant goal, targets and in
 * glTF
 * JSON
 * gbXML
+
+
+## To Do an wishlist
+
+* Add models to existing or load new
+* Edit model position, scale and rotation
+* Export assemblies in simple ways
+* Add Three.js axis editor
+
+
 
 
 ***
