@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
+	<meta name="description"
+		content="Part of a series of online interactive AEC viewers designed to be forked, hacked and remixed  with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
+	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
+
+	<title>gbXML Exporter</title>
+
+	<!-- Copyright 2020 Theo Armour. MIT license -->
+	<link rel="stylesheet" href="../../../lib/style/style-2020-11-29.css">
+
+	<style>
+		:root {
+			--main-hue: 130;
+			/* 0 to 360 0=red 120=green 240=blue */
+		}
+
+		body {
+			overflow: hidden;
+		}
+	</style>
+
+</head>
+
+<body>
+
+
+
+	<details id=detNavMenu class="gmd-4">
+
+		<summary id=sumNavMenu class="summary-secondary gmd-1">show || hide menu</summary>
+
+		<nav id="navMenu" class="gmd-2">
+
+			<header>
+
+				<h2>
+					<a id=aGithub href="https://github.com/ladybug-tools/spider-2020/tree/master/spider-template-viewer"
+						target="_top" title="Source code on GitHub">
+						<img src="https://ladybug.tools/spider-2020/assets/icons/mark-github.svg">
+					</a>
+
+					<a href="" title="Click to reload this page">
+						gbXML Exporter
+						<span id=spnVersion></span>
+					</a>
+					&nbsp;
+					<span class="info">
+						<img class=infoImg src="../../../lib/assets/icons/noun_Information_585560.svg">
+						<span id="divDescription" class="infoTooltip gmd-5">
+						</span>
+					</span>
+
+				</h2>
+
+			</header>
+
+			<p>Click or touch a surface to view its details. Click &sdotb; icon to display all the surfaces.</p>
+
+			<details id=detFile>
+
+				<summary class="summary-primary gmd-1" title="Open files on your device: ">file menu</summary>
+
+				<div id=FRdivMenuFileReader></div>
+
+				<p>
+					<input type=file id=FRinpFile onchange=FR.readFile(this); accept="*">
+				</p>
+
+				<div id=FOOdivLog>to be reset</div>
+
+				<div id=FOZdivFileOpenZip></div>
+
+				<div id=divLog></div>
+
+			</details>
+
+			<details ontoggle=GFFdivGithubFoldersFiles.innerHTML=GFF.getMenuGithubFoldersFiles()>
+
+				<summary class="summary-primary gmd-1" title="View selected items">gbxml sample files gallery</summary>
+
+				<div class=divNavResize>
+
+					<p>Sample files you can load, view and experiment with:</p>
+
+					<div id=GFFdivGithubFoldersFiles></div>
+
+					<div id=GFFdivFileInfo></div>
+
+					<br>
+
+				</div>
+
+			</details>
+
+			<details>
+
+				<summary class="summary-primary gmd-1" title="View selected items">gbXML exporters</summary>
+
+				<div class=divNavResize>
+
+					<p>
+
+						<button onclick=exportObj()>create OBJ</button>
+
+						<button onclick=exportStl()>create STL</button>
+
+						<button onclick=exportGltf()>create glTF</button>
+					</p>
+
+					<textarea id=txtArea rows=10 style=width:100%;
+					placeholder="translation will appear here..."></textarea>
+
+					<button onclick=saveFile();>save text to file</button>
+
+					<h3>
+
+
+						Online Viewers
+					</h3>
+
+					<a href="https://3dviewer.net/" target="_blank">Online 3D Viewer</a><br>
+
+					<a href="https://gltf-viewer.donmccurdy.com/" target="_blank">glTF Viewer</a><br>
+
+					<a href="https://playcanvas.com/viewer" target="_blank">playcanvas</a><br>
+
+					<br>
+
+				</div>
+
+			</details>
+
+			<hr>
+
+			<center>
+				<a href="javascript:navMenu.scrollTo(0,0);">
+					<img style=color:teal; title="Your AEC 3D viewer happy place!" height="24" width="24"
+						src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico">
+				</a>
+			</center>
+
+		</nav>
+
+	</details>
+
+
+	<!-- Used by RAY -->
+
+	<div id="divPopUp" class="gmd-2">When you touch a surface,<br>the rotation will stop<br>and its details will appear
+		here </div>
+
+
+	<!-- standard footer for THR ~ 2020-08-21 -->
+	<footer id=THRftr title="Settings for >> View :: Scene :: Model :: Statistics">
+
+		<div class=THRdivButtonGroup>
+			<button class="THRbutParent gmd-1" onclick="THR.zoomObjectBoundingSphere();" title="reset the view"><img
+					height=32 width=32
+					src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fnoun_Home_3359355.svg"> </button>
+			<div class="THRdivChild gmd-2">
+
+				<div title="Camera frustum near plane.">
+					camera near: <output id=outNear>1</output>
+					<input type=range id=inpNear value=1
+						oninput=THRU.setCameraNear(this);outNear.value=THR.camera.near.toFixed();>
+				</div>
+
+				<div>
+					<label id=lblFOV title="Camera frustum vertical field of view. Perspective camera only">
+						field of view: <output id=outFov>40</output>
+						<input id=rngFieldOfView type=range oninput=THRU.setFieldOfView(this);outFov.value=this.value;
+							min=1 max=179 value=40>
+					</label>
+				</div>
+				<div><button id=THRUbutOrtho class="THRbutChild"
+						onclick="THRU.toggleCameraOrthoPerspective();">ortho|perspective</button></div>
+
+				<div><button id=THRUbutViews class="THRbutChild gmd-1"
+						onclick="THRdivViews.hidden=!THRdivViews.hidden;">views</button></div>
+
+				<div id=THRdivViews class="THRdivChildChild gmd-2" hidden>
+
+					<button class="THRbutChild" onclick="THRU.setCameraPosition('top');">top</button>
+					<button class="THRbutChild" onclick="THRU.setCameraPosition('front');">front</button>
+					<button class="THRbutChild" onclick="THRU.setCameraPosition('back');">back</button>
+					<button class="THRbutChild" onclick="THRU.setCameraPosition('right');">right</button>
+					<button class="THRbutChild" onclick="THRU.setCameraPosition('left');">left</button>
+					<button class="THRbutChild" onclick="THRU.setCameraPosition('bottom');">bottom</button>
+
+				</div>
+
+				<div> <button class="THRbutChild" onclick="THR.zoomToFitObject();">zoom fit</button></div>
+			</div>
+		</div>
+
+		<div class=THRdivButtonGroup title="Settings that update the entire scene">
+			<button class="THRbutParent gmd-1" onclick="THR.controls.autoRotate=!THR.controls.autoRotate"
+				title="toggle the rotation">&circlearrowright;</button>
+			<div class="THRdivChild gmd-2">
+
+				<div> <button class="THRbutChild" title="Show or hide the fog"
+						onclick="THR.scene.fog.far=THR.scene.fog.far === THR.radius * 8 ? 999999 :  THR.radius * 8;">fog</button>
+				</div>
+				<div> <button class="THRbutChild" onclick="THR.cameraHelper.visible=!THR.cameraHelper.visible"
+						title="Show or hide the shadow area frustum">light box</button></div>
+
+				<div> <button class="THRbutChild" title="Show or hide the floor"
+						onclick="THR.ground.visible=!THR.ground.visible">ground plane</button></div>
+				<div> <button class="THRbutChild" title="Show or hide the RGB|XYZ bars"
+						onclick="THR.axesHelper.visible=!THR.axesHelper.visible">axes</button></div>
+
+			</div>
+		</div>
+
+		<div class=THRdivButtonGroup title="Settings that update just the model">
+			<button class=THRbutParent onmouseover=THRdivMaterials.hidden=true; onclick="THR.setAllVisible();"
+				title="Show all surfaces">
+				&sdotb;
+			</button>
+
+			<div class="THRdivChild gmd-2">
+
+				<div><button id=THRUbutMaterials class="THRbutChildParent gmd-1"
+						onclick="THRdivMaterials.hidden=!THRdivMaterials.hidden;">materials</button>
+				</div>
+
+				<div id=THRdivMaterials class="THRdivChildChild gmd-2" style=top:0rem;>
+
+					<button class="THRbutChild" onclick="THRC.setExposureMaterial();" ">Exposure type</button>
+					<button class=" THRbutChild" onclick="THRC.setPhongDefaultMaterial();">Shades of gray</button>
+					<button class="THRbutChild" onclick="THRC.setNormalMaterial();">Normals</button>
+					<button class="THRbutChild" onclick="THRC.setImageTexture();">Images</button>
+					<button class="THRbutChild" onclick="THRC.setRandomMaterial();">Random colors</button>
+					<button class="THRbutChild" onclick="THRC.setDefaultMaterial();">Default materials</button>
+
+				</div>
+
+				opacity: <output id=THRoutOpacity>85</output>%
+				<input type=range id="THRrngOpacity" oninput=THRU.setObjectOpacity();THRoutOpacity.value=this.value
+					value=85>
+				<button class="THRbutChild" onclick="THRU.toggleBoundingBoxHelper();">bounding box</button>
+				<button class="THRbutChild" onclick="THRU.toggleWireframe();">wireframe</button>
+				<button class="THRbutChild" onclick="THRU.toggleMeshEdges();">edges</button>
+				<div><button class="THRbutChild" onclick="GBX.toggleSpaceTitles();">titles</button></div>
+
+
+			</div>
+		</div>
+
+		<div class=THRdivButtonGroup>
+			<button class=THRbutParent onclick="THR.setStats();"
+				title="View frames per second and number of draw calls. Used for testing performance">fps</button>
+			<div class="THRdivChild gmd-2">
+
+
+				<div>
+					<button class="THRbutChild" onclick="alert( 'What else do you need to see here?' );">??</button>
+				</div>
+				<div>
+					<button class="THRbutChild" id=butDark onclick=MNU.toggleDarkMode();
+						title="The efforts on this feature have just begun...">dark</button>
+				</div>
+
+
+			</div>
+		</div>
+	</footer>
+
+	<!-- end -->
+
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r123/examples/js/utils/BufferGeometryUtils.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/jszip@3.5.0/dist/jszip.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/troika-three-utils@0.28.0"></script>
+	<script src="https://cdn.jsdelivr.net/npm/troika-worker-utils@0.28.0"></script>
+	<script src="https://cdn.jsdelivr.net/npm/troika-3d-text@0.28.0/dist/textmesh-standalone.umd.min.js"></script>
+
+
+	<!-- core -->
+	<script src="../../../lib3d/thr-three/thr-threejs-2020-08-02.js"></script>
+	<script src="../../../lib3d/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
+	<script src="../../../lib3d/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-09-11.js"></script>
+	<script src="../../../lib3d/thru-three-utilities/thru-three-utilities-2020-07-13.js"></script>
+
+	<script src="../../../lib3d/thru-three-utilities/hrt-heart-2020-05-27.js"></script>
+	<script src="../../../lib3d/thru-three-utilities/scc-screen-ccapture-2020-05-23.js"></script>
+
+	<script src="../../../lib/gbxml/gbx-gbxml-parse-2020-10-09.js"></script>
+
+	<!--
+
+		<script src="../../lib/jtv-json-tree-view/jtv-json-tree-view-2020-07-28.js"></script>
+
+		<script src="../../lib/jtv-json-tree-view/jtf-json-tree-finder-2020-07-13.js"></script>
+		<script src="../../lib/jtv-json-tree-view/jth-json-tree-helper-2020-07-07.js"></script>
+
+	-->
+	<!-- menus -->
+	<script src="../../../lib/fo-file-open/foo-file-open-object-2020-07-17.js"></script>
+	<script src="../../../lib/fo-file-open/foz-file-open-zip-2020-07-12.js"></script>
+	<script src="../../../lib/fo-file-open/fr-file-reader-2020-07-06.js"></script>
+	<script src="../../../lib/gff-github-folder-files/gff-github-folder-files-2020-09-03.js"></script>
+
+	<!--
+	<script src="../../lib3d/vt-view-types/vt-view-types-2020-06-26.js"></script>
+-->
+
+
+	<script src="exporter.js"></script>
+
+	<script>
+
+		init(); // see script-template-viewer.js
+
+		if ( window.innerWidth < 640 || window.innerHeight < 500 ) {
+
+		} else {
+
+			detNavMenu.open = true
+
+		}
+
+
+		// if running on server, keeps address bar pointed to latest dev
+
+		if ( !location.hash && location.protocol === "https:" ) {
+
+			window.history.pushState( "", "", "../" );
+
+		} else {
+
+			THR.controls.autoRotate = false;
+
+		}
+
+	</script>
+
+
+</body>
+
+</html>

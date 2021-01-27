@@ -28,11 +28,40 @@ GBX.referenceObject = new THREE.Object3D();
 GBX.parser = new DOMParser();
 
 
-
-
 GBX.init = function () {
 
-	GBX.string = FOO.string.replace( /[\t\n\r]/gm, "" );
+	//document.body.addEventListener("onloadFileXml", GBX.onLoad );
+
+	//window.addEventListener( "onloadFRX", GBX.onLoad, false );
+
+	window.addEventListener( "hashchange", GBX.onHashChange, false );
+
+};
+
+
+GBX.onHashChange = function () {
+
+	GBX.timeStart = performance.now();
+	const fileName = location.hash.slice( 1 );
+	const fileTitle = fileName.split( "/" ).pop();
+	const extension = fileTitle.toLowerCase().split( '.' ).pop();
+
+	if ( !extension === "xml" ) { return; }
+
+	//document.title = `${ COR.documentTitle } ~ ${ fileTitle }`;
+
+	const url = fileName;
+
+	const xhr = new XMLHttpRequest();
+	xhr.open( "get", url, true );
+	xhr.onload = ( xhr ) => GBX.parseResponse( xhr.target.response );
+	xhr.send( null );
+
+}
+
+GBX.parseResponse = function (string) {
+
+	GBX.string = string.replace( /[\t\n\r]/gm, "" );
 
 	GBX.surfaces = GBX.string.match( /<Surface(.*?)<\/surface>/gi );
 
@@ -41,19 +70,21 @@ GBX.init = function () {
 
 	THR.group.add( ...GBX.meshes );
 
+	THR.zoomObjectBoundingSphere();
+
 	//GBX.doit();
 
-	console.log( "gbx init", performance.now() - FOO.timeStart );
+	console.log( "gbx init", performance.now() - GBX.timeStart );
 
 	//showPaintTimings();
 
 };
 
-GBX.doit = function() {
+GBX.doit = function () {
 
 	GBX.xml = GBX.parser.parseFromString( GBX.string, "application/xml" ).documentElement;
 
-}
+};
 
 function showPaintTimings () {
 
@@ -319,7 +350,7 @@ GBX.setSurfacesMetadata = function () {
 		let spaceIds = surface.match( / spaceIdRef="(.*?)"/gi );
 		//console.log( "spaceIds", spaceIds );
 		spaceId0 = spaceIds ? spaceIds[ 0 ] : "";
-		id = spaceId0.match( /spaceIdRef="(.*?)"/i )
+		id = spaceId0.match( /spaceIdRef="(.*?)"/i );
 		spaceId = id ? id[ 1 ] : "";
 		//console.log( "spaceId", spaceId);
 		//spaceId = spaceId ? spaceId[ 1 ] : "";
@@ -330,7 +361,7 @@ GBX.setSurfacesMetadata = function () {
 		mesh.userData.spaceId = spaceId;
 		mesh.userData.spaceName = space ? space.match( /<Name>(.*?)<\/Name>/i )[ 1 ] : "";
 
-		let zoneId = space.match( / zoneIdRef="(.*?)"/i )
+		let zoneId = space.match( / zoneIdRef="(.*?)"/i );
 		zoneId = zoneId ? zoneId[ 1 ] : "";
 		let zone = GBX.zones.find( zone => zone.includes( zoneId ) );
 		zone = zone || "";
@@ -354,7 +385,7 @@ GBX.setSurfacesMetadata = function () {
 };
 
 
-GBX.parseElement = function( string ) {
+GBX.parseElement = function ( string ) {
 
 	const parser = new DOMParser();
 	const element = parser.parseFromString( string, "application/xml" ).documentElement;
@@ -366,7 +397,7 @@ GBX.parseElement = function( string ) {
 	const attributesHtm = Array.from( element.attributes ).map( att => `${ att.name }: ${ att.value } <br>` ).join( "" );
 
 	let childrenHtm = Array.from( children )
-		.filter( child => ["Opening","PlanarGeometry","RectangularGeometry","ShellGeometry","SpaceBoundary"].includes( child.tagName ) === false )
+		.filter( child => [ "Opening", "PlanarGeometry", "RectangularGeometry", "ShellGeometry", "SpaceBoundary" ].includes( child.tagName ) === false )
 		.map( child => {
 
 			let htm;
@@ -389,4 +420,4 @@ GBX.parseElement = function( string ) {
 
 	return { attributes, attributesHtm, children, childrenHtm };
 
-}
+};

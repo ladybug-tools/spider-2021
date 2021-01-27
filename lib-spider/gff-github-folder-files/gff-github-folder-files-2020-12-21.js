@@ -21,11 +21,11 @@ GFF.init = function () {
 	GFFdivDetails.innerHTML = `
 <details ontoggle=GFFdivGithubFoldersFiles.innerHTML=GFF.getMenuGithubFoldersFiles() class=divNavResize>
 
-	<summary class="summary-primary gmd-1" title="View selected items">sample files gallery</summary>
+	<summary class="summary-primary gmd-1" title="View selected items">Sample files gallery</summary>
 
 	<div>
 
-		<p>Sample files you can load, view and experiment with:</p>
+		<p>Sample gbXML files you can load, view and experiment with:</p>
 
 		<div id=GFFdivGithubFoldersFiles></div>
 
