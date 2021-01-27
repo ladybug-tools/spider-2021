@@ -10,7 +10,7 @@ FRX.init = function () {
 
 
 	FRXdivMenuFileRead.innerHTML = `
-<details id=detFile open>
+<details id=detFile>
 
 	<summary class="summary-primary gmd-1" title="View selected items">
 		File menu
