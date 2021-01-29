@@ -14,6 +14,16 @@ FRX.init = function () {
 
 	<summary class="summary-primary gmd-1" title="View selected items">
 		File menu
+
+		<span class="info">
+			<img class=infoImg src="../../lib/assets/icons/noun_Information_585560.svg">
+			<div class="infoTooltip gmd-5">
+				<div>
+					Open <a href="http://gbxml.org" target="_blank">gbXML</a> files
+				</div>
+				<p></p>
+			</div>
+		</span>
 	</summary>
 
 	<div id=FRdivMenuFileReader> </div>
@@ -56,33 +66,49 @@ FRX.onLoad = function () {
 	string = FRX.reader.result;
 	//console.log( "", string );
 
+	const fname = FRX.file.name.toLowerCase();
 
-	if ( FRX.file.name.toLowerCase().endsWith( ".zip" ) ) {
+	if ( fname.endsWith( ".zip" ) ) {
 
 		// FRX.dataZip = FRX.file;
 		// //console.log( "name", FRX.file.name );
 
 		// FOZ.onLoadFile();
 
-	} else if ( FRX.file.name.toLowerCase().endsWith( "xml" ) ) {
+	}
+
+	if ( fname.endsWith( "xml" ) ) {
+
+		GBX.parseResponse( string );
+
+		FRX.onProgress( FRX.file.size, "Load complete" );
+
+		return;
+
+	}
+
+	if ( fname.endsWith( "ifc" ) ) {
 		console.log( "", 23 );
 
 		GBX.parseResponse( string );
 
 		FRX.onProgress( FRX.file.size, "Load complete" );
 
-	} else {
+		return;
+
+	}
+
+	//} else {
 
 		// FRX.string = FRX.responseType === "json" ? JSON.parse( FRX.reader.result ) : FRX.reader.result;
 		// FRX.onLoadFile();
 
-	}
+	//}
 
 };
 
 
 FRX.onProgress = function ( size = 0, note = "" ) {
-
 
 	FRX.timeToLoad = ( performance.now() - FRX.timeStart ).toLocaleString();
 	FRX.size = size;
