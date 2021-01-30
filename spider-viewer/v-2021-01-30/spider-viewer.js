@@ -75,13 +75,13 @@ function init () {
 
 	THR.group = THR.getGroupNew();
 
-	//THRU.addMeshes( 100 );
+	THRU.addMeshes( 100 );
+	THR.zoomObjectBoundingSphere();
 
 	// FOX.path = COR.path;
 	// FOX.defaultFile = COR.defaultFile;
 	// FOX.init();
 
-	//THR.zoomObjectBoundingSphere();
 
 	//GBX.init();
 	//GBX.onHashChange();

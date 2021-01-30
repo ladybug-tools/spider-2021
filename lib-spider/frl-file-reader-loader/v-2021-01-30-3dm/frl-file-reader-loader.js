@@ -6,11 +6,9 @@
 
 const FRL = {};
 
-//FRL.r3dmParser = undefined;
+FRL.r3dmParser = undefined;
 FRL.gltfParser = undefined;
 FRL.idfParser = undefined;
-FRL.objParser = undefined;
-FRL.stlParser = undefined;
 FRL.vtkParser = undefined;
 
 FRL.init = function () {
@@ -26,10 +24,9 @@ FRL.init = function () {
 			<img class=infoImg src="../../lib/assets/icons/noun_Information_585560.svg">
 			<div class="infoTooltip gmd-5">
 				<div>
-					Open <a href="http://gbxml.org" target="_blank">gbXML</a>,
-					gLTF, IDF & OSM, OBJ, STL, VTK Files
+					Open <a href="http://gbxml.org" target="_blank">gbXML</a> files
 				</div>
-				<!-- <p><a href="https://www.energyplus.net/" target="_blank">EnergyPlus</a> IDF and OSM files</p> -->
+				<p><a href="https://www.energyplus.net/" target="_blank">EnergyPlus</a> IDF and OSM files</p>
 			</div>
 		</span>
 
@@ -95,6 +92,26 @@ FRL.onLoad = function () {
 
 	}
 
+
+	if ( fname.endsWith( ".3dm" ) ) {
+
+		if ( FRL.r3dmParser === undefined ) {
+
+			FRL.r3dmParser = document.body.appendChild( document.createElement( 'script' ) );
+			FRL.r3dmParser.onload = () => r3DM.read3DM( FRL.files );
+			FRL.r3dmParser.src = "../../lib-spider/3dm-parser/v-2021-01-30/3dm-parser.js";
+
+		} else {
+
+			r3DM.read3DM( FRL.files );
+
+		}
+
+		return;
+
+	}
+
+
 	if ( fname.endsWith( "gltf" ) || fname.endsWith( "glb" ) ) {
 
 		if ( FRL.gltfParser === undefined ) {
@@ -124,46 +141,6 @@ FRL.onLoad = function () {
 		} else {
 
 			IDF.parseString( string );
-
-		}
-
-		FRL.onProgress( FRL.file.size, "Load complete" );
-
-		return;
-
-	}
-
-	if ( fname.endsWith( ".obj" ) ) {
-
-		if ( FRL.objParser === undefined ) {
-
-			FRL.objParser = document.body.appendChild( document.createElement( 'script' ) );
-			FRL.objParser.onload = () => OBJ.loadOBJ( FRL.files );
-			FRL.objParser.src = "../../lib-spider/obj-parser/v-2021-01-30/obj-parser.js";
-
-		} else {
-
-			OBJ.loadObj( FRL.files );
-
-		}
-
-		FRL.onProgress( FRL.file.size, "Load complete" );
-
-		return;
-
-	}
-
-	if ( fname.endsWith( ".stl" ) ) {
-
-		if ( FRL.stlParser === undefined ) {
-
-			FRL.stlParser = document.body.appendChild( document.createElement( 'script' ) );
-			FRL.stlParser.onload = () => STL.loadSTL( FRL.files );
-			FRL.stlParser.src = "../../lib-spider/stl-parser/v-2021-01-30/stl-parser.js";
-
-		} else {
-
-			STL.loadSTL( FRL.files );
 
 		}
 
