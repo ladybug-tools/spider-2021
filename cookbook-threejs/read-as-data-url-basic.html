@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang=en>
+
+<head>
+	<title></title>
+	<meta charset=utf-8 />
+</head>
+<!-- https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL -->
+<body style="font: 100% monospace;">
+
+<h1><a href="" >read as data url</a></h1>
+
+<input type="file" id=inpFiles onchange="previewFile()"><br>
+<img id=img src="" alt="Image preview...">
+
+	<script>
+
+		function previewFile() {
+
+			const reader = new FileReader();
+
+			reader.addEventListener( "load", () => img.src = reader.result, false );
+
+			if ( inpFiles.files[ 0 ] ) { reader.readAsDataURL( inpFiles.files[ 0 ] ); }
+
+		}
+
+	</script>
+</body>
+
+</html>

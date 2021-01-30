@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang=en>
+
+<head>
+	<title></title>
+	<meta charset=utf-8 />
+</head>
+<!-- https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL -->
+<body style="font: 100% monospace;">
+
+<h1><a href="" >read as data url multiple</a></h1>
+
+<input id="browse" type="file" onchange="previewFiles()" multiple>
+<div id="preview"></div>
+
+	<script>
+
+	function previewFiles() {
+
+
+		//var files = browse.files;
+
+		function readAndPreview( file ) {
+
+			// Make sure `file.name` matches our extensions criteria
+			if ( /\.(jpe?g|png|gif)$/i.test( file.name ) ) {
+				var reader = new FileReader();
+
+				reader.addEventListener( "load", function () {
+					var image = new Image();
+					image.height = 100;
+					image.title = file.name;
+					image.src = this.result;
+					preview.appendChild( image );
+				}, false );
+
+				reader.readAsDataURL( file );
+			}
+
+		}
+
+		// https://stackoverflow.com/questions/16053357/what-does-foreach-call-do-in-javascript
+
+		//if ( browse.files ) {
+			//[].forEach.call( browse.files, readAndPreview );
+			//Object.values( browse.files ).forEach( file => readAndPreview( file ))
+			Array.from( browse.files ).forEach( file => readAndPreview( file ) )
+		//}
+
+
+	}
+
+	</script>
+</body>
+
+</html>
