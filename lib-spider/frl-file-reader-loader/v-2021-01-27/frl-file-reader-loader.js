@@ -33,7 +33,7 @@ FRL.init = function () {
 	<div id=FRdivMenuFileReader> </div>
 
 	<p>
-		<input type=file id=FRinpFile onchange=FRL.readFile(this); accept="*">
+		<input type=file id=FRLinpFile onchange=FRL.readFile(this); accept="*">
 	</p>
 
 	<div id=FRLdivLog></div>
@@ -116,13 +116,13 @@ FRL.onLoad = function () {
 
 
 
-	if ( fname.endsWith( "gltf" ) ) {
+	if ( fname.endsWith( "gltf" ) || fname.endsWith( "glb" ) ) {
 
 		if ( FRL.gltFParser === undefined ) {
 
 			FRL.gltFParser = document.body.appendChild( document.createElement( 'script' ) );
-			FRL.gltFParser.onload = () => GLTF.init( string );
-			FRL.gltFParser.src = "../../lib-spider/gltf-parser/v-2021-01-27/gltf-parser.js";
+			FRL.gltFParser.onload = () => GLTF.readGltf( FRL.files );
+			FRL.gltFParser.src = "../../lib-spider/gltf-parser/v-2021-01-29/gltf-parser.js";
 
 		} else {
 
@@ -140,7 +140,7 @@ FRL.onLoad = function () {
 		if ( FRL.vtkParser === undefined ) {
 
 			FRL.vtkParser = document.body.appendChild( document.createElement( 'script' ) );
-			FRL.vtkParser.onload = () => VTK.init( string );
+			FRL.vtkParser.onload = () => VTK.readVTK( FRL.files  );
 			FRL.vtkParser.src = "../../lib-spider/vtk-parser/v-2021-01-27/vtk-parser.js";
 
 		} else {
