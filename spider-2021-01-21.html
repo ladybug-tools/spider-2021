@@ -35,7 +35,7 @@
 
 	<script src="./lib/grv-github-repo-tree-view/v-2020-12-31/grv-github-repo-tree-view.js"></script>
 
-	<script src="./lib/mnu-menu/v-2020-12-30/mnu-menu.js"></script>
+	<script src="./lib/mnu-menu/v-2021-01-31/mnu-menu.js"></script>
 
 
 	<details id=detNavMenu class="gmd-4">
@@ -86,7 +86,7 @@
 
 			const description = document.head.querySelector( "[ name=description ]" ).content;
 
-			FOX.path = GOR.path = GRV.path = MNU.path = COR.path;
+			//FOX.path = GOR.path = GRV.path = COR.path = "./";
 
 			MNU.init();
 
@@ -100,7 +100,7 @@
 			FOX.init( COR );
 
 			//FOX.defaultFile = COR.defaultFile;
-			FOX.path = COR.path;
+			FOX.path = "";
 
 			// GOR = GitHub Organization Repositories
 			GOR.user = COR.user;
