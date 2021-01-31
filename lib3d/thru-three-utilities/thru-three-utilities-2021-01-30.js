@@ -96,7 +96,7 @@ THRU.addMeshes = function (count = 100) {
 	THR.group.children.forEach((mesh, i) => {
 		mesh.position.set(Math.random() * 100 - 50, Math.random() * 100 - 50, Math.random() * 100);
 		//mesh.rotation.set( 0.2 * Math.random(), 0.2 * Math.random(), 0.2 * Math.random() );
-		mesh.lookAt( THR.scene.position )
+		mesh.lookAt( 0, 0, 0 )
 		mesh.userData.index = i;
 		mesh.name = "mesh " + i;
 
