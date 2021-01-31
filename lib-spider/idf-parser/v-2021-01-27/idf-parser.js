@@ -16,6 +16,23 @@ IDF.colors = {
 	undefined: 0x00ff00,
 };
 
+
+IDF.init = function ( url ) {
+
+	console.log( "", 23 );
+
+	const xhr = new XMLHttpRequest();
+	xhr.crossOrigin = 'anonymous';
+	xhr.open( 'GET', url, true );
+	xhr.onerror = function ( xhr ) { console.log( 'error:', xhr ); };
+	//xhr.onprogress = onRequestFileProgress;
+	xhr.onload = (xhr ) => IDF.parseString( xhr.target.response )
+	xhr.send( null );
+
+
+};
+
+
 IDF.parseString= function ( string ) {
 	//console.log( "string",string);
 

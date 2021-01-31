@@ -34,7 +34,7 @@ GBX.init = function () {
 
 	//window.addEventListener( "onloadFRX", GBX.onLoad, false );
 
-	window.addEventListener( "hashchange", GBX.onHashChange, false );
+	//window.addEventListener( "hashchange", GBX.onHashChange, false );
 
 };
 
@@ -46,7 +46,9 @@ GBX.onHashChange = function () {
 	const fileTitle = fileName.split( "/" ).pop();
 	const extension = fileTitle.toLowerCase().split( '.' ).pop();
 
-	if ( !extension === "xml" ) { return; }
+	console.log( "ext", extension );
+
+	if ( extension !== "xml" && extension !== "gbxml" ) { return; }
 
 	//document.title = `${ COR.documentTitle } ~ ${ fileTitle }`;
 
@@ -59,6 +61,17 @@ GBX.onHashChange = function () {
 
 }
 
+GBX.onChange = function( url ) {
+
+	const xhr = new XMLHttpRequest();
+	xhr.open( "get", url, true );
+	xhr.onload = ( xhr ) => GBX.parseResponse( xhr.target.response );
+	xhr.send( null );
+
+
+
+}
+
 GBX.parseResponse = function (string) {
 
 	GBX.string = string.replace( /[\t\n\r]/gm, "" );
@@ -68,13 +81,15 @@ GBX.parseResponse = function (string) {
 	GBX.meshes = GBX.getSurfaceMeshes();
 	//console.log( 'meshes', GBX.meshes );
 
+	if ( chkNewFile.checked ) { THR.group = THR.getGroupNew(); }
+
 	THR.group.add( ...GBX.meshes );
 
 	THR.zoomObjectBoundingSphere();
 
 	//GBX.doit();
 
-	console.log( "gbx init", performance.now() - GBX.timeStart );
+	//console.log( "gbx init", performance.now() - GBX.timeStart );
 
 	//showPaintTimings();
 

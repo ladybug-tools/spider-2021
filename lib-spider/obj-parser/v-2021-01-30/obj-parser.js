@@ -1,5 +1,21 @@
 const OBJ = {};
 
+OBJ.init = function ( url ) {
+
+	if ( OBJ.objLoader === undefined ) {
+
+		OBJ.objLoader = document.body.appendChild( document.createElement( 'script' ) );
+		OBJ.objLoader.onload = () => OBJ.loadUrl( url );
+		OBJ.objLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r124/examples/js/loaders/OBJLoader.js";
+
+	} else {
+
+		OBJ.loadUrl( url );
+
+	}
+
+
+};
 
 OBJ.loadOBJ = function ( inpFiles ) {
 

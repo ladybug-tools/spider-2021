@@ -1,16 +1,17 @@
 const VTK = {};
 
-VTK.init = function ( file ) {
+VTK.init = function ( url ) {
 
+	//console.log( "", 23 );
 	if ( VTK.vtkLoader === undefined ) {
 
 		VTK.vtkLoader = document.body.appendChild( document.createElement( 'script' ) );
-		VTK.vtkLoader.onload = () => VTK.parseString( file );
+		VTK.vtkLoader.onload = () => VTK.loadUrl( url );
 		VTK.vtkLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r124/examples/js/loaders/VTKLoader.js";
 
 	} else {
 
-		VTK.parseString( file );
+		VTK.loadUrl( url );
 
 	}
 

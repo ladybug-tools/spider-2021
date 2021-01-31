@@ -61,7 +61,7 @@ function init () {
 	FRL.init();
 
 	GFF.init();
-	GFF.source = "../../lib-spider/gff-github-folder-files/gff-gbxml.js";
+	GFF.source = "../../lib-spider/gff-github-folder-files/gff-multiple.js";
 
 	EXP.init();
 
@@ -75,13 +75,13 @@ function init () {
 
 	THR.group = THR.getGroupNew();
 
-	THRU.addMeshes( 100 );
-	THR.zoomObjectBoundingSphere();
+	//THRU.addMeshes( 100 );
+	//THR.zoomObjectBoundingSphere();
 
 	// FOX.path = COR.path;
-	// FOX.defaultFile = COR.defaultFile;
-	// FOX.init();
-
+	FOX.init();
+	FOX.defaultFile = COR.files[ 14 ]
+	FOX.onHashChange();
 
 	//GBX.init();
 	//GBX.onHashChange();

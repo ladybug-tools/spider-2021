@@ -1,6 +1,23 @@
 const STL = {};
 
 
+STL.init = function ( url ) {
+
+	if ( STL.stlLoader === undefined ) {
+
+		STL.stlLoader = document.body.appendChild( document.createElement( 'script' ) );
+		STL.stlLoader.onload = () => STL.loadUrl( url );
+		STL.stlLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r124/examples/js/loaders/STLLoader.js";
+
+	} else {
+
+		STL.loadUrl( url );
+
+	}
+
+
+};
+
 STL.loadSTL = function ( inpFiles ) {
 
 	if ( STL.stlLoader === undefined ) {
@@ -45,15 +62,15 @@ STL.loadUrl = function ( url ) {
 			geometry.computeVertexNormals();
 			geometry.center();
 
-			if ( geometry.hasColors ) {
+			// if ( geometry.hasColors ) {
 
-				material = new THREE.MeshPhongMaterial( { opacity: geometry.alpha, vertexColors: THREE.VertexColors } );
+			// 	material = new THREE.MeshPhongMaterial( { opacity: geometry.alpha, vertexColors: THREE.VertexColors } );
 
-			} else {
+			// } else {
 
 				material = new THREE.MeshNormalMaterial( { side: 2 } );
 
-			}
+			//}
 
 			//scene.remove( mesh );
 			mesh = new THREE.Mesh( geometry, material );

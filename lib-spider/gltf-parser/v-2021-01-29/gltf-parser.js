@@ -1,19 +1,20 @@
 const GLTF = {}
 
-// 
+//
 GLTF.defaultFile = "../../../3d-models/gltf-sample-files/2021/Box.gltf"
 
 GLTF.init = function ( file ) {
 
+	console.log( "file", file );
 	if ( GLTF.gltfLoader === undefined ) {
 
 		GLTF.gltfLoader = document.body.appendChild( document.createElement( 'script' ) );
-		GLTF.gltfLoader.onload = () => GLTF.parseString( file );
+		GLTF.gltfLoader.onload = () => GLTF.loadUrl( file );
 		GLTF.gltfLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r124/examples/js/loaders/GLTFLoader.js";
 
 	} else {
 
-		GLTF.parseString( file );
+		GLTF.loadUrl( file );
 
 	}
 
@@ -52,7 +53,7 @@ GLTF.readFile = function ( inpFiles ) {
 
 
 
-GLTF.loadUrl = function ( url = GLTF.defaultFile )  {
+GLTF.loadUrl = function ( url = GLTF.defaultFile ) {
 
 	const loader = new THREE.GLTFLoader();
 
@@ -68,9 +69,10 @@ GLTF.loadUrl = function ( url = GLTF.defaultFile )  {
 		// called when the resource is loaded
 		function ( gl ) {
 
-			gltf = gl
+			gltf = gl;
 			console.log( "gltf", gltf );
 
+			if ( chkNewFile.checked ) { THR.group = THR.getGroupNew(); }
 
 			//THR.scene.add( gltf.scene );
 
@@ -117,10 +119,7 @@ GLTF.loadUrl = function ( url = GLTF.defaultFile )  {
 		}
 	);
 
-
-
-
-}
+};
 
 GLTF.parseString = function ( file ) {
 
