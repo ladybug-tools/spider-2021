@@ -97,9 +97,10 @@
 			divDescription.innerHTML = description;
 
 			//FOX = File Open XHR
-			//FOX.path = COR.path;
-			//FOX.defaultFile = COR.defaultFile;
 			FOX.init( COR );
+
+			//FOX.defaultFile = COR.defaultFile;
+			FOX.path = COR.path;
 
 			// GOR = GitHub Organization Repositories
 			GOR.user = COR.user;
