@@ -60,15 +60,16 @@ STL.loadUrl = function ( url ) {
 			//geometry.rotateX( -0.5 * Math.PI );
 			geometry.computeFaceNormals();
 			geometry.computeVertexNormals();
+			geometry.scale( 0.5, 0.5, 0.5 );
 			geometry.center();
 
 			// if ( geometry.hasColors ) {
 
-			// 	material = new THREE.MeshPhongMaterial( { opacity: geometry.alpha, vertexColors: THREE.VertexColors } );
+			material = new THREE.MeshStandardMaterial( { color: 0xcc8888 } );
 
 			// } else {
 
-				material = new THREE.MeshNormalMaterial( { side: 2 } );
+				//material = new THREE.MeshNormalMaterial( { side: 2 } );
 
 			//}
 

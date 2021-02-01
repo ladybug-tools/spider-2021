@@ -61,16 +61,16 @@ GBX.onHashChange = function () {
 
 }
 
-GBX.onChange = function( url ) {
+GBX.onChange = function ( url ) {
 
 	const xhr = new XMLHttpRequest();
 	xhr.open( "get", url, true );
 	xhr.onload = ( xhr ) => GBX.parseResponse( xhr.target.response );
 	xhr.send( null );
 
+};
 
 
-}
 
 GBX.parseResponse = function (string) {
 
@@ -83,9 +83,23 @@ GBX.parseResponse = function (string) {
 
 	if ( chkNewFile.checked ) { THR.group = THR.getGroupNew(); }
 
-	THR.group.add( ...GBX.meshes );
+	const child = new THREE.Group();
+	child.add( ...GBX.meshes );
+
+	THR.group.add( child );
 
 	THR.zoomObjectBoundingSphere();
+	//GBX.doit();
+
+	// if ( dragControls ) {
+	// 	dragControls.getObjects( THR.group );
+	// }
+
+	dragControls = new THREE.DragControls( [THR.group], THR.camera, THR.renderer.domElement );
+	dragControls.transformGroup = true;
+	dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
+	dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
+
 	//GBX.doit();
 
 	//console.log( "gbx init", performance.now() - GBX.timeStart );

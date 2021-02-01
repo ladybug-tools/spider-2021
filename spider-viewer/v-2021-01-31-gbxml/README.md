@@ -11,6 +11,16 @@ Adding terrain and complex shade elements
 Solution: gbXML plays well with all the formats
 Comparison: gbXML stores much design intent in simple format
 
+
+
+## Mission 1 ~ Not used
+
+Mission 1
+Problem: too many viewers
+Solution : single viewer opens
+>> gbXML, Radiance, IDF & OSM,
+>> Honeybee JSON and more`;
+
 ## Mission
 
 "Make the models pretty" was difficult to solve
