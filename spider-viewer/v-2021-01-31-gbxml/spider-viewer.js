@@ -75,8 +75,8 @@ function init () {
 
 	THR.group = THR.getGroupNew();
 
-	//THRU.addMeshes( 100 );
-	//THR.zoomObjectBoundingSphere();
+	THRU.addMeshes( 100 );
+	THR.zoomObjectBoundingSphere();
 
 	// FOX.path = COR.path;
 	FOX.init();
@@ -100,6 +100,7 @@ function init () {
 		THR.controls.autoRotate = false;
 
 	}
+
 
 };
 

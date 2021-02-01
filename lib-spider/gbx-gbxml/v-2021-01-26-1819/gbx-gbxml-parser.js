@@ -87,6 +87,13 @@ GBX.parseResponse = function (string) {
 
 	THR.zoomObjectBoundingSphere();
 
+	dragControls = new THREE.DragControls( [THR.group], THR.camera, THR.renderer.domElement );
+	dragControls.transformGroup = true;
+	dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
+	dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
+
+
+
 	//GBX.doit();
 
 	//console.log( "gbx init", performance.now() - GBX.timeStart );

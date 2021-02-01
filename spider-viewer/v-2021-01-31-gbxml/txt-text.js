@@ -51,6 +51,7 @@ TXT.init = function () {
 
 TXT.addText0 = function () {
 
+
 	TXT.setNewGroup();
 
 	THR.ground.position.z = -50;
@@ -74,8 +75,6 @@ Theo Armour
 t.armour@gmail.com`
 
 	TXT.group.add( TXT.getSimpleText( { text: text2, color: 0x0000ff, size: 5, x: -15, y: 0, z: 0 } ) );
-
-
 };
 
 

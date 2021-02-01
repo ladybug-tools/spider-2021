@@ -2,26 +2,23 @@
 
 ## Title
 
-## Mission 1
+
+## State of the Art
+
+Problem: many AEC formats
+gbXML plus IFC, IDF & OSM, Radiance, Honeybee JSON and more
+Adding terrain and complex shade elements
+Solution: gbXML plays well with all the formats
+Comparison: gbXML stores much design intent in simple format
+
+## Mission
 
 "Make the models pretty" was difficult to solve
-
 Solution 1: export files to prettifiers
-
 Now support translate and export to
+* STL, OBJ, glTF, JSON and gbXML?!?
 
-* STL
-* OBJ
-* glTF
-* JSON
 
-## Mission 2
-
-Problem: too many viewers to support:
-
-gbXML, Radiance, IDF & OSM, Honeybee JSON and more
-
-Solution: Combine all the viewers into one viewer
 
 ## Mission 3
 
