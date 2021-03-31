@@ -19,14 +19,15 @@ Charting EPW data from http://climate.onebuilding.org
 
 ## To do / wish list
 
+* 2021-03-29 ~ Theo ~ add 3D highlight
 * 2019-07-16 ~ Theo ~ Put countries into a file
 * 2019-07-16 ~ Theo ~ Regions into options groups
 * 2019-07-16 ~ Theo ~ Keep same type when switching between cities
 * 2019-07-09 ~ Theo ~ Display legend. In Popup?
 * 2019-07-09 ~ Theo ~ Colors are units sensitive
 * 2019-07-09 ~ Theo ~ Display data from non-EPW files
-* 2019-07-09 ~ Theo ~ compare data from multiple places
-* 2019-07-09 ~ Theo ~ combine multiple views in single view
+* 2019-07-09 ~ Theo ~ Compare data from multiple places
+* 2019-07-09 ~ Theo ~ Combine multiple views in single view
 * 2019-07-09 ~ Theo ~ Add compass rose
 
 
@@ -37,6 +38,12 @@ Charting EPW data from http://climate.onebuilding.org
 * https://drajmarsh.bitbucket.io/
 
 ## Change log
+
+### 2021-03-29
+
+* Added heroku enable
+* Added text heads-up
+* Added edges
 
 ### 2019-07-16 ~ Theo
 
