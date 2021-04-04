@@ -27,6 +27,9 @@ Charting EPW data from http://climate.onebuilding.org
 * 2019-07-09 ~ Theo ~ Colors are units sensitive
 * 2019-07-09 ~ Theo ~ Display data from non-EPW files
 * 2019-07-09 ~ Theo ~ Compare data from multiple places
+	* Checkbox to overlay
+	* Establish min max for every parameter - instead of normalizing
+	* Adjust opacities of each with sliders
 * 2019-07-09 ~ Theo ~ Combine multiple views in single view
 * 2019-07-09 ~ Theo ~ Add compass rose
 

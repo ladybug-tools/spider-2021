@@ -91,6 +91,7 @@
 			position: absolute;
 			right: 1rem;
 			top: 1rem;
+			width: 15rem;
 			z-index: 10;
 		}
 	</style>
@@ -311,26 +312,39 @@
 
 			setLegendPlacard();
 
+			addTellTale();
+
 		}
 
 		//https://www.npmjs.com/package/cors-anywhere
 
 		( function () {
-				var cors_api_host = 'cors-anywhere.herokuapp.com';
-				var cors_api_url = 'https://' + cors_api_host + '/';
-				var slice = [].slice;
-				var origin = window.location.protocol + '//' + window.location.host;
-				var open = XMLHttpRequest.prototype.open;
-				XMLHttpRequest.prototype.open = function () {
-					var args = slice.call( arguments );
-					var targetOrigin = /^https?:\/\/([^\/]+)/i.exec( args[ 1 ] );
-					if ( targetOrigin && targetOrigin[ 0 ].toLowerCase() !== origin &&
-						targetOrigin[ 1 ] !== cors_api_host ) {
-						args[ 1 ] = cors_api_url + args[ 1 ];
-					}
-					return open.apply( this, args );
-				};
-			} )();
+
+			//console.log( "", 23 );
+			var cors_api_host = 'cors-anywhere.herokuapp.com';
+			var cors_api_url = 'https://' + cors_api_host + '/';
+			var slice = [].slice;
+			var origin = window.location.protocol + '//' + window.location.host;
+			var open = XMLHttpRequest.prototype.open;
+			XMLHttpRequest.prototype.open = function () {
+				var args = slice.call( arguments );
+				var targetOrigin = /^https?:\/\/([^\/]+)/i.exec( args[ 1 ] );
+				if ( targetOrigin && targetOrigin[ 0 ].toLowerCase() !== origin &&
+					targetOrigin[ 1 ] !== cors_api_host ) {
+					args[ 1 ] = cors_api_url + args[ 1 ];
+				}
+				return open.apply( this, args );
+			};
+		} )();
+
+		function addTellTale ( siz = 2.5 ) {
+
+				const geometry = new THREE.BoxBufferGeometry( siz, siz, siz );
+				const material = new THREE.MeshNormalMaterial();
+				tellTale = new THREE.Mesh( geometry, material );
+				scene.add( tellTale );
+
+		}
 
 
 		function searchSelect( input, select ) {
@@ -512,7 +526,7 @@
 			EPW.metaData = EPW.lines.slice( 0, 8 );
 
 			EPW.days = EPW.lines.slice( 8, -1 ).map( line => line.split( ',' ).map( item => Number( item ) ) );
-			console.log( 'EPW.days', EPW.days );
+			//console.log( 'EPW.days', EPW.days );
 
 			updateByField( 6 );
 
@@ -611,7 +625,7 @@
 			const difference = EPW.max - EPW.min;
 			const offset = EPW.min < 0 ? -EPW.min : 0;
 
-			geometryBuffer = new THREE.PlaneBufferGeometry( 100, 300, 23, 364);
+			geometryBuffer = new THREE.PlaneBufferGeometry( 200, 800, 23, 364 );
 			//geometryBuffer.applyMatrix( new THREE.Matrix4().makeRotationZ( -0.5 * Math.PI ) );
 
 			const material = new THREE.MeshPhongMaterial( { wireframe: false, flatShading: true, vertexColors: true, side: 2 } );
@@ -650,7 +664,7 @@
 			//console.log( 'colors ', colors );
 
 			geometryBuffer.setAttribute( 'color',
-			new THREE.BufferAttribute( new Float32Array( colors ), 3, true ) );
+				new THREE.BufferAttribute( new Float32Array( colors ), 3, true ) );
 
 			geometryBuffer.attributes.color.needsUpdate = true;
 			geometryBuffer.computeFaceNormals();
@@ -660,7 +674,7 @@
 			//geometry = new THREE.Geometry().fromBufferGeometry( geometryBuffer );
 			//geometryHeights = heights;
 
-			scene.remove( mesh )
+			//scene.remove( mesh );
 			mesh = new THREE.Mesh( geometryBuffer, material );
 			scene.add( mesh );
 
@@ -696,7 +710,7 @@
 
 			var raycaster, intersects;
 
-			if ( !mesh) { return; }
+			if ( !mesh ) { return; }
 
 			event.preventDefault();
 
@@ -711,7 +725,8 @@
 			if ( intersects.length > 0 ) {
 
 				intersected = intersects[ 0 ];
-				//console.log( '', intersected );
+				console.log( '', intersected );
+
 
 				//index = EPW.group.children.indexOf( intersected.object )
 
@@ -759,11 +774,12 @@
 
 			//const txt = hour.reduce( ( acc, item, index ) => acc + `<div>${ EPW.fields[ index ] }: ${ item }</div>` );
 
-			txt = EPW.fields.map( ( item, i ) => `${ item }: ${ hour[ i ]}`).join( "<br>" )
+			txt = EPW.fields.map( ( item, i ) => `${ item }: ${ hour[ i ] }` ).join( "<br>" )
 			headsUp.innerHTML = "<div style=font-size:70% >" + txt + "<\div>";
 			document.body.style.cursor = 'pointer';
 
-			headsUp.style.display = "block"
+			headsUp.style.display = "block";
+			tellTale.position.copy( intersected.point );
 
 		}
 
