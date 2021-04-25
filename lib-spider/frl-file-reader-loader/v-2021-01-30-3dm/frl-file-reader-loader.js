@@ -155,7 +155,7 @@ FRL.onLoad = function () {
 		if ( FRL.vtkParser === undefined ) {
 
 			FRL.vtkParser = document.body.appendChild( document.createElement( 'script' ) );
-			FRL.vtkParser.onload = () => VTK.readVTK( FRL.files  );
+			FRL.vtkParser.onload = () => VTK.readVTK( FRL.files );
 			FRL.vtkParser.src = "../../lib-spider/vtk-parser/v-2021-01-27/vtk-parser.js";
 
 		} else {
@@ -191,4 +191,4 @@ FRL.onProgress = function ( size = 0, note = "" ) {
 
 	FRLdivLog.innerHTML = htm;
 
-	};
+};
