@@ -1,9 +1,4 @@
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://ladybug-tools.github.io/spider-2021/ "View file as a web page." ) </span>
-
-<div><input type=button onclick=window.top.location.href="https://github.com/ladybug-tools/spider-2021"
-value="You are now in a GitHub web page view - Click this button to view this read me file as source code" ></div>
-
-# [Spider 2021]( ./index.html )
+# [![](https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/mark-github.svg )](https://github.com/ladybug-tools/spider-2021/ "Source code on GitHub" ) [Spider 2021 Read Me]( https://ladybug-tools.github.io/spider-2021/ "Home page" )
 
 Your 2021 3D happy place for online browsing of many of the standard architecture, engineering and construction (AEC) [open data]( https://en.wikipedia.org/wiki/Open_data ) file types.
 

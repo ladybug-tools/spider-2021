@@ -1,10 +1,5 @@
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://ladybug.tools/spider-2021/xxxxx/readme.html  "View file as a web page." ) </span>
+# [![](https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/mark-github.svg )](https://github.com/ladybug-tools/spider-2021/ "Source code on GitHub" ) [Spider 2021]( https://ladybug-tools.github.io/spider-2021/ "Home page" ) / [ZZZZZ Read Me]( https://pushme-pullyou.github.io/tootoo-2021/lib-templates/readme.html#README.md)
 
-<div><input type=button onclick=window.top.location.href="https://github.com/pushme-pullyou/tootoo-2021/tree/master/xxxxx/";
-value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
-
-
-# [ZZZZZ Read Me]( https://ladybug.tools/spider-2021/xxxxx/readme.html )
 
 <!--@@@
 <div class=iframe-resize ><iframe src=https://ladybug.tools/spider-2021/ xxxxx/ height=100% width=100% ></iframe></div>
