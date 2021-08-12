@@ -25,9 +25,20 @@ _Spider Viewer in a resizable window. One finger to rotate. Two to zoom._
 
 ## Links of Interest
 
+* https://github.com/KhronosGroup/glTF-Sample-Models
+* https://github.com/Flightradar24/fr24-3d-models
+* https://hubs.mozilla.com/spoke
+* https://github.com/mozilla/Spoke
 
 ## Change Log
 
+### 2021-08-12
+
+Loading: gbxml, gltf, obj, stl, vtk files
+
+many issues but all can be handled
+
+idf and hbjson will be trickier
 
 ### 2021-01-26
 

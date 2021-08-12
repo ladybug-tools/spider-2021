@@ -55,6 +55,25 @@ FOX.onHashChange = function () {
 
 	}
 
+
+	if ( FOX.extension === "3dm" ) {
+
+		if ( FOX.r3dmParser === undefined ) {
+
+			FOX.r3dmParser = document.body.appendChild( document.createElement( 'script' ) );
+			FOX.r3dmParser.onload = () => r3DM.read3DM( FRL.files );
+			FOX.r3dmParser.src = "../../lib-spider/3dm-parser/v-2021-01-30/3dm-parser.js";
+
+		} else {
+
+			r3DM.read3DM( FRL.files );
+
+		}
+
+		return;
+
+	}
+
 	if ( [ "gif", "jpg", "png", "svg" ].includes( FOX.extension ) ) {
 
 		divContentMain.innerHTML = `<a href=${ FOX.url } title="Open this image in a new window" target="_blank" ><img src="${ url }" style=max-width:100% ></a>`;

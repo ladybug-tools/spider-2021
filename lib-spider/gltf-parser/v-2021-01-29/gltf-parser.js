@@ -1,16 +1,19 @@
-const GLTF = {}
+// copyright 2021 Theo Armour. MIT license.
 
-//
-GLTF.defaultFile = "../../../3d-models/gltf-sample-files/2021/Box.gltf"
 
-GLTF.init = function ( file ) {
+const GLTF = {};
 
-	console.log( "file", file );
+
+GLTF.defaultFile = "../../lib-spider/gltf-parser/Duck1.gltf";
+
+GLTF.init = function ( file = GLTF.defaultFile ) {
+
 	if ( GLTF.gltfLoader === undefined ) {
+		console.log( "file", file );
 
 		GLTF.gltfLoader = document.body.appendChild( document.createElement( 'script' ) );
 		GLTF.gltfLoader.onload = () => GLTF.loadUrl( file );
-		GLTF.gltfLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r124/examples/js/loaders/GLTFLoader.js";
+		GLTF.gltfLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r131/examples/js/loaders/GLTFLoader.js";
 
 	} else {
 
@@ -27,7 +30,7 @@ GLTF.readGltf = function ( inpFiles ) {
 
 		GLTF.gltfLoader = document.body.appendChild( document.createElement( 'script' ) );
 		GLTF.gltfLoader.onload = () => GLTF.readFile( inpFiles );
-		GLTF.gltfLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r124/examples/js/loaders/GLTFLoader.js";
+		GLTF.gltfLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r131/examples/js/loaders/GLTFLoader.js";
 
 	} else {
 

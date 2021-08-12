@@ -6,7 +6,7 @@ OBJ.init = function ( url ) {
 
 		OBJ.objLoader = document.body.appendChild( document.createElement( 'script' ) );
 		OBJ.objLoader.onload = () => OBJ.loadUrl( url );
-		OBJ.objLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r124/examples/js/loaders/OBJLoader.js";
+		OBJ.objLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r131/examples/js/loaders/OBJLoader.js";
 
 	} else {
 
@@ -23,7 +23,7 @@ OBJ.loadOBJ = function ( inpFiles ) {
 
 		OBJ.objLoader = document.body.appendChild( document.createElement( 'script' ) );
 		OBJ.objLoader.onload = () => OBJ.readFile( inpFiles );
-		OBJ.objLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r124/examples/js/loaders/OBJLoader.js";
+		OBJ.objLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r131/examples/js/loaders/OBJLoader.js";
 
 	} else {
 

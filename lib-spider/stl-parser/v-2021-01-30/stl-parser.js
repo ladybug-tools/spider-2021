@@ -7,7 +7,7 @@ STL.init = function ( url ) {
 
 		STL.stlLoader = document.body.appendChild( document.createElement( 'script' ) );
 		STL.stlLoader.onload = () => STL.loadUrl( url );
-		STL.stlLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r124/examples/js/loaders/STLLoader.js";
+		STL.stlLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r131/examples/js/loaders/STLLoader.js";
 
 	} else {
 
@@ -24,7 +24,7 @@ STL.loadSTL = function ( inpFiles ) {
 
 		STL.stlLoader = document.body.appendChild( document.createElement( 'script' ) );
 		STL.stlLoader.onload = () => STL.readFile( inpFiles );
-		STL.stlLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r124/examples/js/loaders/STLLoader.js";
+		STL.stlLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r131/examples/js/loaders/STLLoader.js";
 
 	} else {
 

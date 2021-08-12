@@ -7,7 +7,7 @@ VTK.init = function ( url ) {
 
 		VTK.vtkLoader = document.body.appendChild( document.createElement( 'script' ) );
 		VTK.vtkLoader.onload = () => VTK.loadUrl( url );
-		VTK.vtkLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r124/examples/js/loaders/VTKLoader.js";
+		VTK.vtkLoader.src = "https://cdn.jsdelivr.net/npm/three@0.131/examples/js/loaders/VTKLoader.js";
 
 	} else {
 
@@ -24,7 +24,7 @@ VTK.readVTK = function ( inpFiles ) {
 
 		VTK.vtkLoader = document.body.appendChild( document.createElement( 'script' ) );
 		VTK.vtkLoader.onload = () => VTK.readFile( inpFiles );
-		VTK.vtkLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r124/examples/js/loaders/VTKLoader.js";
+		VTK.vtkLoader.src = "https://cdn.jsdelivr.net/npm/three@0.131/examples/js/loaders/VTKLoader.js";
 
 	} else {
 

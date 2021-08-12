@@ -97,6 +97,8 @@ FRL.onLoad = function () {
 
 		if ( FRL.r3dmParser === undefined ) {
 
+			console.log( "", fname );
+
 			FRL.r3dmParser = document.body.appendChild( document.createElement( 'script' ) );
 			FRL.r3dmParser.onload = () => r3DM.read3DM( FRL.files );
 			FRL.r3dmParser.src = "../../lib-spider/3dm-parser/v-2021-01-30/3dm-parser.js";

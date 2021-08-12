@@ -85,6 +85,28 @@ FRL.onLoad = function () {
 
 	}
 
+
+	if ( fname.endsWith( ".3dm" ) ) {
+
+		if ( FRL.r3dmParser === undefined ) {
+
+			console.log( "", fname );
+
+			FRL.r3dmParser = document.body.appendChild( document.createElement( 'script' ) );
+			FRL.r3dmParser.onload = () => r3DM.read3DM( FRL.files );
+			FRL.r3dmParser.src = "../../lib-spider/3dm-parser/v-2021-08-12/3dm-parser.js";
+
+		} else {
+
+			r3DM.read3DM( FRL.files );
+
+		}
+
+		return;
+
+	}
+
+
 	if ( fname.endsWith( "xml" ) ) {
 
 		GBX.parseResponse( string );
