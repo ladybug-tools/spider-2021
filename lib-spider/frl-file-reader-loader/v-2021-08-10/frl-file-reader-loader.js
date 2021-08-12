@@ -119,7 +119,7 @@ FRL.onLoad = function () {
 
 			FRL.idfParser = document.body.appendChild( document.createElement( 'script' ) );
 			FRL.idfParser.onload = () => IDF.parseString( string );
-			FRL.idfParser.src = "https://www.ladybug.tools/spider-2021/lib-spider/idf-parser/v-2021-01-27/idf-parser.js";
+			FRL.idfParser.src = "../../lib-spider/idf-parser/v-2021-08-11/idf-parser.js";
 
 		} else {
 

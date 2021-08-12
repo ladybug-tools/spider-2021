@@ -27,7 +27,7 @@ It is an example of the Spider Viewer being useful with "Augmented Modelling" by
 
 
 	htm = `
-	<details open>
+	<details>
 	<summary class="summary-primary gmd-1" >gbXML BoD Presentation
 	${ MNU.addInfoBox( info ) }
 	</summary>

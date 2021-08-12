@@ -42,7 +42,8 @@ COR.files = [
 	"https://GreenBuildingXML.github.io/Sample_gbXML_Files/ChapelHillOffice.xml",
 	"https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/samples-2/18141-M18.xml",
 	"https://www.ladybug.tools/3d-models/gbxml-sample-files/revit-sample-files/2020_rac_advanced_sample_project.xml",
-	"https://ladybug.tools/3d-models/idf-sample-files/2020/HospitalLowEnergy.idf"
+	"https://ladybug.tools/3d-models/idf-sample-files/2020/HospitalLowEnergy.idf",
+	"../../lib-spider/idf-parser/HospitalLowEnergy.idf"
 
 
 ];
@@ -91,14 +92,14 @@ function init () {
 
 	// FOX.path = COR.path;
 	FOX.init();
-	FOX.defaultFile = COR.files[ 14 ]
+	FOX.defaultFile = COR.files[ 16 ]
 	FOX.onHashChange();
 
 	TXT.init();
 
 	//GBX.init();
 	//GBX.onHashChange();
-	//location.hash = COR.files[ 14 ];
+	//location.hash = COR.files[ 16 ];
 
 	// if running on server, keep address bar pointed to latest rev
 
