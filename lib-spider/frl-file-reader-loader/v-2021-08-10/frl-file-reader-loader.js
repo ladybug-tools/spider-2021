@@ -6,7 +6,7 @@
 
 const FRL = {};
 
-//FRL.r3dmParser = undefined;
+FRL.r3dmParser = undefined;
 FRL.gltfParser = undefined;
 FRL.idfParser = undefined;
 FRL.objParser = undefined;
@@ -141,7 +141,7 @@ FRL.onLoad = function () {
 
 			FRL.idfParser = document.body.appendChild( document.createElement( 'script' ) );
 			FRL.idfParser.onload = () => IDF.parseString( string );
-			FRL.idfParser.src = "../../lib-spider/idf-parser/v-2021-08-11/idf-parser.js";
+			FRL.idfParser.src = "../../lib-spider/idf-parser/v-2021-08-13/idf-parser.js";
 
 		} else {
 

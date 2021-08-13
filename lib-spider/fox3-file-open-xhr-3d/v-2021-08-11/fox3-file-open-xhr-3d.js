@@ -114,7 +114,7 @@ FOX.onHashChange = function () {
 
 			FOX.idfParser = document.body.appendChild( document.createElement( 'script' ) );
 			FOX.idfParser.onload = () => IDF.init( fileName );
-			FOX.idfParser.src = "../../lib-spider/idf-parser/v-2021-08-11/idf-parser.js";
+			FOX.idfParser.src = "../../lib-spider/idf-parser/v-2021-08-13/idf-parser.js";
 
 		} else {
 

@@ -234,6 +234,7 @@ GBX.getBufferGeometry = function ( points ) {
 };
 
 
+// https://stackoverflow.com/questions/49020699/how-to-draw-a-flat-shape-in-3-space-in-three-js
 
 GBX.getBufferGeometryShape = function ( points, holes = [] ) {
 
