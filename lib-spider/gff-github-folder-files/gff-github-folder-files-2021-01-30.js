@@ -5,7 +5,7 @@
 
 const GFF = {
 
-	source: "../../../lib-spider/gff-github-folder-files/gff-multiple.js"
+	source: "gff-multiple.js"
 
 };
 
