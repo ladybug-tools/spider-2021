@@ -10,7 +10,7 @@ const COR = {
 	ignoreFolders: [],
 	//ignoreFolders: ["archive", "lib", "lib3d", "lib-templates"],
 	filterFiles: [ "gif", "md", "jpg", "html", "license", "pdf", "png", "svg", "txt" ],
-	urlSource: "https://github.com/pushme-pullyou/tootoo-2021/",
+	urlSource: "https://github.com/ladybug-tools/spider-2021/tree/main/spider-viewer",
 	urlAssets: "https://pushme-pullyou.github.io/tootoo-2021/",
 	iconGitHub: `<img src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/mark-github.svg">`,
 	iconInfo: `<img class=infoImg src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/noun_Information_585560.svg">`,
@@ -103,6 +103,8 @@ function init () {
 	if ( !location.hash && location.protocol === "https:" ) {
 
 		window.history.pushState( "", "", "../" );
+
+		COR.path = "./"
 
 	} else {
 
