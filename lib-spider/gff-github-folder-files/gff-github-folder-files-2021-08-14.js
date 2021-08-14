@@ -9,9 +9,9 @@ const GFF = {
 
 };
 
-GFF.iconGitHubMark = "../../lib/assets/icons/octicon.svg";
+GFF.iconGitHubMark = "https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/octicon.svg";
 GFF.iconInfo = `<img src=${ GFF.iconGitHubMark } height=11 style=opacity:0.5 >`;
-GFF.iconExternalLink = `<img width=16 src="../../lib/assets/icons/icon-link-external.svg">`;
+GFF.iconExternalLink = `<img width=16 src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/icon-link-external.svg">`;
 GFF.files = []; //GFF.folders.map( item => [] );
 
 
