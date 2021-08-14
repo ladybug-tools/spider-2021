@@ -5,7 +5,7 @@
 
 const GFF = {
 
-	source: "https://www.ladybug.tools/spider-2021/spider-viewer/lib-spider/gff-github-folder-files/gff-multiple.js"
+	source: "https://www.ladybug.tools/spider-2021/lib-spider/gff-github-folder-files/gff-multiple.js"
 
 };
 
