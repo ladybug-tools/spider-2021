@@ -74,7 +74,7 @@ function init () {
 	FRL.init();
 
 	GFF.init();
-	GFF.source = "../../lib-spider/gff-github-folder-files/gff-multiple.js";
+	//GFF.source = "../../lib-spider/gff-github-folder-files/gff-multiple.js";
 
 	EXP.init();
 
@@ -109,7 +109,7 @@ function init () {
 	} else {
 
 		COR.path = "../../";
-		
+
 		THR.controls.autoRotate = false;
 
 	}
