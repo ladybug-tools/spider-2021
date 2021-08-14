@@ -83,11 +83,9 @@ GBX.parseResponse = function (string) {
 
 	COR.reset( GBX.meshes );
 
-	//GBX.doit();
-
 	//console.log( "gbx init", performance.now() - GBX.timeStart );
 
-	//showPaintTimings();
+	showPaintTimings();
 
 };
 

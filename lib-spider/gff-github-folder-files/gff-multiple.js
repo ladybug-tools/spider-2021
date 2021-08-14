@@ -103,6 +103,32 @@ GFF.folders = [
 		<a href="https://www.ladybug.tools/spider/#gbxml-sample-files/README.md" target="_blank">sample gbXML data in ZIP files</a>
 	 	on GitHub from a variety of sources`
 	},
+	{ "group": "<b>Rhino 3DM</b>" },
+	{
+		"extension": ".3dm",
+		"user": "ladybug-tools",
+		"repo": "/3d-models",
+		"branch": "master",
+		"pathRepo": "3dm-sample-files/",
+		"title": "3DM samples",
+		"subTitle":
+			`Rhino Samples
+		<a href="https://www.ladybug.tools/spider/#gltf-sample-files/README.md" target="_blank">sample 3DM files</a>
+	 	on GitHub from a variety of sources`
+	},
+	{ "group": "<b>hbjson</b>" },
+	{
+		"extension": ".hbjson",
+		"user": "ladybug-tools",
+		"repo": "/honeybee-schema",
+		"branch": "master",
+		"pathRepo": "samples/model_large/",
+		"title": "Honeybee JSON samples",
+		"subTitle":
+			`Ladybug Tools / Honeybee
+		<a href="https://www.ladybug.tools/spider/#gltf-sample-files/README.md" target="_blank">sample hbjson files</a>
+	 	on GitHub from a variety of sources`
+	},
 	{ "group": "<b>glTF</b>" },
 	{
 		"extension": ".gltf",

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
+	<meta name="description"
+		content="TooToo 2021 uses the GitHub API to provide access to all the current files hosted with GitHub Pages.">
+	<meta name="keywords" content="JavaScript,Markdown,GitHub,FOSS">
+	<meta name="date" content="2021-01-21">
+	<title>FOX 2021</title>
+
+	<!-- Copyright 2021 Theo Armour. MIT license -->
+	<link rel="stylesheet" href="../../../lib/style/style-2020-12-29.css">
+
+	<style>
+		:root {
+			/* --mnu-width: 15rem; */
+			--main-hue: 0;
+			/* 0 to 360 0=red 120=green 240=blue */
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<!-- https://github.com/showdownjs/showdown -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+
+	<script src="../../../lib/fox-file-open-xhr/v-2020-12-31/fox-file-open-xhr.js"></script>
+
+	<script src="../../../lib/gor-github-organization-repos/v-2020-12-31/gor-github-organization-repos.js"></script>
+
+	<script src="../../../lib/grv-github-repo-tree-view/v-2020-12-31/grv-github-repo-tree-view.js"></script>
+
+	<script src="../../../lib/mnu-menu/v-2020-12-30/mnu-menu.js"></script>
+
+
+	<details id=detNavMenu class="gmd-4">
+
+		<summary id=sumNavMenu class="summary-secondary gmd-1">show || hide menu</summary>
+
+		<nav id="navMenu" class="gmd-2">
+
+			<div id=MNUdivHeader></div>
+
+			<div id=GORdivDetails></div>
+
+			<div id=GRVdivDetails></div>
+
+			<div id=MNUdivFooter></div>
+
+		</nav>
+
+	</details>
+
+
+	<main>
+
+		<div id="divContentMain"></div>
+
+	</main>
+
+
+	<script>
+
+		init();
+
+		function init() {
+
+			const COR = {
+				user: "pushme-pullyou",
+				repo: "tootoo-2021",
+				branch: "main",
+				defaultFile: "README.md",
+				ignoreFolders: [],
+				path: "../../../",
+			}
+
+
+			const source = `https://github.com/${ COR.user }/${ COR.repo }/`;
+
+			const version = document.head.querySelector( "[ name=date ]" ).content;
+
+			const description = document.head.querySelector( "[ name=description ]" ).content;
+
+			FOX.path = GOR.path = GRV.path = MNU.path = COR.path;
+
+			MNU.init();
+
+			aGithub.href = source;
+
+			spnVersionInfo.innerHTML = version;
+
+			divDescription.innerHTML = description;
+
+			// FOX = File Open XHR
+			FOX.path = COR.path;
+			FOX.defaultFile = COR.defaultFile;
+			FOX.init();
+
+			// GOR = GitHub Organization Repositories
+			GOR.user = COR.user;
+			GOR.repo = COR.repo;
+			GOR.init();
+
+			// GRV = GitHub Repo treeView
+			GRV.user = COR.user;
+			GRV.repo = COR.repo;
+			GRV.branch = COR.branch;
+			GRV.path = COR.path;
+
+			GRV.defaultFile = COR.defaultFile;
+			GRV.ignoreFolders = COR.ignoreFolders;
+			GRV.init();
+
+			// let's get going!
+			GOR.getOrganization();
+
+			// if running on server, keeps address bar pointed to latest dev
+
+			//if ( !location.hash && location.protocol === "https:" ) {
+			if ( location.protocol === "https:" ) {
+
+				window.history.pushState( "", "", "./" + location.hash );
+
+			}
+
+		}
+
+	</script>
+</body>
+
+</html>

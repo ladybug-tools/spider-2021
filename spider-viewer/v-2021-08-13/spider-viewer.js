@@ -93,7 +93,7 @@ function init () {
 
 	// FOX.path = COR.path;
 	FOX.init();
-	FOX.defaultFile = COR.files[ 16 ]
+	FOX.defaultFile = COR.files[ 14 ];
 	FOX.onHashChange();
 
 	TXT.init();
@@ -112,3 +112,22 @@ function init () {
 
 };
 
+
+COR.reset = function ( meshes = [] ) {
+
+	if ( chkNewFile.checked ) { THR.group = THR.getGroupNew(); }
+
+	const child = new THREE.Group();
+	child.add( ...meshes );
+
+	THR.group.add( child );
+
+	THR.zoomObjectBoundingSphere();
+	//THRU.toggleBoundingBoxHelper();
+
+	dragControls = new THREE.DragControls( [ child ], THR.camera, THR.renderer.domElement );
+	dragControls.transformGroup = true;
+	dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
+	dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
+
+};

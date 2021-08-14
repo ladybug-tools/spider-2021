@@ -67,7 +67,7 @@ FRL.readFile = function ( files ) {
 
 FRL.onLoad = function () {
 
-	console.log( "file", FRL.file );
+	//console.log( "file", FRL.file );
 
 	FRL.fileName = FRL.file.name;
 	FRL.hostName = FRL.file.type;
@@ -90,11 +90,11 @@ FRL.onLoad = function () {
 
 		if ( FRL.r3dmParser === undefined ) {
 
-			console.log( "", fname );
+			console.log( "fname 3dm", fname );
 
 			FRL.r3dmParser = document.body.appendChild( document.createElement( 'script' ) );
 			FRL.r3dmParser.onload = () => r3DM.read3DM( FRL.files );
-			FRL.r3dmParser.src = "../../lib-spider/3dm-parser/v-2021-08-12/3dm-parser.js";
+			FRL.r3dmParser.src = "../../lib-spider/3dm-parser/v-2021-08-13/3dm-parser.js";
 
 		} else {
 
@@ -123,11 +123,29 @@ FRL.onLoad = function () {
 
 			FRL.gltfParser = document.body.appendChild( document.createElement( 'script' ) );
 			FRL.gltfParser.onload = () => GLTF.readGltf( FRL.files );
-			FRL.gltfParser.src = "https://www.ladybug.tools/spider-2021/lib-spider/gltf-parser/v-2021-01-29/gltf-parser.js";
+			FRL.gltfParser.src = "../../lib-spider/gltf-parser/v-2021-08-13/gltf-parser.js";
 
 		} else {
 
 			GLTF.readGltf( FRL.files );
+
+		}
+
+		return;
+
+	}
+
+	if ( fname.endsWith( "hbjson" ) ) {
+
+		if ( FRL.hbjsonParser === undefined ) {
+
+			FRL.hbjsonParser = document.body.appendChild( document.createElement( 'script' ) );
+			FRL.hbjsonParser.onload = () => HBJ.readHbjson( FRL.files );
+			FRL.hbjsonParser.src = "../../lib-spider/hbjson-parser/v-2021-08-13/hbjson-parser.js";
+
+		} else {
+
+			HBJ.readHbjson( FRL.files );
 
 		}
 
@@ -181,7 +199,7 @@ FRL.onLoad = function () {
 
 			FRL.stlParser = document.body.appendChild( document.createElement( 'script' ) );
 			FRL.stlParser.onload = () => STL.loadSTL( FRL.files );
-			FRL.stlParser.src = "https://www.ladybug.tools/spider-2021/lib-spider/stl-parser/v-2021-08-13/stl-parser.js";
+			FRL.stlParser.src = "../../lib-spider/stl-parser/v-2021-08-13/stl-parser.js";
 
 		} else {
 
@@ -201,7 +219,7 @@ FRL.onLoad = function () {
 
 			FRL.vtkParser = document.body.appendChild( document.createElement( 'script' ) );
 			FRL.vtkParser.onload = () => VTK.readVTK( FRL.files  );
-			FRL.vtkParser.src = "https://www.ladybug.tools/spider-2021/lib-spider/vtk-parser/v-2021-01-27/vtk-parser.js";
+			FRL.vtkParser.src = "../../lib-spider/vtk-parser/v-2021-08-13/vtk-parser.js";
 
 		} else {
 

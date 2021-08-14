@@ -38,30 +38,9 @@ IDF.parseString= function ( string ) {
 
 	IDF.string = string;
 
-	//ItoJ.init();
-
-	//detView.open = false;
-	//detData.open = false;
-
-	//THR.group = THR.setSceneNew();
-	THR.group = THR.getGroupNew();
-
-	//FOO.onProgress(IDF.string.length, "Load complete");
-
 	const surfaces = IDF.parseType();
 
-	if (!surfaces) {
-		console.log("no surfaces");
-		return;
-	}
-
-	THR.group.add( ...surfaces);
-
-	// //ItoJ.checkZones();
-
-
-	THR.zoomObjectBoundingSphere();
-	//THRU.toggleBoundingBoxHelper();
+	COR.reset( surfaces );
 
 	//RAY.intersectObjects = meshes;
 
