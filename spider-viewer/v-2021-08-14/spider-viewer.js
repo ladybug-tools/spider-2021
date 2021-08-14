@@ -104,7 +104,7 @@ function init () {
 
 		window.history.pushState( "", "", "../" );
 
-		COR.path = "https://www.ladybug.tools/spider-2021/spider-viewer/";
+		COR.path = "https://www.ladybug.tools/spider-2021/";
 
 	} else {
 
