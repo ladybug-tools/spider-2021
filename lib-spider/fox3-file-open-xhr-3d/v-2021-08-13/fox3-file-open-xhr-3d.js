@@ -9,7 +9,7 @@ const FOX = {};
 FOX.documentTitle = document.title;
 
 
-FOX.init = function ( { defaultFile = "README.md", path = "../../../" } = {} ) {
+FOX.init = function ( { defaultFile = "README.md" } = {} ) {
 
 	FOX.defaultFile = defaultFile;
 	//FOX.path = path;
@@ -37,7 +37,7 @@ FOX.onHashChange = function () {
 
 			FOX.r3dmParser = document.body.appendChild( document.createElement( 'script' ) );
 			FOX.r3dmParser.onload = () => r3DM.init( fileName );
-			FOX.r3dmParser.src = "../../lib-spider/3dm-parser/v-2021-08-13/3dm-parser.js";
+			FOX.r3dmParser.src = COR.path + "lib-spider/3dm-parser/v-2021-08-13/3dm-parser.js";
 
 		} else {
 
@@ -71,7 +71,7 @@ FOX.onHashChange = function () {
 
 			FOX.gltfParser = document.body.appendChild( document.createElement( 'script' ) );
 			FOX.gltfParser.onload = () => GLTF.init( fileName );
-			FOX.gltfParser.src = "../../lib-spider/gltf-parser/v-2021-01-29/gltf-parser.js";
+			FOX.gltfParser.src = COR.path + "lib-spider/gltf-parser/v-2021-01-29/gltf-parser.js";
 
 		} else {
 
@@ -91,7 +91,7 @@ FOX.onHashChange = function () {
 
 			FOX.hbjsonParser = document.body.appendChild( document.createElement( 'script' ) );
 			FOX.hbjsonParser.onload = () => HBJ.init( fileName );
-			FOX.hbjsonParser.src = "../../lib-spider/hbj-hbjson-parser/v-2021-08-13/hbj-hbjson-parser.js";
+			FOX.hbjsonParser.src = COR.path + "lib-spider/hbj-hbjson-parser/v-2021-08-13/hbj-hbjson-parser.js";
 
 		} else {
 
@@ -109,7 +109,7 @@ FOX.onHashChange = function () {
 
 			FOX.idfParser = document.body.appendChild( document.createElement( 'script' ) );
 			FOX.idfParser.onload = () => IDF.init( fileName );
-			FOX.idfParser.src = "../../lib-spider/idf-parser/v-2021-08-13/idf-parser.js";
+			FOX.idfParser.src = COR.path + "lib-spider/idf-parser/v-2021-08-13/idf-parser.js";
 
 		} else {
 
@@ -127,7 +127,7 @@ FOX.onHashChange = function () {
 
 			FOX.objParser = document.body.appendChild( document.createElement( 'script' ) );
 			FOX.objParser.onload = () => OBJ.init( fileName );
-			FOX.objParser.src = "../../lib-spider/obj-parser/v-2021-08-13/obj-parser.js";
+			FOX.objParser.src = COR.path + "lib-spider/obj-parser/v-2021-08-13/obj-parser.js";
 
 		} else {
 
@@ -146,7 +146,7 @@ FOX.onHashChange = function () {
 
 			FOX.stlParser = document.body.appendChild( document.createElement( 'script' ) );
 			FOX.stlParser.onload = () => STL.init( fileName );
-			FOX.stlParser.src = "../../lib-spider/stl-parser/v-2021-08-13/stl-parser.js";
+			FOX.stlParser.src = COR.path + "lib-spider/stl-parser/v-2021-08-13/stl-parser.js";
 
 		} else {
 
@@ -165,7 +165,7 @@ FOX.onHashChange = function () {
 
 			FOX.vtkParser = document.body.appendChild( document.createElement( 'script' ) );
 			FOX.vtkParser.onload = () => VTK.init( fileName );
-			FOX.vtkParser.src = "../../lib-spider/vtk-parser/v-2021-08-13/vtk-parser.js";
+			FOX.vtkParser.src = COR.path + "lib-spider/vtk-parser/v-2021-08-13/vtk-parser.js";
 
 		} else {
 
