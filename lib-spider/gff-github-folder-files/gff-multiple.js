@@ -199,14 +199,25 @@ GFF.folders = [
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
-		"pathRepo": "rad-sample-files/various/sources/",
+		"pathRepo": "rad-sample-files/various-sources/",
 		"title": "Various samples",
 		"subTitle":
 			`Ladybug Tools / Spider Viewer
 		<a href="https://www.ladybug.tools/spider/#rad-sample-files/README.md" target="_blank">sample Radiance files</a>
 	 	on GitHub from a variety of sources`
 	},
-
+	{
+		"extension": ".rad",
+		"user": "ladybug-tools",
+		"repo": "/3d-models",
+		"branch": "master",
+		"pathRepo": "rad-sample-files/gjward1/",
+		"title": "GJ Ward 1",
+		"subTitle":
+			`Ladybug Tools / Spider Viewer
+		<a href="https://www.ladybug.tools/spider/#rad-sample-files/README.md" target="_blank">sample Radiance files</a>
+	 	on GitHub from a variety of sources`
+	},
 
 
 	{ "group": "<b>STL</b>" },
