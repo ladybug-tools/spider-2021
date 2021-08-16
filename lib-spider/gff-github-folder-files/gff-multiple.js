@@ -151,7 +151,20 @@ GFF.folders = [
 		"title": "Khronos Group GLB samples",
 		"subTitle":
 			`Ladybug Tools / Spider Viewer
-		<a href="https://www.ladybug.tools/spider/#gltf-sample-files/README.md" target="_blank">sample gbXML data in ZIP files</a>
+		<a href="https://www.ladybug.tools/spider/#gltf-sample-files/README.md" target="_blank">sample IDF files</a>
+	 	on GitHub from a variety of sources`
+	},
+	{ "group": "<b>IDF</b>" },
+	{
+		"extension": ".idf",
+		"user": "ladybug-tools",
+		"repo": "/3d-models",
+		"branch": "master",
+		"pathRepo": "ifc-sample-files/",
+		"title": "IFC samples",
+		"subTitle":
+			`Ladybug Tools / Spider Viewer
+		<a href="https://www.ladybug.tools/spider/#ifc-sample-files/README.md" target="_blank">sample IFC files</a>
 	 	on GitHub from a variety of sources`
 	},
 	{ "group": "<b>IDF</b>" },
