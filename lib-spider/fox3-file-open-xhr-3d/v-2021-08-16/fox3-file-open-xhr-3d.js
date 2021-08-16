@@ -142,8 +142,6 @@ FOX.onHashChange = function () {
 
 	if ( FOX.extension === "rad" ) {
 
-		console.log( "", 23 );
-
 		if ( FOX.radParser === undefined ) {
 
 			FOX.radParser = document.body.appendChild( document.createElement( 'script' ) );

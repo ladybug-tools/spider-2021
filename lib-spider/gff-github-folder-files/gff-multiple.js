@@ -173,7 +173,7 @@ GFF.folders = [
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
-		"pathRepo": "ifc-sample-files/2020",
+		"pathRepo": "idf-sample-files/2020",
 		"title": "IDF samples",
 		"subTitle":
 			`Ladybug Tools / Spider Viewer
