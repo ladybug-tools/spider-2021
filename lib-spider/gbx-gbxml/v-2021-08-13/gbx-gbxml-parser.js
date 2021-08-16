@@ -85,7 +85,7 @@ GBX.parseResponse = function (string) {
 
 	//console.log( "gbx init", performance.now() - GBX.timeStart );
 
-	showPaintTimings();
+	//showPaintTimings();
 
 };
 
