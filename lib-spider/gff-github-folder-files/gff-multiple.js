@@ -151,7 +151,7 @@ GFF.folders = [
 		"title": "Khronos Group GLB samples",
 		"subTitle":
 			`Ladybug Tools / Spider Viewer
-		<a href="https://www.ladybug.tools/spider/#gltf-sample-files/README.md" target="_blank">sample IDF files</a>
+		<a href="https://www.ladybug.tools/spider/#gltf-sample-files/README.md" target="_blank">sample GLB files</a>
 	 	on GitHub from a variety of sources`
 	},
 	{ "group": "<b>IDF</b>" },
@@ -161,23 +161,23 @@ GFF.folders = [
 		"repo": "/3d-models",
 		"branch": "master",
 		"pathRepo": "ifc-sample-files/",
+		"title": "IDF samples",
+		"subTitle":
+			`Ladybug Tools / Spider Viewer
+		<a href="https://www.ladybug.tools/spider/#idf-sample-files/README.md" target="_blank">sample IDF files</a>
+	 	on GitHub from a variety of sources`
+	},
+	{ "group": "<b>IFC</b>" },
+	{
+		"extension": ".ifc",
+		"user": "ladybug-tools",
+		"repo": "/3d-models",
+		"branch": "master",
+		"pathRepo": "ifc-sample-files/2020/",
 		"title": "IFC samples",
 		"subTitle":
 			`Ladybug Tools / Spider Viewer
 		<a href="https://www.ladybug.tools/spider/#ifc-sample-files/README.md" target="_blank">sample IFC files</a>
-	 	on GitHub from a variety of sources`
-	},
-	{ "group": "<b>IDF</b>" },
-	{
-		"extension": ".idf",
-		"user": "ladybug-tools",
-		"repo": "/3d-models",
-		"branch": "master",
-		"pathRepo": "idf-sample-files/2020/",
-		"title": "IDF samples",
-		"subTitle":
-			`Ladybug Tools / Spider Viewer
-		<a href="https://www.ladybug.tools/spider/#idf-sample-files/README.md" target="_blank">sample gbXML data in ZIP files</a>
 	 	on GitHub from a variety of sources`
 	},
 	{ "group": "<b>OBJ</b>" },
