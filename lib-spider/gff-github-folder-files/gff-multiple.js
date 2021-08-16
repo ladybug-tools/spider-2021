@@ -123,7 +123,7 @@ GFF.folders = [
 		"repo": "/honeybee-schema",
 		"branch": "master",
 		"pathRepo": "samples/model_large/",
-		"title": "Honeybee JSON samples",
+		"title": "Honeybee JSON models large",
 		"subTitle":
 			`Ladybug Tools / Honeybee
 		<a href="https://www.ladybug.tools/spider/#gltf-sample-files/README.md" target="_blank">sample hbjson files</a>
@@ -135,7 +135,7 @@ GFF.folders = [
 		"repo": "/honeybee-schema",
 		"branch": "master",
 		"pathRepo": "samples/model/",
-		"title": "Honeybee JSON samples",
+		"title": "Honeybee JSON models",
 		"subTitle":
 			`Ladybug Tools / Honeybee
 		<a href="https://www.ladybug.tools/spider/#gltf-sample-files/README.md" target="_blank">sample hbjson files</a>
