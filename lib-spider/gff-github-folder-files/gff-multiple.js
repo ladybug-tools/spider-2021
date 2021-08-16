@@ -193,6 +193,22 @@ GFF.folders = [
 		<a href="https://www.ladybug.tools/spider/#stl-samples/README.md" target="_blank">sample gbXML data in ZIP files</a>
 	 	on GitHub from a variety of sources`
 	},
+	{ "group": "<b>RAD</b>" },
+	{
+		"extension": ".rad",
+		"user": "ladybug-tools",
+		"repo": "/3d-models",
+		"branch": "master",
+		"pathRepo": "rad-sample-files/various/sources/",
+		"title": "Various samples",
+		"subTitle":
+			`Ladybug Tools / Spider Viewer
+		<a href="https://www.ladybug.tools/spider/#rad-sample-files/README.md" target="_blank">sample Radiance files</a>
+	 	on GitHub from a variety of sources`
+	},
+
+
+
 	{ "group": "<b>STL</b>" },
 	{
 		"extension": ".stl",

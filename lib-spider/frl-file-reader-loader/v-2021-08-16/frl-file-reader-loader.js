@@ -173,27 +173,6 @@ FRL.onLoad = function () {
 
 	}
 
-
-	if ( fname.endsWith( "ifc" ) ) {
-
-		if ( FRL.ifcParser === undefined ) {
-
-			FRL.ifcParser = document.body.appendChild( document.createElement( 'script' ) );
-			FRL.ifcParser.onload = () => IFC.loadIFC( FRL.files );
-			FRL.ifcParser.src = COR.path + "lib-spider/ifc-parser/v-2021-08-16/ifc-parser.js";
-
-		} else {
-
-			IDF.loadIFC( FRL.files );
-
-		}
-
-		FRL.onProgress( FRL.file.size, "Load complete" );
-
-		return;
-
-	}
-
 	if ( fname.endsWith( ".obj" ) ) {
 
 		if ( FRL.objParser === undefined ) {
@@ -214,30 +193,6 @@ FRL.onLoad = function () {
 
 	}
 
-
-	if ( fname.endsWith( ".rad" ) ) {
-
-		
-
-		if ( FRL.radParser === undefined ) {
-
-			FRL.radParser = document.body.appendChild( document.createElement( 'script' ) );
-			FRL.radParser.onload = () => RAD.addDataFile( string );
-			FRL.radParser.src = COR.path + "lib-spider/rad-parser/v-2021-08-16/rad-parser.js";
-
-		} else {
-
-			const json = RAD.addDataFile( string );
-
-		}
-
-		FRL.onProgress( FRL.file.size, "Load complete" );
-
-		return;
-
-	}
-
-
 	if ( fname.endsWith( ".stl" ) ) {
 
 		if ( FRL.stlParser === undefined ) {
@@ -257,8 +212,6 @@ FRL.onLoad = function () {
 		return;
 
 	}
-
-
 
 	if ( fname.endsWith( "vtk" ) || fname.endsWith( "vtp" ) ) {
 

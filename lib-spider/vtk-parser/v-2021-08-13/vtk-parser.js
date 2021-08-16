@@ -68,6 +68,8 @@ VTK.loadUrl = function ( url ) {
 	} );
 
 }
+
+
 VTK.parseString = function ( file ) {
 
 	console.log( "vtk file", file );

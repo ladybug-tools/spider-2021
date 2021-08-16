@@ -44,7 +44,7 @@ HBJ.parseResponse = function ( json ) {
 
 HBJ.processJson = function ( json ) {
 
-	j = json;
+	//j = json;
 
 	const roomFaces = json.rooms.map( room => room.faces );
 	//console.log( "faces", roomFaces );
@@ -54,7 +54,7 @@ HBJ.processJson = function ( json ) {
 	//console.log( "boundaries", boundaries );
 
 	// meshes = boundaries.map( boundary => HBJ.addShape3d( boundary ) );
-	COR.reset(  meshes )
+	COR.reset( meshes );
 
 
 
