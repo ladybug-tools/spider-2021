@@ -129,6 +129,19 @@ GFF.folders = [
 		<a href="https://www.ladybug.tools/spider/#gltf-sample-files/README.md" target="_blank">sample hbjson files</a>
 	 	on GitHub from a variety of sources`
 	},
+	{
+		"extension": ".hbjson",
+		"user": "ladybug-tools",
+		"repo": "/honeybee-schema",
+		"branch": "master",
+		"pathRepo": "samples/model/",
+		"title": "Honeybee JSON samples",
+		"subTitle":
+			`Ladybug Tools / Honeybee
+		<a href="https://www.ladybug.tools/spider/#gltf-sample-files/README.md" target="_blank">sample hbjson files</a>
+	 	on GitHub from a variety of sources`
+	},
+
 	{ "group": "<b>glTF</b>" },
 	{
 		"extension": ".gltf",
@@ -138,7 +151,7 @@ GFF.folders = [
 		"pathRepo": "gltf-sample-files/2021/",
 		"title": "Khronos Group glTF samples",
 		"subTitle":
-			`Ladybug Tools / Spider gbXML
+			`Ladybug Tools / Spider Viewer
 		<a href="https://www.ladybug.tools/spider/#gltf-sample-files/README.md" target="_blank">sample gbXML data in ZIP files</a>
 	 	on GitHub from a variety of sources`
 	},
@@ -160,7 +173,7 @@ GFF.folders = [
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
-		"pathRepo": "ifc-sample-files/",
+		"pathRepo": "ifc-sample-files/2020",
 		"title": "IDF samples",
 		"subTitle":
 			`Ladybug Tools / Spider Viewer
@@ -173,7 +186,7 @@ GFF.folders = [
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
-		"pathRepo": "ifc-sample-files/2020/",
+		"pathRepo": "ifc-sample-files/",
 		"title": "IFC samples",
 		"subTitle":
 			`Ladybug Tools / Spider Viewer
