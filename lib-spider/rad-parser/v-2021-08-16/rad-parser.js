@@ -4,10 +4,7 @@
 // Copyright 2021 Theo Armour. MIT License
 
 
-
 let RAD = {};
-
-
 
 RAD.json = null;
 RAD.meshes = null;
@@ -57,6 +54,18 @@ RAD.colors = {
 RAD.threeColor = new THREE.Color();
 RAD.referenceObject = new THREE.Object3D();
 
+
+RAD.init = function ( url ) {
+
+	console.log( "url", url );
+	const xhr = new XMLHttpRequest();
+	xhr.open( 'GET', url, true );
+	xhr.onerror = ( xhr ) => console.log( 'error:', xhr );
+	//xhr.onprogress = ( xhr ) => console.log( 'bytes loaded:', xhr.loaded );
+	xhr.onload = ( xhr ) => RAD.addDataFile( xhr.target.response );
+	xhr.send( null );
+
+};
 
 // called by FIL.callbackRequestFile &&
 
