@@ -140,12 +140,12 @@ FRL.onLoad = function () {
 		if ( FRL.hbjsonParser === undefined ) {
 
 			FRL.hbjsonParser = document.body.appendChild( document.createElement( 'script' ) );
-			FRL.hbjsonParser.onload = () => HBJ.readHbjson( FRL.files );
-			FRL.hbjsonParser.src = COR.path + "lib-spider/hbjson-parser/v-2021-08-13/hbjson-parser.js";
+			FRL.hbjsonParser.onload = () => HBJ.processJson( string);
+			FRL.hbjsonParser.src = COR.path + "lib-spider/hbj-hbjson-parser/v-2021-08-16/hbj-hbjson-parser.js";
 
 		} else {
 
-			HBJ.readHbjson( FRL.files );
+			HBJ.processJson( string )
 
 		}
 

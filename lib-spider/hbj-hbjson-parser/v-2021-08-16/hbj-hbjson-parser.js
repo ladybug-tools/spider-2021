@@ -14,7 +14,6 @@ HBJ.colors = {
 
 HBJ.init = function ( url ) {
 
-
 	const xhr = new XMLHttpRequest();
 	xhr.responseType = "json";
 	xhr.open( "get", url, true );
@@ -42,21 +41,28 @@ HBJ.parseResponse = function ( json ) {
 }
 
 
-HBJ.processJson = function ( json ) {
+HBJ.readHbjson = function ( obj ) {
 
-	//j = json;
+	console.log( "obj ", obj  );
+}
+
+
+HBJ.processJson = function ( string ) {
+
+
+	json = JSON.parse( string );
+	console.log( "json", json );
 
 	const roomFaces = json.rooms.map( room => room.faces );
 	//console.log( "faces", roomFaces );
 
 	meshes = [];
+
 	roomFaces.forEach( room => room.forEach( face => meshes.push( HBJ.addShape3d( face.geometry.boundary, HBJ.colors[ face.face_type ] ) ) ) );
 	//console.log( "boundaries", boundaries );
 
 	// meshes = boundaries.map( boundary => HBJ.addShape3d( boundary ) );
 	COR.reset( meshes );
-
-
 
 };
 
