@@ -32,6 +32,10 @@ _Spider Viewer in a resizable window. One finger to rotate. Two to zoom._
 
 ## Change Log
 
+###
+
+* Update menu and style to latest TooToo
+
 ### 2021-08-12
 
 Loading: gbxml, gltf, obj, stl, vtk files

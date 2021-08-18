@@ -5,7 +5,7 @@ const r3DM = {};
 r3DM.init = function ( file ) {
 
 	console.log( "file", file );
-	
+
 	if ( r3DM.dmLoader === undefined ) {
 
 		r3DM.dmLoader = document.body.appendChild( document.createElement( 'script' ) );

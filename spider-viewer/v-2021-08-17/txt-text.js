@@ -20,7 +20,7 @@ TXT.init = function () {
 	loader.load( url, ( fnt ) => font = fnt );
 
 	info =
-`Text used along with modified Spider Viewer for Zoom presentation to the gbXML Board of Directors meeting.
+`This menu item was used along with modified Spider Viewer for a Zoom presentation to the gbXML Board of Directors meeting.
 <br><br>
 It is an example of the Spider Viewer being useful with "Augmented Modelling" by adding "virtual" text and graphics to 3D AEC visualizations.
 `;

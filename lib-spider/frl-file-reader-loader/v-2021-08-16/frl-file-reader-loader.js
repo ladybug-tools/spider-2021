@@ -90,7 +90,7 @@ FRL.onLoad = function () {
 
 		if ( FRL.r3dmParser === undefined ) {
 
-			console.log( "fname 3dm", fname );
+			console.log( "fname 3dm", FRL.files.files[ 0 ]  );
 
 			FRL.r3dmParser = document.body.appendChild( document.createElement( 'script' ) );
 			FRL.r3dmParser.onload = () => r3DM.read3DM( FRL.files );

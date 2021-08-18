@@ -80,8 +80,8 @@ function init () {
 	//THR.zoomObjectBoundingSphere();
 
 	FOX.init();
-	FOX.defaultFile = COR.files[ 14 ];
-	FOX.onHashChange();
+	//FOX.defaultFile = COR.files[ 14 ];
+	//FOX.onHashChange();
 
 	TXT.init();
 

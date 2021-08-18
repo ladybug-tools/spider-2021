@@ -38,7 +38,6 @@ GLTF.readGltf = function ( inpFiles ) {
 
 	}
 
-
 }
 
 
