@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
+	<meta name="description"
+		content="Ladybug Tools / Spider Viewer is a 3D file viewer and exporter designed to be forked, hacked and remixed with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
+	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
+	<meta name="date" content="2021-08-18">
+	<title>Spider Viewer</title>
+
+	<!-- Copyright 2021 Theo Armour. MIT license -->
+	<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo-2021/lib/style/style-2021-07-12.css">
+
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/utils/BufferGeometryUtils.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/controls/DragControls.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/DRACOLoader.js"></script>
+
+	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thr-three/thr-threejs-2021-07-09.js"></script>
+	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
+	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thrr-three-raycaster/thrr-three-raycaster-mousedown-2020-09-11.js"></script>
+	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thru-three-utilities/thru-three-utilities-2021-07-10.js"></script>
+
+	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib/mnu-menu/v-2021-08-17/mnu-menu.js"></script>
+
+	<script src="../../lib-spider-08/frl-file-reader-loader-3d/v-2021-08-18/frl-file-reader-loader-3d.js"></script>
+
+	<script src="../../lib-spider-08/parsers/v-2021-08-18/fop-file-onload-parse.js"></script>
+
+	<script src="../../lib-spider-08/gff-github-folder-files/v-2021-08-17/gff-github-folder-files.js"></script>
+
+	<script src="../../lib-spider-08/fox3-file-open-xhr-3d/v-2021-08-18/fox3-file-open-xhr-3d.js"></script>
+
+	<script src="../../lib-spider/exp-exporter/v-2021-01-26/exp-exporter.js"></script>
+
+	<script src="spider-viewer.js"></script>
+
+	<script src="txt-text.js"></script>
+
+	<style>
+		:root {
+			--main-hue: 125;
+			/* 0 to 360 0=red 120=green 240=blue */
+		}
+
+		body {
+			overflow: hidden;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<details id=detNavMenu class="gmd-4">
+
+		<summary id=sumNavMenu class="summary-nav gmd-1">☰ <span id=spnMenuHelp>show&darr; || hide&uarr; menu</span></summary>
+
+		<nav id="navMenu" class="">
+
+			<div id=MNUdivHeader></div>
+
+			<p>
+				<label>
+					<input type="checkbox" id="chkNewFile" checked> Open new file
+				</label>
+			</p>
+			<div id=GORdivDetails></div>
+
+			<div id=GRVdivDetails></div>
+
+			<div id=FRLdivMenuFileRead></div>
+
+			<div id=GFFdivDetails></div>
+
+			<div id=EXPdivMenuExporters></div>
+
+			<div id=TXTdivDetails ></div>
+
+			<div id=MNUdivFooter></div>
+
+		</nav>
+
+	</details>
+
+
+
+	<script>
+
+		init(); // see spider-viewer.js
+
+	</script>
+
+
+</body>
+
+</html>
