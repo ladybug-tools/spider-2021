@@ -56,7 +56,7 @@ GBX.onHashChange = function () {
 
 	const xhr = new XMLHttpRequest();
 	xhr.open( "get", url, true );
-	xhr.onload = ( xhr ) => GBX.parseResponse( xhr.target.response );
+	xhr.onload = ( xhr ) => GBX.parse( xhr.target.response );
 	xhr.send( null );
 
 }
@@ -65,7 +65,7 @@ GBX.onChange = function ( url ) {
 
 	const xhr = new XMLHttpRequest();
 	xhr.open( "get", url, true );
-	xhr.onload = ( xhr ) => GBX.parseResponse( xhr.target.response );
+	xhr.onload = ( xhr ) => GBX.parse( xhr.target.response );
 	xhr.send( null );
 
 };
