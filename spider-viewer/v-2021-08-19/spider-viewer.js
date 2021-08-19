@@ -96,6 +96,8 @@ function init () {
 
 	THR.group = THR.getGroupNew();
 
+	THRR.init();
+
 	//THRU.addMeshes( 100 );
 	//THR.zoomObjectBoundingSphere();
 
@@ -136,9 +138,10 @@ COR.reset = function ( meshes = [] ) {
 	THR.zoomObjectBoundingSphere();
 	//THRU.toggleBoundingBoxHelper();
 
-	dragControls = new THREE.DragControls( [ child ], THR.camera, THR.renderer.domElement );
-	dragControls.transformGroup = true;
-	dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
-	dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
+	THRR.init();
+	// dragControls = new THREE.DragControls( [ child ], THR.camera, THR.renderer.domElement );
+	// dragControls.transformGroup = true;
+	// dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
+	// dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
 
 };
