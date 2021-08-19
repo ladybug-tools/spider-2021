@@ -1,6 +1,6 @@
 // copyright 2021 Theo Armour. MIT license.
 
-const HBJ = {}
+HBJ = {};
 
 
 HBJ.colors = {
@@ -15,15 +15,12 @@ HBJ.colors = {
 
 HBJ.read = function ( files ) {
 
-	HBJ.timeStart = performance.now();
-	HBJ.files = files;
-	HBJ.file = HBJ.files.files[ 0 ];
 	HBJ.reader = new FileReader();
-	HBJ.reader.onload = ( event ) => HBJ.parse( JSON.parse( event.target.result );
-	};
+	HBJ.reader.onload = ( event ) => HBJ.parse( JSON.parse( event.target.result ) );
+	HBJ.reader.readAsText( files.files[ 0 ] );
 
-	HBJ.reader.readAsText( HBJ.file );
-}
+};
+
 
 
 
@@ -130,3 +127,11 @@ HBJ.addShape3d = function ( points, color = 0x888888, holes = [] ) {
 	return mesh;
 
 };
+
+
+if ( FRL.files ) {
+
+	console.log( "FRL.files", FRL.files );
+	HBJ.read( FRL.files );
+
+}

@@ -1,4 +1,7 @@
-
+// copyright 2021 Theo Armour. MIT license.
+/* global THREE, COR */
+// jshint esversion: 6
+// jshint loopfunc: true
 
 const COR = {
 	user: "ladybug-tools",
@@ -48,15 +51,18 @@ COR.files = [
 ];
 
 
-COR.r3dmParser = undefined;
-COR.gbxmlParser = undefined;
-COR.gltfParser = undefined;
-COR.hbjsonParser = undefined;
-COR.idfParser = undefined;
-COR.objParser = undefined;
-COR.stlParser = undefined;
-COR.vtkParser = undefined;
-COR.zipParser = undefined;
+let r3DM = undefined;
+let GBX = undefined;
+let GLTF = undefined;
+let HBJ = undefined;
+let IDF = undefined;
+let OBJ = undefined;
+let RAD = undefined;
+let STL = undefined;
+let VTK = undefined;
+let ZIP = undefined;
+
+
 function init () {
 
 	//GOR.path = GRV.path = \

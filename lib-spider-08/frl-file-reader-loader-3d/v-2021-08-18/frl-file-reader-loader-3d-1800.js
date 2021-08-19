@@ -1,11 +1,10 @@
 // copyright 2021 Theo Armour. MIT license.
-/* global MNU, FRL, FRLdivMenuFileRead, FRLdivLog  */
+/* global MNU, FOP, FRLdivMenuFileRead, FRLdivLog  */
 // jshint esversion: 6
 // jshint loopfunc: true
 
 
 const FRL = {};
-FRL.path = "lib-spider-08/parsers/v-2021-08-18/";
 
 FRL.init = function () {
 
@@ -48,57 +47,42 @@ FRL.wrangle = function ( inpFiles ) {
 
 	//console.log( "frl", fName, FRL.files );
 
-	FRL.handleFiles( fName );
+	FOP.handleFiles( fName );
 
 };
 
 
 
-FRL.handleFiles = function ( fName ) {
+// FRL.readFile = function ( files ) {
 
-	console.log( "fRL", fName );
+// 	FRL.timeStart = performance.now();
+// 	FRL.files = files;
+// 	FRL.file = FRL.files.files[ 0 ];
 
-	if ( fName.endsWith( ".3dm" ) ) { FRL.load( r3DM, "3dm-parser.js" ); return; }
+// 	FRL.reader = new FileReader();
+// 	FRL.reader.onload = FRL.onLoad;
 
-	if ( fName.endsWith( "xml" ) ) { FRL.load( GBX, "gbx-gbxml-parser.js" ); return; }
+// 	FRL.reader.readAsText( FRL.file );
 
-	if ( fName.endsWith( "gltf" ) || fName.endsWith( "glb" ) ) { FRL.load( GLTF, "gltf-parser.js" ); return; }
-
-	if ( fName.endsWith( "hbjson" ) ) { FRL.load( HBJ, "hbj-hbjson-parser.js" ); return; }
-
-	if ( fName.endsWith( ".idf" ) || fName.endsWith( ".osm" ) ) { FRL.load( IDF, "idf-parser.js" ); return; }
-
-	if ( fName.endsWith( ".obj" ) ) { FRL.load( OBJ, "obj-parser.js" ); return; }
-
-	if ( fName.endsWith( ".rad" ) ) { FRL.load( RAD, "rad-parser.js" ); return; }
-
-	if ( fName.endsWith( ".stl" ) ) { FRL.load( STL, "stl-parser.js" ); return; }
-
-	if ( fName.endsWith( ".vtk" ) || fName.endsWith( ".vtp" ) ) { FRL.load( VTK, "vtk-parser.js" ); return; }
-
-	if ( fName.endsWith( ".zip" ) ) {
-
-	}
-
-};
+// };
 
 
-FRL.load = function ( obj, parser ) {
+// FRL.onLoad = function () {
 
-	if ( obj === undefined ) {
+// 	//console.log( "file", FRL.file );
 
-		scr = document.body.appendChild( document.createElement( 'script' ) );
-		scr.src = COR.path + FRL.path + parser;
+// 	FRL.fileName = FRL.file.name;
+// 	FRL.hostName = FRL.file.type;
 
-	} else {
+// 	const string = FRL.reader.result;
 
-		obj.read( FRL.files );
+// 	const fName = FRL.file.name.toLowerCase();
 
-	}
+// 	console.log( "ftl", fName, string, FRL.files );
 
-	FRL.onProgress( FRL.file.size, "Load complete" );
+// 	FOP.onLoad( fName );
 
-}
+// };
 
 
 FRL.onProgress = function ( size = 0, note = "" ) {

@@ -17,6 +17,15 @@ IDF.colors = {
 };
 
 
+IDF.read = function ( files ) {
+
+	IDF.reader = new FileReader();
+	IDF.reader.onload = ( event ) => IDF.parse( event.target.result );
+	IDF.reader.readAsText( files.files[ 0 ] );
+
+};
+
+
 IDF.init = function ( url ) {
 
 	//console.log( "", IDF );
@@ -26,14 +35,14 @@ IDF.init = function ( url ) {
 	xhr.open( 'GET', url, true );
 	xhr.onerror = function ( xhr ) { console.log( 'error:', xhr ); };
 	//xhr.onprogress = onRequestFileProgress;
-	xhr.onload = (xhr ) => IDF.parseString( xhr.target.response )
+	xhr.onload = (xhr ) => IDF.parse( xhr.target.response )
 	xhr.send( null );
 
 
 };
 
 
-IDF.parseString= function ( string ) {
+IDF.parse = function ( string ) {
 	//console.log( "string",string);
 
 	IDF.string = string;

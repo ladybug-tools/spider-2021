@@ -1,179 +1,55 @@
-FOP = {};
+// copyright 2021 Theo Armour. MIT license.
+/* global COR, FRL, r3DM, GBX, GLTF, HBJ, IDF, OBJ, STL, VTK */
+// jshint esversion: 6
+// jshint loopfunc: true
+
+const FOP = {};
 
 FOP.path = "lib-spider-08/parsers/v-2021-08-18/";
 
 
-FOP.handleFiles = function ( fileName ) {
+FOP.handleFiles = function ( fName ) {
 
-	console.log( "fop", fileName );
+	console.log( "fop", fName );
 
-	if ( fileName.endsWith( ".3dm" ) ) {
+	if ( fName.endsWith( ".3dm" ) ) { FOP.load( r3DM, "3dm-parser.js" ); return; }
 
-		if ( COR.r3dmParser === undefined ) {
+	if ( fName.endsWith( "xml" ) ) { FOP.load( GBX, "gbx-gbxml-parser.js" ); return; }
 
-			COR.r3dmParser = document.body.appendChild( document.createElement( 'script' ) );
-			COR.r3dmParser.onload = () => r3DM.read3DM( FRL.files );
-			COR.r3dmParser.src = COR.path + FOP.path + "3dm-parser.js";
+	if ( fName.endsWith( "gltf" ) || fName.endsWith( "glb" ) ) { FOP.load( GLTF, "gltf-parser.js" ); return; }
 
-		} else {
+	if ( fName.endsWith( "hbjson" ) ) { FOP.load( HBJ, "hbj-hbjson-parser.js" ); return; }
 
-			r3DM.read3DM( FRL.files );
+	if ( fName.endsWith( ".idf" ) || fName.endsWith( ".osm" ) ) { FOP.load( IDF, "idf-parser.js" ); return; }
 
-		}
+	if ( fName.endsWith( ".obj" ) ) { FOP.load( OBJ, "obj-parser.js" ); return; }
 
-		FRL.onProgress( FRL.file.size, "Load complete" );
+	if ( fName.endsWith( ".rad" ) ) { FOP.load( RAD, "rad-parser.js" ); return; }
 
-		return;
+	if ( fName.endsWith( ".stl" ) ) { FOP.load( STL, "stl-parser.js" ); return; }
 
-	}
+	if ( fName.endsWith( ".vtk" ) || fName.endsWith( ".vtp" ) ) { FOP.load( VTK, "vtk-parser.js" ); return; }
 
-	if ( fileName.endsWith( "xml" ) ) {
-
-		if ( COR.gbxmlParser === undefined ) {
-
-			COR.gbxmlParser = document.body.appendChild( document.createElement( 'script' ) );
-			COR.gbxmlParser.onload = () => GBX.read( FRL.files );
-			COR.gbxmlParser.src = COR.path + FOP.path + "gbx-gbxml-parser.js";
-
-		} else {
-
-			GBX.read( FRL.files );
-
-		}
-
-		FRL.onProgress( FRL.file.size, "Load complete" );
-
-		return;
+	if ( fName.endsWith( ".zip" ) ) {
 
 	}
 
-
-	if ( fileName.endsWith( "gltf" ) || fileName.endsWith( "glb" ) ) {
-
-		if ( COR.gltfParser === undefined ) {
-
-			COR.gltfParser = document.body.appendChild( document.createElement( 'script' ) );
-			COR.gltfParser.onload = () => GLTF.read( FRL.files );
-			COR.gltfParser.src = COR.path + FOP.path + "gltf-parser.js";
-
-		} else {
-
-			GLTF.read( FRL.files );
-
-		}
-
-		FRL.onProgress( FRL.file.size, "Load complete" );
-
-		return;
-
-	}
-
-
-	if ( fileName.endsWith( "hbjson" ) ) {
-
-		if ( COR.hbjsonParser === undefined ) {
-
-			COR.hbjsonParser = document.body.appendChild( document.createElement( 'script' ) );
-			COR.hbjsonParser.onload = () => HBJ.read( FRL.files );
-			COR.hbjsonParser.src = COR.path + FOP.path + "hbj-hbjson-parser.js";
-
-		} else {
-
-			HBJ.read( FRL.files );
-
-		}
-
-		FRL.onProgress( FRL.file.size, "Load complete" );
-
-		return;
-
-	}
-
-	if ( fileName.endsWith( ".idf" ) || fileName.endsWith( ".osm" ) ) {
-
-		if ( COR.idfParser === undefined ) {
-
-			COR.idfParser = document.body.appendChild( document.createElement( 'script' ) );
-			COR.idfParser.onload = () => IDF.read( FRL.files );
-			COR.idfParser.src = COR.path + FOP.path + "idf-parser.js";
-
-		} else {
-
-			IDF.read( FRL.files );
-
-		}
-
-		FRL.onProgress( FRL.file.size, "Load complete" );
-
-		return;
-
-	}
-
-	if ( fileName.endsWith( ".obj" ) ) {
-
-		if ( COR.objParser === undefined ) {
-
-			COR.objParser = document.body.appendChild( document.createElement( 'script' ) );
-			COR.objParser.onload = () => OBJ.loadOBJ( FRL.files );
-			COR.objParser.src = COR.path + FOP.path + "obj-parser.js";
-
-		} else {
-
-			OBJ.loadObj( FRL.files );
-
-		}
-
-		FRL.onProgress( FRL.file.size, "Load complete" );
-
-		return;
-
-	}
-
-	if ( fileName.endsWith( ".stl" ) ) {
-
-		if ( COR.stlParser === undefined ) {
-
-			COR.stlParser = document.body.appendChild( document.createElement( 'script' ) );
-			COR.stlParser.onload = () => STL.loadSTL( FRL.files );
-			COR.stlParser.src = COR.path + FOP.path + "stl-parser.js";
-
-		} else {
-
-			STL.loadSTL( FRL.files );
-
-		}
-
-		FRL.onProgress( FRL.file.size, "Load complete" );
-
-		return;
-
-	}
-
-	if ( fileName.endsWith( ".vtk" ) || fileName.endsWith( ".vtp" ) ) {
-
-		if ( COR.vtkParser === undefined ) {
-
-			COR.vtkParser = document.body.appendChild( document.createElement( 'script' ) );
-			COR.vtkParser.onload = () => VTK.readVTK( FRL.files );
-			COR.vtkParser.src = COR.path + FOP.path + "vtk-parser.js";
-
-		} else {
-
-			VTK.readVTK( FRL.files );
-
-		}
-
-		FRL.onProgress( FRL.file.size, "Load complete" );
-
-		return;
-
-	}
-
-	if ( fileName.endsWith( ".zip" ) ) {
-
-		// FOP.dataZip = FOP.file;
-		// //console.log( "name", FOP.file.name );
-		// FOZ.onLoadFile();
-
-	}
 };
+
+
+FOP.load = function( obj, parser ) {
+
+	if ( obj === undefined ) {
+
+		scr = document.body.appendChild( document.createElement( 'script' ) );
+		scr.src = COR.path + FOP.path + parser;
+
+	} else {
+
+		obj.read( FRL.files );
+
+	}
+
+	FRL.onProgress( FRL.file.size, "Load complete" );
+
+}

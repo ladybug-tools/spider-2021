@@ -1,17 +1,22 @@
 // copyright 2021 Theo Armour. MIT license.
+/* global THREE, COR */
+// jshint esversion: 6
+// jshint loopfunc: true
 
-const r3DM = {};
+r3DM = {};
+
+r3DM.parser = "3dm-parser.js";
 
 
 // File Reader method
 
-r3DM.read3DM = function ( inpFiles ) {
+r3DM.read = function ( inpFiles ) {
 
-	if ( r3DM.dmLoader === undefined ) {
+	if ( r3DM.loader === undefined ) {
 
-		r3DM.dmLoader = document.body.appendChild( document.createElement( 'script' ) );
-		r3DM.dmLoader.onload = () => r3DM.readFile( inpFiles );
-		r3DM.dmLoader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/3DMLoader.js";
+		r3DM.loader = document.body.appendChild( document.createElement( 'script' ) );
+		r3DM.loader.onload = () => r3DM.readFile( inpFiles );
+		r3DM.loader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/3DMLoader.js";
 
 	} else {
 
@@ -25,10 +30,8 @@ r3DM.read3DM = function ( inpFiles ) {
 r3DM.readFile = function ( inpFiles ) {
 
 	const reader = new FileReader();
-
-	reader.addEventListener( "load", () => r3DM.loadDataUrl( reader.result ), false );
-
-	if ( inpFiles.files[ 0 ] ) { reader.readAsDataURL( inpFiles.files[ 0 ] ); }
+	reader.onload = () => r3DM.loadDataUrl( reader.result );
+	reader.readAsDataURL( inpFiles.files[ 0 ] );
 
 };
 
@@ -36,11 +39,15 @@ r3DM.readFile = function ( inpFiles ) {
 r3DM.loadDataUrl = function ( url ) {
 
 	const loader = new THREE.Rhino3dmLoader();
-
 	loader.setLibraryPath( 'https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/' );
-
 	loader.load( url, ( object ) => COR.reset( object.children ) );
 
 };
 
 
+if ( FRL.files ) {
+
+	console.log( "FRL.files", FRL.files );
+	r3DM.read( FRL.files );
+
+}

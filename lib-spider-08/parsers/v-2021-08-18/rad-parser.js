@@ -1,10 +1,8 @@
+// Copyright 2021 Theo Armour. MIT License
 /* global THREE * /
 /* jshint esversion: 6 */
 
-// Copyright 2021 Theo Armour. MIT License
-
-
-let RAD = {};
+RAD = {};
 
 RAD.json = null;
 RAD.meshes = null;
@@ -53,6 +51,16 @@ RAD.colors = {
 
 RAD.threeColor = new THREE.Color();
 RAD.referenceObject = new THREE.Object3D();
+
+
+RAD.read = function ( files ) {
+
+	RAD.reader = new FileReader();
+	RAD.reader.onload = ( event ) => RAD.addDataFile( event.target.result );
+	RAD.reader.readAsText( files.files[ 0 ] );
+
+};
+
 
 
 RAD.init = function ( url ) {
@@ -210,20 +218,20 @@ RAD.setThreeJsWindowUpdate = function ( json, target = undefined ) {
 	//console.log( "radmesh", RAD.meshes.children );
 	//THR.scene.add( RAD.meshes, RAD.edges );
 
-	if ( chkNewFile.checked ) { THR.group = THR.getGroupNew(); }
+	//if ( chkNewFile.checked ) { THR.group = THR.getGroupNew(); }
 
 	// const child = new THREE.Group();
 	// child.add( ...meshes );
 
-	THR.group.add( RAD.meshes );
+	//THR.group.add( RAD.meshes );
 
-	THR.zoomObjectBoundingSphere();
-	//THRU.toggleBoundingBoxHelper();
+	//THR.zoomObjectBoundingSphere();
+	////THRU.toggleBoundingBoxHelper();
 
-	dragControls = new THREE.DragControls( [ RAD.meshes ], THR.camera, THR.renderer.domElement );
-	dragControls.transformGroup = true;
-	dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
-	dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
+	// dragControls = new THREE.DragControls( [ RAD.meshes ], THR.camera, THR.renderer.domElement );
+	// dragControls.transformGroup = true;
+	// dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
+	// dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
 
 
 	//THRU.zoomObjectBoundingSphere( RAD.meshes );
@@ -235,7 +243,7 @@ RAD.setThreeJsWindowUpdate = function ( json, target = undefined ) {
 	// 	setTimeout( () => { RAD.divPopUpData.innerHTML = POP.getPopUpHtml(); }, 600 );
 
 	// }
-
+	COR.reset( RAD.meshes.children )
 };
 
 
@@ -933,6 +941,12 @@ function parse_base ( data ) {
 }
 
 
-/////////////////////////////////////////
+
+if ( FRL.files ) {
+
+	console.log( "FRL.files", FRL.files );
+	RAD.read( FRL.files );
+
+}
 
 

@@ -1,6 +1,9 @@
 // copyright 2021 Theo Armour. MIT license.
+/* global THREE, THR, THRU, COR */
+// jshint esversion: 6
+// jshint loopfunc: true
 
-const GLTF = {};
+GLTF = {};
 
 
 GLTF.read = function ( inpFiles ) {
@@ -9,7 +12,7 @@ GLTF.read = function ( inpFiles ) {
 
 		GLTF.gltfLoader = document.body.appendChild( document.createElement( 'script' ) );
 		GLTF.gltfLoader.onload = () => GLTF.readFile( inpFiles );
-		GLTF.gltfLoader.src = "https://cdn.rawgit.com/mrdoob/three.js/r131/examples/js/loaders/GLTFLoader.js";
+		GLTF.gltfLoader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/GLTFLoader.js";
 
 	} else {
 
@@ -23,12 +26,9 @@ GLTF.read = function ( inpFiles ) {
 
 GLTF.readFile = function ( inpFiles ) {
 
-	//console.log( "inpFiles", inpFiles );
 	const reader = new FileReader();
-
-	reader.addEventListener( "load", () => GLTF.loadDataUrl( reader.result ), false );
-
-	if ( inpFiles.files[ 0 ] ) { reader.readAsDataURL( inpFiles.files[ 0 ] ); }
+	reader.onload = () => GLTF.loadDataUrl( reader.result );
+	reader.readAsDataURL( inpFiles.files[ 0 ] );
 
 };
 
@@ -83,3 +83,10 @@ GLTF.loadDataUrl = function ( url = GLTF.defaultFile ) {
 	);
 
 };
+
+if ( FRL.files ) {
+
+	console.log( "FRL.files", FRL.files );
+	GLTF.read( FRL.files );
+
+}

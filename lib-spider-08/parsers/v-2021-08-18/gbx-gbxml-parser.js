@@ -1,4 +1,9 @@
-const GBX = {};
+// copyright 2021 Theo Armour. MIT license.
+/* global THREE, THR, THRU, COR */
+// jshint esversion: 6
+// jshint loopfunc: true
+
+GBX = {};
 
 GBX.colorsDefault = {
 	Air: 0xffff00,
@@ -30,13 +35,9 @@ GBX.parser = new DOMParser();
 
 GBX.read = function ( files ) {
 
-	GBX.timeStart = performance.now();
-	GBX.files = files;
-	GBX.file = GBX.files.files[ 0 ];
-	GBX.reader = new FileReader();
-	GBX.reader.onload = ( event ) => GBX.parse( event.target.result );
-
-	GBX.reader.readAsText( GBX.file );
+	const reader = new FileReader();
+	reader.onload = ( event ) => GBX.parse( event.target.result );
+	reader.readAsText( files.files[ 0 ] );
 
 };
 
@@ -62,7 +63,8 @@ GBX.onHashChange = function () {
 	xhr.onload = ( xhr ) => GBX.parse( xhr.target.response );
 	xhr.send( null );
 
-}
+};
+
 
 GBX.onChange = function ( url ) {
 
@@ -364,9 +366,9 @@ GBX.setSurfacesMetadata = function () {
 
 		let spaceIds = surface.match( / spaceIdRef="(.*?)"/gi );
 		//console.log( "spaceIds", spaceIds );
-		spaceId0 = spaceIds ? spaceIds[ 0 ] : "";
-		id = spaceId0.match( /spaceIdRef="(.*?)"/i );
-		spaceId = id ? id[ 1 ] : "";
+		const spaceId0 = spaceIds ? spaceIds[ 0 ] : "";
+		const id = spaceId0.match( /spaceIdRef="(.*?)"/i );
+		const spaceId = id ? id[ 1 ] : "";
 		//console.log( "spaceId", spaceId);
 		//spaceId = spaceId ? spaceId[ 1 ] : "";
 
@@ -436,3 +438,11 @@ GBX.parseElement = function ( string ) {
 	return { attributes, attributesHtm, children, childrenHtm };
 
 };
+
+
+if ( FRL.files ) {
+
+	console.log( "FRL.files ", FRL.files  );
+	GBX.read( FRL.files );
+
+}
