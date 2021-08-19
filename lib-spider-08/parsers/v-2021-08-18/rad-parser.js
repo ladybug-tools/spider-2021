@@ -53,6 +53,18 @@ RAD.threeColor = new THREE.Color();
 RAD.referenceObject = new THREE.Object3D();
 
 
+RAD.onChange = function ( url ) {
+
+	const xhr = new XMLHttpRequest();
+	xhr.open( 'GET', url, true );
+	xhr.onerror = ( xhr ) => console.log( 'error:', xhr );
+	//xhr.onprogress = ( xhr ) => console.log( 'bytes loaded:', xhr.loaded );
+	xhr.onload = ( xhr ) => RAD.addDataFile( xhr.target.response );
+	xhr.send( null );
+
+};
+
+
 RAD.read = function ( files ) {
 
 	RAD.reader = new FileReader();
@@ -63,17 +75,6 @@ RAD.read = function ( files ) {
 
 
 
-RAD.init = function ( url ) {
-
-	console.log( "url", url );
-	const xhr = new XMLHttpRequest();
-	xhr.open( 'GET', url, true );
-	xhr.onerror = ( xhr ) => console.log( 'error:', xhr );
-	//xhr.onprogress = ( xhr ) => console.log( 'bytes loaded:', xhr.loaded );
-	xhr.onload = ( xhr ) => RAD.addDataFile( xhr.target.response );
-	xhr.send( null );
-
-};
 
 // called by FIL.callbackRequestFile &&
 
@@ -941,12 +942,4 @@ function parse_base ( data ) {
 }
 
 
-
-if ( FRL.files ) {
-
-	console.log( "FRL.files", FRL.files );
-	RAD.read( FRL.files );
-
-}
-
-
+FRX.handle( RAD );

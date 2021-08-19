@@ -19,28 +19,21 @@ IDF.colors = {
 	undefined: 0x00ff00,
 };
 
+IDF.onChange = function ( url ) {
+
+	const xhr = new XMLHttpRequest();
+	xhr.open( "get", url, true );
+	xhr.onload = ( xhr ) => IDF.parse( xhr.target.response );
+	xhr.send( null );
+
+};
+
 
 IDF.read = function ( files ) {
 
 	IDF.reader = new FileReader();
 	IDF.reader.onload = ( event ) => IDF.parse( event.target.result );
 	IDF.reader.readAsText( files.files[ 0 ] );
-
-};
-
-
-IDF.init = function ( url ) {
-
-	//console.log( "", IDF );
-
-	const xhr = new XMLHttpRequest();
-	xhr.crossOrigin = 'anonymous';
-	xhr.open( 'GET', url, true );
-	xhr.onerror = function ( xhr ) { console.log( 'error:', xhr ); };
-	//xhr.onprogress = onRequestFileProgress;
-	xhr.onload = ( xhr ) => IDF.parse( xhr.target.response );
-	xhr.send( null );
-
 
 };
 
@@ -174,9 +167,4 @@ IDF.addShape3d = function ( vertices, index = 0, holes = [] ) {
 
 };
 
-if ( FRL.files ) {
-
-	console.log( "FRL.files", FRL.files );
-	IDF.read( FRL.files );
-
-}
+FRX.handle( IDF );

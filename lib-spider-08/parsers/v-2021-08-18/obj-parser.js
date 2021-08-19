@@ -5,6 +5,24 @@
 
 OBJ = {};
 
+
+OBJ.onChange = function ( url ) {
+
+	if ( OBJ.objLoader === undefined ) {
+
+		OBJ.objLoader = document.body.appendChild( document.createElement( 'script' ) );
+		OBJ.objLoader.onload = () => OBJ.loadUrl( url );
+		OBJ.objLoader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/OBJLoader.js";
+
+	} else {
+
+		OBJ.loadUrl( url );
+
+	}
+
+};
+
+
 OBJ.read = function ( inpFiles ) {
 
 	if ( OBJ.objLoader === undefined ) {
@@ -61,9 +79,4 @@ OBJ.loadUrl = function ( url ) {
 
 };
 
-if ( FRL.files ) {
-
-	console.log( "FRL.files", FRL.files );
-	OBJ.read( FRL.files );
-
-}
+FRX.handle( OBJ );

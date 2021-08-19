@@ -6,6 +6,23 @@
 GLTF = {};
 
 
+
+GLTF.onChange = function ( url ) {
+
+	if ( GLTF.loader === undefined ) {
+
+		GLTF.loader = document.body.appendChild( document.createElement( 'script' ) );
+		GLTF.loader.onload = () => GLTF.loadDataUrl( url );
+		GLTF.loader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/GLTFLoader.js";
+
+	} else {
+
+		GLTF.loadDataUrl( url );
+
+	}
+};
+
+
 GLTF.read = function ( inpFiles ) {
 
 	if ( GLTF.gltfLoader === undefined ) {
@@ -84,9 +101,5 @@ GLTF.loadDataUrl = function ( url = GLTF.defaultFile ) {
 
 };
 
-if ( FRL.files ) {
 
-	console.log( "FRL.files", FRL.files );
-	GLTF.read( FRL.files );
-
-}
+FRX.handle( GLTF );

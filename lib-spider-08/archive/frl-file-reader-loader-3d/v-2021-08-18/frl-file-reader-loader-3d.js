@@ -5,6 +5,7 @@
 
 
 const FRL = {};
+
 FRL.path = "lib-spider-08/parsers/v-2021-08-18/";
 
 FRL.init = function () {
@@ -56,7 +57,7 @@ FRL.wrangle = function ( inpFiles ) {
 
 FRL.handleFiles = function ( fName ) {
 
-	console.log( "fRL", fName );
+	console.log( "fName", fName );
 
 	if ( fName.endsWith( ".3dm" ) ) { FRL.load( r3DM, "3dm-parser.js" ); return; }
 
@@ -96,7 +97,7 @@ FRL.load = function ( obj, parser ) {
 
 	}
 
-	FRL.onProgress( FRL.file.size, "Load complete" );
+	FRL.onProgress( FRL.file && FRL.file.size || 0, "Load complete" );
 
 }
 

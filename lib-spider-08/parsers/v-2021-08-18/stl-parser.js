@@ -6,14 +6,29 @@
 
 STL = {};
 
+STL.onChange = function ( url ) {
+
+	if ( STL.loader === undefined ) {
+
+		STL.loader = document.body.appendChild( document.createElement( 'script' ) );
+		STL.loader.onload = () => STL.loadUrl( url );
+		STL.loader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/STLLoader.js";
+
+	} else {
+
+		STL.loadUrl( url );
+
+	}
+
+};
 
 STL.read = function ( inpFiles ) {
 
-	if ( STL.stlLoader === undefined ) {
+	if ( STL.loader === undefined ) {
 
-		STL.stlLoader = document.body.appendChild( document.createElement( 'script' ) );
-		STL.stlLoader.onload = () => STL.readFile( inpFiles );
-		STL.stlLoader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/STLLoader.js";
+		STL.loader = document.body.appendChild( document.createElement( 'script' ) );
+		STL.loader.onload = () => STL.readFile( inpFiles );
+		STL.loader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/STLLoader.js";
 
 	} else {
 
@@ -73,10 +88,4 @@ STL.loadUrl = function ( url ) {
 
 };
 
-
-if ( FRL.files ) {
-
-	console.log( "FRL.files", FRL.files );
-	STL.read( FRL.files );
-
-}
+FRX.handle( STL );

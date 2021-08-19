@@ -72,7 +72,7 @@ function init () {
 
 	sumNavMenu.hidden = false;
 
-	FRL.init();
+	//FRX.init();
 
 	GFF.init();
 	//GFF.source = "../../lib-spider/gff-github-folder-files/gff-multiple.js";
@@ -92,9 +92,9 @@ function init () {
 	//THRU.addMeshes( 100 );
 	//THR.zoomObjectBoundingSphere();
 
-	FOX.init();
-	FOX.defaultFile = COR.files[ 14 ];
-	FOX.onHashChange();
+	FRX.init();
+	FRX.defaultFile = COR.files[ 14 ];
+	FRX.onHashChange();
 
 	TXT.init();
 

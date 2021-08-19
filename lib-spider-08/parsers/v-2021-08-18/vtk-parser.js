@@ -1,17 +1,33 @@
 VTK = {};
 
 
-VTK.read = function ( inpFiles ) {
+VTK.onChange = function ( url ) {
 
-	if ( VTK.vtkLoader === undefined ) {
+	if ( VTK.loader === undefined ) {
 
-		VTK.vtkLoader = document.body.appendChild( document.createElement( 'script' ) );
-		VTK.vtkLoader.onload = () => VTK.readFile( inpFiles );
-		VTK.vtkLoader.src = "https://cdn.jsdelivr.net/npm/three@0.131/examples/js/loaders/VTKLoader.js";
+		VTK.loader = document.body.appendChild( document.createElement( 'script' ) );
+		VTK.loader.onload = () => VTK.loadUrl( url );
+		VTK.loader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/VTKLoader.js";
 
 	} else {
 
-		VTK.readFile( file );
+		VTK.loadUrl( url );
+
+	}
+
+};
+
+VTK.read = function ( url ) {
+
+	if ( VTK.loader === undefined ) {
+
+		VTK.loader = document.body.appendChild( document.createElement( 'script' ) );
+		VTK.loader.onload = () => VTK.readFile( inpFiles );
+		VTK.loader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/VTKLoader.js";
+
+	} else {
+
+		VTK.readFile( inpFiles );
 
 	}
 
@@ -47,9 +63,4 @@ VTK.loadUrl = function ( url ) {
 
 };
 
-if ( FRL.files ) {
-
-	console.log( "FRL.files", FRL.files );
-	VTK.read( FRL.files );
-
-}
+FRX.handle( VTK );

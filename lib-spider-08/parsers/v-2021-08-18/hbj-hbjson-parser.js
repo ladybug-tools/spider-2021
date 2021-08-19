@@ -13,6 +13,22 @@ HBJ.colors = {
 };
 
 
+HBJ.handle = function () {
+
+	if ( FRX.files ) {
+
+		console.log( "FRX.files ", FRX.files );
+		HBJ.read( FRX.files );
+
+	} else if ( FRX.url ) {
+
+		console.log( "", 23 );
+		HBJ.onChange( FRX.url );
+
+	}
+
+}
+
 HBJ.read = function ( files ) {
 
 	HBJ.reader = new FileReader();
@@ -22,9 +38,7 @@ HBJ.read = function ( files ) {
 };
 
 
-
-
-HBJ.init = function ( url ) {
+HBJ.onChange = function ( url ) {
 
 	const xhr = new XMLHttpRequest();
 	xhr.responseType = "json";
@@ -128,10 +142,5 @@ HBJ.addShape3d = function ( points, color = 0x888888, holes = [] ) {
 
 };
 
+FRX.handle( HBJ );
 
-if ( FRL.files ) {
-
-	console.log( "FRL.files", FRL.files );
-	HBJ.read( FRL.files );
-
-}

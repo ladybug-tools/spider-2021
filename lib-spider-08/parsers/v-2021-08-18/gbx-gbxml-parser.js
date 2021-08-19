@@ -33,6 +33,8 @@ GBX.referenceObject = new THREE.Object3D();
 GBX.parser = new DOMParser();
 
 
+
+
 GBX.read = function ( files ) {
 
 	const reader = new FileReader();
@@ -43,7 +45,7 @@ GBX.read = function ( files ) {
 
 
 
-GBX.onHashChange = function () {
+GBX.mmmmonHashChange = function () {
 
 	GBX.timeStart = performance.now();
 	const fileName = location.hash ? location.hash.slice( 1 ) : COR.files[ 14 ];
@@ -76,7 +78,6 @@ GBX.onChange = function ( url ) {
 };
 
 
-
 GBX.parse = function ( string ) {
 
 	//console.log( "string", string );
@@ -101,6 +102,7 @@ GBX.doit = function () {
 	GBX.xml = GBX.parser.parseFromString( GBX.string, "application/xml" ).documentElement;
 
 };
+
 
 function showPaintTimings () {
 
@@ -440,9 +442,4 @@ GBX.parseElement = function ( string ) {
 };
 
 
-if ( FRL.files ) {
-
-	console.log( "FRL.files ", FRL.files  );
-	GBX.read( FRL.files );
-
-}
+FRX.handle( GBX );

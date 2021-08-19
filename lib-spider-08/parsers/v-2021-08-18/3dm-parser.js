@@ -5,10 +5,22 @@
 
 r3DM = {};
 
-r3DM.parser = "3dm-parser.js";
 
+r3DM.onChange = function ( url ) {
 
-// File Reader method
+	if ( r3DM.loader === undefined ) {
+
+		r3DM.loader = document.body.appendChild( document.createElement( 'script' ) );
+		r3DM.loader.onload = () => r3DM.loadDataUrl( url );
+		r3DM.loader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/3DMLoader.js";
+
+	} else {
+
+		r3DM.loadDataUrl( url );
+
+	}
+};
+
 
 r3DM.read = function ( inpFiles ) {
 
@@ -25,6 +37,7 @@ r3DM.read = function ( inpFiles ) {
 	}
 
 };
+
 
 
 r3DM.readFile = function ( inpFiles ) {
@@ -45,9 +58,4 @@ r3DM.loadDataUrl = function ( url ) {
 };
 
 
-if ( FRL.files ) {
-
-	console.log( "FRL.files", FRL.files );
-	r3DM.read( FRL.files );
-
-}
+FRX.handle( r3DM );
