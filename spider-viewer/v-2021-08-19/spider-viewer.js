@@ -139,6 +139,7 @@ COR.reset = function ( meshes = [] ) {
 	//THRU.toggleBoundingBoxHelper();
 
 	THRR.init();
+	
 	// dragControls = new THREE.DragControls( [ child ], THR.camera, THR.renderer.domElement );
 	// dragControls.transformGroup = true;
 	// dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
