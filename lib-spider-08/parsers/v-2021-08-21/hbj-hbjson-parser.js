@@ -87,40 +87,65 @@ HBJ.processJson = function ( json ) {
 		face => HBJ.types[ keys.indexOf( face.face_type ) ].push( HBJ.addShape3d( face, room, i ) )
 	) );
 
-	const meshes = [];
+	meshes = [];
 
 	const bufferGeometryWalls = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryWalls, true );
 	const materialWalls = new THREE.MeshPhongMaterial( { color: HBJ.colors[ "Wall" ], opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
-	meshes.push( new THREE.Mesh( bufferGeometryWalls, materialWalls) );
+	const meshWalls = new THREE.Mesh( bufferGeometryWalls, materialWalls );
+	meshWalls.receiveShadow = meshWalls.castShadow = true;
+	meshWalls.name = "Walls";
+	meshWalls.userData.geometry = geometryWalls;
+	meshes.push( meshWalls );
 
 	const bufferGeometryFloors = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryFloors, true );
 	const materialFloors = new THREE.MeshPhongMaterial( { color: HBJ.colors[ "Floor" ], opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
-	meshes.push( new THREE.Mesh( bufferGeometryFloors, materialFloors ) );
+	const meshFloors = new THREE.Mesh( bufferGeometryFloors, materialFloors );
+	meshFloors.receiveShadow = meshFloors.castShadow = true;
+	meshFloors.name = "Floors";
+	meshFloors.userData.geometry = geometryFloors;
+	meshes.push( meshFloors );
 
-	const bufferRoofCeilings = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryRoofCeilings, true );
+	const bufferGeometryRoofCeilings = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryRoofCeilings, true );
 	const materialRoofCeilings = new THREE.MeshPhongMaterial( { color: HBJ.colors[ "Floor" ], opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
-	meshes.push( new THREE.Mesh( bufferRoofCeilings, materialRoofCeilings ) );
+	const meshRoofCeilings = new THREE.Mesh( bufferGeometryRoofCeilings, materialRoofCeilings );
+	meshRoofCeilings.receiveShadow = meshRoofCeilings.castShadow = true;
+	meshRoofCeilings.name = "RoofCeilings";
+	meshRoofCeilings.userData.geometry = geometryRoofCeilings;
+	meshes.push( meshRoofCeilings );
 
 	if ( geometryAirBoundaries.length ) {
 
-		const bufferAirBoundaries = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryAirBoundaries );
+		const bufferGeometryAirBoundaries = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryAirBoundaries );
 		const materialAirBoundaries = new THREE.MeshPhongMaterial( { color: HBJ.colors[ "Floor" ], opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
-		meshes.push( new THREE.Mesh( bufferAirBoundaries, materialAirBoundaries ) );
+		const meshAirBoundaries = new THREE.Mesh( bufferGeometryAirBoundaries, materialAirBoundaries );
+		meshAirBoundaries.receiveShadow = meshAirBoundaries.castShadow = true;
+		meshAirBoundaries.name = "AirBoundaries";
+		meshAirBoundaries.userData.geometry = geometryAirBoundaries;
+		meshes.push( meshAirBoundaries );
 
 	}
 
 	if ( geometryShades.length ) {
 
-		const bufferShades = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryShades );
+		const bufferGeometryShades = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryShades );
 		const materialShades = new THREE.MeshPhongMaterial( { color: 0x888888, opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
-		meshes.push( new THREE.Mesh( bufferShades, materialShades ) );
+		const meshShades = new THREE.Mesh( bufferGeometryShades, materialShades );
+		meshShades.receiveShadow = meshShades.castShadow = true;
+		meshShades.name = "Shades";
+		meshShades.userData.geometry = geometryShades;
+		meshes.push( meshShades );
 	}
 
 	if ( geometryApertures.length ) {
 
-		const bufferApertures = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryApertures );
+		const bufferGeometryApertures = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryApertures );
 		const materialApertures = new THREE.MeshPhongMaterial( { color: 0x888888, opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
-		meshes.push( new THREE.Mesh( bufferApertures, materialApertures ) );
+		const meshApertures = new THREE.Mesh( bufferGeometryApertures, materialApertures );
+		meshes.push( new THREE.Mesh( bufferGeometryApertures, materialApertures ) );
+		meshApertures.receiveShadow = meshApertures.castShadow = true;
+		meshApertures.name = "Apertures";
+		meshApertures.userData.geometry = geometryApertures;
+		meshes.push( meshApertures );
 	}
 
 	COR.reset( meshes );
@@ -189,7 +214,7 @@ HBJ.getShape = function ( points, offset ) {
 
 
 
-THRR.getHtm = function ( intersected ) {
+THRR.bbbbbgetHtm = function ( intersected ) {
 
 	console.log( "intersected", THRR.intersected );
 	const mesh = THRR.intersected.object;
@@ -213,7 +238,7 @@ THRR.getHtm = function ( intersected ) {
 
 
 
-THRR.getHtm = function ( intersected ) {
+THRR.xxxgetHtm = function ( intersected ) {
 	console.log( "intersected", intersected );
 
 	//if ( !geo ) { geo = new THREE.Geometry().fromBufferGeometry( intersected.object.geometry ); }

@@ -14,6 +14,14 @@ const THRR = {
 
 THRR.init = function () {
 
+	const geometry = new THREE.BufferGeometry();
+	geometry.setAttribute( 'position', new THREE.BufferAttribute( new Float32Array( 4 * 3 ), 3 ) );
+
+	const material = new THREE.LineBasicMaterial( { color: 0xffffff, transparent: true } );
+
+	THRR.line = new THREE.LineLoop( geometry, material );
+	THR.scene.add( THRR.line );
+
 	THRR.intersectObjects = THR.group.children;
 
 	THRR.addPointerDown();
@@ -52,9 +60,9 @@ THRR.onPointerDown = function ( event ) {
 
 	THRR.raycaster.setFromCamera( THRR.pointer, THR.camera );
 
-	THRR.intersectObjects = THR.group.children[0].children.filter( mesh => mesh.visible );
+	THRR.intersectObjects = THR.group.children; //.children.filter( mesh => mesh.visible );
 
-	let intersects = THRR.raycaster.intersectObjects( THRR.intersectObjects );
+	let intersects = THRR.raycaster.intersectObjects( THRR.intersectObjects, true );
 
 	//console.log( "intersects", intersects );
 
@@ -64,25 +72,24 @@ THRR.onPointerDown = function ( event ) {
 
 		//if ( intersected.instanceId ) {
 
+		// if ( event.button === 2 && THRR.intersected.object.geometry.vertices ) {
 
-		if ( event.button === 2 && THRR.intersected.object.geometry.vertices ) {
+		// 	vertices = THRR.intersected.object.geometry.vertices;
 
-			vertices = THRR.intersected.object.geometry.vertices;
+		// 	//console.log( "intersected", vertices );
 
-			//console.log( "intersected", vertices );
+		// 	THRR.intersected.object.visible = !THRR.intersected.object.visible;
 
-			THRR.intersected.object.visible = !THRR.intersected.object.visible;
+		// 	THRU.addLine( THRR.intersected.object, vertices );
 
-			THRU.addLine( THRR.intersected.object, vertices );
+		// 	texts = vertices.map( ( vtx, i ) => THRU.drawPlacard( "" + i, THR.radius / 2000, 0xffffff, vtx.x, vtx.y, vtx.z ) );
 
-			texts = vertices.map( ( vtx, i ) => THRU.drawPlacard( "" + i, THR.radius / 2000, 0xffffff, vtx.x, vtx.y, vtx.z ) );
+		// 	THRR.intersected.object.add( ...texts );
+		// 	//THRR.intersected.);
 
-			THRR.intersected.object.add( ...texts );
-			//THRR.intersected.);
+		// 	return;
 
-			return;
-
-		}
+		// }
 
 		divPopUp.style.display = "block";
 		divPopUp.style.left = event.clientX + 0 + "px";
@@ -102,12 +109,14 @@ THRR.onPointerDown = function ( event ) {
 };
 
 THRR.onClick = function () {
+
 	if ( !THRR.intersected ) {
 		divPopUp.style.display = "none";
 	}
 
 	THR.renderer.domElement.removeEventListener( "click", THRR.onClick );
 };
+
 
 THRR.getHtm = function ( intersected ) {
 	//const htm = JSON.stringify( intersected.object, null, "<br>" ).slice( 1, - 1 ).replace( /[",]/g, "");
@@ -130,11 +139,11 @@ THRR.getHtm = function ( intersected ) {
 
 	const htm = `
 	<div>
-		id: ${THR.group.children.indexOf( mesh ) }<br>
+		id: ${ THR.group.children.indexOf( mesh ) }<br>
 		geometry: ${ mesh.geometry.type }<br>
 		name: ${ mesh.name }</br>
-		uuid: ${mesh.uuid }<br>
-		<button onclick=THRR.getMeshData(${THR.group.children.indexOf( mesh ) }); >view mesh data</button>
+		uuid: ${ mesh.uuid }<br>
+		<button onclick=THRR.getMeshData(${ THR.group.children.indexOf( mesh ) }); >view mesh data</button>
 	</div>`;
 
 	return htm;
@@ -186,5 +195,80 @@ item: ${ item }<br>
 `;
 
 	return htm;
+
+};
+
+
+
+THRR.getHtm = function ( intersected ) {
+	//console.log( "intersected", intersected );
+
+	//scene.updateMatrixWorld();
+	const mesh = intersected.object;
+	//mesh.updateMatrix();
+	//console.log( "mesh", mesh );
+
+	const meshPosition = mesh.geometry.attributes.position;
+	const face = intersected.face;
+	const vertexA = new THREE.Vector3().fromBufferAttribute( meshPosition, face.a );
+	console.log( "vertex", vertexA );
+	const linePosition = THRR.line.geometry.attributes.position;
+	linePosition.copyAt( 0, meshPosition, face.a );
+	linePosition.copyAt( 1, meshPosition, face.b );
+	linePosition.copyAt( 2, meshPosition, face.c );
+	linePosition.copyAt( 3, meshPosition, face.a );
+	THRR.line.geometry.applyMatrix4( intersected.object.matrix );
+
+	//mesh.children.forEach( ( mesh, index ) => {
+
+	const rooms = mesh.userData.geometry;
+	console.log( "mesh", mesh.userData.geometry );
+
+
+	let index;
+
+	for ( let i = 0; i < rooms.length; i++ ) {
+
+		//console.log( "room", i, rooms[ i ] );
+		const boundary = rooms[ i ].userData.face.geometry.boundary;
+
+
+		for ( item of boundary ) {
+
+			//console.log( "item", item );
+
+			if ( item[ 0 ].toFixed( 4 ) === vertexA.x.toFixed( 4 ) &&
+				item[ 1 ].toFixed( 4 ) === vertexA.y.toFixed( 4 )  &&
+				item[ 2 ].toFixed( 4 ) === vertexA.z.toFixed( 4 )
+			) {
+
+				index = i; // Math.floor( i / 6 );
+				//console.log( "bingo!", index, vertexA );
+				console.log( "bingo!", index, item,"\n",vertexA );
+
+				break;
+
+			}
+
+		}
+	}
+
+	let data
+	if ( rooms[ index ] ) {
+
+		const data = rooms[ index ].userData;
+		console.log( "data", data );
+
+	return `
+id: ${ index }<br>
+type: ${ mesh.name }<br>
+name: ${ data.room[ 0 ].display_name }<br>
+boundary: ${ data.face.boundary_condition.type }<br>`;
+
+	} else {
+		return "Not found. Try again"
+	}
+
+
 
 };

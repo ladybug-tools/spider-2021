@@ -97,7 +97,7 @@ function init () {
 
 	THR.group = THR.getGroupNew();
 
-	THRR.init();
+	//THRR.init();
 
 	//THRU.addMeshes( 100 );
 	//THR.zoomObjectBoundingSphere();
@@ -131,10 +131,15 @@ COR.reset = function ( meshes = [] ) {
 
 	if ( chkNewFile.checked ) { THR.group = THR.getGroupNew(); }
 
-	const child = new THREE.Group();
-	child.add( ...meshes );
+	meshes.forEach( mesh => {
 
-	THR.group.add( child );
+		const child = new THREE.Group();
+		child.add( mesh );
+		child.name = mesh.name;
+		THR.group.add( child );
+
+	} )
+
 
 	THR.zoomObjectBoundingSphere();
 	//THRU.toggleBoundingBoxHelper();
