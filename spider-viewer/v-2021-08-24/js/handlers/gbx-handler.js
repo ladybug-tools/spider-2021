@@ -33,6 +33,21 @@ GBX.referenceObject = new THREE.Object3D();
 GBX.parser = new DOMParser();
 
 
+GBX.handle = function () {
+
+	if ( FRX.files ) {
+
+		GBX.read( FRX.files );
+		console.log( "FRX.files ", FRX.files );
+
+	} else if ( FRX.url ) {
+
+		GBX.onChange( FRX.url );
+		console.log( "FRX.url", FRX.url );
+
+	}
+
+};
 
 
 GBX.read = function ( files ) {
@@ -573,4 +588,4 @@ GBX.getHtm = function ( intersected ) {
 
 };
 
-FRX.handle( GBX );
+GBX.handle();
