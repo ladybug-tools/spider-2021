@@ -38,9 +38,22 @@ HBJ.handle = function () {
 
 HBJ.read = function ( files ) {
 
+	console.log( "files", files );
+
 	HBJ.reader = new FileReader();
-	HBJ.reader.onload = ( event ) => HBJ.parse( JSON.parse( event.target.result ) );
-	HBJ.reader.readAsText( files.files[ 0 ] );
+	HBJ.reader.onload = ( event ) => {
+
+		console.log( "files", files );
+
+
+		HBJ.parse( JSON.parse( event.target.result ) );
+	};
+
+	HBJ.reader.onerror = ( event ) => {
+
+		console.log( "event", event );
+	};
+	HBJ.reader.readAsText( FRX.files.files[ 0 ] );
 
 };
 

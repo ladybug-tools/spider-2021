@@ -80,8 +80,6 @@ function init () {
 
 	sumNavMenu.hidden = false;
 
-	//FRX.init();
-
 	GFF.init();
 	//GFF.source = "../../lib-spider/gff-github-folder-files/gff-multiple.js";
 
@@ -106,6 +104,10 @@ function init () {
 	FRX.defaultFile = COR.files[ 14 ];
 	FRX.onHashChange();
 
+	window.addEventListener( "dragenter", dragenter, false );
+	window.addEventListener( "dragover", dragover, false );
+	window.addEventListener( "drop", drop, false );
+
 	TXT.init();
 
 	// if running on server, keep address bar pointed to latest rev
@@ -125,6 +127,31 @@ function init () {
 	}
 
 };
+
+
+function dragenter ( e ) {
+	e.stopPropagation();
+	e.preventDefault();
+}
+
+function dragover ( e ) {
+	e.stopPropagation();
+	e.preventDefault();
+}
+
+function drop ( e ) {
+
+	e.stopPropagation();
+	e.preventDefault();
+
+	const dt = e.dataTransfer;
+	const files = dt.files;
+
+	FRX.wrangle( dt );
+
+}
+
+
 
 
 COR.reset = function ( meshes = [] ) {

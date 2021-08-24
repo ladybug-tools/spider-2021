@@ -17,7 +17,7 @@ VTK.onChange = function ( url ) {
 
 };
 
-VTK.read = function ( url ) {
+VTK.read = function ( inpFiles ) {
 
 	if ( VTK.loader === undefined ) {
 

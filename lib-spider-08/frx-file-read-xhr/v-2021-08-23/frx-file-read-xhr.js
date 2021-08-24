@@ -57,6 +57,13 @@ FRX.init = function ( defaultFile ) {
 
 FRX.wrangle = function ( inpFiles ) {
 
+	console.log( "FRX inpFiles", inpFiles.files.dropEffect, inpFiles.files
+ );
+
+	// if ( inpFiles.files.dropEffect === undefined) {
+	// 	alert( "When dropping a new file type, you have to drop a second time" )
+	// }
+
 	FRX.timeStart = performance.now();
 
 	FRX.files = inpFiles;
@@ -65,27 +72,12 @@ FRX.wrangle = function ( inpFiles ) {
 	// FRX.hostName = FRX.file.type;
 
 	const fName = FRX.files.files[ 0 ].name.toLowerCase();
+	console.log( "fName", fName );
 
 	FRX.handleFiles( fName );
 
 };
 
-
-FRX.handle = function ( obj = GBX ) {
-
-	if ( FRX.files ) {
-
-		obj.read( FRX.files );
-		console.log( "FRX.files ", FRX.files );
-
-	} else if ( FRX.url ) {
-
-		obj.onChange( FRX.url );
-		console.log( "FRX.url", FRX.url );
-
-	}
-
-};
 
 
 FRX.handleFiles = function ( fName ) {
@@ -122,6 +114,7 @@ FRX.load = function ( obj, parser ) {
 	if ( obj === undefined ) {
 
 		scr = document.body.appendChild( document.createElement( 'script' ) );
+		//scr.onload = (obj ) => FRX.handle( obj );
 		scr.src = COR.path + FRX.path + parser;
 
 	} else {
@@ -134,6 +127,23 @@ FRX.load = function ( obj, parser ) {
 
 };
 
+
+
+FRX.handle = function ( obj = GBX ) {
+
+	if ( FRX.files ) {
+
+		obj.handle( FRX.files );
+		console.log( "FRX.files ", FRX.files );
+
+	} else if ( FRX.url ) {
+
+		obj.onChange( FRX.url );
+		console.log( "FRX.url", FRX.url );
+
+	}
+
+};
 
 FRX.onProgress = function ( size = 0, note = "" ) {
 
