@@ -25,7 +25,7 @@ _Further revisions of this document will highlight relevant goal, targets and in
 
 ### Proposed solutions / Benefits
 
-* Help clients and developers get up to speed with with what has to be done and with radically more clear explanatiopns on how to do it
+* Help clients and developers get up to speed with with what has to be done and with radically more clear explanations on how to do it
 * Help gifted, talented and experienced professionals be more productive, useful and
 * Guide students and learners into effective pathways for gaining domain expertise
 * Bridge the gaps between AEC professionals and computer programmers
