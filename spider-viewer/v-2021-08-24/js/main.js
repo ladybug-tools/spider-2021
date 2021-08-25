@@ -23,7 +23,8 @@ const COR = {
 };
 
 const description = `
-Online interactive <a href="https://www.gbxml.org" target="_blank">gbXML</a> in 3D viewer in your browser
+Online interactive <a href="https://www.gbxml.org" target="_blank">gbXML</a>
+in 3D viewer in your browser,
 designed to be forked, hacked and remixed using the WebGL and the
 <a href="https://threejs.org" target="_blank">Three.js</a> JavaScript library`;
 
@@ -100,7 +101,7 @@ function init () {
 
 	FRX.init();
 	FRX.defaultFile = COR.files[ 14 ];
-	//FRX.onHashChange();
+	FRX.onHashChange();
 
 	window.addEventListener( "dragenter", dragenter, false );
 	window.addEventListener( "dragover", dragover, false );

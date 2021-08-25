@@ -134,7 +134,7 @@ FRX.load = function ( obj, parser ) {
 
 	if ( obj === undefined ) {
 
-		console.log( "obj", obj );
+		//console.log( "obj", obj );
 		scr = document.body.appendChild( document.createElement( 'script' ) );
 		//scr.onload dealt with individually by each handler
 		scr.src = COR.path + FRX.path + parser;
