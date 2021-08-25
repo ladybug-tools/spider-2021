@@ -1,6 +1,6 @@
 # [![](https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/mark-github.svg )](https://github.com/ladybug-tools/spider-2021/ "Source code on GitHub" ) [Spider 2021 Read Me]( https://ladybug-tools.github.io/spider-2021/ "Home page" )
 
-Your 2021 3D happy place for online browsing of many of the standard architecture, engineering and construction (AEC) [open data]( https://en.wikipedia.org/wiki/Open_data ) file types.
+Your 2021 3D happy place for online browsing, composing and exporting many of the standard architecture, engineering and construction (AEC) [open data]( https://en.wikipedia.org/wiki/Open_data ) file types.
 
 ## Full screen: [Spider Viewer 2021 ]( https://ladybug.tools/spider-2021/spider-viewer/)
 
@@ -9,7 +9,23 @@ Your 2021 3D happy place for online browsing of many of the standard architectur
 _Spider Viewer 2021_
 @@@-->
 
-## Concert
+## Concept
+
+### Mission
+
+* Provide fast, simple open source file manipulators for many openn data AEC file formats.
+
+### Vision
+
+* The issues of communication between the many disciplines in AEC - [Islands of Automation]( https://en.wikipedia.org/wiki/Islands_of_automation ) - become almost non-existent.
+* All the apps may share data in near real time with all the other apps.
+* All the apps export and import data in the file format of their choice
+* The Spider apps "magic" is to read the data in one format and write the data in another format
+* The spider process relies on multiple small apps each custom tailored to a single task: translating information from one specific format to another specific format.
+* There are be multiple apps for for every format. For example the translator for gbXML files going from a Bentley product to a Sephora may be differnt that the translator for gbXML files going from an NREL product goint to an Autodesk product.
+* There may be further forks so that an app is custom-tailored for, say, an Arup's workflow or a  Trane workflow.
+* The apps - for the most part - are small and simple coding efforts written in easy to read and decipher formats. They are customizable to specific workflows by entry and medium level developers.
+
 
 ### Problems to be solved
 
