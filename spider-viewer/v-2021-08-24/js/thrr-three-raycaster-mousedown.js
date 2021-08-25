@@ -221,12 +221,12 @@ THRR.getHtmDefault = function ( intersected ) {
 	console.log( "intersected", intersected );
 
 	THRR.timeStart = performance.now();
-	//scene.updateMatrixWorld();
-	const mesh = intersected.object;
-	//mesh.updateMatrix();
+	THR.scene.updateMatrixWorld();
+	mesh = intersected.object;
+	mesh.updateMatrix();
 	//console.log( "mesh", mesh );
 
-	const meshPosition = mesh.geometry.attributes.position;
+	const meshPosition = mesh.localToWorld( mesh.geometry.attributes.position );
 	const face = intersected.face;
 	const vertexA = new THREE.Vector3().fromBufferAttribute( meshPosition, face.a );
 	//console.log( "vertex", vertexA );

@@ -95,14 +95,12 @@ function init () {
 
 	THR.group = THR.getGroupNew();
 
-	//THRR.init();
-
 	//THRU.addMeshes( 100 );
 	//THR.zoomObjectBoundingSphere();
 
 	FRX.init();
 	FRX.defaultFile = COR.files[ 14 ];
-	FRX.onHashChange();
+	//FRX.onHashChange();
 
 	window.addEventListener( "dragenter", dragenter, false );
 	window.addEventListener( "dragover", dragover, false );
@@ -129,28 +127,24 @@ function init () {
 };
 
 
-function dragenter ( e ) {
-	e.stopPropagation();
-	e.preventDefault();
+function dragenter ( event ) {
+	event.stopPropagation();
+	event.preventDefault();
 }
 
-function dragover ( e ) {
-	e.stopPropagation();
-	e.preventDefault();
+function dragover ( event ) {
+	event.stopPropagation();
+	event.preventDefault();
 }
 
-function drop ( e ) {
+function drop ( event ) {
 
-	e.stopPropagation();
-	e.preventDefault();
+	event.stopPropagation();
+	event.preventDefault();
 
-	const dt = e.dataTransfer;
-	const files = dt.files;
-
-	FRX.wrangle( dt );
+	FRX.onInputFile( event.dataTransfer );
 
 }
-
 
 
 
@@ -158,24 +152,35 @@ COR.reset = function ( meshes = [] ) {
 
 	if ( chkNewFile.checked ) { THR.group = THR.getGroupNew(); }
 
-	meshes.forEach( mesh => {
+	let child;
 
-		const child = new THREE.Group();
-		child.add( mesh );
-		child.name = mesh.name;
-		THR.group.add( child );
+	// meshes.forEach( mesh => {
 
-	} )
+	// 	child = new THREE.Group();
+	// 	child.add( mesh );
+	// 	child.name = mesh.name;
+	// 	THR.group.add( child );
 
+	// } );
+
+
+	surfaces = meshes.filter( mesh => mesh.type === "Mesh" );
+
+	item = new THREE.Group();
+	item.add( ...surfaces )
+
+	groups = meshes.filter( mesh => mesh.type === "Group" );
+
+	THR.group.add( item, ...groups );
 
 	THR.zoomObjectBoundingSphere();
 	//THRU.toggleBoundingBoxHelper();
 
 	THRR.init();
 
-	// dragControls = new THREE.DragControls( [ child ], THR.camera, THR.renderer.domElement );
-	// dragControls.transformGroup = true;
-	// dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
-	// dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
+	dragControls = new THREE.DragControls( THR.group.children, THR.camera, THR.renderer.domElement );
+	dragControls.transformGroup = true;
+	dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
+	dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
 
 };

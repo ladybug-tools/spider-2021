@@ -5,21 +5,6 @@
 
 r3DM = {};
 
-r3DM.handle = function () {
-
-	if ( FRX.files ) {
-
-		r3DM.read( FRX.files );
-		console.log( "FRX.files ", FRX.files );
-
-	} else if ( FRX.url ) {
-
-		r3DM.onChange( FRX.url );
-		console.log( "FRX.url", FRX.url );
-
-	}
-
-};
 
 r3DM.onChange = function ( url ) {
 
@@ -73,6 +58,4 @@ r3DM.loadDataUrl = function ( url ) {
 };
 
 
-console.log( "r3DM", r3DM );
-
-r3DM.handle();
+FRX.handle( r3DM );

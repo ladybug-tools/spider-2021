@@ -9,20 +9,6 @@ const FRX = {};
 FRX.path = "./spider-viewer/v-2021-08-24/js/handlers/";
 
 
-FRX.onHashChange = function () {
-	//console.log( "path", FRX.path );
-
-	FRX.timeStart = performance.now();
-	const fileName = location.hash ? location.hash.slice( 1 ) : FRX.defaultFile;
-	//const fileTitle = fileName.split( "/" ).pop();
-	//FRX.extension = fileTitle.toLowerCase().split( '.' ).pop();
-	FRX.url = fileName;
-
-	FRX.handleFiles( FRX.url );
-
-};
-
-
 FRX.init = function ( defaultFile ) {
 
 	FRX.defaultFile = defaultFile;
@@ -43,7 +29,7 @@ FRX.init = function ( defaultFile ) {
 
 	<p>Select a file from your device or network,</p>
 	<p>
-		<input type=file id=FRXinpFile onchange=FRX.wrangle(this); accept="*">
+		<input type=file id=FRXinpFile onchange=FRX.onInputFile(this); accept="*">
 	</p>
 
 	<div id=FRXdivLog></div>
@@ -55,33 +41,64 @@ FRX.init = function ( defaultFile ) {
 };
 
 
-FRX.wrangle = function ( inpFiles ) {
+FRX.onHashChange = function () {
+	//console.log( "path", FRX.path );
 
-	console.log( "FRX inpFiles", inpFiles.files.dropEffect, inpFiles.files
- );
+	FRX.timeStart = performance.now();
+	const fileName = location.hash ? location.hash.slice( 1 ) : FRX.defaultFile;
+	//const fileTitle = fileName.split( "/" ).pop();
+	//FRX.extension = fileTitle.toLowerCase().split( '.' ).pop();
+	FRX.url = fileName;
 
-	// if ( inpFiles.files.dropEffect === undefined) {
+	FRX.loadHandler( FRX.url );
+
+};
+
+
+FRX.onInputFile = function ( files ) {
+
+	console.log( "FRX files", files.files, files );
+
+	FRX.timeStart = performance.now();
+
+	FRX.files = files;
+	FRX.file = FRX.files.files[ 0 ];
+	FRX.fileName = FRX.file.name;
+	FRX.hostName = FRX.file.type;
+
+	const fName = files.files[ 0 ].name.toLowerCase();
+	console.log( "fName", fName );
+
+	FRX.loadHandler( fName );
+
+};
+
+
+FRX.nnnnonDropFile = function ( files ) {
+
+	console.log( "FRX files", files.files.dropEffect, files.files );
+
+	// if ( files.files.dropEffect === undefined) {
 	// 	alert( "When dropping a new file type, you have to drop a second time" )
 	// }
 
 	FRX.timeStart = performance.now();
 
-	FRX.files = inpFiles;
-	// FRX.file = FRX.files.files[ 0 ];
-	// FRX.fileName = FRX.file.name;
-	// FRX.hostName = FRX.file.type;
+	FRX.files = files;
+	FRX.file = FRX.files.files[ 0 ];
+	FRX.fileName = FRX.file.name;
+	FRX.hostName = FRX.file.type;
 
-	const fName = inpFiles.files[ 0 ].name.toLowerCase();
-
+	const fName = files.files[ 0 ].name.toLowerCase();
 	console.log( "fName", fName );
 
-	FRX.handleFiles( fName );
+	FRX.loadHandler( fName );
 
 };
 
 
 
-FRX.handleFiles = function ( fName ) {
+FRX.loadHandler = function ( fName ) {
 
 	//console.log( "fName", fName );
 
@@ -95,6 +112,8 @@ FRX.handleFiles = function ( fName ) {
 
 	if ( fName.endsWith( ".idf" ) || fName.endsWith( ".osm" ) ) { FRX.load( IDF, "idf-handler.js" ); return; }
 
+	if ( fName.endsWith( ".ifc" ) ) { alert( "IFC file support coming soon!")}
+
 	if ( fName.endsWith( ".obj" ) ) { FRX.load( OBJ, "obj-handler.js" ); return; }
 
 	if ( fName.endsWith( ".rad" ) ) { FRX.load( RAD, "rad-handler.js" ); return; }
@@ -103,19 +122,19 @@ FRX.handleFiles = function ( fName ) {
 
 	if ( fName.endsWith( ".vtk" ) || fName.endsWith( ".vtp" ) ) { FRX.load( VTK, "vtk-handler.js" ); return; }
 
-	if ( fName.endsWith( ".zip" ) ) {
+	if ( fName.endsWith( ".vtkjs" ) ) { alert( "VTKjs support coming soon!" ); }
 
-	}
+	if ( fName.endsWith( ".zip" ) ) { alert( "coming soon!" ); }
 
 };
 
 
 FRX.load = function ( obj, parser ) {
 
-	console.log( "obj", obj );
 
 	if ( obj === undefined ) {
 
+		console.log( "obj", obj );
 		scr = document.body.appendChild( document.createElement( 'script' ) );
 		//scr.onload dealt with individually by each handler
 		scr.src = COR.path + FRX.path + parser;
@@ -134,17 +153,21 @@ FRX.load = function ( obj, parser ) {
 
 FRX.handle = function ( obj = GBX ) {
 
-	console.log( "obj", obj );
+	if ( FRX.file ) {
 
-	if ( FRX.files ) {
+		obj.read();
 
-		obj.handle( FRX.files );
+		console.log( "FRX.files ", FRX.file );
+
+	} else if ( FRX.files ) {
+
+		obj.read();
 		console.log( "FRX.files ", FRX.files );
 
 	} else if ( FRX.url ) {
 
 		obj.onChange( FRX.url );
-		console.log( "FRX.url", FRX.url );
+		//console.log( "FRX.url", FRX.url );
 
 	}
 

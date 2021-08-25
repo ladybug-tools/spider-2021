@@ -6,33 +6,33 @@
 
 STL = {};
 
-STL.onChange = function ( url ) {
+STL.onChange = function () {
 
 	if ( STL.loader === undefined ) {
 
 		STL.loader = document.body.appendChild( document.createElement( 'script' ) );
-		STL.loader.onload = () => STL.loadUrl( url );
+		STL.loader.onload = () => STL.loadUrl( FRX.url );
 		STL.loader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/STLLoader.js";
 
 	} else {
 
-		STL.loadUrl( url );
+		STL.loadUrl( FRX.url );
 
 	}
 
 };
 
-STL.read = function ( inpFiles ) {
+STL.read = function () {
 
 	if ( STL.loader === undefined ) {
 
 		STL.loader = document.body.appendChild( document.createElement( 'script' ) );
-		STL.loader.onload = () => STL.readFile( inpFiles );
+		STL.loader.onload = () => STL.readFile();
 		STL.loader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/STLLoader.js";
 
 	} else {
 
-		STL.readFile( inpFiles );
+		STL.readFile();
 
 	}
 
@@ -43,7 +43,7 @@ STL.readFile = function ( inpFiles ) {
 
 	const reader = new FileReader();
 	reader.onload = () => STL.loadUrl( reader.result );
-	reader.readAsDataURL( inpFiles.files[ 0 ] );
+	reader.readAsDataURL( FRX.file);
 
 };
 

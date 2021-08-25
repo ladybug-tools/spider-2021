@@ -53,10 +53,10 @@ RAD.threeColor = new THREE.Color();
 RAD.referenceObject = new THREE.Object3D();
 
 
-RAD.onChange = function ( url ) {
+RAD.onChange = function () {
 
 	const xhr = new XMLHttpRequest();
-	xhr.open( 'GET', url, true );
+	xhr.open( 'GET', FRX.url, true );
 	xhr.onerror = ( xhr ) => console.log( 'error:', xhr );
 	//xhr.onprogress = ( xhr ) => console.log( 'bytes loaded:', xhr.loaded );
 	xhr.onload = ( xhr ) => RAD.addDataFile( xhr.target.response );
@@ -69,10 +69,9 @@ RAD.read = function ( files ) {
 
 	RAD.reader = new FileReader();
 	RAD.reader.onload = ( event ) => RAD.addDataFile( event.target.result );
-	RAD.reader.readAsText( files.files[ 0 ] );
+	RAD.reader.readAsText( FRX.file );
 
 };
-
 
 
 
@@ -216,34 +215,6 @@ RAD.setThreeJsWindowUpdate = function ( json, target = undefined ) {
 
 	RAD.meshes.add( triangles );
 
-	//console.log( "radmesh", RAD.meshes.children );
-	//THR.scene.add( RAD.meshes, RAD.edges );
-
-	//if ( chkNewFile.checked ) { THR.group = THR.getGroupNew(); }
-
-	// const child = new THREE.Group();
-	// child.add( ...meshes );
-
-	//THR.group.add( RAD.meshes );
-
-	//THR.zoomObjectBoundingSphere();
-	////THRU.toggleBoundingBoxHelper();
-
-	// dragControls = new THREE.DragControls( [ RAD.meshes ], THR.camera, THR.renderer.domElement );
-	// dragControls.transformGroup = true;
-	// dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
-	// dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
-
-
-	//THRU.zoomObjectBoundingSphere( RAD.meshes );
-
-	//target.innerHTML = POP.getPopUpHtml();
-
-	// if ( RAD.divPopUpData ) {
-
-	// 	setTimeout( () => { RAD.divPopUpData.innerHTML = POP.getPopUpHtml(); }, 600 );
-
-	// }
 	COR.reset( RAD.meshes.children );
 
 	THRR.getHtm = THRR.getHtmDefault;
@@ -261,11 +232,11 @@ RAD.drawPolygon = function ( polygon ) {
 
 	if ( points < 2 ) {
 
-		console.log( { polygon } );
+		//console.log( { polygon } );
 
 	} else if ( points < 3 ) {
 
-		console.log( 'draw line', { polygon } );
+		//console.log( 'draw line', { polygon } );
 
 	} else if ( points < 4 ) {
 

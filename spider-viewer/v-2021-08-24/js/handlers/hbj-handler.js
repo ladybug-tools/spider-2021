@@ -20,31 +20,13 @@ let geometryShades = [];
 let geometryApertures = [];
 
 
-HBJ.handle = function () {
 
-	if ( FRX.files ) { // file reader
+HBJ.read = function () {
 
-		console.log( "FRX.files ", FRX.files );
-		HBJ.read( FRX.files );
-
-	} else if ( FRX.url ) { // location hash
-
-		console.log( "", 23 );
-		HBJ.onChange( FRX.url );
-
-	}
-
-}
-
-HBJ.read = function ( files ) {
-
-	console.log( "files", files );
+	//console.log( "hbj files",FRX.files );
 
 	HBJ.reader = new FileReader();
 	HBJ.reader.onload = ( event ) => {
-
-		console.log( "files", files );
-
 
 		HBJ.parse( JSON.parse( event.target.result ) );
 	};
@@ -53,16 +35,44 @@ HBJ.read = function ( files ) {
 
 		console.log( "event", event );
 	};
-	HBJ.reader.readAsText( FRX.files.files[ 0 ] );
+
+	HBJ.reader.readAsText( FRX.file );
 
 };
+
+
+HBJ.vvvreadFileDrop = function () {
+
+	file = FRX.file;
+
+	console.log( "files", file );
+
+	HBJ.reader = new FileReader();
+	HBJ.reader.onload = ( event ) => {
+
+		console.log( "file", file );
+
+
+		HBJ.parse( JSON.parse( event.target.result ) );
+
+	};
+
+	HBJ.reader.onerror = ( event ) => {
+
+		console.log( "event", event );
+	};
+
+	HBJ.reader.readAsText( file );
+
+};
+
 
 
 HBJ.onChange = function ( url ) {
 
 	const xhr = new XMLHttpRequest();
 	xhr.responseType = "json";
-	xhr.open( "get", url, true );
+	xhr.open( "get", FRX.url, true );
 	xhr.onload = ( xhr ) => HBJ.parse( xhr.target.response );
 	xhr.send( null );
 
@@ -405,7 +415,6 @@ boundary: ${ data.face.boundary_condition.type }<br>`;
 	}
 
 };
-
 
 
 FRX.handle( HBJ );

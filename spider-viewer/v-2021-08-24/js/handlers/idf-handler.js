@@ -19,21 +19,21 @@ IDF.colors = {
 	undefined: 0x00ff00,
 };
 
-IDF.onChange = function ( url ) {
+IDF.onChange = function () {
 
 	const xhr = new XMLHttpRequest();
-	xhr.open( "get", url, true );
+	xhr.open( "get", FRX.url, true );
 	xhr.onload = ( xhr ) => IDF.parse( xhr.target.response );
 	xhr.send( null );
 
 };
 
 
-IDF.read = function ( files ) {
+IDF.read = function () {
 
 	IDF.reader = new FileReader();
 	IDF.reader.onload = ( event ) => IDF.parse( event.target.result );
-	IDF.reader.readAsText( files.files[ 0 ] );
+	IDF.reader.readAsText( FRX.file );
 
 };
 
@@ -48,7 +48,7 @@ IDF.parse = function ( string ) {
 	COR.reset( surfaces );
 
 	THRR.getHtm = THRR.getHtmDefault;
-	
+
 	//RAY.intersectObjects = meshes;
 
 	//THRU.addText( IDF.items[ 0 ], new THREE.Vector3( THR.axesHelper.position.x, THR.axesHelper.position.y + 5 * THR.radius, THR.axesHelper.position.z + 0.5 * THR.radius ) );

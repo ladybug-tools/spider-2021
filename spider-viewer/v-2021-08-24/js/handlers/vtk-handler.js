@@ -1,44 +1,44 @@
 VTK = {};
 
 
-VTK.onChange = function ( url ) {
+VTK.onChange = function () {
 
 	if ( VTK.loader === undefined ) {
 
 		VTK.loader = document.body.appendChild( document.createElement( 'script' ) );
-		VTK.loader.onload = () => VTK.loadUrl( url );
+		VTK.loader.onload = () => VTK.loadUrl( FRX.url );
 		VTK.loader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/VTKLoader.js";
 
 	} else {
 
-		VTK.loadUrl( url );
+		VTK.loadUrl( FRX.url );
 
 	}
 
 };
 
-VTK.read = function ( inpFiles ) {
+VTK.read = function () {
 
 	if ( VTK.loader === undefined ) {
 
 		VTK.loader = document.body.appendChild( document.createElement( 'script' ) );
-		VTK.loader.onload = () => VTK.readFile( inpFiles );
+		VTK.loader.onload = () => VTK.readFile();
 		VTK.loader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/VTKLoader.js";
 
 	} else {
 
-		VTK.readFile( inpFiles );
+		VTK.readFile();
 
 	}
 
 };
 
 
-VTK.readFile = function ( files ) {
+VTK.readFile = function () {
 
 	const reader = new FileReader();
 	reader.onload = () => VTK.loadUrl( reader.result );
-	reader.readAsDataURL( files.files[ 0 ] );
+	reader.readAsDataURL( FRX.file );
 
 };
 

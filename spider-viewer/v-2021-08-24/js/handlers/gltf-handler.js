@@ -12,12 +12,12 @@ GLTF.onChange = function ( url ) {
 	if ( GLTF.loader === undefined ) {
 
 		GLTF.loader = document.body.appendChild( document.createElement( 'script' ) );
-		GLTF.loader.onload = () => GLTF.loadDataUrl( url );
+		GLTF.loader.onload = () => GLTF.loadDataUrl( FRX.url );
 		GLTF.loader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/GLTFLoader.js";
 
 	} else {
 
-		GLTF.loadDataUrl( url );
+		GLTF.loadDataUrl( FRX.url );
 
 	}
 };
@@ -28,12 +28,12 @@ GLTF.read = function ( inpFiles ) {
 	if ( GLTF.gltfLoader === undefined ) {
 
 		GLTF.gltfLoader = document.body.appendChild( document.createElement( 'script' ) );
-		GLTF.gltfLoader.onload = () => GLTF.readFile( inpFiles );
+		GLTF.gltfLoader.onload = () => GLTF.readFile();
 		GLTF.gltfLoader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/GLTFLoader.js";
 
 	} else {
 
-		GLTF.readFile( inpFiles );
+		GLTF.readFile();
 
 	}
 
@@ -41,11 +41,11 @@ GLTF.read = function ( inpFiles ) {
 
 
 
-GLTF.readFile = function ( inpFiles ) {
+GLTF.readFile = function () {
 
 	const reader = new FileReader();
 	reader.onload = () => GLTF.loadDataUrl( reader.result );
-	reader.readAsDataURL( inpFiles.files[ 0 ] );
+	reader.readAsDataURL( FRX.file );
 
 };
 

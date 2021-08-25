@@ -23,28 +23,28 @@ OBJ.onChange = function ( url ) {
 };
 
 
-OBJ.read = function ( inpFiles ) {
+OBJ.read = function () {
 
 	if ( OBJ.objLoader === undefined ) {
 
 		OBJ.objLoader = document.body.appendChild( document.createElement( 'script' ) );
-		OBJ.objLoader.onload = () => OBJ.readFile( inpFiles );
+		OBJ.objLoader.onload = () => OBJ.readFile();
 		OBJ.objLoader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/OBJLoader.js";
 
 	} else {
 
-		OBJ.readFile( inpFiles );
+		OBJ.readFile( FRX.file );
 
 	}
 
 };
 
 
-OBJ.readFile = function ( files ) {
+OBJ.readFile = function () {
 
 	const reader = new FileReader();
 	reader.onload = ( event ) => OBJ.loadUrl( event.target.result );
-	reader.readAsDataURL( files.files[ 0 ] );
+	reader.readAsDataURL( FRX.file );
 
 };
 
@@ -58,7 +58,7 @@ OBJ.loadUrl = function ( url ) {
 
 		function ( object ) {
 
-			console.log( "object", object );
+			//console.log( "object", object );
 
 			COR.reset( object.children );
 
@@ -68,7 +68,7 @@ OBJ.loadUrl = function ( url ) {
 
 		function ( xhr ) {
 
-			console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+			//console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
 
 		},
 

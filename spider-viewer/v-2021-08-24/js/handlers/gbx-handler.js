@@ -33,22 +33,6 @@ GBX.referenceObject = new THREE.Object3D();
 GBX.parser = new DOMParser();
 
 
-GBX.handle = function () {
-
-	if ( FRX.files ) {
-
-		GBX.read( FRX.files );
-		console.log( "FRX.files ", FRX.files );
-
-	} else if ( FRX.url ) {
-
-		GBX.onChange( FRX.url );
-		console.log( "FRX.url", FRX.url );
-
-	}
-
-};
-
 
 GBX.read = function ( files ) {
 
@@ -58,29 +42,6 @@ GBX.read = function ( files ) {
 
 };
 
-
-
-GBX.mmmmonHashChange = function () {
-
-	GBX.timeStart = performance.now();
-	const fileName = location.hash ? location.hash.slice( 1 ) : COR.files[ 14 ];
-	const fileTitle = fileName.split( "/" ).pop();
-	const extension = fileTitle.toLowerCase().split( '.' ).pop();
-
-	//console.log( "ext", extension );
-
-	if ( extension !== "xml" && extension !== "gbxml" ) { return; }
-
-	//document.title = `${ COR.documentTitle } ~ ${ fileTitle }`;
-
-	const url = fileName;
-
-	const xhr = new XMLHttpRequest();
-	xhr.open( "get", url, true );
-	xhr.onload = ( xhr ) => GBX.parse( xhr.target.response );
-	xhr.send( null );
-
-};
 
 
 GBX.onChange = function ( url ) {
@@ -112,6 +73,8 @@ GBX.parse = function ( string ) {
 	//showPaintTimings();
 
 };
+
+
 
 GBX.doit = function () {
 
@@ -588,4 +551,4 @@ GBX.getHtm = function ( intersected ) {
 
 };
 
-GBX.handle();
+FRX.handle( GBX );
