@@ -98,14 +98,12 @@ _Further revisions of this document will highlight relevant goal, targets and in
 * gbXML
 
 
-## To Do an wishlist
+## To Do and wishlist
 
 * Add models to existing or load new
 * Edit model position, scale and rotation
 * Export assemblies in simple ways
 * Add Three.js axis editor
-
-
 
 
 ***
