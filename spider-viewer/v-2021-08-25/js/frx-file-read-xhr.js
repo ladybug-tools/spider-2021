@@ -118,7 +118,7 @@ FRX.load = function ( obj, parser ) {
 
 	} else {
 
-		FRX.handle( obj );
+		obj.handle();
 
 	}
 
@@ -127,7 +127,7 @@ FRX.load = function ( obj, parser ) {
 };
 
 
-
+// 
 FRX.handle = function ( obj = GBX ) {
 
 	if ( FRX.file ) {
@@ -144,7 +144,7 @@ FRX.handle = function ( obj = GBX ) {
 	} else if ( FRX.url ) {
 
 		obj.onChange( FRX.url );
-		//console.log( "FRX.url", FRX.url );
+		console.log( "FRX.url", FRX.url );
 
 	}
 

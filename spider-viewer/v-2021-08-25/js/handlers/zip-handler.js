@@ -12,7 +12,7 @@ ZIP.handle = function () {
 
 		ZIP.read();
 
-		console.log( "FRX.files ", FRX.file );
+		console.log( "FRX.files", FRX.file );
 
 	} else if ( FRX.files ) {
 
@@ -30,12 +30,11 @@ ZIP.handle = function () {
 
 ZIP.onChange = function () {
 
-	console.log( "", 23 );
 
 	if ( ZIP.loader === undefined ) {
 
 		ZIP.loader = document.body.appendChild( document.createElement( 'script' ) );
-		ZIP.loader.onload = () => ZIP.loadUrl( FRX.url );
+		ZIP.loader.onload = () => ZIP.handle( FRX.url );
 		ZIP.loader.src = "https://cdn.jsdelivr.net/npm/jszip@3.7.1/dist/jszip.min.js";
 
 	} else {
@@ -65,9 +64,10 @@ ZIP.read = function () {
 
 ZIP.readFile = function ( inpFiles ) {
 
+	console.log( "", 23 );
 	const reader = new FileReader();
-	reader.onload = ( event ) => ZIP.unzip( event.target.result );
-	reader.readAsText( files.files[ 0 ] );
+	reader.onload = ( event ) => ZIP.unzip( event.target.files );
+	reader.readAsText( FRX.file );
 
 };
 
@@ -81,37 +81,35 @@ ZIP.loadUrl = function ( url ) {
 
 };
 
-ZIP.unzip = function ( dataZip ) {
+ZIP.unzip = function () {
 
-	console.log( "dataZip", dataZip );
+	let zip;
+	let fName;
 
-	ZIP.timeStart = performance.now();
+	JSZip.loadAsync( FRX.file )
+		.then( dataZip => {
 
-	const zip = new JSZip();
-	const files = [];
-	let fileName;
+			zip = dataZip;
+			fName = Object.keys( zip.files )[ 0 ];
+			return zip.file( fName ).async( "string" );
 
-	zip.loadAsync( dataZip )
+		} ).then( text => {
 
-		.then( zip =>
-			//console.log( 'zip', zip );
-			zip.file( Object.keys( zip.files )[ 0 ] ).async( "string" )
+			FRX.content = text;
 
-		).then( text => {
+			//console.log( "text", text );
 
-			ZIPdivFileOpenZip.innerHTML = `
-<p>
-	bytes loaded: ${ text.length.toLocaleString() }<br>
-	time elapsed ${ ( performance.now() - ZIP.timeStart ).toLocaleString() } ms<br>
-	file: ${ Object.keys( zip.files )[ 0 ] }
-</p>`;
+			if ( fName.endsWith( "xml" ) ) { FRX.load( GBX, "gbx-handler.js" ); return; }
 
-			//ZIP.lines = text.split( /\r\n/ ).map( line => line.split( "|" ).map( item => item.trim() ) );
+			if ( fName.endsWith( ".idf" ) || fName.endsWith( ".osm" ) ) { FRX.load( IDF, "idf-handler.js" ); return; }
 
-			//divContent.innerText = ZIP.lines.slice( 0, 100 );
 
-			console.log( "text", text );
-		} );
+		},
+
+		( event ) => FRXdivLog += `<div>Error reading ${ fName }: ${ event.message }</div>`
+
+	);
+
 
 };
 

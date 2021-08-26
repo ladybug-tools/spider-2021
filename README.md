@@ -2,7 +2,7 @@
 
 Your 2021 3D happy place for online browsing, composing and exporting many of the standard architecture, engineering and construction (AEC) [open data]( https://en.wikipedia.org/wiki/Open_data ) file types.
 
-## Full screen: [Spider Viewer 2021 ]( https://ladybug.tools/spider-2021/spider-viewer/)
+## Full screen: [Spider Viewer 2021]( https://ladybug.tools/spider-2021/spider-viewer/)
 
 <!--@@@
 <iframe src=https://ladybug.tools/spider-2021/spider-viewer/ class="iframe-resize" ></iframe>
@@ -13,7 +13,19 @@ _Spider Viewer 2021_
 
 ### Mission
 
-* Provide fast, simple open source file manipulators for many openn data AEC file formats.
+* Provide fast, simple open source file manipulators for many open data AEC file formats.
+* Load and display a variety of AEC industry standard file types for 3D building data
+* Enable a feature-rich 3D interaction with models
+* Export files into industry-standard rendering, animation and gaming formats
+* Become the major Spider project for this year
+* Create a single unified set of files for developing and testing the interaction between dozens of modules
+* Gather all the Spider 3D file viewers into a single cooperative framework
+* Enable new types of reports and presentations
+* Simplify testing and adding features across the range of viewers
+* Creates a standard user experience across the range of Spider apps
+* Load files via URL, OS file dialog and Drad & Drop
+* Access an extensive collection of sample data files
+* View renderer and frames per second statistics
 
 ### Vision
 
@@ -46,63 +58,59 @@ _Further revisions of this document will highlight relevant goal, targets and in
 * Guide students and learners into effective pathways for gaining domain expertise
 * Bridge the gaps between AEC professionals and computer programmers
 
-### Features
-
-* Load and display a variety of AEC industry standard file types for 3D building data
-* Enable a feature-rich 3D interaction with models
-* Export files into industry-standard rendering, animation and gaming formats
-* A major Spider project for this year
-* A single unified set of files for developing and testing the interaction between dozens of modules
-* Gather all the Spider 3D file viewers into a single cooperative framework
-* Enable new types of reports and presentations
-* Simplify testing and adding features across the range of viewers
-* Create a standard user experience across the range of Spider apps
 
 ## Road map / Import
 
 ### gbXML
 
 * Schema: https://gbxml.org
-* 2021-01-26: Gallery, URL and file reader all implemented
+
 
 ### IDF and OSM
 
 * originator: https://www.energyplus.net/
-* To add: Gallery, URL and file reader all
-
 
 ### Honeybee JSON & VTK
 
 * schema: https://github.com/ladybug-tools/dragonfly-schema
 * schema: https://github.com/ladybug-tools/honeybee-schema
-* https://vtk.org/Wiki/VTK
 
-### RAD
+### Radiance ~ RAD
 
 * schema: https://radiance-online.org/
-* To add: Gallery, URL and file reader all
+
+To-do
+
+* 2021-08-25 ~ fix a number of small issues
+* 2021-08-25 ~ add materials
+
+### VTK
+
+* https://vtk.org/Wiki/VTK
 
 
-### Industry Foundation Classes (IFC)
+### Industry Foundation Classes  ~ IFC
 
 * Your 3D happy place for [IFC]( https://en.wikipedia.org/wiki/Industry_Foundation_Classes ) files is over at [xeoLabs]( https://xeolabs.com/ ). Tell Lindsay that Theo sent you.
 * https://github.com/agviegas/IFC.js??
 
 
-## Road map / Export
+## Export
 
-* OBJ
-* STL
-* glTF
-* JSON
+To-Do
+
 * gbXML
+* Export to other formats as requested
 
 
 ## To Do and wishlist
 
-* Add models to existing or load new
+* 2021-08-25 ~ frx.progress text everywhere
+* 2021-08-25 ~ import "3json"
+* Add Sun path
+* Add capture image
+* Add insert text
 * Edit model position, scale and rotation
-* Export assemblies in simple ways
 * Add Three.js axis editor
 
 

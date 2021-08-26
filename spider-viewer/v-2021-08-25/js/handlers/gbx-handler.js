@@ -33,12 +33,42 @@ GBX.referenceObject = new THREE.Object3D();
 GBX.parser = new DOMParser();
 
 
+GBX.handle = function () {
 
-GBX.read = function ( files ) {
+	//console.log( "FRX.content", FRX.content );
+
+	if ( FRX.content ) { GBX.parse( FRX.content ); return; }
+
+	if ( FRX.file ) {
+
+		GBX.read();
+		console.log( "FRX.files ", FRX.file );
+		return;
+
+	}
+
+	if ( FRX.files ) {
+
+		GBX.read();
+		console.log( "FRX.files ", FRX.files );
+		return;
+	}
+
+	if ( FRX.url ) {
+
+		GBX.onChange( FRX.url );
+		console.log( "FRX.url", FRX.url );
+		return;
+	}
+
+};
+
+
+GBX.read = function () {
 
 	const reader = new FileReader();
 	reader.onload = ( event ) => GBX.parse( event.target.result );
-	reader.readAsText( files.files[ 0 ] );
+	reader.readAsText( FRX.file );
 
 };
 
@@ -551,4 +581,4 @@ GBX.getHtm = function ( intersected ) {
 
 };
 
-FRX.handle( GBX );
+GBX.handle();

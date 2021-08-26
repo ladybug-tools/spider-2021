@@ -19,6 +19,34 @@ IDF.colors = {
 	undefined: 0x00ff00,
 };
 
+IDF.handle = function () {
+
+	if ( FRX.content ) { IDF.parse( FRX.content ); return; }
+
+	if ( FRX.file ) {
+
+		IDF.read();
+		console.log( "FRX.files ", FRX.file );
+		return;
+
+	}
+
+	if ( FRX.files ) {
+
+		IDF.read();
+		console.log( "FRX.files ", FRX.files );
+		return;
+	}
+
+	if ( FRX.url ) {
+
+		IDF.onChange( FRX.url );
+		console.log( "FRX.url", FRX.url );
+		return
+	}
+
+};
+
 IDF.onChange = function () {
 
 	const xhr = new XMLHttpRequest();
@@ -169,4 +197,4 @@ IDF.addShape3d = function ( vertices, index = 0, holes = [] ) {
 
 };
 
-FRX.handle( IDF );
+IDF.handle();
