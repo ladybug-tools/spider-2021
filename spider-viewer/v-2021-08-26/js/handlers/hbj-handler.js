@@ -20,24 +20,42 @@ let geometryShades = [];
 let geometryApertures = [];
 
 
+HBJ.handle = function () {
+
+	//console.log( "FRX.content", FRX.content.slice( 0, 100 ) );
+	console.log( "FRX.file", FRX.file );
+	console.log( "FRX.url", FRX.url );
+
+	if ( FRX.content ) { HBJ.parse( JSON.parse( FRX.content ) ); return; }
+
+	if ( FRX.file ) { HBJ.read(); return; }
+
+	if ( FRX.url ) { HBJ.onChange( FRX.url ); return; }
+
+};
+
+
 
 HBJ.read = function () {
 
 	//console.log( "hbj files",FRX.files );
 
-	HBJ.reader = new FileReader();
-	HBJ.reader.onload = ( event ) => {
+	// HBJ.reader = new FileReader();
+	// HBJ.reader.onload = ( event ) => {
 
-		HBJ.parse( JSON.parse( event.target.result ) );
-	};
+	// 	HBJ.parse( JSON.parse( event.target.result ) );
+	// };
 
-	HBJ.reader.onerror = ( event ) => {
+	// HBJ.reader.onerror = ( event ) => {
 
-		console.log( "event", event );
-	};
+	// 	console.log( "event", event );
+	// };
 
-	HBJ.reader.readAsText( FRX.file );
+	// HBJ.reader.readAsText( FRX.file );
 
+	const reader = new FileReader();
+	reader.onload = ( event ) => HBJ.parse( JSON.parse( event.target.result ));
+	reader.readAsText( FRX.file );
 };
 
 
@@ -81,7 +99,11 @@ HBJ.onChange = function ( url ) {
 
 HBJ.parse = function ( json ) {
 
+	console.log( "json", json );
+
 	HBJ.json = json;
+
+	console.log( "",  );
 
 	geometryShades = [];
 	geometryApertures = [];
@@ -417,4 +439,4 @@ boundary: ${ data.face.boundary_condition.type }<br>`;
 };
 
 
-FRX.handle( HBJ );
+HBJ.handle();

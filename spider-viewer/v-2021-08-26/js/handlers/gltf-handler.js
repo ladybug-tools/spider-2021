@@ -5,6 +5,20 @@
 
 GLTF = {};
 
+GLTF.handle = function () {
+
+	//console.log( "FRX.content", FRX.content.slice( 0, 100 ) );
+	console.log( "FRX.files ", FRX.file );
+	console.log( "FRX.url", FRX.url );
+
+	if ( FRX.content ) { GLTF.parse( FRX.content ); return; }
+
+	if ( FRX.file ) { GLTF.read(); return; }
+
+	if ( FRX.url ) { GLTF.onChange( FRX.url ); return; }
+
+};
+
 
 
 GLTF.onChange = function ( url ) {
@@ -104,4 +118,4 @@ GLTF.loadDataUrl = function ( url = GLTF.defaultFile ) {
 };
 
 
-FRX.handle( GLTF );
+GLTF.handle();

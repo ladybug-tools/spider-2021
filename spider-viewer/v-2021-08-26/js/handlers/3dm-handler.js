@@ -22,6 +22,21 @@ r3DM.handle = function () {
 
 
 
+r3DM.onUnZip = function () {
+
+	if ( r3DM.loader === undefined ) {
+
+		r3DM.loader = document.body.appendChild( document.createElement( 'script' ) );
+		r3DM.loader.onload = () => r3DM.loadDataUrl( FRX.content  );
+		r3DM.loader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/3DMLoader.js";
+
+	} else {
+
+		r3DM.loadDataUrl( FRX.content  );
+
+	}
+
+};
 
 
 r3DM.read = function () {
@@ -57,47 +72,36 @@ r3DM.onChange = function () {
 	if ( r3DM.loader === undefined ) {
 
 		r3DM.loader = document.body.appendChild( document.createElement( 'script' ) );
-		r3DM.loader.onload = () => r3DM.loadDataUrl();
+		r3DM.loader.onload = () => r3DM.loadDataUrl( FRX.url );
 		r3DM.loader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/3DMLoader.js";
 
 	} else {
 
-		r3DM.loadDataUrl();
+		r3DM.loadDataUrl( FRX.url );
 
 	}
 };
 
 
-r3DM.onUnZip = function ( url ) {
 
-	if ( r3DM.loader === undefined ) {
 
-		r3DM.loader = document.body.appendChild( document.createElement( 'script' ) );
-		r3DM.loader.onload = () => r3DM.loadDataUrl( url );
-		r3DM.loader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/3DMLoader.js";
-
-	} else {
-
-		r3DM.loadDataUrl( url );
-
-	}
-};
-
-r3DM.loadDataUrl = function () {
+r3DM.loadDataUrl = function ( url ) {
 
 	const loader = new THREE.Rhino3dmLoader();
 	loader.setLibraryPath( 'https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/' );
-	loader.load( FRX.url, ( object ) => COR.reset( object.children ) );
+	loader.load( url, ( object ) => COR.reset( object.children ) );
 
 };
 
 
-r3DM.parseContent = function () {
+r3DM.parseContent = function ( content ) {
 
+	console.log( "content", content );
 	const loader = new THREE.Rhino3dmLoader();
 	loader.setLibraryPath( 'https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/' );
-	loader.parse( FRX.content )
-	loader.onload( object => COR.reset( object.children ) );
+
+	//loader.onload( object => COR.reset( object.children ) );
+	loader.parse( content, ( object ) => COR.reset( object.children ) )
 
 };
 

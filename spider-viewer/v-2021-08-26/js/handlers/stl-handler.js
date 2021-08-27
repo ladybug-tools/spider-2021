@@ -6,6 +6,40 @@
 
 STL = {};
 
+STL.handle = function () {
+
+	console.log( "FRX.content", FRX.content.slice( 0, 100 ) );
+	console.log( "FRX.file", FRX.file );
+	console.log( "FRX.url", FRX.url );
+
+	if ( FRX.content ) { STL.onUnZip(); return; }
+
+	if ( FRX.file ) { STL.read(); return; }
+
+	if ( FRX.url ) { STL.onChange( FRX.url ); return; }
+
+};
+
+
+
+STL.onUnZip = function () {
+
+	if ( STL.loader === undefined ) {
+
+		STL.loader = document.body.appendChild( document.createElement( 'script' ) );
+		STL.loader.onload = () => STL.parse();
+		STL.loader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/STLLoader.js";
+
+	} else {
+
+		STL.parse();
+
+	}
+
+};
+
+
+
 STL.onChange = function () {
 
 	if ( STL.loader === undefined ) {
@@ -21,6 +55,8 @@ STL.onChange = function () {
 	}
 
 };
+
+
 
 STL.read = function () {
 
@@ -46,6 +82,7 @@ STL.readFile = function ( inpFiles ) {
 	reader.readAsDataURL( FRX.file);
 
 };
+
 
 
 STL.loadUrl = function ( url ) {
@@ -90,4 +127,21 @@ STL.loadUrl = function ( url ) {
 
 };
 
-FRX.handle( STL );
+
+
+STL.parse = function () {
+
+	const loader = new THREE.STLLoader();
+
+	console.log( "FRX.content ", FRX.content  );
+	object = loader.parse( FRX.content );
+
+	console.log( "object", object );
+
+	COR.reset( object.children );
+
+	THRR.getHtm = THRR.getHtmDefault;
+
+}
+
+STL.handle();

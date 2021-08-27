@@ -180,6 +180,18 @@ GFF.folders = [
 		<a href="https://www.ladybug.tools/spider/#idf-sample-files/README.md" target="_blank">sample IDF files</a>
 	 	on GitHub from a variety of sources`
 	},
+	{
+		"extension": ".zip",
+		"user": "ladybug-tools",
+		"repo": "/3d-models",
+		"branch": "master",
+		"pathRepo": "idf-sample-files/2021-zip/",
+		"title": "IDF ZIP samples",
+		"subTitle":
+			`Ladybug Tools / Spider Viewer
+		<a href="https://www.ladybug.tools/spider/#idf-sample-files/README.md" target="_blank">sample IDF files</a>
+	 	on GitHub from a variety of sources`
+	},
 	{ "group": "<b>IFC</b>" },
 	{
 		"extension": ".ifc",

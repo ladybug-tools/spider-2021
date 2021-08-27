@@ -53,6 +53,21 @@ RAD.threeColor = new THREE.Color();
 RAD.referenceObject = new THREE.Object3D();
 
 
+RAD.handle = function () {
+
+	console.log( "FRX.content", FRX.content.slice( 0, 100 ) );
+	console.log( "FRX.files ", FRX.file );
+	console.log( "FRX.url", FRX.url );
+
+	if ( FRX.content ) { RAD.addDataFile( FRX.content ); return; }
+
+	if ( FRX.file ) { RAD.read(); return; }
+
+	if ( FRX.url ) { RAD.onChange( FRX.url ); return; }
+
+};
+
+
 RAD.onChange = function () {
 
 	const xhr = new XMLHttpRequest();
@@ -915,4 +930,4 @@ function parse_base ( data ) {
 }
 
 
-FRX.handle( RAD );
+RAD.handle();

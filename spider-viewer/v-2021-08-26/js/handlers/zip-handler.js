@@ -1,5 +1,5 @@
 // copyright 2021 Theo Armour. MIT license.
-/* global THREE, COR*/
+/* global THREE, COR, FRX, JSZip, r3DM, GBX, GLTF, HBJ, IDF, IFC, OBJ, RAD, STL, ZIP, FRXdivLog */
 // jshint esversion: 6
 // jshint loopfunc: true
 
@@ -12,7 +12,7 @@ ZIP.handle = function () {
 	console.log( "FRX.files ", FRX.file );
 	console.log( "FRX.url", FRX.url );
 
-	if ( FRX.file ) { ZIP.loadFileFile(); return; }
+	if ( FRX.file ) { ZIP.loadFile(); return; }
 
 	if ( FRX.url ) { ZIP.fetchZipFile( FRX.url ); return; }
 
@@ -20,14 +20,14 @@ ZIP.handle = function () {
 
 
 
-ZIP.loadFile = function( file = FRX.file ) {
+ZIP.loadFile = function ( file = FRX.file ) {
 
 	JSZip.loadAsync( file )
-		.then( ( data ) => {
-			zip = data;
-			const names = getNames( zip );
+		.then( ( zip ) => {
 
-			getZipContents( names[ 0 ], zip );
+			const names = ZIP.getNames( zip );
+
+			ZIP.getZipContents( names[ 0 ], zip );
 
 		} )
 
@@ -35,11 +35,11 @@ ZIP.loadFile = function( file = FRX.file ) {
 			console.error( "There has been a problem with your file operation:", error );
 		} );
 
-}
+};
 
 
 
-ZIP.fetchZipFile = function( url = url2 ) {
+ZIP.fetchZipFile = function ( url = url2 ) {
 
 	fetch( url )
 
@@ -65,26 +65,26 @@ ZIP.fetchZipFile = function( url = url2 ) {
 			console.error( "There has been a problem with your fetch operation:", error );
 		} );
 
-}
+};
 
 
 
 
-ZIP.getNames = function( zip ) {
+ZIP.getNames = function ( zip ) {
 
 	const names = [];
 
 	zip.forEach( ( relativePath, zipEntry ) => {
-		console.log( "zipEntry.name", zipEntry.name );
+		//console.log( "zipEntry.name", zipEntry.name );
 		names.push( zipEntry.name );
 	} );
 
 	return names;
 
-}
+};
 
 
-ZIP.getZipContents = function( fileName, zip ) {
+ZIP.getZipContents = function ( fileName, zip ) {
 
 	zip.file( fileName ).async( "uint8array" )
 
@@ -126,6 +126,8 @@ ZIP.getZipContents = function( fileName, zip ) {
 			//divContent.innerText = text;
 
 			FRX.content = text;
+			FRX.files = "";
+			FRX.url = "";
 
 			//console.log( "text", text );
 
@@ -133,7 +135,17 @@ ZIP.getZipContents = function( fileName, zip ) {
 
 			if ( fileName.endsWith( "xml" ) ) { FRX.load( GBX, "gbx-handler.js" ); return; }
 
+			if ( fileName.endsWith( "hbjson" ) ) { FRX.load( HBJ, "hbj-handler.js" ); return; }
+
 			if ( fileName.endsWith( ".idf" ) || fileName.endsWith( ".osm" ) ) { FRX.load( IDF, "idf-handler.js" ); return; }
+
+			if ( fileName.endsWith( "obj" ) ) { FRX.load( OBJ, "obj-handler.js" ); return; }
+
+			if ( fileName.endsWith( "rad" ) ) { FRX.load( RAD, "rad-handler.js" ); return; }
+
+			if ( fileName.endsWith( "stl" ) ) { FRX.load( STL, "stl-handler.js" ); return; }
+
+			if ( fileName.endsWith( "vtk" ) ) { FRX.load( VTK, "vtk-handler.js" ); return; }
 
 		} )
 
@@ -141,13 +153,13 @@ ZIP.getZipContents = function( fileName, zip ) {
 			console.error( "There has been a problem with your fetch operation:", error );
 		} );
 
-}
+};
 
 
 
 ZIP.unzip = function ( url ) {
 
-	console.log( "url", url );
+	//console.log( "url", url );
 
 	let zip;
 	let fName;
@@ -169,8 +181,17 @@ ZIP.unzip = function ( url ) {
 
 			if ( fName.endsWith( "xml" ) ) { FRX.load( GBX, "gbx-handler.js" ); return; }
 
+			if ( fName.endsWith( "hbjson" ) ) { FRX.load( HBJ, "hbj-handler.js" ); return; }
+
 			if ( fName.endsWith( ".idf" ) || fName.endsWith( ".osm" ) ) { FRX.load( IDF, "idf-handler.js" ); return; }
 
+			if ( fName.endsWith( "obj" ) ) { FRX.load( OBJ, "obj-handler.js" ); return; }
+
+			if ( fileName.endsWith( "rad" ) ) { FRX.load( RAD, "rad-handler.js" ); return; }
+
+			if ( fileName.endsWith( "stl" ) ) { FRX.load( STL, "stl-handler.js" ); return; }
+
+			if ( fileName.endsWith( "vtk" ) ) { FRX.load( VTK, "vtk-handler.js" ); return; }
 
 		},
 
