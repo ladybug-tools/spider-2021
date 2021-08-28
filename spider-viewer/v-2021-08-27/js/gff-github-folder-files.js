@@ -5,8 +5,8 @@
 
 const GFF = {
 
-	//source: "https://www.ladybug.tools/spider-2021/lib-spider-08/gff-github-folder-files/v-2021-08-27/gff-multiple.js";
-	source: "js/gff-multiple.js"
+	source: "https://www.ladybug.tools/spider-2021/spider-viewer/v-2021-08-27/js/gff-multiple.js"
+	//source: "js/gff-multiple.js"
 };
 
 GFF.iconGitHubMark = "https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/octicon.svg";
