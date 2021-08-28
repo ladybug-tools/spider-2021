@@ -13,19 +13,34 @@ _Spider Viewer 2021_
 
 ### Mission
 
-* Provide fast, simple open source file manipulators for many open data AEC file formats.
-* Load and display a variety of AEC industry standard file types for 3D building data
-* Enable a feature-rich 3D interaction with models
+* Provide fast, simple open source file manipulators for many open data Architecture, Engineering, & Construction (AEC) file types for 3D building data
+* Load and display a variety of AEC industry standard file formats
+	* Rhino 3DM
+	* gbXML
+	* Khronos [GLTF & GLB]( https://en.wikipedia.org/wiki/GlTF )
+	* Ladybug Tools HBJSON
+	* EnergyPlus IDF & OSM
+	* OBJ
+	* Radiance RAD
+	* STL
+	* VTK
+* Load files via URL, operating system file dialog and Drag & Drop
+* Load multiple files of various type unto a single scene
+* Automatically decompress models in ZIP files and load them into the scene
+* Translate double bytes character files to single byte (UTF-16 to UTF-8)
+
 * Export files into industry-standard rendering, animation and gaming formats
+* Export a scene with multiple models into a single new file
+* Enable a feature-rich 3D interaction with models
+* View renderer and frames per second statistics
+
+* Access an extensive collection of sample data files
+* Creates a standard user experience across the range of Spider apps
 * Become the major Spider project for this year
 * Create a single unified set of files for developing and testing the interaction between dozens of modules
 * Gather all the Spider 3D file viewers into a single cooperative framework
 * Enable new types of reports and presentations
 * Simplify testing and adding features across the range of viewers
-* Creates a standard user experience across the range of Spider apps
-* Load files via URL, OS file dialog and Drad & Drop
-* Access an extensive collection of sample data files
-* View renderer and frames per second statistics
 
 ### Vision
 
