@@ -153,40 +153,38 @@ COR.reset = function ( obj = [] ) {
 
 	objs = Array.isArray( obj ) ? obj : [ obj ];
 
-	let child;
-
-	// meshes.forEach( mesh => {
-
-	// 	child = new THREE.Group();
-	// 	child.add( mesh );
-	// 	child.name = mesh.name;
-	// 	THR.group.add( child );
-
-	// } );
-
-
 	const meshes = objs.filter( mesh => mesh.type === "Mesh" );
 
-	if ( !!meshes.length ) {
+	// if ( !!meshes.length ) {
 
-		const meshGroup = new THREE.Group();
-		meshGroup.add( ...meshes );
-		THR.group.add( meshGroup );
+	// 	const meshGroup = new THREE.Group();
+	// 	meshGroup.add( ...meshes );
+	// 	THR.group.add( meshGroup );
 
-	}
-	//console.log( "meshes", meshes );
+	// }
+	// //console.log( "meshes", meshes );
 
-	const groups = objs.filter( obj => obj.type === "Group" );
-	//console.log( "groups", groups  );
+	// const groups = objs.filter( obj => obj.type === "Group" );
 
-	if ( !!groups.length ) { THR.group.add( ...groups ); }
+	// if ( !!groups.length ) {
+
+	// 	THR.group.add( ...groups );
+	// 	console.log( "groups", groups  );
+	// }
+
+
+	const model = new THREE.Group();
+	model.add( ...meshes );
+
+	THR.group.add( model );
 
 	THR.zoomObjectBoundingSphere();
 	//THRU.toggleBoundingBoxHelper();
 
 	THRR.init();
 
-	dragControls = new THREE.DragControls( THR.group.children, THR.camera, THR.renderer.domElement );
+	dragControls = new THREE.DragControls( [ model ], THR.camera, THR.renderer.domElement );
+
 	dragControls.transformGroup = true;
 	dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
 	dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
