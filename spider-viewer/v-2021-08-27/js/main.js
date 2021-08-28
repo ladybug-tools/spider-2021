@@ -192,3 +192,13 @@ COR.reset = function ( obj = [] ) {
 	FRX.onProgress( FRX.size || 0, "Load complete" );
 
 };
+
+COR.test = function () {
+
+
+	for ( let i = 0; i < COR.files.length; i++ ) {
+
+		setTimeout( () => location.hash=COR.files[ i ], 3000 )
+
+		}
+}

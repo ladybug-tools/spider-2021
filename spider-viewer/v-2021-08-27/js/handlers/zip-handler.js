@@ -12,8 +12,6 @@ ZIP.handle = function () {
 	console.log( "FRX.files ", FRX.file );
 	console.log( "FRX.url", FRX.url );
 
-
-
 	if ( FRX.file ) { ZIP.loadFile(); return; }
 
 	if ( FRX.url ) { ZIP.fetchZipFile( FRX.url ); return; }
@@ -93,7 +91,7 @@ ZIP.getZipContents = function ( fileName, zip ) {
 	if ( [ "glb", "3dm", "vtk" ].includes( extension ) ) {
 
 		alert( "Spider is not yet unzipping this file format. Yet" );
-		
+
 		return;
 	}
 
@@ -140,7 +138,7 @@ ZIP.getZipContents = function ( fileName, zip ) {
 			FRX.files = "";
 			FRX.url = "";
 
-			console.log( "text", text );
+			//console.log( "text", text );
 
 			if ( fileName.endsWith( ".3dm" ) ) { FRX.load( r3DM, "3dm-handler.js" ); return; }
 
