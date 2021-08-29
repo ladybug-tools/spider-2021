@@ -75,8 +75,6 @@ let ZIP = undefined;
 
 function init () {
 
-
-	//MNU.path = "../../";
 	MNU.init();
 
 	CORdivStats.innerHTML = `
@@ -205,6 +203,11 @@ COR.reset = function ( obj = [] ) {
 	FRX.onProgress( FRX.size || 0, "Load complete" );
 
 };
+
+
+
+
+
 COR.index = 1;
 
 COR.test = function () {
