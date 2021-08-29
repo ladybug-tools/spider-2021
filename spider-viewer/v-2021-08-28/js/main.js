@@ -127,8 +127,8 @@ function init () {
 	} else {
 
 
-		//COR.path = `https://www.ladybug.tools/spider-2021/v-${ COR.version }`;
-		COR.path = "../../";
+		//COR.path = `https://www.ladybug.tools/spider-2021/v-${ COR.version }/`;
+		//COR.path = "";
 
 		THR.controls.autoRotate = false;
 

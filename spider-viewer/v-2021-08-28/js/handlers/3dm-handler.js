@@ -89,7 +89,7 @@ r3DM.loadDataUrl = function ( url ) {
 
 	const loader = new THREE.Rhino3dmLoader();
 	loader.setLibraryPath( 'https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/' );
-	loader.load( url, ( object ) => { console.log( "", object ); COR.reset( object.children ); } );
+	loader.load( url, ( object ) => { COR.reset( object.children ); } );
 
 };
 

@@ -118,7 +118,7 @@ FRX.load = function ( obj, parser ) {
 		scr = document.body.appendChild( document.createElement( 'script' ) );
 		//scr.onload dealt with individually by each handler
 		//scr.src = COR.path + COR.pathJs + parser;
-		scr.src = "js/handlers/" + parser;
+		scr.src = `js/handlers/${ parser }`;
 
 	} else {
 
