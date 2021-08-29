@@ -6,17 +6,20 @@
 const GFF = {
 
 	//source: "https://www.ladybug.tools/spider-2021/spider-viewer/v-2021-08-28/js/gff-multiple.js"
-	source: "js/gff-multiple.js"
+
 };
 
 GFF.iconGitHubMark = "https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/octicon.svg";
 GFF.iconInfo = `<img src=${ GFF.iconGitHubMark } height=11 style=opacity:0.5 >`;
 GFF.iconExternalLink = `<img width=16 src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/icon-link-external.svg">`;
-GFF.files = []; //GFF.folders.map( item => [] );
+GFF.files = [];
 
 
 
 GFF.init = function () {
+
+	GFF.source = COR.path + "js/gff-multiple.js"
+
 
 	GFFdivDetails.addEventListener( "contextmenu", GFF.onContextMenu );
 

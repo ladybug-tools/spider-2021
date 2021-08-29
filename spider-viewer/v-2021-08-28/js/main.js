@@ -7,7 +7,7 @@ const COR = {
 	user: "ladybug-tools",
 	repo: "spider-2021",
 	branch: "main",
-	path: "../../",
+	//path: "../../",
 	//pathJs: "spider-viewer/v-2021-08-27/js/handlers/",
 	defaultFile: "README.md",
 	ignoreFolders: [],
@@ -76,7 +76,7 @@ let ZIP = undefined;
 function init () {
 
 
-	MNU.path = "../../";
+	//MNU.path = "../../";
 	MNU.init();
 
 	CORdivStats.innerHTML = `
@@ -108,7 +108,7 @@ function init () {
 
 	FRX.init();
 	FRX.defaultFile = COR.files[ 0 ];
-	FRX.onHashChange();
+
 
 	window.addEventListener( "dragenter", dragenter, false );
 	window.addEventListener( "dragover", dragover, false );
@@ -122,17 +122,20 @@ function init () {
 
 		window.history.pushState( "", "", "../" );
 
-		COR.path = `https://www.ladybug.tools/spider-2021/v-${ COR.version }/`;
+		COR.path = "./"; //`https://www.ladybug.tools/spider-2021/v-${ COR.version }/`;
 
 	} else {
 
 
 		//COR.path = `https://www.ladybug.tools/spider-2021/v-${ COR.version }/`;
-		//COR.path = "";
+		COR.path = "./"; // `./v-${ COR.version }/`;
 
 		THR.controls.autoRotate = false;
 
 	}
+
+	GFF.init();
+	FRX.onHashChange();
 
 };
 
