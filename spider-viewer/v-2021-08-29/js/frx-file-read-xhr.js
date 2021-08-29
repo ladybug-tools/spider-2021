@@ -163,7 +163,7 @@ FRX.load = function ( obj, parser ) {
 		//console.log( "obj", obj );
 		scr = document.body.appendChild( document.createElement( 'script' ) );
 		//scr.onload dealt with individually by each handler
-		scr.src = FRX.path + `js/handlers/${ parser }`;
+		scr.src = COR.path + `js/handlers/${ parser }`;
 		//scr.src = `js/handlers/${ parser }`;
 
 	} else {
