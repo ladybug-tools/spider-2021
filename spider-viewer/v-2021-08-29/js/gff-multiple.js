@@ -120,6 +120,18 @@ GFF.folders = [
 	{
 		"extension": ".hbjson",
 		"user": "ladybug-tools",
+		"repo": "/3d-models",
+		"branch": "master",
+		"pathRepo": "hbjson-sample-files/2021/",
+		"title": "Pollination samples",
+		"subTitle":
+			`Ladybug Tools / Honeybee
+		<a href="https://github.com/ladybug-tools/3d-models/tree/master/hbjson-sample-files/2021" target="_blank">sample hbjson files</a>
+	 	on GitHub from a variety of sources`
+	},
+	{
+		"extension": ".hbjson",
+		"user": "ladybug-tools",
 		"repo": "/honeybee-schema",
 		"branch": "master",
 		"pathRepo": "samples/model_large/",

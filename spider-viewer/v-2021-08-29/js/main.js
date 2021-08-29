@@ -219,22 +219,22 @@ COR.reset = function ( obj = [] ) {
 
 
 
-COR.index = 1;
+COR.i = 1;
 
 COR.test = function () {
 
-	requestIdleCallback ( COR.run  );
+	requestIdleCallback( COR.run  );
 
 };
 
 
 COR.run = function () {
 
-	if ( COR.index < COR.files.length ) {
+	if ( COR.i < COR.files.length ) {
 
-		location.hash = COR.files[ COR.index++ ];
+		location.hash = COR.files[ COR.i++ ];
 
-		COR.test()
+		COR.test();
 
 	}
 }
