@@ -24,7 +24,7 @@ IDF.colors = {
 IDF.handle = function () {
 
 	//console.log( "FRX.content", FRX.content.slice( 0, 100 ) );
-	console.log( "FRX.files ", FRX.file.split( "/" ).pop() );
+	console.log( "FRX.files ", FRX.file.name );
 	console.log( "FRX.url", FRX.url.split( "/" ).pop() );
 
 	if ( FRX.content ) { IDF.parse( FRX.content ); return; }

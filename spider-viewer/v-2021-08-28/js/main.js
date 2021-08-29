@@ -135,6 +135,7 @@ function init () {
 	}
 
 	GFF.init();
+
 	FRX.onHashChange();
 
 };
@@ -208,7 +209,7 @@ COR.index = 1;
 
 COR.test = function () {
 
-	setInterval( COR.run, 3000 );
+	requestIdleCallback ( COR.run  );
 
 };
 
@@ -219,8 +220,26 @@ COR.run = function () {
 
 		location.hash = COR.files[ COR.index++ ];
 
+		COR.test()
+
 	}
 }
 
 
+COR.test2 = function () {
+	// see "it"
+	//** https://stackoverflow.com/questions/36330634/mock-file-input-for-unit-test
+	// https://stackoverflow.com/questions/25097738/how-to-provide-mock-files-to-change-event-of-input-type-file-for-unit-testin/50488481
+	// https://developer.mozilla.org/en-US/docs/Web/API/FileList
+	// https://gist.github.com/josephhanson/372b44f93472f9c5a2d025d40e7bb4cc
+
+	Object.defineProperty( FRXinpFile, 'files', {
+		value: [ { name: 'file.txt' } ],
+		writable: false,
+	} );
+	FRXinpFile.trigger( 'input' ).trigger( 'change' );
+
+    // expect outputs...
+
+}
 

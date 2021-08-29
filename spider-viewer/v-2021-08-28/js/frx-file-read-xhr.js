@@ -137,7 +137,7 @@ FRX.load = function ( obj, parser ) {
 // ZZZ.handle = function () {
 
 // 	//console.log( "FRX.content", FRX.content.slice( 0, 100 ) );
-// 	console.log( "FRX.file", FRX.file.split( "/").pop() );
+// 	console.log( "FRX.file", FRX.file.name );
 // 	console.log( "FRX.url", FRX.url.split( "/").pop() );
 
 // 	if ( FRX.content ) { ZZZ.parse( FRX.content ); return; }

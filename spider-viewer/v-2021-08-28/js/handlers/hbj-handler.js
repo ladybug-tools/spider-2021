@@ -23,7 +23,7 @@ let geometryApertures = [];
 HBJ.handle = function () {
 
 	//console.log( "FRX.content", FRX.content.slice( 0, 100 ) );
-	console.log( "FRX.file", FRX.file );
+	console.log( "FRX.file", FRX.file.name );
 	console.log( "FRX.url", FRX.url.split( "/").pop() );
 
 	if ( FRX.content ) { HBJ.parse( JSON.parse( FRX.content ) ); return; }
