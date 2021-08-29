@@ -6,8 +6,11 @@
 
 const FRX = {};
 
+FRX.reader = new FileReader();
+FRX.path = "";
 
 FRX.init = function ( defaultFile ) {
+
 
 	FRX.defaultFile = defaultFile;
 
@@ -27,7 +30,7 @@ FRX.init = function ( defaultFile ) {
 
 	<p>Select a file from your device or network,</p>
 	<p>
-		<input type=file id=FRXinpFile onchange=FRX.onInputFile(this); accept="*">
+		<input type=file id=FRXinpFiles onchange=FRX.onInputFiles(this); accept="*" multiple>
 	</p>
 
 	<div id=FRXdivLog></div>
@@ -40,7 +43,7 @@ FRX.init = function ( defaultFile ) {
 
 
 FRX.onHashChange = function () {
-	//console.log( "path", COR.pathJs );
+	//console.log( "path", FRX.pathJs );
 
 	FRX.timeStart = performance.now();
 	const url = location.hash ? location.hash.slice( 1 ) : FRX.defaultFile;
@@ -56,29 +59,71 @@ FRX.onHashChange = function () {
 };
 
 
-FRX.onInputFile = function ( files ) {
+FRX.onInputFiles = function () {
 
 	//console.log( "FRX files", files.files, files );
 
 	FRX.timeStart = performance.now();
 
-	FRX.files = files;
-	FRX.file = FRX.files.files[ 0 ];
+	FRX.files = FRXinpFiles.files;
+	FRX.file = FRX.files[ 0 ];
 	FRX.fileName = FRX.file.name;
 	FRX.hostName = FRX.file.type;
 	FRX.content = "";
 	FRX.url = "";
 
-	const fName = files.files[ 0 ].name.toLowerCase();
-	//console.log( "fName", fName );
+	FRX.index = 0;
+	FRX.timeStart = performance.now();
 
-	FRX.loadHandler( fName );
+	FRX.readFile();
+};
+
+
+FRX.readFile = function () {
+
+	FRX.reader.readAsText( FRX.files[ FRX.index ] );
+
+	FRX.file = FRX.files[ FRX.index ];
+
+	//console.log( "", FRX.index, FRX.file );
+
+	FRX.index++;
+
+	if ( FRX.index < FRX.files.length ) {
+
+		setTimeout( FRX.readFile, 2000 );
+
+	}
+
+}
+
+
+
+
+FRX.reader.onload = function () {
+
+	//divContent.innerHTML = reader.result;
+
+
+
+	FRX.loadHandler( FRX.fileName.toLowerCase() )
+
+	if ( window.divStats ) {
+
+		divStats.innerHTML = `
+					name: ${ FRX.file.name }<br>
+					size: ${ FRX.file.size.toLocaleString() } bytes<br>
+					type: ${ FRX.file.type }<br>
+					modified: ${ file.lastModifiedDate.toLocaleDateString() }<br>
+					time to load: ${ ( performance.now() - timeStart ).toLocaleString() } ms`;
+
+	}
 
 };
 
 
 
-FRX.loadHandler = function ( fName ) {
+FRX.loadHandler = function ( fName ){
 
 	//console.log( "fName", fName );
 
@@ -111,14 +156,14 @@ FRX.loadHandler = function ( fName ) {
 
 FRX.load = function ( obj, parser ) {
 
-	console.log( "COR.path ", COR.path  );
+	console.log( "FRX.path ", FRX.path  );
 
 	if ( obj === undefined ) {
 
 		//console.log( "obj", obj );
 		scr = document.body.appendChild( document.createElement( 'script' ) );
 		//scr.onload dealt with individually by each handler
-		scr.src = COR.path + `js/handlers/${ parser }`;
+		scr.src = FRX.path + `js/handlers/${ parser }`;
 		//scr.src = `js/handlers/${ parser }`;
 
 	} else {

@@ -23,6 +23,9 @@ const COR = {
 	description: document.head.querySelector( "[ name=description ]" ).content,
 };
 
+
+
+
 const description = `
 Online interactive <a href="https://www.gbxml.org" target="_blank">gbXML</a>
 in 3D viewer in your browser,
@@ -153,8 +156,29 @@ function drop ( event ) {
 	event.stopPropagation();
 	event.preventDefault();
 
-	FRX.onInputFile( event.dataTransfer );
+	const dt = event.dataTransfer;
+	FRX.files = dt.files;
+
+	//FRX.onInputFile( event.dataTransfer );
+
+	FRX.timeStart = performance.now();
+
+	FRX.index = 0;
+
+	FRX.readFile();
+
 }
+
+
+
+// FRXinpFiles.onchange = function ( event ) {
+
+// 	COR.files = FRXinpFiles.files;
+// 	COR.index = 0;
+// 	COR.readFile();
+
+// };
+
 
 
 
@@ -206,8 +230,6 @@ COR.reset = function ( obj = [] ) {
 
 
 
-
-
 COR.index = 1;
 
 COR.test = function () {
@@ -228,24 +250,4 @@ COR.run = function () {
 	}
 }
 
-
-COR.test2 = function () {
-	// see "it"
-	//** https://stackoverflow.com/questions/36330634/mock-file-input-for-unit-test
-	// https://stackoverflow.com/questions/25097738/how-to-provide-mock-files-to-change-event-of-input-type-file-for-unit-testin/50488481
-	// https://developer.mozilla.org/en-US/docs/Web/API/FileList
-	// https://gist.github.com/josephhanson/372b44f93472f9c5a2d025d40e7bb4cc
-
-	// Object.defineProperty( FRXinpFile, 'files', {
-	// 	value: [ { name: 'file.txt' } ],
-	// 	writable: false,
-	// } );
-	// FRXinpFile.trigger( 'input' ).trigger( 'change' );
-
-    // expect outputs...
-
-	const file = new File( [ "hello" ], "hello.png", { type: "image/png" } );
-
-	
-}
 
