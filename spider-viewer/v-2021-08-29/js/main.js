@@ -171,17 +171,6 @@ function drop ( event ) {
 
 
 
-// FRXinpFiles.onchange = function ( event ) {
-
-// 	COR.files = FRXinpFiles.files;
-// 	COR.index = 0;
-// 	COR.readFile();
-
-// };
-
-
-
-
 COR.reset = function ( obj = [] ) {
 
 	if ( chkNewFile.checked ) { THR.group = THR.getGroupNew(); }

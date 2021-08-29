@@ -23,7 +23,7 @@ GFF.init = function () {
 <br>
 File name: gff-github-folder-files.js<br>
 Name space: GFF<br>
-Release 2021-08-17`;
+Release 2021-08-27`;
 
 	GFFdivDetails.innerHTML = `
 <details ontoggle=GFF.getMenuGithubFoldersFiles() class=divNavResize >
@@ -34,7 +34,7 @@ Release 2021-08-17`;
 
 	<div>
 
-		<p>Sample files you can load, view, experiment with and export into new formats:</p>
+		<p>Sample files you can load, view, experiment with and export into new formats. Many files are not loaded well or have display issues.</p>
 
 		<div id=GFFdivGithubFoldersFiles></div>
 
