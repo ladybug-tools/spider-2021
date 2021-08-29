@@ -9,8 +9,8 @@ r3DM = {};
 r3DM.handle = function () {
 
 	//console.log( "FRX.content", FRX.content.slice( 0, 100 ) );
-	console.log( "FRX.files ", FRX.file );
-	console.log( "FRX.url", FRX.url );
+	console.log( "FRX.file", FRX.file.name );
+	console.log( "FRX.url", FRX.url.split( "/" ).pop() );
 
 	if ( FRX.content ) { r3DM.onUnZip(); return; }
 
@@ -96,11 +96,11 @@ r3DM.loadDataUrl = function ( url ) {
 
 r3DM.parseContent = function ( content ) {
 
-	alert( "Unziiping 3DM files is broken. Sorry!" );
+	alert( "Unzipping 3DM files is broken. Sorry!" );
 
 	return;
 
-	
+
 	console.log( "content", content.slice( 0, 200 ));
 
 	const loader = new THREE.Rhino3dmLoader();

@@ -19,40 +19,13 @@ IDF.colors = {
 	undefined: 0x00ff00,
 };
 
-IDF.handle = function () {
-
-	if ( FRX.content ) { IDF.parse( FRX.content ); return; }
-
-	if ( FRX.file ) {
-
-		IDF.read();
-		console.log( "FRX.files ", FRX.file );
-		return;
-
-	}
-
-	if ( FRX.files ) {
-
-		IDF.read();
-		console.log( "FRX.files ", FRX.files );
-		return;
-	}
-
-	if ( FRX.url ) {
-
-		IDF.onChange( FRX.url );
-		console.log( "FRX.url", FRX.url );
-		return
-	}
-
-};
 
 
 IDF.handle = function () {
 
 	//console.log( "FRX.content", FRX.content.slice( 0, 100 ) );
-	console.log( "FRX.files ", FRX.file );
-	console.log( "FRX.url", FRX.url );
+	console.log( "FRX.files ", FRX.file.split( "/" ).pop() );
+	console.log( "FRX.url", FRX.url.split( "/" ).pop() );
 
 	if ( FRX.content ) { IDF.parse( FRX.content ); return; }
 

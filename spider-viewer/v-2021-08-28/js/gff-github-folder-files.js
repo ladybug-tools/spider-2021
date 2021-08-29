@@ -304,13 +304,13 @@ GFF.onContextMenu = function ( event ) {
 	divPopUp.style.zIndex = "50";
 
 	const htm = `
-
-	<div><button onclick=GFF.toggleChildren(GFFdivDetails,true); >open all</button></div>
 	<div><button onclick=GFF.toggleChildren(GFFdivDetails,false); >close all</button></div>
-	<hr>
-	<div><button onclick=GFF.toggleChildren(${ event.target.parentNode.id },true); >open children</button></div>
-	<div><button onclick=GFF.toggleChildren(${ event.target.parentNode.id },false); >close children</button></div>
 	`;
+
+	//<div><button onclick=GFF.toggleChildren(GFFdivDetails,true); >open all</button></div>
+	//<hr>
+	//<div><button onclick=GFF.toggleChildren(${ event.target.parentNode.id },true); >open children</button></div>
+	//<div><button onclick=GFF.toggleChildren(${ event.target.parentNode.id },false); >close children</button></div>
 
 	divPopUp.innerHTML = htm;
 
@@ -321,7 +321,7 @@ GFF.onContextMenu = function ( event ) {
 
 GFF.toggleChildren = function ( element = GFFdivDetails, boole = false ) {
 
-	console.log( "el", element, element.querySelectorAll( "details" ) )
+	//console.log( "el", element, element.querySelectorAll( "details" ) )
 
 	element.open = boole;
 

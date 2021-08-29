@@ -8,8 +8,8 @@ GLTF = {};
 GLTF.handle = function () {
 
 	//console.log( "FRX.content", FRX.content.slice( 0, 100 ) );
-	console.log( "FRX.files ", FRX.file );
-	console.log( "FRX.url", FRX.url );
+	console.log( "FRX.files ", FRX.file.split( "/" ).pop() );
+	console.log( "FRX.url", FRX.url.split( "/" ).pop() );
 
 	if ( FRX.content ) { GLTF.parse( FRX.content ); return; }
 

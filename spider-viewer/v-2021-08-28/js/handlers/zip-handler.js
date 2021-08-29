@@ -9,8 +9,8 @@ ZIP = {};
 
 ZIP.handle = function () {
 
-	console.log( "FRX.files ", FRX.file );
-	console.log( "FRX.url", FRX.url );
+	console.log( "FRX.files ", FRX.file.name );
+	console.log( "FRX.url", FRX.url.split( "/").pop() );
 
 	if ( FRX.file ) { ZIP.loadFile(); return; }
 
@@ -86,9 +86,10 @@ ZIP.getNames = function ( zip ) {
 
 ZIP.getZipContents = function ( fileName, zip ) {
 
+	console.log( "fileName", fileName );
 	extension = fileName.split( "." ).pop().toLowerCase();
 
-	if ( [ "glb", "3dm", "vtk" ].includes( extension ) ) {
+	if ( [ "glb", "3dm", "vtk", "json" ].includes( extension ) ) {
 
 		alert( "Spider is not yet unzipping this file format. Yet" );
 

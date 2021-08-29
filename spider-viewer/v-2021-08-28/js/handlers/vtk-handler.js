@@ -1,6 +1,21 @@
 VTK = {};
 
 
+VTK.handle = function () {
+
+	console.log( "FRX.content", FRX.content.slice( 0, 100 ) );
+	console.log( "FRX.file", FRX.file.name );
+	console.log( "FRX.url", FRX.url.split( "/").pop() );
+
+	if ( FRX.content ) { VTK.parse( FRX.content ); return; }
+
+	if ( FRX.url ) { VTK.onChange( FRX.url ); return; }
+
+	if ( FRX.file ) { VTK.read(); return; }
+
+};
+
+
 VTK.onChange = function () {
 
 	if ( VTK.loader === undefined ) {
@@ -65,4 +80,27 @@ VTK.loadUrl = function ( url ) {
 
 };
 
-FRX.handle( VTK );
+
+VTK.parse = function ( content ) {
+
+	const loader = new THREE.VTKLoader();
+
+	loader.load( url, function ( geometry ) {
+
+		geometry.center();
+		geometry.computeVertexNormals();
+
+		const material = new THREE.MeshLambertMaterial( { color: 0xffffff } );
+		const mesh = new THREE.Mesh( geometry, material );
+		mesh.scale.multiplyScalar( 50 );
+		scene.add( mesh );
+
+		COR.reset( [ mesh ] );
+
+		THRR.getHtm = THRR.getHtmDefault;
+
+	} );
+
+};
+
+VTK.handle();

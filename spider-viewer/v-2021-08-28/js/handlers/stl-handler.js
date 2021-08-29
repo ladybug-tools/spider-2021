@@ -9,8 +9,8 @@ STL = {};
 STL.handle = function () {
 
 	//console.log( "FRX.content", FRX.content.slice( 0, 500 ) );
-	console.log( "FRX.file", FRX.file );
-	console.log( "FRX.url", FRX.url );
+	console.log( "FRX.file", FRX.file.split( "/" ).pop() );
+	console.log( "FRX.url", FRX.url.split( "/" ).pop() );
 
 	if ( FRX.content ) { STL.onUnZip(); return; }
 

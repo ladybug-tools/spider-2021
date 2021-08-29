@@ -58,7 +58,7 @@ FRX.onHashChange = function () {
 
 FRX.onInputFile = function ( files ) {
 
-	console.log( "FRX files", files.files, files );
+	//console.log( "FRX files", files.files, files );
 
 	FRX.timeStart = performance.now();
 
@@ -70,7 +70,7 @@ FRX.onInputFile = function ( files ) {
 	FRX.url = "";
 
 	const fName = files.files[ 0 ].name.toLowerCase();
-	console.log( "fName", fName );
+	//console.log( "fName", fName );
 
 	FRX.loadHandler( fName );
 
@@ -136,8 +136,8 @@ FRX.load = function ( obj, parser ) {
 // ZZZ.handle = function () {
 
 // 	//console.log( "FRX.content", FRX.content.slice( 0, 100 ) );
-// 	console.log( "FRX.files ", FRX.file );
-// 	console.log( "FRX.url", FRX.url );
+// 	console.log( "FRX.file", FRX.file.split( "/").pop() );
+// 	console.log( "FRX.url", FRX.url.split( "/").pop() );
 
 // 	if ( FRX.content ) { ZZZ.parse( FRX.content ); return; }
 
