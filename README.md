@@ -14,28 +14,39 @@ _Spider Viewer 2021_
 
 ### 2021-08-29
 
-The Spider Viewer 2021 is now an early stage work-in-progress.
+# Spider Viewer 2021
 
-Mix and match OSM, RAD, HBJSON and gbXML files in the same scene
-Load multiple files via URL, file dialog or drag & drop
-Drag and drop models in the scene to new locations
-Decompress and load models from ZIP file automatically
-Explore dozens of sample files
-View renderer statistics and frames per seconds
-Right-click surfaces to view their details in a pop-up
+## View full screen: https://www.ladybug.tools/spider-2021/spider-viewer/
 
-Instead of multiple viewers each supporting a single file format, it's now one viewer that can read any number of formats.
+<iframe src=https://www.ladybug.tools/spider-2021/spider-viewer/ width=100% height=500  ></iframe>
 
-There's more
+The Spider Viewer 2021 is now an early stage work-in-progress.
 
-* Faster drawing algorithms. Try [urban_district.hbjson]( https://www.ladybug.tools/spider-2021/spider-viewer/#https://cdn.jsdelivr.net/gh/ladybug-tools/honeybee-schema@master/samples/model_large/urban_district.hbjson). It takes a while lo load, but once it's up: click the reload button. Over the next few weeks the new routines will be refactored into all file format loaders
-* More file formats to be added. Anybody want IFC or EPW or Design Explorer support?
-* Better user experience in moving, viewing and editing the dat
+* Mix and match OSM, RAD, HBJSON and gbXML files in the same scene
+* Load multiple files via URL, file dialog or drag & drop
+* Drag and drop models in the scene to new locations
+* Decompress and load models from ZIP file automatically
+* Explore dozens of sample files
+* View renderer statistics and frames per seconds
+* Right-click surfaces to view their details in a pop-up
 
-Of course, many if not all the features will be added
+Instead of multiple viewers each supporting a single file format, it's now one viewer that reads any number of formats. There's more on the way:
 
-And, as always, you don't have to change! All the previous releases will continue to be available.
+* Faster drawing algorithms. For example. try loading this 21MB model 62K triangles of geometry: [urban_district.hbjson]( https://www.ladybug.tools/spider-2021/spider-viewer/#https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/hbjson-sample-files/2021/Urban_District.zip ). It takes a while lo load, but once it's up: click the reload button. Right-click on and notice the pop-up appears without delay. Over the next few weeks the new algorithms will be refactored into all file format loaders
+* More file formats to be added. Anybody want IFC or EPW or Design Explorer support?
+* Better user experience in moving, viewing and editing the data
+* Of course many - if not all - the features you have enjoyed from previous releases will be added.
 
+As always with the Spider scripts, 
+* you don't have to change your ways! All the previous releases will continue to be available. Choose to work the way you want.
+* The code is so simple and easy to tweak it even runs is Discourse!
+
+And - as is so often the case with open source apps:
+
+* No feedback from users means programmers get bored and work on other projects
+* Lots of feedback makes for lots of coding. ;-)
+
+So let's talk about making this the best Spider Viewer!
 
 
 ### Mission
