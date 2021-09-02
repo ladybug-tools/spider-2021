@@ -257,10 +257,10 @@ HBJ.getShape = function ( points, offset ) {
 
 	const vertices2D = vertices.slice().map( v => v.applyQuaternion( quaternion ) );
 
-	const area = HBJ.getArea( vertices2D )
+	const area = HBJ.getArea( vertices2D );
 	//console.log( "are", area );
 
-	if ( area < 0 ) {
+	if ( area < 0 ) {  // a < 0: vertices are clockwise, need CCW
 
 		vertices2D.reverse();
 		//console.log( "reversed", HBJ.getArea( vertices2D ) );
