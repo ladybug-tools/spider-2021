@@ -8,9 +8,10 @@
 	<meta name="description"
 		content="Ladybug Tools / Spider Viewer is a 3D file viewer, composer and exporter designed to be forked, hacked and remixed with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
 	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
-	<meta name="date" content="2021-08-29">
+	<meta name="date" content="2021-09-02">
 	<title>Spider Viewer</title>
 		<!-- Copyright 2021 Theo Armour. MIT license -->
+
 		<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo-2021/lib/style/style-2021-07-12.css">
 
 	<style>
@@ -40,10 +41,10 @@
 
 <body>
 
-		<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/build/three.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/controls/OrbitControls.js"></script>
-		<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/utils/BufferGeometryUtils.js"></script>
-		<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/controls/DragControls.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/build/three.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/controls/OrbitControls.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/utils/BufferGeometryUtils.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/controls/DragControls.js"></script>
 
 		<!-- To Do: load only as needed -->
 		<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/DRACOLoader.js"></script>
@@ -65,7 +66,7 @@
 
 		<script src="js/gff-github-folder-files.js"></script>
 
-		<script src="../../lib-spider/exp-exporter/v-2021-01-26/exp-exporter.js"></script>
+		<script src="../../lib-spider-09/exp-exporter/v-2021-09-02/exp-exporter.js"></script>
 
 		<script src="js/frx-file-read-xhr.js"></script>
 
@@ -90,6 +91,7 @@
 					<input type="checkbox" id="chkNewFile" checked> Open new file
 				</label>
 			</p>
+
 			<div id=GORdivDetails></div>
 
 			<div id=GRVdivDetails></div>
@@ -109,7 +111,6 @@
 		</nav>
 
 	</details>
-
 
 
 	<script>

@@ -131,7 +131,7 @@ function init () {
 		//COR.path = `https://www.ladybug.tools/spider-2021/v-${ COR.version }/`;
 		COR.path = "./"; // `./v-${ COR.version }/`;
 
-		THR.controls.autoRotate = false;
+		//THR.controls.autoRotate = false;
 
 	}
 
