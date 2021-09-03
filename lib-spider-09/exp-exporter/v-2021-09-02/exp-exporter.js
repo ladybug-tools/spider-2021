@@ -161,7 +161,7 @@ EXP.loadGGF = function() {
 	scr.src = "https://cdn.jsdelivr.net/npm/omggif@1.0.10/omggif.min.js";
 
 	scr = document.body.appendChild( document.createElement( 'script' ) );
-	scr.src = "../../lib-spider-09/exp-exporter/v-2021-09-02/ggf-generate-gif.js";
+	scr.src = "https://www.ladybug.tools/spider-2021/lib-spider-09/exp-exporter/v-2021-09-02/ggf-generate-gif.js";
 
 
 }
