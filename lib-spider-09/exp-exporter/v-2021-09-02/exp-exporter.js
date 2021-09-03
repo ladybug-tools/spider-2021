@@ -17,7 +17,10 @@ EXP.init = function () {
 
 			<details>
 
-				<summary class="summary-primary gmd-1" title="View selected items">Exporters</summary>
+				<summary class="summary-primary gmd-1" title="View selected items">
+				Exporters
+				${ MNU.addInfoBox( "Save models in a variety of file formats. More formats will be added. Also: create an animated GIF. Learn about other online viewers" ) }
+				</summary>
 
 				<div class=divNavResize>
 					<p>
@@ -44,7 +47,14 @@ EXP.init = function () {
 					<details>
 						<summary class="summary-secondary">Online Viewers</summary>
 
-						<a href="https://3dviewer.net/" target="_blank">Online 3D Viewer</a><br>
+						<p>
+						Free online 3D file viewers
+						</p>
+
+						<p>
+							<a href="https://3dviewer.net/" target="_blank">Online 3D Viewer</a><br>
+							Drag and drop 3D models. Supports obj, 3ds, stl, ply, gltf, glb, 3dm, fbx, off
+						</p>
 
 						<a href="https://gltf-viewer.donmccurdy.com/" target="_blank">glTF Viewer</a><br>
 
