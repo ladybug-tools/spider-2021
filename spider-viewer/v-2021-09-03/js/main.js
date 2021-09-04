@@ -191,11 +191,8 @@ COR.reset = function ( obj = [] ) {
 		console.log( "groups", groups  );
 	}
 
-
 	const model = new THREE.Group();
 	model.add( ...meshes );
-
-
 
 	THR.group.add( model );
 
@@ -213,12 +210,17 @@ COR.reset = function ( obj = [] ) {
 
 	THRR.init();
 
-	dragControls = new THREE.DragControls( [ model ], THR.camera, THR.renderer.domElement );
+	console.log( "model", model );
 
-	dragControls.transformGroup = true;
-	dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
-	dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
+	if ( chkNewFile.checked === false ) {
 
+		dragControls = new THREE.DragControls( [ model ], THR.camera, THR.renderer.domElement );
+
+		dragControls.transformGroup = true;
+		dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
+		dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
+
+	}
 	FRX.onProgress( FRX.size || 0, "Load complete" );
 
 };
