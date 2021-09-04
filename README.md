@@ -5,30 +5,27 @@ Your 2021 3D happy place for online browsing, composing and exporting many of th
 ## Full screen: [Spider Viewer 2021]( https://ladybug.tools/spider-2021/spider-viewer/)
 
 <!--@@@
-<iframe src=https://ladybug.tools/spider-2021/spider-viewer/ class="iframe-resize" ></iframe>
+<iframe id=ifr src=spider-viewer/index.html class="iframe-resize" ></iframe>
 _Spider Viewer 2021_
 @@@-->
+
+
+<a href='JavaScript:ifr.contentWindow.location.hash="https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/hbjson-sample-files/2021/demo05.hbjson"' >demo05</a>
 
 ## Concept
 
 
 ### 2021-08-29
 
-# Spider Viewer 2021
+The Spider Viewer 2021 is now an early stage work-in-progress.
 
-## View full screen: https://www.ladybug.tools/spider-2021/spider-viewer/
-
-<iframe src=https://www.ladybug.tools/spider-2021/spider-viewer/ width=100% height=500  ></iframe>
-
-The Spider Viewer 2021 is now an early stage work-in-progress.
-
-* Mix and match OSM, RAD, HBJSON and gbXML files in the same scene
-* Load multiple files via URL, file dialog or drag & drop
-* Drag and drop models in the scene to new locations
-* Decompress and load models from ZIP file automatically
-* Explore dozens of sample files
-* View renderer statistics and frames per seconds
-* Right-click surfaces to view their details in a pop-up
+* Mix and match OSM, RAD, HBJSON and gbXML files in the same scene
+* Load multiple files via URL, file dialog or drag & drop
+* Drag and drop models in the scene to new locations
+* Decompress and load models from ZIP file automatically
+* Explore dozens of sample files
+* View renderer statistics and frames per seconds
+* Right-click surfaces to view their details in a pop-up
 
 Instead of multiple viewers each supporting a single file format, it's now one viewer that reads any number of formats. There's more on the way:
 
