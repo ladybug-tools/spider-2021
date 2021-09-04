@@ -52,7 +52,7 @@ GGF.onClick = async function () {
 	renderer = new THREE.WebGLRenderer( { canvas: canvas } );
 	renderer.setPixelRatio( 1 );
 	renderer.setClearColor( 0xffffff, 1 );
-	renderer.setSize( 256,256 );
+	renderer.setSize( 512,512 );
 
 	renderer.outputEncoding = THREE.sRGBEncoding;
 	//renderer.shadowMap.enabled = true;
@@ -68,7 +68,7 @@ GGF.onClick = async function () {
 
 	THR.render = function ( progress ) {
 
-		console.log( "progress", progress, THR.camera.position.distanceTo( THR.center  ) );
+		//console.log( "progress", progress, THR.camera.position.distanceTo( THR.center  ) );
 		// progress goes from 0 to 1
 
 		//THR.scene.rotation.z = progress * Math.PI * 2;
