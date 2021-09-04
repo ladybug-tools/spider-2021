@@ -108,7 +108,7 @@ function init () {
 	//THR.zoomObjectBoundingSphere();
 
 	FRX.init();
-	FRX.defaultFile = COR.files[ 4 ];
+	FRX.defaultFile = COR.files[ 0 ];
 
 
 	window.addEventListener( "dragenter", dragenter, false );

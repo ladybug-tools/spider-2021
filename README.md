@@ -129,6 +129,11 @@ _Further revisions of this document will highlight relevant goal, targets and in
 * https://github.com/ladybug-tools/honeybee-schema/wiki
 * schema: https://github.com/ladybug-tools/dragonfly-schema
 
+VTK
+
+* https://github.com/ladybug-tools/honeybee-vtk
+* nhttps://github.com/ladybug-tools/honeybee-vtk/blob/master/honeybee_vtk/model.py - has colors in HSL
+*
 ### Radiance ~ RAD
 
 * schema: https://radiance-online.org/
