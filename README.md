@@ -125,8 +125,9 @@ _Further revisions of this document will highlight relevant goal, targets and in
 
 ### Honeybee JSON & VTK
 
-* schema: https://github.com/ladybug-tools/dragonfly-schema
 * schema: https://github.com/ladybug-tools/honeybee-schema
+* https://github.com/ladybug-tools/honeybee-schema/wiki
+* schema: https://github.com/ladybug-tools/dragonfly-schema
 
 ### Radiance ~ RAD
 

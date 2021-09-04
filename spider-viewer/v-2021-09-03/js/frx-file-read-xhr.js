@@ -11,13 +11,14 @@ FRX.path = "";
 
 FRX.init = function ( defaultFile ) {
 
-
 	FRX.defaultFile = defaultFile;
 
 	window.addEventListener( "hashchange", FRX.onHashChange );
 
-	const info =
-		`Open <a href="http://gbxml.org" target="_blank">gbXML</a>, HBJSON, 3DM, gLTF, <a href="https://www.energyplus.net/" target="_blank">EnergyPlus</a> IDF and OSM files, OBJ, STL, VTK Files`;
+	const info = `
+<p>Open <a href="http://gbxml.org" target="_blank">gbXML</a>, HBJSON, Rhino 3DM, gLTF,
+<a href="https://www.energyplus.net/" target="_blank">EnergyPlus</a> IDF and OSM, OBJ, STL, VTK files.</p>
+Use the file dialog, drag&drop or a URL`;
 
 	FRXdivMenuFileRead.innerHTML = `
 <details id=detFile >
@@ -43,7 +44,7 @@ FRX.init = function ( defaultFile ) {
 
 
 FRX.onHashChange = function () {
-	//console.log( "path", FRX.pathJs );
+
 
 	FRX.timeStart = performance.now();
 	const url = location.hash ? location.hash.slice( 1 ) : FRX.defaultFile;
@@ -63,17 +64,16 @@ FRX.onInputFiles = function () {
 
 	//console.log( "FRX files", files.files, files );
 
-	FRX.timeStart = performance.now();
 
-	FRX.files = FRXinpFiles.files;
-	FRX.file = FRX.files[ 0 ];
-	FRX.fileName = FRX.file.name;
-	FRX.hostName = FRX.file.type;
-	FRX.content = "";
-	FRX.url = "";
 
 	FRX.index = 0;
-	FRX.timeStart = performance.now();
+	FRX.files = FRXinpFiles.files;
+	// FRX.file = FRX.files[ 0 ];
+	// FRX.fileName = FRX.file.name;
+	// FRX.hostName = FRX.file.type;
+	// FRX.content = "";
+	// FRX.url = "";
+
 
 	FRX.readFile();
 };
@@ -81,9 +81,17 @@ FRX.onInputFiles = function () {
 
 FRX.readFile = function () {
 
+	//console.log( "FRX.files[ FRX.index ]", FRX.files[ FRX.index ] );
+
+	FRX.timeStart = performance.now();
+
 	FRX.reader.readAsText( FRX.files[ FRX.index ] );
 
 	FRX.file = FRX.files[ FRX.index ];
+	FRX.fileName = FRX.file.name;
+	FRX.hostName = FRX.file.type;
+	FRX.content = "";
+	FRX.url = "";
 
 	//console.log( "", FRX.index, FRX.file );
 
@@ -102,22 +110,18 @@ FRX.readFile = function () {
 
 FRX.reader.onload = function () {
 
-	//divContent.innerHTML = reader.result;
-
-
-
 	FRX.loadHandler( FRX.fileName.toLowerCase() )
 
-	if ( window.divStats ) {
+// 	if ( window.FRXdivLog ) {
 
-		divStats.innerHTML = `
-					name: ${ FRX.file.name }<br>
-					size: ${ FRX.file.size.toLocaleString() } bytes<br>
-					type: ${ FRX.file.type }<br>
-					modified: ${ file.lastModifiedDate.toLocaleDateString() }<br>
-					time to load: ${ ( performance.now() - timeStart ).toLocaleString() } ms`;
+// 		FRXdivLog.innerHTML = `
+// name: ${ FRX.file.name }<br>
+// size: ${ FRX.file.size.toLocaleString() } bytes<br>
+// type: ${ FRX.file.type }<br>
+// modified: ${ FRX.file.lastModifiedDate.toLocaleDateString() }<br>
+// time to load: ${ ( performance.now() - FRX.timeStart ).toLocaleString() } ms`;
 
-	}
+// 	}
 
 };
 
@@ -208,7 +212,7 @@ FRX.onProgress = function ( size = 0, note = "" ) {
 		<p>
 			<span class=attributeTitle >File name</span>: <span class=attributeValue >${ FRX.fileName }</span></br>
 			<span class=attributeTitle >Host|type</span>: <span class=attributeValue >${ FRX.hostName }</span></br>
- 			<span class=attributeTitle >Bytes loaded</span>: <span class=attributeValue >${ size.toLocaleString() }</span></br>
+ 			<span class=attributeTitle >Bytes loaded</span>: <span class=attributeValue >${ FRX.size.toLocaleString() }</span></br>
 			<span class=attributeTitle >Time to load</span>: <span class=attributeValue>${ FRX.timeToLoad } ms</span></br>
 			${ note }
 		</p>

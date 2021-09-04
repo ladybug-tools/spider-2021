@@ -108,7 +108,7 @@ function init () {
 	//THR.zoomObjectBoundingSphere();
 
 	FRX.init();
-	FRX.defaultFile = COR.files[ 0 ];
+	FRX.defaultFile = COR.files[ 4 ];
 
 
 	window.addEventListener( "dragenter", dragenter, false );
@@ -159,12 +159,7 @@ function drop ( event ) {
 	const dt = event.dataTransfer;
 	FRX.files = dt.files;
 
-	//FRX.onInputFile( event.dataTransfer );
-
-	FRX.timeStart = performance.now();
-
 	FRX.index = 0;
-
 	FRX.readFile();
 
 }
@@ -200,7 +195,18 @@ COR.reset = function ( obj = [] ) {
 	const model = new THREE.Group();
 	model.add( ...meshes );
 
+
+
 	THR.group.add( model );
+
+	scene.traverse( function ( object ) {
+
+		if ( object.isMesh ) {
+			object.material.needsUpdate = true;
+			object.geometry.computeVertexNormals();
+		}
+
+	} );
 
 	THR.zoomObjectBoundingSphere();
 	//THRU.toggleBoundingBoxHelper();

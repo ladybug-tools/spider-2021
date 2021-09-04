@@ -5,26 +5,11 @@
 
 HBJ = {};
 
-
-HBJ.colors = {
-
-	Wall: "beige",
-	Floor: "brown",
-	RoofCeiling: "red",
-	AirBoundary: "blue"
-
-};
-
-
-let geometryShades = [];
-let geometryApertures = [];
-
-
 HBJ.handle = function () {
 
 	//console.log( "FRX.content", FRX.content.slice( 0, 100 ) );
 	console.log( "FRX.file", FRX.file.name );
-	console.log( "FRX.url", FRX.url.split( "/").pop() );
+	console.log( "FRX.url", FRX.url.split( "/" ).pop() );
 
 	if ( FRX.content ) { HBJ.parse( JSON.parse( FRX.content ) ); return; }
 
@@ -38,50 +23,9 @@ HBJ.handle = function () {
 
 HBJ.read = function () {
 
-	//console.log( "hbj files",FRX.files );
-
-	// HBJ.reader = new FileReader();
-	// HBJ.reader.onload = ( event ) => {
-
-	// 	HBJ.parse( JSON.parse( event.target.result ) );
-	// };
-
-	// HBJ.reader.onerror = ( event ) => {
-
-	// 	console.log( "event", event );
-	// };
-
-	// HBJ.reader.readAsText( FRX.file );
-
 	const reader = new FileReader();
-	reader.onload = ( event ) => HBJ.parse( JSON.parse( event.target.result ));
+	reader.onload = ( event ) => HBJ.parse( JSON.parse( event.target.result ) );
 	reader.readAsText( FRX.file );
-};
-
-
-HBJ.vvvreadFileDrop = function () {
-
-	file = FRX.file;
-
-	console.log( "files", file );
-
-	HBJ.reader = new FileReader();
-	HBJ.reader.onload = ( event ) => {
-
-		console.log( "file", file );
-
-
-		HBJ.parse( JSON.parse( event.target.result ) );
-
-	};
-
-	HBJ.reader.onerror = ( event ) => {
-
-		console.log( "event", event );
-	};
-
-	HBJ.reader.readAsText( file );
-
 };
 
 
@@ -97,111 +41,174 @@ HBJ.onChange = function ( url ) {
 };
 
 
+//////////
+
+
+HBJ.colors = {
+
+	Wall: "beige",
+	Floor: "brown",
+	RoofCeiling: "red",
+	AirBoundary: "blue",
+	Apertures: "organge",
+	Shades: "yellow"
+
+};
+
 HBJ.parse = function ( json ) {
 
-	//console.log( "json", json );
-
 	HBJ.json = json;
+	console.log( "HBJ.json", HBJ.json );
 
-	geometryShades = [];
-	geometryApertures = [];
+	HBJ.keys = Object.keys( HBJ.colors );
+	HBJ.types = [
+		geometryWalls = [],
+		geometryFloors = [],
+		geometryRoofCeilings = [],
+		geometryAirBoundaries = [],
+		geometryApertures = [],
+		geometryShades = []
+	];
 
-	if ( [ "Model", "Building", "Story", "Room2D", "ContextShade" ].includes( json.type ) ) {
+	const orphans = [ "orphaned_apertures", "orphaned_doors", "orphaned_faces", "orphaned_shades" ];
 
-		HBJ.processJson( json );
+	if ( HBJ.json.type === "Model" ) {
+
+		orphansInUse = orphans.filter( schema => HBJ.json[ schema ] && HBJ.json[ schema ].length > 0 );
+
+		console.log( "orphansInUse", orphansInUse );
+
+		if ( orphansInUse.length !== 0 ) {
+
+			orphansInUse.forEach( title => {
+
+				const orphan = HBJ.json[ title ];
+
+				console.log( "orphan", title, orphan.length );
+
+				HBJ.processOrphan( title, orphan );
+
+			} );
+
+		}
+
+		HBJ.processJson( HBJ.json );
+
 
 	} else {
 
-		console.log( "No Honeybee 3D data" );
+		alert( `type: ${ HBJ.json.type }. No Honeybee 3D model data` );
 
 	}
 
-}
+};
+
+
+
+HBJ.processOrphan = function ( title, shades, geometry ) {
+	HBJ.shades = shades;
+	console.log( "shades", title, shades );
+
+	shades.forEach( ( shade, i ) => HBJ.types[ 5 ].push( HBJ.addShape3d( shade, shade, i ) ) );
+
+	// const bufferGeometryShades = THREE.BufferGeometryUtils.mergeBufferGeometries( geometry );
+	// const materialShades = new THREE.MeshPhongMaterial( { color: 0x888888, opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
+	// const meshShades = new THREE.Mesh( bufferGeometryShades, materialShades );
+	// meshShadesTry.receiveShadow = meshShadesTry.castShadow = true;
+	// meshShadesTry.name = title;
+	// meshShadesTry.userData.geometry = geometryShades;
+	// meshes.push( meshShadesTry );
+
+};
 
 
 HBJ.processJson = function ( json ) {
 
-	const roomFaces = json.rooms.map( room => room.faces );
-
-	const keys = Object.keys( HBJ.colors );
-	HBJ.types = [ geometryWalls = [], geometryFloors = [], geometryRoofCeilings = [], geometryAirBoundaries = [] ];
-
-	roomFaces.forEach( ( room, i ) => room.forEach(
-		face => HBJ.types[ keys.indexOf( face.face_type ) ].push( HBJ.addShape3d( face, room, i ) )
-	) );
-
 	meshes = [];
 
-	const bufferGeometryWalls = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryWalls, true );
-	const materialWalls = new THREE.MeshPhongMaterial( { color: HBJ.colors[ "Wall" ], opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
-	const meshWalls = new THREE.Mesh( bufferGeometryWalls, materialWalls );
-	meshWalls.receiveShadow = meshWalls.castShadow = true;
-	meshWalls.name = "Walls";
-	meshWalls.userData.geometry = geometryWalls;
-	meshes.push( meshWalls );
+	if ( json.rooms?.length ) {
 
-	const bufferGeometryFloors = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryFloors, true );
-	const materialFloors = new THREE.MeshPhongMaterial( { color: HBJ.colors[ "Floor" ], opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
-	const meshFloors = new THREE.Mesh( bufferGeometryFloors, materialFloors );
-	meshFloors.receiveShadow = meshFloors.castShadow = true;
-	meshFloors.name = "Floors";
-	meshFloors.userData.geometry = geometryFloors;
-	meshes.push( meshFloors );
+		const roomFaces = json.rooms.map( room => room.faces );
 
-	const bufferGeometryRoofCeilings = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryRoofCeilings, true );
-	const materialRoofCeilings = new THREE.MeshPhongMaterial( { color: HBJ.colors[ "Floor" ], opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
-	const meshRoofCeilings = new THREE.Mesh( bufferGeometryRoofCeilings, materialRoofCeilings );
-	meshRoofCeilings.receiveShadow = meshRoofCeilings.castShadow = true;
-	meshRoofCeilings.name = "RoofCeilings";
-	meshRoofCeilings.userData.geometry = geometryRoofCeilings;
-	meshes.push( meshRoofCeilings );
+		roomFaces.forEach( ( room, i ) => room.forEach(
+			face => HBJ.types[ HBJ.keys.indexOf( face.face_type ) ].push( HBJ.addShape3d( face, room, i ) )
+		) );
 
-	if ( geometryAirBoundaries.length ) {
+		const bufferGeometryWalls = THREE.BufferGeometryUtils.mergeBufferGeometries( HBJ.types[ 0 ], true );
+		const materialWalls = new THREE.MeshPhongMaterial( { color: HBJ.colors[ "Wall" ], opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
+		const meshWalls = new THREE.Mesh( bufferGeometryWalls, materialWalls );
+		meshWalls.receiveShadow = meshWalls.castShadow = true;
+		meshWalls.name = "Walls";
+		meshWalls.userData.geometry = HBJ.types[ 0 ];
+		meshes.push( meshWalls );
 
-		const bufferGeometryAirBoundaries = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryAirBoundaries );
-		const materialAirBoundaries = new THREE.MeshPhongMaterial( { color: HBJ.colors[ "Floor" ], opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
-		const meshAirBoundaries = new THREE.Mesh( bufferGeometryAirBoundaries, materialAirBoundaries );
-		meshAirBoundaries.receiveShadow = meshAirBoundaries.castShadow = true;
-		meshAirBoundaries.name = "AirBoundaries";
-		meshAirBoundaries.userData.geometry = geometryAirBoundaries;
-		meshes.push( meshAirBoundaries );
+		const bufferGeometryFloors = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryFloors, true );
+		const materialFloors = new THREE.MeshPhongMaterial( { color: HBJ.colors[ "Floor" ], opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
+		const meshFloors = new THREE.Mesh( bufferGeometryFloors, materialFloors );
+		meshFloors.receiveShadow = meshFloors.castShadow = true;
+		meshFloors.name = "Floors";
+		meshFloors.userData.geometry = geometryFloors;
+		meshes.push( meshFloors );
+
+		const bufferGeometryRoofCeilings = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryRoofCeilings, true );
+		const materialRoofCeilings = new THREE.MeshPhongMaterial( { color: HBJ.colors[ "Floor" ], opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
+		const meshRoofCeilings = new THREE.Mesh( bufferGeometryRoofCeilings, materialRoofCeilings );
+		meshRoofCeilings.receiveShadow = meshRoofCeilings.castShadow = true;
+		meshRoofCeilings.name = "RoofCeilings";
+		meshRoofCeilings.userData.geometry = geometryRoofCeilings;
+		meshes.push( meshRoofCeilings );
+
+		if ( geometryAirBoundaries.length ) {
+
+			const bufferGeometryAirBoundaries = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryAirBoundaries );
+			const materialAirBoundaries = new THREE.MeshPhongMaterial( { color: HBJ.colors[ "Floor" ], opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
+			const meshAirBoundaries = new THREE.Mesh( bufferGeometryAirBoundaries, materialAirBoundaries );
+			meshAirBoundaries.receiveShadow = meshAirBoundaries.castShadow = true;
+			meshAirBoundaries.name = "AirBoundaries";
+			meshAirBoundaries.userData.geometry = geometryAirBoundaries;
+			meshes.push( meshAirBoundaries );
+
+		}
+
+
+
+		if ( geometryApertures.length ) {
+
+			const bufferGeometryApertures = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryApertures );
+			const materialApertures = new THREE.MeshPhongMaterial( { color: 0x888888, opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
+			const meshApertures = new THREE.Mesh( bufferGeometryApertures, materialApertures );
+			meshes.push( new THREE.Mesh( bufferGeometryApertures, materialApertures ) );
+			meshApertures.receiveShadow = meshApertures.castShadow = true;
+			meshApertures.name = "Apertures";
+			meshApertures.userData.geometry = geometryApertures;
+			meshes.push( meshApertures );
+		}
 
 	}
 
-	if ( geometryShades.length ) {
+		if ( geometryShades.length ) {
 
-		const bufferGeometryShades = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryShades );
-		const materialShades = new THREE.MeshPhongMaterial( { color: 0x888888, opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
-		const meshShades = new THREE.Mesh( bufferGeometryShades, materialShades );
-		meshShades.receiveShadow = meshShades.castShadow = true;
-		meshShades.name = "Shades";
-		meshShades.userData.geometry = geometryShades;
-		meshes.push( meshShades );
-	}
-
-	if ( geometryApertures.length ) {
-
-		const bufferGeometryApertures = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryApertures );
-		const materialApertures = new THREE.MeshPhongMaterial( { color: 0x888888, opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
-		const meshApertures = new THREE.Mesh( bufferGeometryApertures, materialApertures );
-		meshes.push( new THREE.Mesh( bufferGeometryApertures, materialApertures ) );
-		meshApertures.receiveShadow = meshApertures.castShadow = true;
-		meshApertures.name = "Apertures";
-		meshApertures.userData.geometry = geometryApertures;
-		meshes.push( meshApertures );
-	}
+			const bufferGeometryShades = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryShades );
+			const materialShades = new THREE.MeshPhongMaterial( { color: 0xffffff, side: 2, specular: 0xffffff, } );
+			const meshShades = new THREE.Mesh( bufferGeometryShades, materialShades );
+			meshShades.receiveShadow = meshShades.castShadow = true;
+			meshShades.name = "Shades";
+			meshShades.userData.geometry = geometryShades;
+			meshes.push( meshShades );
+		}
 
 	COR.reset( meshes );
 
-	THRR.getHtm = HBJ.getHtm
+	THRR.getHtm = HBJ.getHtm;
+
 };
 
 
-HBJ.addShape3d = function ( face, room, index ) {
+HBJ.addShape3d = function ( face, data, index ) {
 
-	shapeGeometry = HBJ.getShape( face.geometry.boundary )
+	shapeGeometry = HBJ.getShape( face.geometry.boundary );
 	shapeGeometry.userData.face = face;
-	shapeGeometry.userData.room = room;
+	//shapeGeometry.userData.data = data;
 	shapeGeometry.name = index;
 
 	if ( face.apertures ) {
@@ -274,7 +281,7 @@ HBJ.getShape = function ( points, offset ) {
 	if ( offset ) {
 
 		const trans = normal.multiplyScalar( 0.1 );
-		shapeGeometry.translate( trans.x, trans.y, trans.z )
+		shapeGeometry.translate( trans.x, trans.y, trans.z );
 
 	}
 
@@ -368,17 +375,21 @@ HBJ.getHtm = function ( intersected ) {
 
 	//mesh.children.forEach( ( mesh, index ) => {
 
-	const rooms = mesh.userData.geometry;
-	//console.log( "mesh", mesh.userData.geometry );
+	const faces = mesh.userData.geometry;
+	//console.log( "faces", faces);
 
 
 	let index = 0;
 	let area = 0;
 
-	for ( let i = 0; i < rooms.length; i++ ) {
+	for ( let i = 0; i < faces.length; i++ ) {
 
-		//console.log( "room", i, rooms[ i ] );
-		const boundary = rooms[ i ].userData.face.geometry.boundary;
+		const face = faces[ i ].userData.face;
+
+		if ( !face ) { console.log( "face", face );break; }
+
+
+		const boundary = face.geometry.boundary;
 
 		for ( let j = 0; j < boundary.length; j++ ) {
 
@@ -414,20 +425,20 @@ HBJ.getHtm = function ( intersected ) {
 	}
 
 
-	let data;
+	let item;
 
 	//console.log( "ms:", ( performance.now() - THRR.timeStart ).toLocaleString() );
 
-	if ( rooms[ index ] ) {
+	if ( faces[ index ] ) {
 
-		data = rooms[ index ].userData;
-		//console.log( "data", data );
+		item = faces[ index ].userData;
+		//console.log( "item", item );
 
 		return `id: ${ index }<br>
 type: ${ mesh.name }<br>
-area: ${ data.area.toLocaleString() }<br>
-name: ${ data.room[ 0 ].display_name }<br>
-boundary: ${ data.face.boundary_condition.type }<br>`;
+area: ${ item.area.toLocaleString() }<br>
+name: ${ item.face.identifier }<br>
+boundary: ${ item.face.boundary_condition?.type }<br>`;
 
 	} else {
 

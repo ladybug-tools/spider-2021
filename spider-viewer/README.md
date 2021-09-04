@@ -32,7 +32,7 @@ _Spider Viewer in a resizable window. One finger to rotate. Two to zoom._
 
 ## Change Log
 
-###
+### 2021-09-01
 
 * Update menu and style to latest TooToo
 
