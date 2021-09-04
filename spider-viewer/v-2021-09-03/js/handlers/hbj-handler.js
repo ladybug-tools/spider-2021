@@ -76,7 +76,7 @@ HBJ.parse = function ( json ) {
 
 		orphansInUse = orphans.filter( schema => HBJ.json[ schema ] && HBJ.json[ schema ].length > 0 );
 
-		console.log( "orphansInUse", orphansInUse );
+		//console.log( "orphansInUse", orphansInUse );
 
 		if ( orphansInUse.length !== 0 ) {
 
@@ -84,9 +84,9 @@ HBJ.parse = function ( json ) {
 
 				const orphan = HBJ.json[ title ];
 
-				console.log( "orphan", title, orphan.length );
+				//console.log( "orphan", title, orphan.length );
 
-				HBJ.processOrphan( title, orphan );
+				HBJ.processOrphan( orphan );
 
 			} );
 
@@ -97,7 +97,7 @@ HBJ.parse = function ( json ) {
 
 	} else {
 
-		alert( `type: ${ HBJ.json.type }. No Honeybee 3D model data` );
+		alert( `Type: ${ HBJ.json.type }. There appears to be no Honeybee 3D model data in this file. See also the console.log output displayed in the Developer console.` );
 
 	}
 
@@ -105,21 +105,15 @@ HBJ.parse = function ( json ) {
 
 
 
-HBJ.processOrphan = function ( title, shades, geometry ) {
+HBJ.processOrphan = function ( shades ) {
+
 	HBJ.shades = shades;
-	console.log( "shades", title, shades );
+	//console.log( "shades", title, shades );
 
-	shades.forEach( ( shade, i ) => HBJ.types[ 5 ].push( HBJ.addShape3d( shade, shade, i ) ) );
-
-	// const bufferGeometryShades = THREE.BufferGeometryUtils.mergeBufferGeometries( geometry );
-	// const materialShades = new THREE.MeshPhongMaterial( { color: 0x888888, opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
-	// const meshShades = new THREE.Mesh( bufferGeometryShades, materialShades );
-	// meshShadesTry.receiveShadow = meshShadesTry.castShadow = true;
-	// meshShadesTry.name = title;
-	// meshShadesTry.userData.geometry = geometryShades;
-	// meshes.push( meshShadesTry );
+	shades.forEach( ( shade, i ) => HBJ.types[ 5 ].push( HBJ.addShape3d( shade, i ) ) );
 
 };
+
 
 
 HBJ.processJson = function ( json ) {
@@ -131,7 +125,7 @@ HBJ.processJson = function ( json ) {
 		const roomFaces = json.rooms.map( room => room.faces );
 
 		roomFaces.forEach( ( room, i ) => room.forEach(
-			face => HBJ.types[ HBJ.keys.indexOf( face.face_type ) ].push( HBJ.addShape3d( face, room, i ) )
+			face => HBJ.types[ HBJ.keys.indexOf( face.face_type ) ].push( HBJ.addShape3d( face, i ) )
 		) );
 
 		const bufferGeometryWalls = THREE.BufferGeometryUtils.mergeBufferGeometries( HBJ.types[ 0 ], true );
@@ -170,8 +164,6 @@ HBJ.processJson = function ( json ) {
 
 		}
 
-
-
 		if ( geometryApertures.length ) {
 
 			const bufferGeometryApertures = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryApertures );
@@ -186,16 +178,16 @@ HBJ.processJson = function ( json ) {
 
 	}
 
-		if ( geometryShades.length ) {
+	if ( geometryShades.length ) {
 
-			const bufferGeometryShades = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryShades );
-			const materialShades = new THREE.MeshPhongMaterial( { color: 0xffffff, side: 2, specular: 0xffffff, } );
-			const meshShades = new THREE.Mesh( bufferGeometryShades, materialShades );
-			meshShades.receiveShadow = meshShades.castShadow = true;
-			meshShades.name = "Shades";
-			meshShades.userData.geometry = geometryShades;
-			meshes.push( meshShades );
-		}
+		const bufferGeometryShades = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryShades );
+		const materialShades = new THREE.MeshPhongMaterial( { color: 0xffffff, side: 2, specular: 0xffffff, } );
+		const meshShades = new THREE.Mesh( bufferGeometryShades, materialShades );
+		meshShades.receiveShadow = meshShades.castShadow = true;
+		meshShades.name = "Shades";
+		meshShades.userData.geometry = geometryShades;
+		meshes.push( meshShades );
+	}
 
 	COR.reset( meshes );
 
@@ -208,7 +200,6 @@ HBJ.addShape3d = function ( face, data, index ) {
 
 	shapeGeometry = HBJ.getShape( face.geometry.boundary );
 	shapeGeometry.userData.face = face;
-	//shapeGeometry.userData.data = data;
 	shapeGeometry.name = index;
 
 	if ( face.apertures ) {
@@ -386,7 +377,7 @@ HBJ.getHtm = function ( intersected ) {
 
 		const face = faces[ i ].userData.face;
 
-		if ( !face ) { console.log( "face", face );break; }
+		if ( !face ) { console.log( "face", face ); break; }
 
 
 		const boundary = face.geometry.boundary;
