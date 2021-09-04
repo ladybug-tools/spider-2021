@@ -155,6 +155,7 @@ THR.zoomObjectBoundingSphere = function ( obj = THR.group ) {
 	// THR.scene.fog.far = THR.radius * 8;
 
 	THR.axesHelper.position.copy( THR.center );
+	THR.axesHelper.visible = false;
 
 	if ( THR.ground ) {
 
@@ -176,16 +177,16 @@ THR.zoomObjectBoundingSphere = function ( obj = THR.group ) {
 
 		THR.lightDirectional.target = THR.axesHelper;
 
-		THR.scene.remove( THR.directionalLightHelper );
-		THR.directionalLightHelper = new THREE.DirectionalLightHelper( THR.lightDirectional );
-		THR.scene.add( THR.directionalLightHelper );
-		THR.directionalLightHelper.visible = true;
+		// THR.scene.remove( THR.directionalLightHelper );
+		// THR.directionalLightHelper = new THREE.DirectionalLightHelper( THR.lightDirectional );
+		// THR.scene.add( THR.directionalLightHelper );
+		// THR.directionalLightHelper.visible = true;
 
 
-		THR.scene.remove( THR.shadowCameraHelper );
-		THR.shadowCameraHelper = new THREE.CameraHelper( THR.lightDirectional.shadow.camera );
-		THR.scene.add( THR.shadowCameraHelper );
-		THR.shadowCameraHelper.visible = true;
+		// THR.scene.remove( THR.shadowCameraHelper );
+		// THR.shadowCameraHelper = new THREE.CameraHelper( THR.lightDirectional.shadow.camera );
+		// THR.scene.add( THR.shadowCameraHelper );
+		// THR.shadowCameraHelper.visible = true;
 
 	}
 

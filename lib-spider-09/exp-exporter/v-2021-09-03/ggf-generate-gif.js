@@ -52,7 +52,7 @@ GGF.onClick = async function () {
 	renderer = new THREE.WebGLRenderer( { canvas: canvas } );
 	renderer.setPixelRatio( 1 );
 	renderer.setClearColor( 0xffffff, 1 );
-	renderer.setSize( 512, 512 );
+	renderer.setSize( 256,256 );
 
 	renderer.outputEncoding = THREE.sRGBEncoding;
 	//renderer.shadowMap.enabled = true;
@@ -89,7 +89,6 @@ GGF.onClick = async function () {
 
 		if ( prgGenerateGIF.style.display === 'none' ) {
 
-			console.log( "", 23 );
 			// Only render when not generating
 			theta += 0.5;
 			THR.render( theta );
