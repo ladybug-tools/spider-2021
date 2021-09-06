@@ -13,8 +13,6 @@ _Spider Viewer 2021_
 @@@-->
 
 
-
-
 ## Concept
 
 
@@ -113,6 +111,12 @@ _Further revisions of this document will highlight relevant goal, targets and in
 
 
 ## Road map / Import
+
+https://rufus31415.github.io/sandbox/3d-viewer/
+
+### Blender BLEND files
+
+* https://github.com/acweathersby/js.blend
 
 ### gbXML
 
