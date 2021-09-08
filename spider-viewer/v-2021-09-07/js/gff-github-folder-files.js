@@ -170,7 +170,7 @@ GFF.requestFile = function ( url, callback, index ) {
 GFF.callbackGitHubMenu = function ( xhr ) {
 
 	const response = xhr.target.response;
-	GFF.extension = GFF.folders[ GFF.index ].extension;
+	GFF.extensions = GFF.folders[ GFF.index ].extensions;
 	let files = JSON.parse( response );
 	//files = files.filter( file => file.name.toLowerCase().endsWith( GFF.extension ) );
 	GFF.files[ GFF.index ] = files;
@@ -192,7 +192,9 @@ GFF.callbackGitHubMenu = function ( xhr ) {
 
 	for ( let file of files ) {
 
-		if ( file.name.toLowerCase().endsWith( GFF.extension ) === false &&
+		const ext = file.name.toLowerCase().split( "." ).pop();
+
+		if ( GFF.extensions.includes( ext ) === false &&
 			file.name.toLowerCase().endsWith( '.zip' ) === false ) { continue; }
 
 		const fileName = encodeURI( file.name );

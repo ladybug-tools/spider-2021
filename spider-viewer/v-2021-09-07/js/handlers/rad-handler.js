@@ -323,7 +323,7 @@ RAD.getTrianglesMesh = function ( vertices, colors ) {
 	geometryTriangles.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
 	geometryTriangles.setAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
 
-	geometryTriangles.computeFaceNormals();
+	//geometryTriangles.computeFaceNormals();
 	geometryTriangles.computeVertexNormals();
 	//geometry.normalizeNormals();
 

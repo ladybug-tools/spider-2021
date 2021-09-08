@@ -1,9 +1,23 @@
 
 
 GFF.folders = [
+	{ "group": "<b>Test Files</b>" },
+	{
+		"extensions": [ "csv", "htm", "html", "md", "jpg", "png", "xls"],
+		"user": "pushme-pullyou",
+		"repo": "/tootoo-2021",
+		"branch": "main",
+		"pathRepo": "test-cases/",
+		"title": "Set of simple test-cases",
+		"subTitle":
+			`Files from the
+		<a href="https://github.com/ladybug-tools/3d-models/tree/master/gbxml-sample-files/" target="_blank">Ladybug Tools 3D Models Sample Files</a>
+		repository on GitHub.
+		Includes a variety of files from various vendors and organizations.`
+	},
 	{ "group": "<b>gbXML</b>" },
 	{
-		"extension": ".xml",
+		"extensions": ["xml", "gbxml"],
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
@@ -16,7 +30,7 @@ GFF.folders = [
 		Includes a variety of gbXML files from various vendors and organizations.`
 	},
 	{
-		"extension": ".xml",
+		"extensions": [ "xml", "gbxml" ],
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
@@ -29,7 +43,7 @@ GFF.folders = [
 		Includes a variety of gbXML files from various vendors and organizations.`
 	},
 	{
-		"extension": ".gbxml",
+		"extensions": [ "xml", "gbxml" ],
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
@@ -41,7 +55,7 @@ GFF.folders = [
 		Includes a variety of gbXML files test cases.`
 	},
 	{
-		"extension": ".xml",
+		"extensions": [ "xml", "gbxml" ],
 		"user": "GreenBuildingXML",
 		"repo": "/Sample-gbXML-Files",
 		"branch": "master",
@@ -54,7 +68,7 @@ GFF.folders = [
 		Includes a variety of gbXML files from various vendors and organizations.`
 	},
 	{
-		"extension": ".xml",
+		"extensions": [ "xml", "gbxml" ],
 		"user": "ladybug-tools",
 		"repo": "/spider",
 		"branch": "master",
@@ -66,7 +80,7 @@ GFF.folders = [
 		on GitHub from a variety of sources`
 	},
 	{
-		"extension": ".xml",
+		"extensions": [ "xml", "gbxml" ],
 		"user": "ladybug-tools",
 		"repo": "/spider",
 		"branch": "master",
@@ -78,7 +92,7 @@ GFF.folders = [
 			on GitHub from a variety of sources`
 	},
 	{
-		"extension": ".xml",
+		"extensions": [ "xml", "gbxml" ],
 		"user": "ladybug-tools",
 		"repo": "/spider",
 		"branch": "master",
@@ -92,7 +106,7 @@ GFF.folders = [
 	 	project`
 	},
 	{
-		"extension": ".zip",
+		"extensions": ["zip"],
 		"user": "ladybug-tools",
 		"repo": "/spider",
 		"branch": "master",
@@ -105,7 +119,7 @@ GFF.folders = [
 	},
 	{ "group": "<b>Rhino 3DM</b>" },
 	{
-		"extension": ".3dm",
+		"extensions": ["3dm"],
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
@@ -118,7 +132,7 @@ GFF.folders = [
 	},
 	{ "group": "<b>hbjson</b>" },
 	{
-		"extension": ".hbjson",
+		"extensions": ["hbjson"],
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
@@ -130,7 +144,7 @@ GFF.folders = [
 	 	on GitHub from a variety of sources`
 	},
 	{
-		"extension": ".hbjson",
+		"extensions": ["hbjson"],
 		"user": "ladybug-tools",
 		"repo": "/honeybee-schema",
 		"branch": "master",
@@ -142,7 +156,7 @@ GFF.folders = [
 	 	on GitHub from a variety of sources`
 	},
 	{
-		"extension": ".hbjson",
+		"extensions": [ "hbjson" ],
 		"user": "ladybug-tools",
 		"repo": "/honeybee-schema",
 		"branch": "master",
@@ -156,7 +170,7 @@ GFF.folders = [
 
 	{ "group": "<b>glTF</b>" },
 	{
-		"extension": ".gltf",
+		"extensions": ["glb","gltf"],
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
@@ -167,21 +181,9 @@ GFF.folders = [
 		<a href="https://github.com/ladybug-tools/3d-models/tree/master/gltf-sample-files" target="_blank">sample GLTF files. </a>
 	 	on GitHub from a variety of sources. Not all files loading OK. Yet.`
 	},
-	{
-		"extension": ".glb",
-		"user": "ladybug-tools",
-		"repo": "/3d-models",
-		"branch": "master",
-		"pathRepo": "gltf-sample-files/2021/",
-		"title": "Khronos Group GLB samples",
-		"subTitle":
-			`Ladybug Tools / Spider Viewer
-		<a href="https://github.com/ladybug-tools/3d-models/tree/master/gltf-sample-files" target="_blank">sample GLB files</a>
-	 	on GitHub from a variety of sources. Not all files loading OK. Yet.`
-	},
 	{ "group": "<b>IDF</b>" },
 	{
-		"extension": ".idf",
+		"extensions": ["idf"],
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
@@ -193,7 +195,7 @@ GFF.folders = [
 	 	on GitHub from a variety of sources`
 	},
 	{
-		"extension": ".zip",
+		"extensions": ["zip"],
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
@@ -206,7 +208,7 @@ GFF.folders = [
 	},
 	{ "group": "<b>IFC</b>" },
 	{
-		"extension": ".ifc",
+		"extensions": ["ifc"],
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
@@ -219,7 +221,7 @@ GFF.folders = [
 	},
 	{ "group": "<b>OBJ</b>" },
 	{
-		"extension": ".obj",
+		"extensions": ["obj"],
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
@@ -232,7 +234,7 @@ GFF.folders = [
 	},
 	{ "group": "<b>RAD</b>" },
 	{
-		"extension": ".rad",
+		"extensions": ["rad"],
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
@@ -244,7 +246,7 @@ GFF.folders = [
 	 	on GitHub from a variety of sources`
 	},
 	{
-		"extension": ".rad",
+		"extensions": ["rad"],
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
@@ -259,7 +261,7 @@ GFF.folders = [
 
 	{ "group": "<b>STL</b>" },
 	{
-		"extension": ".stl",
+		"extensions": ["stl"],
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
@@ -272,7 +274,7 @@ GFF.folders = [
 	},
 	{ "group": "<b>VTK</b>" },
 	{
-		"extension": ".vtk",
+		"extensions": ["vtk"],
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
@@ -285,4 +287,4 @@ GFF.folders = [
 	}
 ];
 
-GFF.extension = ".xml";
+GFF.extensions = ["xml","gbxml"];

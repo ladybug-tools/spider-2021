@@ -9,9 +9,9 @@ const FRX = {};
 FRX.reader = new FileReader();
 FRX.path = "";
 
-FRX.init = function ( defaultFile ) {
+FRX.init = function () {
 
-	FRX.defaultFile = defaultFile;
+	FRX.defaultFile = COR.defaultFile;
 
 	window.addEventListener( "hashchange", FRX.onHashChange );
 
@@ -20,7 +20,7 @@ FRX.init = function ( defaultFile ) {
 <a href="https://www.energyplus.net/" target="_blank">EnergyPlus</a> IDF and OSM, OBJ, STL, VTK files.</p>
 Use the file dialog, drag&drop or a URL`;
 
-	FRXdivMenuFileRead.innerHTML = `
+	FRXdivDetails.innerHTML = `
 <details id=detFile >
 		<summary class="summary-primary gmd-1" title="Open files on your device: ">File menu
 		<span id=MNUspnFile ></span>
@@ -29,7 +29,7 @@ Use the file dialog, drag&drop or a URL`;
 
 	<div id=FRdivMenuFileReader> </div>
 
-	<p>Select a file from your device or network,</p>
+	<p>Select a file from your device or network.</p>
 	<p>
 		<input type=file id=FRXinpFiles onchange=FRX.onInputFiles(this); accept="*" multiple>
 	</p>
@@ -45,14 +45,13 @@ Use the file dialog, drag&drop or a URL`;
 
 FRX.onHashChange = function () {
 
-
 	FRX.timeStart = performance.now();
+
 	const url = location.hash ? location.hash.slice( 1 ) : FRX.defaultFile;
-	//const fileTitle = fileName.split( "/" ).pop();
-	//FRX.extension = fileTitle.toLowerCase().split( '.' ).pop();
 	FRX.content = "";
 	FRX.file = "";
-	FRX.fileName = url.split( "/").pop();
+	FRX.fileName = url.split( "/" ).pop();
+	FRX.extension = FRX.fileName.toLowerCase().split( '.' ).pop();
 	FRX.url = url;
 
 	FRX.loadHandler( FRX.url );
@@ -62,26 +61,13 @@ FRX.onHashChange = function () {
 
 FRX.onInputFiles = function () {
 
-	//console.log( "FRX files", files.files, files );
-
-
-
 	FRX.index = 0;
 	FRX.files = FRXinpFiles.files;
-	// FRX.file = FRX.files[ 0 ];
-	// FRX.fileName = FRX.file.name;
-	// FRX.hostName = FRX.file.type;
-	// FRX.content = "";
-	// FRX.url = "";
-
-
 	FRX.readFile();
 };
 
 
 FRX.readFile = function () {
-
-	//console.log( "FRX.files[ FRX.index ]", FRX.files[ FRX.index ] );
 
 	FRX.timeStart = performance.now();
 
@@ -89,11 +75,10 @@ FRX.readFile = function () {
 
 	FRX.file = FRX.files[ FRX.index ];
 	FRX.fileName = FRX.file.name;
+	FRX.extension = FRX.fileName.toLowerCase().split( '.' ).pop();
 	FRX.hostName = FRX.file.type;
 	FRX.content = "";
 	FRX.url = "";
-
-	//console.log( "", FRX.index, FRX.file );
 
 	FRX.index++;
 
@@ -103,33 +88,95 @@ FRX.readFile = function () {
 
 	}
 
-}
-
+};
 
 
 
 FRX.reader.onload = function () {
 
-	FRX.loadHandler( FRX.fileName.toLowerCase() )
-
-// 	if ( window.FRXdivLog ) {
-
-// 		FRXdivLog.innerHTML = `
-// name: ${ FRX.file.name }<br>
-// size: ${ FRX.file.size.toLocaleString() } bytes<br>
-// type: ${ FRX.file.type }<br>
-// modified: ${ FRX.file.lastModifiedDate.toLocaleDateString() }<br>
-// time to load: ${ ( performance.now() - FRX.timeStart ).toLocaleString() } ms`;
-
-// 	}
+	FRX.loadHandler( FRX.fileName.toLowerCase() );
 
 };
 
 
 
-FRX.loadHandler = function ( fName ){
+FRX.loadHandler = function ( fName ) {
 
-	//console.log( "fName", fName );
+	console.log( "fName", fName );
+
+	//divMainContent.style.display = "block";
+	//THR.renderer.domElement.hidden = true;
+
+	main.hidden = false;
+	THR.renderer.domElement.style.display = "none";
+
+	if ( FRX.fileName.startsWith( "edit" ) ) {
+
+		divMainContent.style.display = "block";
+
+		FRX.url = FRX.fileName.slice( 4 );
+
+		const xhr = new XMLHttpRequest();
+		xhr.open( "get", FRX.url, true );
+		xhr.onload = () => {
+			const txt = xhr.responseText;
+			divMainContent.innerHTML = `<textarea style="height:98vh;width:100%;" >${ txt }</textarea>`;
+			window.scrollTo( 0, 0 );
+			FRX.timeEnd = performance.now();
+			//console.log( "FRX time load", ( FRX.timeEnd - FRX.timeStart ).toLocaleString() );
+		};
+		xhr.send( null );
+
+		return;
+	}
+
+
+	if ( [ "htm", "html" ].includes( FRX.extension ) ) {
+
+		FRX.load( HTM, "htm-html-handler.js" ); return;
+
+		// divMainContent.innerHTML =
+		// 	`<iframe id=ifr src="${ decodeURI( FRX.url ) }" style="border:none;width:100%;" ></iframe>`;
+
+		// main.style.overflow = "hidden";
+
+		// divMainContent.innerHTML =
+		// 	`<iframe src="${ FRX.url }" height=${ window.innerHeight } style="border:none;width:100%;"  ></iframe>`;
+
+		// return;
+
+	}
+
+	if ( FRX.extension === "md" || FRX.extension === "markdown" ) {
+
+		main.style.overflow = "auto";
+
+		FRX.load( MDN, "mdn-markdown-handler.js" ); return;
+	}
+
+
+	if ( [ "gif", "jpg", "jpeg", "png", "svg" ].includes( FRX.extension ) ) {
+
+		main.style.overflow = "auto";
+
+		FRX.load( IMG, "img-image-handler.js" ); return;
+
+	}
+
+
+	// //main.style.display = "none";
+	// main.hidden = true;
+	// // divMainContent.style.zIndex = "-1";
+	// // divMainContent.innerHTML = "";
+	// // main.style.overflow = "hidden";
+
+	// THR.renderer.domElement.hidden = false;
+	// //THR.renderer.domElement.style.zIndex = 10;
+
+	main.hidden = true;
+	THR.renderer.domElement.style.display = "block";
+
+	// if ( fName.endsWith( ".md" ) ) { FRX.load( r3DM, "3dm-handler.js" ); return; }
 
 	if ( fName.endsWith( ".3dm" ) ) { FRX.load( r3DM, "3dm-handler.js" ); return; }
 
@@ -151,16 +198,27 @@ FRX.loadHandler = function ( fName ){
 
 	if ( fName.endsWith( ".vtk" ) || fName.endsWith( ".vtp" ) ) { FRX.load( VTK, "vtk-handler.js" ); return; }
 
-	if ( fName.endsWith( ".vtkjs" ) ) { alert( "VTKjs support coming soon!" ); }
+	if ( fName.endsWith( ".vtkjs" ) ) { alert( "VTKjs support coming soon!" ); return; }
 
 	if ( fName.endsWith( ".zip" ) ) { FRX.load( ZIP, "zip-handler.js" ); return; }
+
+
+	THR.renderer.domElement.style.display = "none";
+	divMainContent.style.display = "block";
+	main.hidden = false;
+	main.style.overflow = "hidden";
+
+	//FRX.load( UNK, "unk-unknown-handler.js" );
+	divMainContent.innerHTML =
+		`<iframe id=ifr src="${ decodeURI( FRX.url ) }" style="border:none;height:100vh;width:100%" ></iframe>`;
 
 };
 
 
+
 FRX.load = function ( obj, parser ) {
 
-	console.log( "FRX.path ", FRX.path  );
+	console.log( "FRX.path ", FRX.path );
 
 	if ( obj === undefined ) {
 
@@ -179,23 +237,6 @@ FRX.load = function ( obj, parser ) {
 	FRX.onProgress( FRX.file && FRX.file.size || 0, "Load complete" );
 
 };
-
-
-// template
-
-// ZZZ.handle = function () {
-
-// 	//console.log( "FRX.content", FRX.content.slice( 0, 100 ) );
-// 	console.log( "FRX.file", FRX.file.name );
-// 	console.log( "FRX.url", FRX.url.split( "/").pop() );
-
-// 	if ( FRX.content ) { ZZZ.parse( FRX.content ); return; }
-
-// 	if ( FRX.file ) { ZZZ.read(); return; }
-
-// 	if ( FRX.url ) { ZZZ.onChange( FRX.url ); return; }
-
-// };
 
 
 
@@ -222,3 +263,19 @@ FRX.onProgress = function ( size = 0, note = "" ) {
 
 };
 
+
+// template
+
+// ZZZ.handle = function () {
+
+// 	//console.log( "FRX.content", FRX.content.slice( 0, 100 ) );
+// 	console.log( "FRX.file", FRX.file.name );
+// 	console.log( "FRX.url", FRX.url.split( "/").pop() );
+
+// 	if ( FRX.content ) { ZZZ.parse( FRX.content ); return; }
+
+// 	if ( FRX.file ) { ZZZ.read(); return; }
+
+// 	if ( FRX.url ) { ZZZ.onChange( FRX.url ); return; }
+
+// };

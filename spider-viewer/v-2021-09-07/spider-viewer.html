@@ -24,6 +24,7 @@
 		body {
 			overflow: hidden;
 		}
+
 	</style>
 
 
@@ -40,6 +41,10 @@
 </head>
 
 <body>
+
+		<!-- https://github.com/showdownjs/showdown -->
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script> -->
+
 
 		<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/build/three.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/controls/OrbitControls.js"></script>
@@ -95,7 +100,7 @@
 
 			<div id=GRVdivDetails></div>
 
-			<div id=FRXdivMenuFileRead></div>
+			<div id=FRXdivDetails></div>
 
 			<div id=GFFdivDetails></div>
 
@@ -111,6 +116,11 @@
 
 	</details>
 
+	<main id=main>
+
+		<div id="divMainContent"></div>
+
+	</main>
 
 	<script>
 

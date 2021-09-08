@@ -1,5 +1,12 @@
 # Change Log
 
+## 2021-09-07
+
+
+* GFF Sample Files Gallery supports arrays of extensions per gallery
+* FRX File Read & XHR supports HTML, Markdown, a variety of images files including SVG using the operating system file dialog, drag & drop or a URL
+
+
 ## 2021-09-04
 
 	<iframe src=https://www.ladybug.tools/spider-2021/spider-viewer/v-2021-09-04/spider-viewer.html width=100% height=500 ></iframe>

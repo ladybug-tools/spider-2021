@@ -68,12 +68,16 @@ let r3DM = undefined;
 let GBX = undefined;
 let GLTF = undefined;
 let HBJ = undefined;
+let HTM = undefined;
 let IDF = undefined;
+let IMG = undefined;
+let MDN = undefined;
 let OBJ = undefined;
 let RAD = undefined;
 let STL = undefined;
 let VTK = undefined;
 let ZIP = undefined;
+let UNK = undefined;
 
 
 function init () {
@@ -108,7 +112,7 @@ function init () {
 	//THR.zoomObjectBoundingSphere();
 
 	FRX.init();
-	FRX.defaultFile = COR.files[ 0 ];
+	//FRX.defaultFile = COR.files[ 0 ];
 
 
 	window.addEventListener( "dragenter", dragenter, false );

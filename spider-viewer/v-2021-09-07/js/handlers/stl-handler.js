@@ -95,7 +95,7 @@ STL.loadUrl = function ( url ) {
 		( geometry ) => {
 
 			//geometry.rotateX( -0.5 * Math.PI );
-			geometry.computeFaceNormals();
+			//geometry.computeFaceNormals();
 			geometry.computeVertexNormals();
 			geometry.scale( 0.5, 0.5, 0.5 );
 			geometry.center();
