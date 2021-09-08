@@ -4,7 +4,8 @@
 
 
 * GFF Sample Files Gallery supports arrays of extensions per gallery
-* FRX File Read & XHR supports HTML, Markdown, a variety of images files including SVG using the operating system file dialog, drag & drop or a URL
+* FRX File Read & XHR supports HTML, Markdown, a variety of images files including SVG using the operating system file dialog, drag & drop or a URL. Other files types that seem to work iinclude
+PDF, CSF, MP4, TXT, WEBM
 
 
 ## 2021-09-04
