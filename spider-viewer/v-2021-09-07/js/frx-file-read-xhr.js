@@ -102,7 +102,7 @@ FRX.reader.onload = function () {
 
 FRX.loadHandler = function ( fName ) {
 
-	console.log( "fName", fName );
+	//console.log( "fName", fName );
 
 	//divMainContent.style.display = "block";
 	//THR.renderer.domElement.hidden = true;

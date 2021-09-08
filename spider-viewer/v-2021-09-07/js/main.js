@@ -112,7 +112,7 @@ function init () {
 	//THR.zoomObjectBoundingSphere();
 
 	FRX.init();
-	//FRX.defaultFile = COR.files[ 0 ];
+	FRX.defaultFile = COR.files[ 0 ];
 
 
 	window.addEventListener( "dragenter", dragenter, false );
@@ -214,7 +214,7 @@ COR.reset = function ( obj = [] ) {
 
 	THRR.init();
 
-	console.log( "model", model );
+	//console.log( "model", model );
 
 	if ( chkNewFile.checked === false ) {
 
