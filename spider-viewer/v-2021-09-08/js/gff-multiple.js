@@ -3,7 +3,7 @@
 GFF.folders = [
 	{ "group": "<b>Test Files</b>" },
 	{
-		"extensions": [ "csv", "htm", "html", "md", "mp4", "jpg", "webm", "pdf", "png", "txt"],
+		"extensions": [],
 		"user": "pushme-pullyou",
 		"repo": "/tootoo-2021",
 		"branch": "main",
@@ -12,6 +12,20 @@ GFF.folders = [
 		"subTitle":
 			`Files from the
 		<a href="https://github.com/ladybug-tools/3d-models/tree/master/gbxml-sample-files/" target="_blank">Ladybug Tools 3D Models Sample Files</a>
+		repository on GitHub.
+		Includes a variety of files from various vendors and organizations.`
+	},
+	{ "group": "<b>Test Files</b>" },
+	{
+		"extensions": [],
+		"user": "ladybug-tools",
+		"repo": "/3d-models",
+		"branch": "master",
+		"pathRepo": "json-threejs-sample-files/",
+		"title": "exports of Three.js scenes and objects",
+		"subTitle":
+			`Files from the
+		<a href="https://github.com/ladybug-tools/3d-models/tree/master/json/" target="_blank">Ladybug Tools 3D Models Sample JSON Files</a>
 		repository on GitHub.
 		Includes a variety of files from various vendors and organizations.`
 	},
@@ -43,7 +57,7 @@ GFF.folders = [
 		Includes a variety of gbXML files from various vendors and organizations.`
 	},
 	{
-		"extensions": [ "xml", "gbxml" ],
+		"extensions": [ "xml", "gbxml", "pdf" ],
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",

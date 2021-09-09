@@ -80,6 +80,7 @@ FRX.readFile = function () {
 	FRX.content = "";
 	FRX.url = "";
 
+	console.log( "frx", FRX );
 	FRX.index++;
 
 	if ( FRX.index < FRX.files.length ) {

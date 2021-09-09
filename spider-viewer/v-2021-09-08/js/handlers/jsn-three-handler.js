@@ -14,12 +14,11 @@ JSN.handle = function () {
 
 	if ( FRX.content ) { JSN.onUnZip(); return; }
 
-	if ( FRX.file ) { JSN.read(); return; }
+	if ( FRX.file ) { JSN.readFile(); return; }
 
 	if ( FRX.url ) { JSN.onChange( FRX.url ); return; }
 
 };
-
 
 
 
@@ -41,29 +40,11 @@ JSN.onUnZip = function () {
 
 
 
-JSN.read = function () {
-
-	// if ( JSN.objLoader === undefined ) {
-
-	// 	JSN.objLoader = document.body.appendChild( document.createElement( 'script' ) );
-	// 	JSN.objLoader.onload = () => JSN.readFile();
-	// 	JSN.objLoader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/ObjectLoader.js";
-
-	// } else {
-
-		JSN.readFile( FRX.file );
-
-	//}
-
-};
-
-
-
 JSN.readFile = function () {
 
 	const reader = new FileReader();
-	reader.onload = ( event ) => JSN.loadUrl( event.target.result );
-	reader.readAsDataURL( FRX.file );
+	reader.onload = ( event ) => JSN.parseJson( JSON.parse( event.target.result ) );
+	reader.readAsText( FRX.file );
 
 };
 
@@ -71,84 +52,35 @@ JSN.readFile = function () {
 
 JSN.onChange = function ( url ) {
 
-	if ( JSN.objLoader === undefined ) {
+	const xhr = new XMLHttpRequest();
+	xhr.open( "get", url, true );
+	xhr.onload = ( xhr ) => JSN.parseJson( JSON.parse( xhr.target.response ) );
+	xhr.send( null );
 
-		JSN.objLoader = document.body.appendChild( document.createElement( 'script' ) );
-		JSN.objLoader.onload = () => JSN.loadUrl( url );
-		JSN.objLoader.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/ObjectLoader.js";
+};
+
+
+
+JSN.parseJson = function ( json ) {
+
+	JSN.json = json;
+	//console.log( "json", JSN.json );
+
+	const loader = new THREE.ObjectLoader();
+	const object = loader.parse( JSN.json );
+
+	if ( object.isScene ) {
+
+		THR.scene = object;
 
 	} else {
 
-		JSN.loadUrl( url );
+		THR.scene.add( object );
 
 	}
-};
-
-
-
-JSN.loadUrl = function ( url ) {
-
-	const loader = new THREE.ObjectLoader();
-
-	loader.load(
-		url,
-
-		function ( obj ) {
-
-			scene.add( obj );
-
-		},
-
-		function ( xhr ) {
-
-			//console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-
-		},
-
-		function ( error ) {
-
-			console.log( "error: ", error );
-
-		}
-	);
-
 
 };
 
-
-
-
-JSN.parse = function () {
-
-	const loader = new THREE.OBJLoader();
-
-	JSN.onLoadObj( loader.parse( FRX.content ) );
-
-};
-
-
-
-JSN.onLoadObj = function ( group ) {
-	//console.log( "object", group );
-
-	const meshes = group.children;
-
-	meshes.forEach( mesh => {
-
-		mesh.rotation.x = Math.PI / 2;
-
-		const box = new THREE.Box3().setFromObject( group );
-		const scale = 200 / box.min.distanceTo( box.max );
-
-		mesh.scale.set( scale, scale, scale );
-
-	} );
-
-	COR.reset( meshes );
-
-	THRR.getHtm = THRR.getHtmDefault;
-
-};
 
 
 JSN.handle();

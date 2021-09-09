@@ -184,7 +184,8 @@ GFF.callbackGitHubMenu = function ( xhr ) {
 
 	item.urlGitHubPage = 'https://cdn.jsdelivr.net/gh/' + item.user + item.repo + '@' + item.branch + '/' + item.pathRepo;
 
-	item.threeViewer = "../../spider-gbxml-viewer/index.html";
+	item.threeViewer = "../../spider-viewer/index.html";
+
 
 	let count = 1;
 
@@ -195,7 +196,7 @@ GFF.callbackGitHubMenu = function ( xhr ) {
 		const ext = file.name.toLowerCase().split( "." ).pop();
 
 		if ( GFF.extensions.includes( ext ) === false &&
-			file.name.toLowerCase().endsWith( '.zip' ) === false ) { continue; }
+			file.name.toLowerCase().endsWith( '.zip' ) === false && GFF.extensions.length ) { continue; }
 
 		const fileName = encodeURI( file.name );
 
@@ -210,7 +211,7 @@ GFF.callbackGitHubMenu = function ( xhr ) {
 			<a href=${ GFF.urlViewer }#${ item.urlGitHubPage }${ fileName } title="Link to just this file. Open file in new tab." target="_blank" >
 			${ GFF.iconExternalLink }</a><br>
 <!--
-			<iframe src="https://www.ladybug.tools/spider-2020/spider-gbxml-viewer-lt/#${ item.urlGitHubPage }${ fileName }" ></iframe>
+			<iframe src="https://www.ladybug.tools/spider-2021/spider-viewer/index.html#${ item.urlGitHubPage }${ fileName }" ></iframe>
 -->
 		</div>`;
 
