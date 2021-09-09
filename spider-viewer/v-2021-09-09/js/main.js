@@ -113,7 +113,7 @@ function init () {
 	//THR.zoomObjectBoundingSphere();
 
 	FRX.init();
-	FRX.defaultFile = COR.files[ 4 ];
+	FRX.defaultFile = COR.files[ 0 ];
 
 
 	window.addEventListener( "dragenter", dragenter, false );
@@ -199,6 +199,9 @@ COR.reset = function ( obj = [] ) {
 	}
 
 	const model = new THREE.Group();
+
+	model.name = FRX.fileName;
+
 	model.add( ...meshes );
 
 	THR.group.add( model );

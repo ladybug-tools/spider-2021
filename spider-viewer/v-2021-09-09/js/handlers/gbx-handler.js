@@ -69,6 +69,7 @@ GBX.onChange = function ( url ) {
 };
 
 
+
 GBX.parse = function ( string ) {
 
 	//console.log( "string", string );
@@ -98,6 +99,7 @@ GBX.doit = function () {
 };
 
 
+
 function showPaintTimings () {
 
 	if ( window.performance ) {
@@ -110,6 +112,8 @@ function showPaintTimings () {
 		console.log( 'Performance timing isn\'t supported.' );
 	}
 }
+
+
 
 GBX.getSurfaceMeshes = function () {
 	// console.log( 'surfaces', surfaces );
@@ -502,6 +506,8 @@ GBX.getHtm = function ( intersected ) {
 
 };
 
+
+
 GBX.getHtm = function ( intersected ) {
 
 	//console.log( "intersected", intersected );
@@ -565,5 +571,7 @@ GBX.getHtm = function ( intersected ) {
 	return htm;
 
 };
+
+
 
 GBX.handle();
