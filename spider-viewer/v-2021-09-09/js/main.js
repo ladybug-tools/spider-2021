@@ -107,7 +107,7 @@ function init () {
 
 	THR.addGround();
 
-	THR.group = THR.getGroupNew();
+	//THR.group = THR.getGroupNew();
 
 	//THRU.addMeshes( 100 );
 	//THR.zoomObjectBoundingSphere();
