@@ -38,7 +38,7 @@ JTV.onLoad = function ( event ) {
 
 	if ( !JTVdet.open ) { return }
 
-	JTV.json = THR.scene.children;
+	//JTV.json = HBJ.json ? HBJ.json : THR.scene;
 
 
 	JTVdivJsonTree.innerHTML = JTV.parseJson( JTV.root, JTV.json, 0 );
