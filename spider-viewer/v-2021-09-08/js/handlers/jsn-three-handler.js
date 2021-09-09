@@ -12,7 +12,7 @@ JSN.handle = function () {
 	console.log( "FRX.files {...}", FRX.file.name );
 	console.log( "FRX.url .../", FRX.url.split( "/" ).pop() );
 
-	if ( FRX.content ) { JSN.onUnZip(); return; }
+	if ( FRX.content ) { JSN.parseJson( JSON.parse( FRX.content ) ); return; }
 
 	if ( FRX.file ) { JSN.readFile(); return; }
 

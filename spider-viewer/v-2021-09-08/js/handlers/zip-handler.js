@@ -89,7 +89,7 @@ ZIP.getZipContents = function ( fileName, zip ) {
 	console.log( "fileName", fileName );
 	extension = fileName.split( "." ).pop().toLowerCase();
 
-	if ( [ "glb", "3dm", "vtk", "json" ].includes( extension ) ) {
+	if ( [ "glb", "3dm", "vtk" ].includes( extension ) ) {
 
 		alert( "Spider is not yet unzipping this file format. Yet" );
 
@@ -149,6 +149,8 @@ ZIP.getZipContents = function ( fileName, zip ) {
 
 			if ( fileName.endsWith( "hbjson" ) ) { FRX.load( HBJ, "hbj-handler.js" ); return; }
 
+			if ( fileName.endsWith( "json" ) ) { FRX.load( JSN, "jsn-three-handler.js" ); return; }
+
 			if ( fileName.endsWith( ".idf" ) || fileName.endsWith( ".osm" ) ) { FRX.load( IDF, "idf-handler.js" ); return; }
 
 			if ( fileName.endsWith( "obj" ) ) { FRX.load( OBJ, "obj-handler.js" ); return; }
@@ -196,6 +198,8 @@ ZIP.unzip = function ( url ) {
 			if ( fName.endsWith( "gltf" ) || fileName.endsWith( "glb" ) ) { FRX.load( GLTF, "gltf-handler.js" ); return; }
 
 			if ( fName.endsWith( "hbjson" ) ) { FRX.load( HBJ, "hbj-handler.js" ); return; }
+
+			if ( fileName.endsWith( "json" ) ) { FRX.load( JSN, "jsn-three-handler.js" ); return; }
 
 			if ( fName.endsWith( ".idf" ) || fName.endsWith( ".osm" ) ) { FRX.load( IDF, "idf-handler.js" ); return; }
 
