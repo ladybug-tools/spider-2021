@@ -6,11 +6,8 @@
 
 const GFF = {};
 
-//GFF.iconGitHubMark = "https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/octicon.svg";
-//GFF.iconInfo = `<img src=${ GFF.iconGitHubMark } height=11 style=opacity:0.5 >`;
-//GFF.iconExternalLink = `<img width=16 src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/icon-link-external.svg">`;
-GFF.files = [];
-
+GFF.folderMeta = [];
+GFF.foldersMeta = [];
 
 
 GFF.init = function () {
@@ -57,7 +54,7 @@ GFF.getFolders = function () {
 	const script = document.head.appendChild( document.createElement( "script" ) );
 	script.onload = () => {
 
-		const htm = GFF.folders.map( ( item, index ) => {
+		const htm = GFF.foldersMeta.map( ( item, index ) => {
 
 			if ( !item.user ) { return item.group; }
 
@@ -82,7 +79,7 @@ GFF.getFolders = function () {
 
 GFF.getGithubFoldersFiles = function ( index, items ) {
 
-	const item = GFF.folders[ index ];
+	const item = GFF.foldersMeta[ index ];
 
 	item.urlGitHubApiContents = 'https://api.github.com/repos/' + item.user + item.repo + '/contents/' + item.pathRepo;
 
@@ -105,7 +102,7 @@ GFF.getGithubFoldersFiles = function ( index, items ) {
 		<p>Tool tips provide file size.
 
 		<p>
-			<button onclick=GFF.viewFiles(); >View all the files</button><br>Press any key to stop
+			<button onclick=GFF.viewAllFiles(); >View all the files</button><br>Press any key to stop
 		</p>
 
 		<hr>
@@ -137,7 +134,7 @@ GFF.requestFile = function ( url, callback, index ) {
 
 		let name = xhr.target.responseURL.split( '/' ).pop();
 
-		const item = GFF.folders[ GFF.index ];
+		const item = GFF.foldersMeta[ GFF.index ];
 
 		name = name ? item.user + '/' + name : `${ item.user }  ${ item.repo } `;
 
@@ -156,11 +153,12 @@ GFF.requestFile = function ( url, callback, index ) {
 GFF.callbackGitHubMenu = function ( xhr ) {
 
 	const response = xhr.target.response;
-	GFF.extensions = GFF.folders[ GFF.index ].extensions;
-	let files = JSON.parse( response );
+	GFF.extensions = GFF.foldersMeta[ GFF.index ].extensions;
+	GFF.files = JSON.parse( response );
+	//console.log( "GFF.files", GFF.files );
 
-	const item = GFF.folders[ GFF.index ];
-	GFF.files = item;
+	const item = GFF.foldersMeta[ GFF.index ];
+	GFF.folderMeta = item;
 	//console.log( 'item', item );
 
 	item.branch = item.branch || "master";
@@ -175,7 +173,7 @@ GFF.callbackGitHubMenu = function ( xhr ) {
 
 	let htm = "";
 
-	for ( let file of files ) {
+	for ( let file of GFF.files ) {
 
 		const ext = file.name.toLowerCase().split( "." ).pop();
 
@@ -272,91 +270,57 @@ GFF.onClick = function () {
 
 //////////
 
+GFF.sites =
+	[
+		[ "https://www.ladybug.tools/spider-2021/spider-viewer/", "Aragog gbXML Viewer" ],
+		[ "https://www.ladybug.tools/spider-covid-19-viz-3d/", "Radiance RAD File Viewer" ],
+		[ "https://prediqtiv.github.io/eye-cue/replay/dev", "predIQtiv" ],
+		[ "https://webmath.github.io/algesurf/ray-marching/r3/algesurf-ray-marching-r3.html", "algeSurf" ],
+		[ "https://www.ladybug.tools/spider/analemma3d/index.html#r20/analemma3d.html", "Analemma 3D" ],
+		[ "https://www.ladybug.tools/spider/build-well/r14/build-well.html", "Build Well" ],
+		[ "https://www.ladybug.tools/spider/burning-manalemma-2017/index.html#r10/burning-manalemma-2017.html#latitude:40.786944,longitude:-119.204444,zoom:11,offsetUTC:-420", "BurningmAnalemma" ],
+		[ "https://www.ladybug.tools/spider/cookbook/scatter-well/r1/index.html", "Scatter Well" ],
+		[ "https://www.ladybug.tools/spider/cookbook/rad-to-threejs/r5/rad-to-three.html", "Radiance RAD File Viewer" ]
+	];
 
-let timer;
-GFF.ii = 0; // Math.floor( Math.random() * sites.length );
+GFF.timer;
+GFF.index = 0; // Math.floor( Math.random() * sites.length );
 
 
-GFF.viewFiles = function ( index = 0 ) {
+GFF.viewAllFiles = function () {
 
-	console.log( "index", index );
+	clearInterval( GFF.timer );
 
-	clearInterval( timer );
+	GFF.displayNext();
 
-	displayNext();
-
-	timer = setInterval( displayNext, 10000 );
-
-
-	GFF.ii = index;
-	GFF.count = 0;
-	GFF.isRunning = true;
-
-	//GFF.loadFile( index, GFF.count );
-
-	window.addEventListener( "keydown", GFF.onKeydown );
+	GFF.timer = setInterval( GFF.displayNext, 10000 );
 
 };
 
 
-function displayNext () {
+GFF.displayNext = function () {
 
-	GFF.ii = GFF.ii >= GFF.files.length ? 0 : GFF.ii;
+	GFF.index = GFF.index >= GFF.files.length ? 0 : GFF.index;
 
-	if ( !GFF.files[ GFF.ii ].fileName ) { return; }
+	//GFFifr.onload = function () { GFFifr.className = "fade-in"; };
 
-	ifr.onload = function () { ifr.className = 'fade-in'; };
+	const file = GFF.files[ GFF.index ].download_url;
 
-	setTimeout( function () { ifr.className = 'fade-out'; }, 8000 );
+	location.hash = file;
 
-	ifr.src = GFF.folders[ index ].fileName;
+	//console.log( "file", GFF.index, file  );
 
-	history.replaceState( '', document.title, window.location.pathname );
+	setTimeout( function () { THR.renderer.domElement.className = "fade-out"; }, 8000 );
 
-	index++;
+	//GFFifr.src = GFF.sites[ GFF.index ][ 0 ];
+
+	//history.replaceState( "", document.title, window.location.pathname );
+
+	THR.controls.autoRotate = true;
+
+	GFF.index++;
 
 }
-
-GFF.onKeydown = function () {
-
-	location.reload();
-
-};
-
-
-
-GFF.mmmloadFile = function ( index = 0 ) {
-
-	const item = GFF.folders[ GFF.index ];
-	//console.log( 'item', item );
-
-	item.urlGitHubPage = 'https://cdn.jsdelivr.net/gh/' + item.user + item.repo + '@' + item.branch + '/';
-
-	const file = GFF.files[ index ][ GFF.count ];
-
-	// FOO.messagePopUp = `
-	// <p>File: <b>${ file.path.split( "/" ).pop() }</b></p>
-	// <p>Size: ${ file.size.toLocaleString() }</p>
-	// <p>Press any key to stop the demo.</p>
-	// `;
-
-	location.hash = item.urlGitHubPage + file.path;
-
-	//GFF.isRunning = false;
-
-	GFF.count++;
-
-	if ( GFF.count >= GFF.files[ index ].length ) {
-
-		//GFF.count = 0;
-
-	}
-
-	//divPopUp.hidden = true;
-
-	GFF.timer = setTimeout( () => { GFF.loadFile( index ); }, GFF.timeout );
-
-};
 
 
 

@@ -1,6 +1,6 @@
 
 
-GFF.folders = [
+GFF.foldersMeta = [
 	{ "group": "<b>Test Files</b>" },
 	{
 		"extensions": [],
@@ -8,14 +8,14 @@ GFF.folders = [
 		"repo": "/tootoo-2021",
 		"branch": "main",
 		"pathRepo": "test-cases/",
-		"title": "Set of simple test-cases",
+		"title": "Variety of file types for testing",
 		"subTitle":
 			`Files from the
-		<a href="https://github.com/ladybug-tools/3d-models/tree/master/gbxml-sample-files/" target="_blank">Ladybug Tools 3D Models Sample Files</a>
+		<a href="https://github.com/ladybug-tools/3d-models/tree/master/test-cases/" target="_blank">Ladybug Tools 3D Models Sample Files</a>
 		repository on GitHub.
 		Includes a variety of files from various vendors and organizations.`
 	},
-	{ "group": "<b>Test Files</b>" },
+	{ "group": "<b>Three.js JSON</b>" },
 	{
 		"extensions": [],
 		"user": "ladybug-tools",
