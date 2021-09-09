@@ -8,7 +8,7 @@ GFF.folders = [
 		"repo": "/tootoo-2021",
 		"branch": "main",
 		"pathRepo": "test-cases/",
-		"title": "Set of simple test-cases",
+		"title": "Set of a variety of file types for testing",
 		"subTitle":
 			`Files from the
 		<a href="https://github.com/ladybug-tools/3d-models/tree/master/gbxml-sample-files/" target="_blank">Ladybug Tools 3D Models Sample Files</a>

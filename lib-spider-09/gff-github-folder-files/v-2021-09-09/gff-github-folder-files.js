@@ -24,7 +24,7 @@ GFF.init = function () {
 <br>
 File name: gff-github-folder-files.js<br>
 Name space: GFF<br>
-Release: 2021-09-08`;
+Release: 2021-09-09`;
 
 
 	GFFdivDetails.innerHTML = `

@@ -10,9 +10,9 @@
 	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
 	<meta name="date" content="2021-09-09">
 	<title>Spider Viewer</title>
-		<!-- Copyright 2021 Theo Armour. MIT license -->
+	<!-- Copyright 2021 Theo Armour. MIT license -->
 
-		<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo-2021/lib/style/style-2021-07-12.css">
+	<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo-2021/lib/style/style-2021-07-12.css">
 
 	<style>
 		:root {
@@ -24,65 +24,67 @@
 		body {
 			overflow: hidden;
 		}
-
 	</style>
 
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129035557"></script>
-<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag() { dataLayer.push( arguments ); }
-	gtag( 'js', new Date() );
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129035557"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push( arguments ); }
+		gtag( 'js', new Date() );
 
-	gtag( 'config', 'UA-129035557' );
-</script>
+		gtag( 'config', 'UA-129035557' );
+	</script>
 
 </head>
 
 <body>
 
-		<!-- https://github.com/showdownjs/showdown -->
-		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script> -->
+	<!-- https://github.com/showdownjs/showdown -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script> -->
 
 
-		<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/build/three.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/controls/OrbitControls.js"></script>
-		<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/utils/BufferGeometryUtils.js"></script>
-		<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/controls/DragControls.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/utils/BufferGeometryUtils.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/controls/DragControls.js"></script>
 
-		<!-- To Do: load only as needed -->
-		<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/DRACOLoader.js"></script>
+	<!-- To Do: load only as needed -->
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/DRACOLoader.js"></script>
 
-		<script src="https://cdn.jsdelivr.net/npm/jszip@3.7.1/dist/jszip.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jszip@3.7.1/dist/jszip.min.js"></script>
 
-		<script src="https://pushme-pullyou.github.io/tootoo-2021/lib/mnu-menu/v-2021-08-17/mnu-menu.js"></script>
+	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib/mnu-menu/v-2021-08-17/mnu-menu.js"></script>
 
-		<script src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thr-three/thr-threejs-2021-09-07.js"></script>
-		<script src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
-		<!-- <script
-				src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thrr-three-raycaster/thrr-three-raycaster-mousedown-2021-08-19.js"></script>
-			-->
-		<script src="js/thrr-three-raycaster-mousedown.js"></script>
+	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thr-three/thr-threejs-2021-09-07.js"></script>
+	<script
+		src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
 
-		<script
-			src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thru-three-utilities/thru-three-utilities-2021-07-10.js"></script>
+	<!--
+	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thrr-three-raycaster/thrr-three-raycaster-mousedown-2021-08-19.js"></script>
+	-->
+	<script src="js/thrr-three-raycaster-mousedown.js"></script>
 
-		<script src="../../lib-spider-09/gff-github-folder-files/v-2021-09-09/gff-github-folder-files.js"></script>
+	<script
+		src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thru-three-utilities/thru-three-utilities-2021-07-10.js"></script>
 
-		<script src="../../lib-spider-09/exp-exporter/v-2021-09-03/exp-exporter.js"></script>
+	<script src="js/frx-file-read-xhr.js"></script>
 
-		<script src="js/frx-file-read-xhr.js"></script>
+	<script src="../../lib-spider-09/gff-github-folder-files/v-2021-09-09/gff-github-folder-files.js"></script>
 
-		<script src="js/main.js"></script>
+	<script src="../../lib-spider-09/exp-exporter/v-2021-09-03/exp-exporter.js"></script>
 
-		<script src="js/txt-text.js"></script>
+	<script src="js/main.js"></script>
+
+	<script src="js/txt-text.js"></script>
 
 
 
 	<details id=detNavMenu class="gmd-4">
 
-		<summary id=sumNavMenu class="summary-nav gmd-1">☰ <span id=spnMenuHelp>show&darr; || hide&uarr; menu</span>
+		<summary id=sumNavMenu class="summary-nav gmd-1">
+			☰ <span id=spnMenuHelp>show&darr; || hide&uarr; menu</span>
 		</summary>
 
 		<nav id="navMenu" class="">
