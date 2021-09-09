@@ -144,7 +144,7 @@ function init () {
 
 	GFF.init();
 
-	FRX.onHashChange();
+	//FRX.onHashChange();
 
 };
 
@@ -176,6 +176,8 @@ function drop ( event ) {
 COR.reset = function ( obj = [] ) {
 
 	if ( chkNewFile.checked ) { THR.group = THR.getGroupNew(); }
+
+	THR.group.name = "THR.groupDefault";
 
 	objs = Array.isArray( obj ) ? obj : [ obj ];
 
