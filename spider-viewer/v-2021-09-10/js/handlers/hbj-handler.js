@@ -66,11 +66,15 @@ HBJ.parse = function ( json ) {
 		geometryFloors = [],
 		geometryRoofCeilings = [],
 		geometryAirBoundaries = [],
-		geometryApertures = [],
-		geometryShades = []
+		geometryAperturesDoors = [],
+		geometryShades = [],
+		geometryFaceShades = []
+
 	];
 
 	const orphans = [ "orphaned_apertures", "orphaned_doors", "orphaned_faces", "orphaned_shades" ];
+
+	const faceShades = [ "indoorShades", "outdoor-shades" ];
 
 	if ( HBJ.json.type === "Model" ) {
 
@@ -164,16 +168,30 @@ HBJ.processJson = function ( json ) {
 
 		}
 
-		if ( geometryApertures.length ) {
+		if ( geometryAperturesDoors.length ) {
 
-			const bufferGeometryApertures = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryApertures );
+			const bufferGeometryAperturesDoors = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryAperturesDoors );
 			const materialApertures = new THREE.MeshPhongMaterial( { color: 0x888888, opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
-			const meshApertures = new THREE.Mesh( bufferGeometryApertures, materialApertures );
-			meshes.push( new THREE.Mesh( bufferGeometryApertures, materialApertures ) );
+			const meshApertures = new THREE.Mesh( bufferGeometryAperturesDoors, materialApertures );
+			meshes.push( new THREE.Mesh( bufferGeometryAperturesDoors, materialApertures ) );
 			meshApertures.receiveShadow = meshApertures.castShadow = true;
 			meshApertures.name = "Apertures";
-			meshApertures.userData.geometry = geometryApertures;
+			meshApertures.userData.geometry = geometryAperturesDoors;
 			meshes.push( meshApertures );
+
+		}
+
+		if ( geometryFaceShades.length ) {
+
+			const bufferGeometryFaceShades = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryFaceShades );
+			const materialApertures = new THREE.MeshPhongMaterial( { color: 0x888888, opacity: 0.85, side: 2, specular: 0xffffff, transparent: true } );
+			const meshApertures = new THREE.Mesh( bufferGeometryFaceShades, materialApertures );
+			meshes.push( new THREE.Mesh( bufferGeometryFaceShades, materialApertures ) );
+			meshApertures.receiveShadow = meshApertures.castShadow = true;
+			meshApertures.name = "Apertures";
+			meshApertures.userData.geometry = geometryFaceShades;
+			meshes.push( meshApertures );
+
 		}
 
 	}
@@ -205,16 +223,15 @@ HBJ.addShape3d = function ( face, data, index ) {
 	if ( face.apertures ) {
 
 		const apertures = face.apertures.filter( aperture => aperture.geometry );
+		let shapeApertures = apertures.map( shade => HBJ.getShape( shade.geometry.boundary, true ) );
+		shapeApertures.map( shape => shape.userData.face = face );
+		geometryAperturesDoors.push( ...shapeApertures );
 
-		let shapes = apertures.map( shade => HBJ.getShape( shade.geometry.boundary, true ) );
-
-		geometryApertures.push( ...shapes );
-
-		const shades = apertures.filter( aperture => aperture.outdoor_shades );
-
-		shapes = shades.map( shade => HBJ.getShape( shade.geometry.boundary, true ) );
-
-		geometryShades.push( ...shapes );
+		const faceShades = apertures.filter( aperture => aperture.indoor_shades || aperture.outdoor_shades );
+		console.log( "faceShades", faceShades);
+		shapeFaceShades = faceShades.map( shade => HBJ.getShape( shade.geometry.boundary, true ) );
+		shapeFaceShades.map( shape => shape.userData.face = face );
+		geometryFaceShades.push( ...shapeFaceShades );
 
 	}
 
@@ -343,7 +360,7 @@ HBJ.getHtm = function ( intersected ) {
 	//console.log( "intersected", intersected );
 	THRR.timeStart = performance.now();
 	//scene.updateMatrixWorld();
-	const mesh = intersected.object;
+	mesh = intersected.object;
 	//mesh.updateMatrix();
 	//console.log( "mesh", mesh );
 
@@ -366,21 +383,34 @@ HBJ.getHtm = function ( intersected ) {
 
 	//mesh.children.forEach( ( mesh, index ) => {
 
-	const faces = mesh.userData.geometry;
-	if ( !faces.length ) { console.log( "mesh", mesh ); }
-
+	console.log( "mesh", mesh );
+	//const faces = mesh.userData.geometry;
 
 	let index = 0;
 	let area = 0;
+	let items
 
-	for ( let i = 0; i < faces.length; i++ ) {
+	let geo = mesh.userData.geometry;
 
-		const face = faces[ i ].userData.face;
+	if ( geo?.length ) {
 
-		if ( !face ) { console.log( "face", faces[ i ] ); break; }
+		items = geo.map( geo => geo.userData );
 
+	} else {
 
-		const boundary = face.geometry.boundary;
+		items = mesh.geometry.userData.mergedUserData;
+
+	}
+
+	//console.log( "items", items );
+
+	for ( let i = 0; i < items.length; i++ ) {
+
+		const item = items[ i ];
+		//console.log( "item", item );
+
+		const boundary = item.face.geometry.boundary;
+		//console.log( "boundary", boundary );
 
 		for ( let j = 0; j < boundary.length; j++ ) {
 
@@ -395,18 +425,22 @@ HBJ.getHtm = function ( intersected ) {
 				const points = boundary.map( item => new THREE.Vector3().fromArray( item ) );
 
 				THRR.line.geometry.dispose();
-				THR.scene.remove( THRR.line );
+				THR.group.remove( THRR.line );
 
 				THRR.geometryLine = new THREE.BufferGeometry().setFromPoints( points );
 
-				THRR.materialLine = new THREE.LineBasicMaterial( { color: 0xffffff, transparent: true } );
+				THRR.materialLine = new THREE.LineBasicMaterial( { color: "magenta", transparent: false } );
 
 				THRR.line = new THREE.LineLoop( THRR.geometryLine, THRR.materialLine );
-				THR.scene.add( THRR.line );
+				THRR.line.name = "THR.linePopUp";
+
+				THR.group.add( THRR.line );
 
 				area = HBJ.getArea( points );
-				//console.log( "bingo!", i, boundary, "\n", vertexA, vertexB );
+
+				console.log( "bingo!", i, boundary, "\n", vertexA, vertexB );
 				index = i;
+
 				break;
 
 			}
@@ -420,10 +454,10 @@ HBJ.getHtm = function ( intersected ) {
 
 	//console.log( "ms:", ( performance.now() - THRR.timeStart ).toLocaleString() );
 
-	if ( faces[ index ] ) {
+	if ( items[ index ] ) {
 
-		item = faces[ index ].userData;
-		//console.log( "item", item );
+		item = items[ index ];
+		console.log( "item", item );
 
 		return `id: ${ index }<br>
 type: ${ mesh.name }<br>

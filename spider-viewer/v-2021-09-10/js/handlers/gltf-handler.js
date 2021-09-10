@@ -119,7 +119,8 @@ GLTF.loadDataUrl = function ( url = GLTF.defaultFile ) {
 
 GLTF.parse = function() {
 
-	alert( "GLTF files are highly compressed. Unzipping them is not a high priority. Yet.")
+	alert( "GLTF files are highly compressed. Unzipping them is not a high priority. Yet." )
+	
 }
 
 GLTF.handle();

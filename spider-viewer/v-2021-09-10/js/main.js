@@ -224,6 +224,10 @@ COR.reset = function ( obj = [] ) {
 	THR.zoomObjectBoundingSphere();
 	//THRU.toggleBoundingBoxHelper();
 
+	const details = navMenu.querySelectorAll( "details" );
+
+	Array.from( details ).slice( 25 ).forEach( det => det.open = false ); // how to update automatically?
+
 	THRR.init();
 
 	//console.log( "model", model );
@@ -237,30 +241,7 @@ COR.reset = function ( obj = [] ) {
 		dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
 
 	}
+
 	FRX.onProgress( FRX.size || 0, "Load complete" );
 
 };
-
-
-
-COR.i = 1;
-
-COR.test = function () {
-
-	requestIdleCallback( COR.run  );
-
-};
-
-
-COR.run = function () {
-
-	if ( COR.i < COR.files.length ) {
-
-		location.hash = COR.files[ COR.i++ ];
-
-		COR.test();
-
-	}
-}
-
-
