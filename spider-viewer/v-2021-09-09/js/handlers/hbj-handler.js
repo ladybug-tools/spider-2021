@@ -133,7 +133,7 @@ HBJ.processJson = function ( json ) {
 		const meshWalls = new THREE.Mesh( bufferGeometryWalls, materialWalls );
 		meshWalls.receiveShadow = meshWalls.castShadow = true;
 		meshWalls.name = "Walls";
-		meshWalls.userData.geometry = HBJ.types[ 0 ];
+		meshWalls.userData.geometry = geometryWalls;
 		meshes.push( meshWalls );
 
 		const bufferGeometryFloors = THREE.BufferGeometryUtils.mergeBufferGeometries( geometryFloors, true );
@@ -367,7 +367,7 @@ HBJ.getHtm = function ( intersected ) {
 	//mesh.children.forEach( ( mesh, index ) => {
 
 	const faces = mesh.userData.geometry;
-	//console.log( "faces", faces);
+	if ( !faces.length ) { console.log( "mesh", mesh ); }
 
 
 	let index = 0;
@@ -377,7 +377,7 @@ HBJ.getHtm = function ( intersected ) {
 
 		const face = faces[ i ].userData.face;
 
-		if ( !face ) { console.log( "face", face ); break; }
+		if ( !face ) { console.log( "face", faces[ i ] ); break; }
 
 
 		const boundary = face.geometry.boundary;

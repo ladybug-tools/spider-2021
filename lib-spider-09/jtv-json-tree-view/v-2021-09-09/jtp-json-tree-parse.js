@@ -1,77 +1,33 @@
 // copyright 2020 Theo Armour. MIT license.
-/* global GFO, JTVdivJsonTreeView, JTVdivJsonTree */
+/* global GFO, JTPdivJsonTreeView, JTPdivJsonTree */
 // jshint esversion: 6
 // jshint loopfunc: true
 
 
-const JTV = {};
+const JTP = {};
 
 
-JTV.root = "model";
-JTV.json = undefined;
+JTP.root = "model";
+JTP.json = undefined;
 
 
 
-JTV.schemas = [
+JTP.schemas = [
 	"Plane", "Face3D", "Ground", "Outdoors", "Adiabatic", "Surface", "ShadeEnergyPropertiesAbridged", "ShadePropertiesAbridged", "Shade", "ApertureEnergyPropertiesAbridged", "AperturePropertiesAbridged", "Aperture", "DoorEnergyPropertiesAbridged", "DoorPropertiesAbridged", "Door", "FaceEnergyPropertiesAbridged", "FacePropertiesAbridged", "Face", "PeopleAbridged", "LightingAbridged", "ElectricEquipmentAbridged", "GasEquipmentAbridged", "InfiltrationAbridged", "VentilationAbridged", "SetpointAbridged", "RoomEnergyPropertiesAbridged", "RoomPropertiesAbridged", "Room", "WallSetAbridged", "FloorSetAbridged", "RoofCeilingSetAbridged", "ApertureSetAbridged", "DoorSetAbridged", "ConstructionSetAbridged", "OpaqueConstructionAbridged", "WindowConstructionAbridged", "ShadeConstruction", "EnergyMaterial", "EnergyMaterialNoMass", "EnergyWindowMaterialGas", "EnergyWindowMaterialGasCustom", "EnergyWindowMaterialGasMixture", "EnergyWindowMaterialSimpleGlazSys", "EnergyWindowMaterialBlind", "EnergyWindowMaterialGlazing", "EnergyWindowMaterialShade", "IdealAirSystemAbridged", "ProgramTypeAbridged", "ScheduleDay", "ScheduleRuleAbridged", "ScheduleRulesetAbridged", "ScheduleFixedIntervalAbridged", "ScheduleTypeLimit", "ModelEnergyProperties", "ModelProperties", "Model"
 ];
 
 
-JTV.init = function () {
 
-	const info = "life is good!";
-
-	const htm = `
-
-	<details id=JTVdet ontoggle=JTV.onLoad() >
-
-		<summary class="summary-primary gmd-1" >
-			JSON tree view
-		<span id=MNUspnFile ></span>
-		${ MNU.addInfoBox( info ) }
-			</summary>
-
-		<p>JSON rendered to a tree view using the Spider JSON Tree View script</p>
-
-		<div id="JTVdivJsonTree"></div>
-
-	</details>
-
-`;
-
-	JTVdivJsonTreeView.innerHTML = htm;
-
-};
-
-
-
-JTV.onLoad = function ( event ) {
-	//console.log( "JTVdet", JTVdet.open );
-
-	if ( !JTVdet.open ) { return }
-
-	//JTV.json = HBJ.json ? HBJ.json : THR.scene;
-
-	JTVdivJsonTree.innerHTML = JTV.parseJson( JTV.root, JTV.json, 0 );
-
-	const details = JTVdivJsonTree.querySelectorAll( "details" );
-
-	details[ 0 ].open = true;
-
-};
-
-
-
-JTV.parseJson = function ( key = "", item = {}, index = 0 ) { //console.log( '', key, item, index );
+JTP.parseJson = function ( key = "", item = {}, index = 0 ) { //console.log( '', key, item, index );
 	const type = typeof item;
 
 	if ( [ "string", "number", "boolean", "null", "bigint" ].includes( type ) || !item ) {
 
-		return JTV.getString( key, item, index );
+		return JTP.getString( key, item, index );
 
 	} else if ( type === 'object' ) {
 
-		return Array.isArray( item ) ? JTV.getArray( key, item, index ) : JTV.getObject( key, item, index );
+		return Array.isArray( item ) ? JTP.getArray( key, item, index ) : JTP.getObject( key, item, index );
 
 	}
 
@@ -79,9 +35,9 @@ JTV.parseJson = function ( key = "", item = {}, index = 0 ) { //console.log( '',
 
 
 
-JTV.getString = function ( key, item, index ) { //console.log( 'string', key, item, index  );
+JTP.getString = function ( key, item, index ) { //console.log( 'string', key, item, index  );
 
-	const htm = JTV.schemas.includes( item ) ?
+	const htm = JTP.schemas.includes( item ) ?
 
 		`<div>${ key }: <a href="https://ladybug-tools.github.io/honeybee-schema/model.html#tag/${ item.toLowerCase() }_model" style=background-color:yellow;color:green;cursor:help; target="_blank">${ item }</a></div>`
 		:
@@ -94,9 +50,9 @@ JTV.getString = function ( key, item, index ) { //console.log( 'string', key, it
 
 
 
-JTV.getArray = function ( key, array, index ) { //console.log( 'Array', key, array );
+JTP.getArray = function ( key, array, index ) { //console.log( 'Array', key, array );
 
-	const htm = array.map( ( item, index ) => JTV.parseJson( key, item, index ) ).join( "" );
+	const htm = array.map( ( item, index ) => JTP.parseJson( key, item, index ) ).join( "" );
 
 	return `<details style="margin: 1ch 0 1ch 1ch;" >
 		<summary>${ key } [ ${ array.length } ]</summary>${ htm }
@@ -106,12 +62,12 @@ JTV.getArray = function ( key, array, index ) { //console.log( 'Array', key, arr
 
 
 
-JTV.getObject = function ( key, item, index ) {
+JTP.getObject = function ( key, item, index ) {
 
 	//if ( !item ) { console.log( 'error:', key, item, index ); return; }
 
 	const keys = Object.keys( item );
-	const htm = keys.map( key => JTV.parseJson( key, item[ key ] ) ).join( "" );
+	const htm = keys.map( key => JTP.parseJson( key, item[ key ] ) ).join( "" );
 
 	return `<details style="margin: 1ch 0 1ch 1ch;" >
 		<summary>${ key } ${ index }: { ${ keys.length } }</summary>${ htm }
