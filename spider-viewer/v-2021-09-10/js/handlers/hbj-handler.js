@@ -55,6 +55,7 @@ HBJ.colors = {
 
 };
 
+
 HBJ.parse = function ( json ) {
 
 	HBJ.json = json;
@@ -474,3 +475,40 @@ boundary: ${ item.face.boundary_condition?.type }<br>`;
 
 
 HBJ.handle();
+
+faces = [];
+shades = [];
+
+HBJ.traverse = function( o = HBJ.json ) {
+
+	let type = typeof o;
+	if ( type == "object" ) {
+		for ( let key in o ) {
+			if ( key === "faces" ) {
+				faces = o[ key ];
+				console.log( "key: ", faces );
+				if ( faces[ 0 ].face_type ) { faces.push( o[ key ] ); };
+			}
+
+			HBJ.traverse( o[ key ] );
+		}
+	}
+
+}
+
+HBJ.traverse2 = function ( o = HBJ.json ) {
+
+	let type = typeof o;
+	if ( type == "object" ) {
+		for ( let key in o ) {
+			if ( key === "Shade" ) {
+				shade = o[ key ];
+				console.log( "key: ", shade );
+				//if ( faces[ 0 ].face_type ) { faces.push( o[ key ] ); };
+			}
+
+			HBJ.traverse2( o[ key ] );
+		}
+	}
+
+}

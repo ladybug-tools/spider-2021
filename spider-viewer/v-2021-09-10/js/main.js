@@ -7,7 +7,7 @@ const COR = {
 	user: "ladybug-tools",
 	repo: "spider-2021",
 	branch: "main",
-	//path: "../../",
+	path: "./",
 	//pathJs: "spider-viewer/v-2021-08-27/js/handlers/",
 	defaultFile: "README.md",
 	ignoreFolders: [],
@@ -66,6 +66,8 @@ COR.files = [
 ];
 
 
+// stubs for files that may loaded
+
 let r3DM = undefined;
 let GBX = undefined;
 let GLTF = undefined;
@@ -122,7 +124,7 @@ function init () {
 	window.addEventListener( "dragover", dragover, false );
 	window.addEventListener( "drop", drop, false );
 
-	JTI.init();
+	//JTI.init();
 
 	SSO.init();
 
@@ -149,6 +151,11 @@ function init () {
 	GFF.init();
 
 	FRX.onHashChange();
+
+
+	AMF.addFiles();
+
+	//AMF.callback = JTI.init();
 
 };
 
@@ -243,5 +250,42 @@ COR.reset = function ( obj = [] ) {
 	}
 
 	FRX.onProgress( FRX.size || 0, "Load complete" );
+
+};
+
+
+
+const AMF = {};
+
+
+AMF.fileList = [
+	"jti-json-tree-init.js",
+	"jte-json-tree-edit.js",
+	"jtf-json-tree-finder.js",
+	"jth-json-tree-helper.js",
+	"jtp-json-tree-parse.js"
+];
+
+AMF.path = "../../lib-spider-09/jtv-json-tree-view/v-2021-09-10/";
+
+
+AMF.addFiles = function ( list = AMF.fileList, callback = AMF.callback ) {
+
+	list.forEach( file => AMF.addFile( AMF.path + file, callback ) );
+
+};
+
+AMF.addFile = function ( url, callback ) {
+
+	const loader = document.body.appendChild( document.createElement( 'script' ) );
+
+	loader.onload = () => {
+
+		AMF.count++;
+		if ( AMF.count === AMF.fileList.length ) { callback(); }
+
+	};
+
+	loader.src = url;
 
 };
