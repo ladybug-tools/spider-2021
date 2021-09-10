@@ -2,22 +2,13 @@
 
 const TXT = {};
 
-TXT.group = new THREE.Group();
+//TXT.group = new THREE.Group();
 
 let font;
 let dragControls
 
 TXT.init = function () {
 
-	TXT.group = new THREE.Group();
-
-	THR.scene.add( TXT.group );
-
-	const loader = new THREE.FontLoader();
-
-	const url = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/fonts/helvetiker_regular.typeface.json";
-
-	loader.load( url, ( fnt ) => font = fnt );
 
 	info =
 `This menu item was used along with modified Spider Viewer for a Zoom presentation to the gbXML Board of Directors meeting.
@@ -27,7 +18,7 @@ It is an example of the Spider Viewer being useful with "Augmented Modelling" by
 
 
 	htm = `
-	<details>
+	<details ontoggle=TXT.onToggle(); >
 	<summary class="summary-primary gmd-1" >gbXML BoD Presentation
 	${ MNU.addInfoBox( info ) }
 	</summary>
@@ -54,6 +45,25 @@ It is an example of the Spider Viewer being useful with "Augmented Modelling" by
 	TXTdivDetails.innerHTML = htm;
 
 };
+
+
+TXT.onToggle = function () {
+
+
+	TXT.group = new THREE.Group();
+
+	TXT.group.name = "TXT.gbxmlBodPresentation";
+
+	THR.scene.add( TXT.group );
+
+	const loader = new THREE.FontLoader();
+
+	const url = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/fonts/helvetiker_regular.typeface.json";
+
+	loader.load( url, ( fnt ) => font = fnt );
+
+};
+
 
 
 TXT.addText0 = function () {

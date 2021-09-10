@@ -1,5 +1,7 @@
 // copyright 2021 Theo Armour. MIT license.
-
+/* global THREE, COR */
+// jshint esversion: 6
+// jshint loopfunc: true
 
 /* global renderer, divPopUp */
 
@@ -20,9 +22,9 @@ THRR.init = function () {
 
 	THRR.materialLine = new THREE.LineBasicMaterial( { color: 0xffffff, transparent: true } );
 
-	THR.scene.remove( THRR.line );
+	THR.group.remove( THRR.line );
 	THRR.line = new THREE.LineLoop( THRR.geometryLine, THRR.materialLine );
-	THR.scene.add( THRR.line );
+	THR.group.add( THRR.line );
 
 	THRR.intersectObjects = THR.group.children;
 

@@ -138,13 +138,13 @@ function init () {
 		//COR.path = `https://www.ladybug.tools/spider-2021/v-${ COR.version }/`;
 		COR.path = "./"; // `./v-${ COR.version }/`;
 
-		//THR.controls.autoRotate = false;
+		THR.controls.autoRotate = false;
 
 	}
 
 	GFF.init();
 
-	//FRX.onHashChange();
+	FRX.onHashChange();
 
 };
 
@@ -177,7 +177,7 @@ COR.reset = function ( obj = [] ) {
 
 	if ( chkNewFile.checked ) { THR.group = THR.getGroupNew(); }
 
-	THR.group.name = "THR.groupDefault";
+	THR.group.name = "THR.groupsParent";
 
 	objs = Array.isArray( obj ) ? obj : [ obj ];
 
