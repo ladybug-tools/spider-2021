@@ -4,7 +4,6 @@
 // jshint loopfunc: true
 
 
-
 const JTV = {};
 
 
@@ -20,40 +19,7 @@ JTV.schemas = [
 
 JTV.init = function () {
 
-	JTV.target = JTVdivJsonTreeView;
-
-	//window.addEventListener( "onloadJson", JTV.onLoad, false );
-
-	JTV.target.innerHTML = JTV.getMenu();
-
-};
-
-
-
-JTV.onLoad = function ( event ) {
-
-	console.log( "JTVdet", JTVdet.open );
-
-	//JTV.json = JTV.json || GFO.json;
-
-	if ( !JTVdet.open ) { return }
-
-	//JTV.json = HBJ.json ? HBJ.json : THR.scene;
-
-
-	JTVdivJsonTree.innerHTML = JTV.parseJson( JTV.root, JTV.json, 0 );
-
-	const details = JTVdivJsonTree.querySelectorAll( "details" );
-
-	details[ 0 ].open = true;
-
-};
-
-
-
-JTV.getMenu = function () {
-
-	info = "life is good!"
+	const info = "life is good!";
 
 	const htm = `
 
@@ -65,7 +31,6 @@ JTV.getMenu = function () {
 		${ MNU.addInfoBox( info ) }
 			</summary>
 
-
 		<p>JSON rendered to a tree view using the Spider JSON Tree View script</p>
 
 		<div id="JTVdivJsonTree"></div>
@@ -74,7 +39,24 @@ JTV.getMenu = function () {
 
 `;
 
-	return htm;
+	JTVdivJsonTreeView.innerHTML = htm;
+
+};
+
+
+
+JTV.onLoad = function ( event ) {
+	//console.log( "JTVdet", JTVdet.open );
+
+	if ( !JTVdet.open ) { return }
+
+	//JTV.json = HBJ.json ? HBJ.json : THR.scene;
+
+	JTVdivJsonTree.innerHTML = JTV.parseJson( JTV.root, JTV.json, 0 );
+
+	const details = JTVdivJsonTree.querySelectorAll( "details" );
+
+	details[ 0 ].open = true;
 
 };
 
@@ -97,12 +79,7 @@ JTV.parseJson = function ( key = "", item = {}, index = 0 ) { //console.log( '',
 
 
 
-
 JTV.getString = function ( key, item, index ) { //console.log( 'string', key, item, index  );
-
-	// https://stackoverflow.com/questions/8299742/is-there-a-way-to-convert-html-into-normal-text-without-actually-write-it-to-a-s
-	//if ( typeof item === "string" ) { item = item.replace( /<[^>]*>/g, '' ); }
-	//if ( typeof item === "number" ) { item = item.toLocaleString() };
 
 	const htm = JTV.schemas.includes( item ) ?
 
@@ -141,6 +118,3 @@ JTV.getObject = function ( key, item, index ) {
 	</details>`;
 
 };
-
-
-
