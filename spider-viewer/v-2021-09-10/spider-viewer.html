@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
+	<meta name="description"
+		content="Ladybug Tools / Spider Viewer is a 3D file viewer, composer and exporter designed to be forked, hacked and remixed with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
+	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
+	<meta name="date" content="2021-09-10">
+	<title>Spider Viewer</title>
+	<!-- Copyright 2021 Theo Armour. MIT license -->
+
+	<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo-2021/lib/style/style-2021-07-12.css">
+
+	<style>
+		:root {
+			--main-hue: 125;
+			/* 0 to 360 0=red 120=green 240=blue */
+			--mnu-width: 22rem;
+		}
+
+		body {
+			overflow: hidden;
+		}
+	</style>
+
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129035557"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push( arguments ); }
+		gtag( 'js', new Date() );
+
+		gtag( 'config', 'UA-129035557' );
+	</script>
+
+</head>
+
+<body>
+
+	<!-- https://github.com/showdownjs/showdown -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script> -->
+
+
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/utils/BufferGeometryUtils.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/controls/DragControls.js"></script>
+
+	<!-- To Do: load only as needed -->
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r131/examples/js/loaders/DRACOLoader.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/jszip@3.7.1/dist/jszip.min.js"></script>
+
+	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib/mnu-menu/v-2021-08-17/mnu-menu.js"></script>
+
+	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thr-three/thr-threejs-2021-09-09.js"></script>
+	<script
+		src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
+
+	<!--
+	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thrr-three-raycaster/thrr-three-raycaster-mousedown-2021-08-19.js"></script>
+	-->
+	<script src="js/thrr-three-raycaster-mousedown.js"></script>
+
+	<script
+		src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thru-three-utilities/thru-three-utilities-2021-07-10.js"></script>
+
+	<script src="js/frx-file-read-xhr.js"></script>
+
+	<script src="../../lib-spider-09/gff-github-folder-files/v-2021-09-09/gff-github-folder-files.js"></script>
+
+	<script src="../../lib-spider-09/exp-exporter/v-2021-09-03/exp-exporter.js"></script>
+
+	<script src="../../lib-spider-09/jtv-json-tree-view/v-2021-09-09/jti-json-tree-init.js"></script>
+	<script src="../../lib-spider-09/jtv-json-tree-view/v-2021-09-09/jtp-json-tree-parse.js"></script>
+
+	<script src="js/sso-set-surface-opacity.js"></script>
+
+	<script src="js/main.js"></script>
+
+	<script src="js/txt-text.js"></script>
+
+
+
+	<details id=detNavMenu class="gmd-4">
+
+		<summary id=sumNavMenu class="summary-nav gmd-1">
+			☰ <span id=spnMenuHelp>show&darr; || hide&uarr; menu</span>
+		</summary>
+
+		<nav id="navMenu" class="">
+
+			<div id=MNUdivHeader></div>
+
+			<p>
+				<label>
+					<input type="checkbox" id="chkNewFile" checked> Open new file
+				</label>
+			</p>
+
+			<div id=GORdivDetails></div>
+
+			<div id=GRVdivDetails></div>
+
+			<div id=FRXdivDetails></div>
+
+			<div id=GFFdivDetails></div>
+
+			<div id=JTVdivJsonTreeView></div>
+
+			<div id=SSOdivSetSurfaceOpacity></div>
+
+			<div id=EXPdivMenuExporters></div>
+
+			<div id=TXTdivDetails></div>
+
+			<div id=CORdivStats></div>
+
+			<div id=MNUdivFooter></div>
+
+		</nav>
+
+	</details>
+
+	<main id=main>
+
+		<div id="divMainContent"></div>
+
+	</main>
+
+	<script>
+
+		init(); // see ./js/main.js
+
+	</script>
+
+
+</body>
+
+</html>
