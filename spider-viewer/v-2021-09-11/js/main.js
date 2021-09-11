@@ -99,6 +99,8 @@ function init () {
 
 	sumNavMenu.hidden = false;
 
+	GRA.init();
+
 	GFF.init();
 	//GFF.source = "../../lib-spider/gff-github-folder-files/gff-multiple.js";
 
