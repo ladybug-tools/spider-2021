@@ -4,8 +4,9 @@ Your 2021 3D happy place for online browsing, composing and exporting many of th
 
 ## Full screen: [Spider Viewer 2021]( https://ladybug.tools/spider-2021/spider-viewer/)
 
-[Dev Version]( https://ladybug.tools/spider-2021/spider-viewer/dev/ )
+[Dev Version]( https://ladybug.tools/spider-2021/dev/ )
 
+<!--@@@
 <iframe id=ifr src=https://ladybug.tools/spider-2021/spider-viewer/index.html class="iframe-resize" ></iframe>
 _Spider Viewer 2021_
 
