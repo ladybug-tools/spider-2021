@@ -224,6 +224,7 @@ COR.reset = function ( obj = [] ) {
 		if ( object.isMesh ) {
 			object.material.needsUpdate = true;
 			object.geometry.computeVertexNormals();
+			object.receiveShadow = object.castShadow = true;
 		}
 
 	} );

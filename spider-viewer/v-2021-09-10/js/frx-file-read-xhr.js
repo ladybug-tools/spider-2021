@@ -102,8 +102,7 @@ FRX.reader.onload = function () {
 
 
 FRX.loadHandler = function ( fName ) {
-
-	console.log( "fName", fName );
+	//console.log( "fName", fName );
 
 	//divMainContent.style.display = "block";
 	//THR.renderer.domElement.hidden = true;
@@ -206,7 +205,7 @@ FRX.loadHandler = function ( fName ) {
 
 
 
-FRX.load = function ( obj, parser ) {
+FRX.load = function ( obj, handler ) {
 
 	console.log( "FRX.path ", FRX.path );
 
@@ -215,7 +214,7 @@ FRX.load = function ( obj, parser ) {
 		//console.log( "obj", obj );
 		scr = document.body.appendChild( document.createElement( 'script' ) );
 		//scr.onload dealt with individually by each handler
-		scr.src = COR.path + `js/handlers/${ parser }`;
+		scr.src = COR.path + `js/handlers/${ handler }`;
 		//scr.src = `js/handlers/${ parser }`;
 
 	} else {
