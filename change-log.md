@@ -1,18 +1,21 @@
 # Change Log
 
+## 2021-09-11
+
+* Spider Viewer and TooToo combine into one app. View files of many types - 3D and 2D - including Markdown, PDF, HTML files and many more. Menus are beginning to work together. Library files being made deployable to any repo
+
 ## 2021-09-07
 
-
 * GFF Sample Files Gallery supports arrays of extensions per gallery
-* FRX File Read & XHR supports HTML, Markdown, a variety of images files including SVG using the operating system file dialog, drag & drop or a URL. Other files types that seem to work iinclude
-PDF, CSF, MP4, TXT, WEBM
+* FRX File Read & XHR supports HTML, Markdown, a variety of images files including SVG using the operating system file dialog, drag & drop or a URL. Other files types that seem to work including
+PDF, CSV, MP4, TXT, WEBM
 
 
 ## 2021-09-04
 
 	<iframe src=https://www.ladybug.tools/spider-2021/spider-viewer/v-2021-09-04/spider-viewer.html width=100% height=500 ></iframe>
 
-* Now loads and display all HBJSON shade types (still some triangulation issues here and there)
+* Now loads and displays all HBJSON shade types (still some triangulation issues here and there)
 * Commented: //renderer.outputEncoding = THREE.sRGBEncoding; ~ changes the coloring a lot - not sure whether good or not
 * Add scene.traverse: updateVertexNormals & material.needsUpdate - improves shading and shadows
 * Add generate animated GIF ~ 512x512 experimental feature ~ Try it from the Exporters menu
