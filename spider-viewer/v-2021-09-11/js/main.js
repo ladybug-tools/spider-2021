@@ -128,6 +128,7 @@ function init () {
 	GRV.init();
 	GRVdet.open = true;
 	//GRVsumRepo.hidden = true;
+	GRV.urlHome = "../../";
 	GRV.getRepo();
 
 	window.addEventListener( "dragenter", dragenter, false );
