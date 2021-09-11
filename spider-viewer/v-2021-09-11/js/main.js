@@ -119,6 +119,16 @@ function init () {
 	FRX.init();
 	//FRX.defaultFile = COR.files[ 5 ];
 
+	GRV.intro = `
+			<p>This menu enables you to display all folders and files in the ${ COR.title } GitHub repository in a tree view.</p>
+			${ MNU.addInfoBox( GRV.info ) }`;
+
+	//GRV.getFiles = GRV.getFilesAll;
+	GRV.getFiles = GRV.getFilesCurated;
+	GRV.init();
+	GRVdet.open = true;
+	//GRVsumRepo.hidden = true;
+	GRV.getRepo();
 
 	window.addEventListener( "dragenter", dragenter, false );
 	window.addEventListener( "dragover", dragover, false );
@@ -142,7 +152,7 @@ function init () {
 
 
 		//COR.path = `https://www.ladybug.tools/spider-2021/v-${ COR.version }/`;
-		COR.path = "./"; // `./v-${ COR.version }/`;
+		COR.path = "../../"; // `./v-${ COR.version }/`;
 
 		THR.controls.autoRotate = false;
 
