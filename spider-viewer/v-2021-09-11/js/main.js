@@ -9,7 +9,7 @@ const COR = {
 	branch: "main",
 	path: "./",
 	//pathJs: "spider-viewer/v-2021-08-27/js/handlers/",
-	defaultFile: "home-page.md",
+	defaultFile: "../../home-page.md",
 	ignoreFolders: [],
 	//ignoreFolders: ["archive", "lib", "lib3d", "lib-templates"],
 	filterFiles: [ "gif", "md", "jpg", "html", "license", "pdf", "png", "svg", "txt" ],
