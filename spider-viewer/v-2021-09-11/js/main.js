@@ -144,9 +144,9 @@ function init () {
 
 	if ( !location.hash && location.protocol === "https:" ) {
 
-		window.history.pushState( "", "", "../" );
+		//window.history.pushState( "", "", "../" );
 
-		COR.path = `./v-${ COR.version }/`; //`https://www.ladybug.tools/spider-2021/v-${ COR.version }/`;
+		COR.path = `./`; //v-${ COR.version }/`; //`https://www.ladybug.tools/spider-2021/v-${ COR.version }/`;
 
 	} else {
 
