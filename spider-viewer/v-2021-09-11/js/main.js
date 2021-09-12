@@ -101,6 +101,8 @@ function init () {
 
 	GRA.init();
 
+	CKE.init()
+
 	GFF.init();
 	//GFF.source = "../../lib-spider/gff-github-folder-files/gff-multiple.js";
 
