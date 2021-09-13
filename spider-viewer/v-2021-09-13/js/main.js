@@ -78,17 +78,12 @@ function init () {
 	<button onclick="THR.setStats()">View renderer statistics</button>
 </p>`;
 
-
-	//sumNavMenu.hidden = false;
-
-
+	sumNavMenu.hidden = false;
 
 	//CKE.init();
 
 	//GFF.init();
 	//GFF.source = "../../lib-spider/gff-github-folder-files/gff-multiple.js";
-
-	EXP.init();
 
 	THR.init();
 
@@ -99,12 +94,11 @@ function init () {
 	THR.addGround();
 
 	//THR.group = THR.getGroupNew();
-
 	//THRU.addMeshes( 100 );
 	//THR.zoomObjectBoundingSphere();
 
 	FRX.init();
-	//FRX.defaultFile = COR.files[ 5 ];
+	FRX.defaultFile = COR.files[ 5 ];
 
 	GRA.init();
 
@@ -120,13 +114,12 @@ function init () {
 	// GRV.urlHome = "../../";
 	// GRV.getRepo();
 
-	// window.addEventListener( "dragenter", dragenter, false );
-	// window.addEventListener( "dragover", dragover, false );
-	// window.addEventListener( "drop", drop, false );
 
 	//JTI.init();
 
 	SSO.init();
+
+	EXP.init();
 
 	TXT.init();
 
@@ -140,7 +133,6 @@ function init () {
 
 	} else {
 
-
 		//COR.path = `https://www.ladybug.tools/spider-2021/v-${ COR.version }/`;
 		COR.path = "../../"; // `./v-${ COR.version }/`;
 
@@ -149,6 +141,7 @@ function init () {
 	}
 
 	GFF.init();
+	GFFdet.open = true;
 
 	FRX.onHashChange();
 
