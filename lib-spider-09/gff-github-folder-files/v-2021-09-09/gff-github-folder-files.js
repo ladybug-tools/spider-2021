@@ -25,7 +25,7 @@ Release: 2021-09-09`;
 
 
 	GFFdivDetails.innerHTML = `
-<details ontoggle=GFF.getFolders(); class=divNavResize >
+<details id=GFFdet ontoggle=GFF.getFolders(); class=divNavResize >
 
 	<summary class="summary-primary gmd-1" title="View selected items">Sample files gallery
 		${ MNU.addInfoBox( info ) }
