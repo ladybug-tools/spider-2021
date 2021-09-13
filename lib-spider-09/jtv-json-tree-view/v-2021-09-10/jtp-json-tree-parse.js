@@ -43,7 +43,6 @@ JTP.getString = function ( key, item, index ) { //console.log( 'string', key, it
 		:
 		`<div>${ key }: <span style=color:green >${ item }<span></div>`;
 
-
 	return htm;
 
 };
