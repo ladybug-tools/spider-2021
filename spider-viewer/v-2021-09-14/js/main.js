@@ -142,8 +142,27 @@ function init () {
 
 	FRX.onHashChange();
 
+	main.hidden = false;
+	divMainContent.innerHTML = "<h1>nnnnnnnnnnnnnnnnn</h1>"
+
 };
 
+
+
+THR.onStart = function () {
+
+	main.hidden = false;
+	divMainContent.innerHTML = "<h1>nnnnnnnnnnnnnnnnn</h1>"
+	
+	controls.autoRotate = false;
+
+	window.removeEventListener( "keydown", THR.onStart );
+	window.removeEventListener( "click", THR.onStart );
+	window.removeEventListener( "touchstart", THR.onStart );
+	window.removeEventListener( "touchmove", THR.onStart );
+	window.removeEventListener( "touchend", THR.onStart );
+	window.removeEventListener( "wheel", THR.onStart );
+};
 
 
 COR.reset = function ( obj = [] ) {
@@ -228,7 +247,7 @@ AMF.fileList = [
 
 AMF.addFiles = function ( list = AMF.fileList, callback = AMF.callback ) {
 
-	list.forEach( file => AMF.addFile( AMF.path + file, callback = () =>{}) );
+	list.forEach( file => AMF.addFile( AMF.path + file, callback = () =>{} ) );
 
 };
 
