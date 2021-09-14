@@ -14,7 +14,7 @@ GFF.init = function () {
 
 	//GFF.jsonReposFolders = COR.path + "spider-viewer/v-2021-09-13/js/gff-multiple.js";
 
-	GFF.jsonReposFolders = COR.path + "js/gff-multiple.js";
+	GFF.jsonReposFolders = COR.path + "v-2021-09-13/js/gff-multiple.js";
 
 
 	GFFdivDetails.addEventListener( "contextmenu", GFF.onContextMenu );
