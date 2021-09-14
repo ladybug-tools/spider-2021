@@ -150,29 +150,6 @@ function init () {
 };
 
 
-// function dragenter ( event ) {
-// 	event.stopPropagation();
-// 	event.preventDefault();
-// }
-
-// function dragover ( event ) {
-// 	event.stopPropagation();
-// 	event.preventDefault();
-// }
-
-// function drop ( event ) {
-// 	event.stopPropagation();
-// 	event.preventDefault();
-
-// 	const dt = event.dataTransfer;
-// 	FRX.files = dt.files;
-
-// 	FRX.index = 0;
-// 	FRX.readFile();
-
-// }
-
-
 
 COR.reset = function ( obj = [] ) {
 
