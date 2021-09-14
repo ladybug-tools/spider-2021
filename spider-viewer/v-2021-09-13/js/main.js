@@ -142,7 +142,7 @@ function init () {
 
 	FRX.onHashChange();
 
-	AMF.path = COR.path + "lib-spider-09/jtv-json-tree-view/v-2021-09-10/";
+	AMF.path = "https://www.ladybug.tools/spider-2021/lib-spider-09/jtv-json-tree-view/v-2021-09-10/";
 	AMF.addFiles();
 
 	//

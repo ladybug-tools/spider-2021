@@ -51,8 +51,6 @@ JTI.onLoad = function ( event ) {
 
 	if ( HBJ ) {
 
-		console.log( "", 23 );
-
 		JTP.json = HBJ.json;
 		JTP.schemas = JTI.schemasHoneybee;
 
