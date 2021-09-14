@@ -131,7 +131,7 @@ function init () {
 	} else {
 
 		//COR.path = `https://www.ladybug.tools/spider-2021/v-${ COR.version }/`;
-		COR.path = "../../"; // `./v-${ COR.version }/`;
+		COR.path = "../../";
 
 		THR.controls.autoRotate = false;
 
@@ -142,6 +142,7 @@ function init () {
 
 	FRX.onHashChange();
 
+	AMF.path = COR.path + "lib-spider-09/jtv-json-tree-view/v-2021-09-10/";
 	AMF.addFiles();
 
 	//
@@ -225,7 +226,7 @@ AMF.fileList = [
 	"jtp-json-tree-parse.js"
 ];
 
-AMF.path = "../../lib-spider-09/jtv-json-tree-view/v-2021-09-10/";
+
 
 
 AMF.addFiles = function ( list = AMF.fileList, callback = AMF.callback ) {
