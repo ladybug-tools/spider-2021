@@ -142,10 +142,10 @@ function init () {
 
 	FRX.onHashChange();
 
-
 	AMF.addFiles();
 
-	//AMF.callback = JTI.init();
+	//
+
 
 };
 
