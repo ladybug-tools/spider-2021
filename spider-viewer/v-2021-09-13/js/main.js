@@ -82,9 +82,6 @@ function init () {
 
 	//CKE.init();
 
-	//GFF.init();
-	//GFF.source = "../../lib-spider/gff-github-folder-files/gff-multiple.js";
-
 	THR.init();
 
 	THR.animate();
