@@ -26,7 +26,6 @@ const COR = {
 
 
 
-
 const description = `
 Online interactive <a href="https://www.gbxml.org" target="_blank">gbXML</a>
 in 3D viewer in your browser,
