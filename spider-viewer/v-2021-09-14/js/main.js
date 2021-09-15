@@ -8,7 +8,6 @@ const COR = {
 	repo: "spider-2021",
 	branch: "main",
 	path: "./",
-	//pathJs: "spider-viewer/v-2021-08-27/js/handlers/",
 	defaultFile: "../../home-page.md",
 	defaultIgnoreFolders: [],
 	//ignoreFolders: ["archive", "lib", "lib3d", "lib-templates"],
@@ -26,11 +25,11 @@ const COR = {
 
 
 
-const description = `
-Online interactive <a href="https://www.gbxml.org" target="_blank">gbXML</a>
-in 3D viewer in your browser,
-designed to be forked, hacked and remixed using the WebGL and the
-<a href="https://threejs.org" target="_blank">Three.js</a> JavaScript library`;
+// const description = `
+// Online interactive <a href="https://www.gbxml.org" target="_blank">gbXML</a>
+// in 3D viewer in your browser,
+// designed to be forked, hacked and remixed using the WebGL and the
+// <a href="https://threejs.org" target="_blank">Three.js</a> JavaScript library`;
 
 
 COR.files = [
@@ -94,7 +93,7 @@ function init () {
 		//COR.path = `https://www.ladybug.tools/spider-2021/v-${ COR.version }/`;
 		COR.path = "../../";
 
-		THR.controls.autoRotate = false;
+		//THR.controls.autoRotate = false;
 
 	}
 
@@ -134,34 +133,63 @@ function init () {
 
 	EXP.init();
 
-	TXT.init();
-
 	AMF.path = "https://www.ladybug.tools/spider-2021/lib-spider-09/jtv-json-tree-view/v-2021-09-10/";
 	AMF.addFiles();
 
 
 	FRX.onHashChange();
 
+	FRX.onProgress( FRX.size || 0, "Load complete" );
+
+	const loader = new THREE.FontLoader();
+
+	const url = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/fonts/helvetiker_regular.typeface.json";
+
+	loader.load( url, ( fnt ) => font = fnt );
+
+
 	main.hidden = false;
-	divMainContent.innerHTML = "<h1>nnnnnnnnnnnnnnnnn</h1>"
+	main.style.cssText = "border: 1px solid red; text-align: center;";
+	divMainContent.innerHTML = `
+<h1 style="text-shadow: 0 0 3px #FF0000; color:lightgreen;" >Welcome to the Open Source CAD viewer of your dreams</h1>
+<h2>Open 3D: gbXML, Honeybee JSON, Rhino, Radiance, Open Studio, GLTF, STL, OBJ</h2>
+<h2>Open "flat" files: text, HTML, PDF, MP4, WEBM, CSV, GIF, JPG, PNG, SVG etc</h2>
+<h2>Load files using drag & drop, the file system dialog box or link to files on the Web</h2>
+<h2>Access dozens of sample files of many types in order to test, experiment and play</h2>
+<h2>Load many files into a scene, move them about, and save the results to a new file</h2>
+<h2>Right-click on any item to view its details in a pop-up menu</h2>
+<h2>View rendering statistics and frames per second</h2>
+<h2>Explore all the JSON data in tree view menu</h2>
+<h2>1|2|3 finger to rotate|zoom|pan</h2>
+<h2 style=color:magenta; >Huge files load fast</h2>
+❦
+<h2>Click anywhere or press spacebar to continue</h2>
+`;
+
+	window.addEventListener( "keydown", COR.onStart );
+	main.addEventListener( "click", COR.onStart );
+	main.addEventListener( "touchstart", COR.onStart );
+	main.addEventListener( "touchmove", COR.onStart );
+	main.addEventListener( "touchend", COR.onStart );
+	main.addEventListener( "wheel", COR.onStart );
 
 };
 
 
 
-THR.onStart = function () {
+COR.onStart = function () {
 
-	main.hidden = false;
-	divMainContent.innerHTML = "<h1>nnnnnnnnnnnnnnnnn</h1>"
-	
+	main.hidden = true;
+	divMainContent.innerHTML = "";
+
 	controls.autoRotate = false;
 
-	window.removeEventListener( "keydown", THR.onStart );
-	window.removeEventListener( "click", THR.onStart );
-	window.removeEventListener( "touchstart", THR.onStart );
-	window.removeEventListener( "touchmove", THR.onStart );
-	window.removeEventListener( "touchend", THR.onStart );
-	window.removeEventListener( "wheel", THR.onStart );
+	main.removeEventListener( "keydown", COR.onStart );
+	main.removeEventListener( "click", COR.onStart );
+	main.removeEventListener( "touchstart", COR.onStart );
+	main.removeEventListener( "touchmove", COR.onStart );
+	main.removeEventListener( "touchend", COR.onStart );
+	main.removeEventListener( "wheel", COR.onStart );
 };
 
 
@@ -223,7 +251,12 @@ COR.reset = function ( obj = [] ) {
 
 	}
 
-	FRX.onProgress( FRX.size || 0, "Load complete" );
+
+// 	THR.group.add( TXT.getSimpleText( {
+// 		text:
+// `New Features
+// Every Week`, color: 0x0000ff, size: 2.5, x: 0, y: 12, z: -10 } ) );
+
 
 };
 
