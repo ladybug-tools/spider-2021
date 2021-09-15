@@ -116,9 +116,11 @@ _Further revisions of this document will highlight relevant goal, targets and in
 
 https://rufus31415.github.io/sandbox/3d-viewer/
 
+
 ### Blender BLEND files
 
 * https://github.com/acweathersby/js.blend
+
 
 ### gbXML
 
@@ -128,6 +130,7 @@ https://rufus31415.github.io/sandbox/3d-viewer/
 ### IDF and OSM
 
 * originator: https://www.energyplus.net/
+
 
 ### Honeybee JSON & VTK
 
@@ -139,7 +142,8 @@ VTK
 
 * https://github.com/ladybug-tools/honeybee-vtk
 * nhttps://github.com/ladybug-tools/honeybee-vtk/blob/master/honeybee_vtk/model.py - has colors in HSL
-*
+
+
 ### Radiance ~ RAD
 
 * schema: https://radiance-online.org/
@@ -148,6 +152,7 @@ To-do
 
 * 2021-08-25 ~ fix a number of small issues
 * 2021-08-25 ~ add materials
+
 
 ### VTK
 

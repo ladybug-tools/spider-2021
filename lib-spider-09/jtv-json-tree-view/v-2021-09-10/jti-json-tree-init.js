@@ -95,4 +95,4 @@ JTI.getThreeJson = function () {
 }
 
 
-JTI.init();
+//JTI.init();

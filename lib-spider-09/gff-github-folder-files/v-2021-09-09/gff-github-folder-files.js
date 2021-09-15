@@ -18,12 +18,12 @@ GFF.init = function () {
 
 	if ( location.protocol === "https:" ) {
 
-		GFF.jsonReposFolders = COR.path + "v-2021-09-13/js/gff-multiple.js";
+		GFF.jsonReposFolders = COR.path + "v-2021-09-15/js/gff-multiple.js";
 
 	} else {
 
 
-		GFF.jsonReposFolders = COR.path + "spider-viewer/v-2021-09-13/js/gff-multiple.js";
+		GFF.jsonReposFolders = COR.path + "spider-viewer/v-2021-09-15/js/gff-multiple.js";
 
 
 	}
