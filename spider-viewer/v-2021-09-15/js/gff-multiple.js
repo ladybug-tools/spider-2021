@@ -162,7 +162,7 @@ GFF.foldersMeta = [
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
-		"pathRepo": "hbjson-sample-files/2021/",
+		"pathRepo": "hbjson-sample-files/2021/tk/",
 		"title": "TK samples",
 		"subTitle":
 			`Ladybug Tools / Honeybee
