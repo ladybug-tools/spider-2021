@@ -133,6 +133,7 @@ function init () {
 	AMF.path = "https://www.ladybug.tools/spider-2021/lib-spider-09/jtv-json-tree-view/v-2021-09-10/";
 
 
+	JTI.init();
 
 	FRX.onHashChange();
 
@@ -173,7 +174,6 @@ function init () {
 	main.addEventListener( "wheel", COR.onStart );
 
 
-	JTI.init();
 
 
 	AMF.addFiles();
