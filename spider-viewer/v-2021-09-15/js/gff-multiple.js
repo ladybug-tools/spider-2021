@@ -158,7 +158,7 @@ GFF.foldersMeta = [
 	 	on GitHub from a variety of sources`
 	},
 	{
-		"extension": [],
+		"extensions": [],
 		"user": "ladybug-tools",
 		"repo": "/3d-models",
 		"branch": "master",
