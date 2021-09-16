@@ -128,7 +128,7 @@ GFF.folders = [
 			`Ladybug Tools / Honeybee
 		<a href="https://github.com/ladybug-tools/3d-models/tree/master/hbjson-sample-files/2021" target="_blank">sample hbjson files</a>
 	 	on GitHub from a variety of sources`
-	},
+	},z
 	{
 		"extension": ".hbjson",
 		"user": "ladybug-tools",
