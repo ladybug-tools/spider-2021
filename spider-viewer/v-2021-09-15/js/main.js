@@ -106,7 +106,7 @@ function init () {
 	//CKE.init();
 
 	FRX.init();
-	FRX.defaultFile = COR.files[ 12 ];
+	FRX.defaultFile = COR.files[ 5 ];
 
 	GRA.init();
 
