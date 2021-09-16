@@ -111,7 +111,7 @@ function init () {
 	GRA.init();
 
 	GFF.init();
-	GFFdet.open = true;
+	//GFFdet.open = true;
 
 	// GRV.intro = `
 	// 		<p>This menu enables you to display all folders and files in the ${ COR.title } GitHub repository in a tree view.</p>
@@ -126,6 +126,7 @@ function init () {
 	// GRV.getRepo();
 
 	SSO.init();
+	//SSOdet.open = true;
 
 	EXP.init();
 
@@ -218,6 +219,8 @@ COR.reset = function ( obj = [] ) {
 	const model = new THREE.Group();
 
 	model.name = FRX.fileName;
+	model.userData.extension = FRX.extension;
+	model.userData.url = FRX.url || "";
 
 	model.add( ...meshes );
 
@@ -226,14 +229,10 @@ COR.reset = function ( obj = [] ) {
 	scene.traverse( function ( object ) {
 
 		if ( object.isMesh ) {
-			object.material.needsUpdate = true;
 			object.geometry.computeVertexNormals();
 			object.receiveShadow = object.castShadow = true;
-			object.name = FRX.fileName;
-			object.userData.extension = FRX.extension;
-			object.userData.url = FRX.url;
-
-			object.visible = object.material.vertexColors ? true : false;
+			object.material.side = 2;
+			object.material.needsUpdate = true;
 
 		}
 
@@ -243,9 +242,9 @@ COR.reset = function ( obj = [] ) {
 	//THRU.toggleBoundingBoxHelper();
 
 
-	const details = navMenu.querySelectorAll( "details" );
+	//const details = navMenu.querySelectorAll( "details" );
 
-	Array.from( details ).slice( 25 ).forEach( det => det.open = false ); // how to update automatically?
+	//Array.from( details ).slice( 25 ).forEach( det => det.open = false ); // how to update automatically?
 
 	THRR.init();
 
