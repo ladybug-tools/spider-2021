@@ -238,9 +238,12 @@ COR.reset = function ( obj = [] ) {
 
 	} );
 
-	THR.zoomObjectBoundingSphere();
-	//THRU.toggleBoundingBoxHelper();
+	if ( FRX.extension !== "json" ) {
 
+		THR.zoomObjectBoundingSphere();
+		//THRU.toggleBoundingBoxHelper();
+
+	}
 
 	//const details = navMenu.querySelectorAll( "details" );
 
