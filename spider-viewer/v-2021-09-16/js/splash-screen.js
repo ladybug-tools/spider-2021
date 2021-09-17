@@ -34,7 +34,7 @@ SSL.init = function() {
 <h2>Right-click on any item to view its details in a pop-up menu</h2>
 <h2>View rendering statistics and frames per second</h2>
 <h2>Explore all the JSON data in tree view menu</h2>
-<h2>1|2|3 finger to rotate|zoom|pan</h2>
+<h2>1|2|3 fingers to rotate|zoom|pan</h2>
 <h2 style=color:magenta; >Huge files load fast</h2>
 ❦
 <h2>Click anywhere or press spacebar to continue</h2>
