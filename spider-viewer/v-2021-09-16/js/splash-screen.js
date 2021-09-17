@@ -13,17 +13,17 @@ const SSL = {}; //
 
 SSL.init = function() {
 
-	const loader = new THREE.FontLoader();
+	// const loader = new THREE.FontLoader();
 
-	const url = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/fonts/helvetiker_regular.typeface.json";
+	// const url = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/fonts/helvetiker_regular.typeface.json";
 
-	loader.load( url, ( fnt ) => font = fnt );
+	// loader.load( url, ( fnt ) => font = fnt );
 
 	// https://css-tricks.com/fitting-text-to-a-container/
 	// https://stackoverflow.com/questions/16056591/font-scaling-based-on-width-of-container
 
 	main.hidden = false;
-	main.style.cssText = "border: 1px solid red; text-align: center;";
+	main.style.cssText = "border: 0px solid red; font-size: calc( 0.5vw + 1vh); text-align: center;";
 	divMainContent.innerHTML = `
 <h1 style="text-shadow: 0 0 3px #FF0000; color:lightgreen;" >Welcome to the Open Source CAD viewer of your dreams</h1>
 <h2>Open 3D: gbXML, Honeybee JSON, Rhino, Radiance, Open Studio, GLTF, STL, OBJ</h2>
