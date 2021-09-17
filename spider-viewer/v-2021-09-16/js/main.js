@@ -1,7 +1,4 @@
-// copyright 2021 Theo Armour. MIT license.
-/* global THREE, COR */
-// jshint esversion: 6
-// jshint loopfunc: true
+
 
 // This places is becoming very messy
 
@@ -11,6 +8,7 @@ const COR = {
 	branch: "main",
 	path: "./",
 	pathTooToo: "https://pushme-pullyou.github.io/tootoo-2021/",
+	pathTooToo: "../../../pushme-pullyou-tootoo-2021/",
 	defaultFile: "../../home-page.md",
 	defaultIgnoreFolders: [],
 	//ignoreFolders: ["archive", "lib", "lib3d", "lib-templates"],
@@ -65,6 +63,22 @@ COR.files = [
 
 function init () {
 
+	// if running on server, keep address bar pointed to latest rev
+
+	if ( !location.hash && location.protocol === "https:" ) {
+
+		window.history.pushState( "", "", "../" );
+
+		COR.path = "./";
+
+	} else {
+
+		COR.path = "../../";
+
+		//THR.controls.autoRotate = false;
+
+	}
+
 	THR.init();
 
 	THR.animate();
@@ -77,32 +91,11 @@ function init () {
 	//THRU.addMeshes( 100 );
 	//THR.zoomObjectBoundingSphere();
 
-	// if running on server, keep address bar pointed to latest rev
-
-	if ( !location.hash && location.protocol === "https:" ) {
-
-		window.history.pushState( "", "", "../" );
-
-		COR.path = "./";
-
-	} else {
-
-		//COR.path = `https://www.ladybug.tools/spider-2021/v-${ COR.version }/`;
-		COR.path = "../../";
-
-		//THR.controls.autoRotate = false;
-
-	}
+	// Items generally loaded in order of appearance on the menu
 
 	MNU.init();
-
-	CORdivStats.innerHTML = `
-<p
-	title="View number of objects that need rendering and total number of triangles used to create objects">
-	<button onclick="THR.setStats()">View renderer statistics</button>
-</p>`;
-
 	sumNavMenu.hidden = false;
+
 
 	//CKE.init();
 
@@ -114,102 +107,49 @@ function init () {
 	GFF.init();
 	//GFFdet.open = true;
 
-	// GRV.intro = `
-	// 		<p>This menu enables you to display all folders and files in the ${ COR.title } GitHub repository in a tree view.</p>
-	// 		${ MNU.addInfoBox( GRV.info ) }`;
 
 	// //GRV.getFiles = GRV.getFilesAll;
 	// GRV.getFiles = GRV.getFilesCurated;
 	// GRV.init();
 	// GRVdet.open = true;
 	// //GRVsumRepo.hidden = true;
-	// GRV.urlHome = "../../";
-	// GRV.getRepo();
 
-	SSO.init();
+
+	JTI.init(); // Json Tree View
+
+	SSO.init(); // Set surface type opacity
 	//SSOdet.open = true;
 
-	EXP.init();
-
-	AMF.path = "https://www.ladybug.tools/spider-2021/lib-spider-09/jtv-json-tree-view/v-2021-09-10/";
-
-
-	JTI.init();
+	EXP.init(); // Export
 
 	FRX.onHashChange();
 
 	FRX.onProgress( FRX.size || 0, "Load complete" );
 
-	const loader = new THREE.FontLoader();
 
-	const url = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/fonts/helvetiker_regular.typeface.json";
+	THR.initStats();
 
-	loader.load( url, ( fnt ) => font = fnt );
+	//AMF.addFiles();
 
-// https://css-tricks.com/fitting-text-to-a-container/
-// https://stackoverflow.com/questions/16056591/font-scaling-based-on-width-of-container
-
-	main.hidden = false;
-	main.style.cssText = "border: 1px solid red; text-align: center;";
-	divMainContent.innerHTML = `
-<h1 style="text-shadow: 0 0 3px #FF0000; color:lightgreen;" >Welcome to the Open Source CAD viewer of your dreams</h1>
-<h2>Open 3D: gbXML, Honeybee JSON, Rhino, Radiance, Open Studio, GLTF, STL, OBJ</h2>
-<h2>Open "flat" files: text, HTML, PDF, MP4, WEBM, CSV, GIF, JPG, PNG, SVG etc</h2>
-<h2>Load files using drag & drop, the file system dialog box or link to files on the Web</h2>
-<h2>Access dozens of sample files of many types in order to test, experiment and play</h2>
-<h2>Load many files into a scene, move them about, and save the results to a new file</h2>
-<h2>Right-click on any item to view its details in a pop-up menu</h2>
-<h2>View rendering statistics and frames per second</h2>
-<h2>Explore all the JSON data in tree view menu</h2>
-<h2>1|2|3 finger to rotate|zoom|pan</h2>
-<h2 style=color:magenta; >Huge files load fast</h2>
-❦
-<h2>Click anywhere or press spacebar to continue</h2>
-`;
-
-	window.addEventListener( "keydown", COR.onStart );
-	main.addEventListener( "click", COR.onStart );
-	main.addEventListener( "touchstart", COR.onStart );
-	main.addEventListener( "touchmove", COR.onStart );
-	main.addEventListener( "touchend", COR.onStart );
-	main.addEventListener( "wheel", COR.onStart );
-
-
-
-
-	AMF.addFiles();
+	SSL.init();  // Splash Screen Loader
 
 };
 
 
-
-COR.onStart = function () {
-
-	main.hidden = true;
-	divMainContent.innerHTML = "";
-
-	controls.autoRotate = false;
-
-	main.removeEventListener( "keydown", COR.onStart );
-	main.removeEventListener( "click", COR.onStart );
-	main.removeEventListener( "touchstart", COR.onStart );
-	main.removeEventListener( "touchmove", COR.onStart );
-	main.removeEventListener( "touchend", COR.onStart );
-	main.removeEventListener( "wheel", COR.onStart );
-};
 
 
 COR.reset = function ( obj = [] ) {
 
 	if ( chkNewFile.checked ) { THR.group = THR.getGroupNew(); }
 
+
 	THR.group.name = "THR.groupsParent";
 
-	objs = Array.isArray( obj ) ? obj : [ obj ];
+	const objects = Array.isArray( obj ) ? obj : [ obj ];
 
-	const meshes = objs.filter( mesh => mesh.type === "Mesh" );
+	const meshes = objects.filter( mesh => mesh.type === "Mesh" );
 
-	const groups = objs.filter( obj => obj.type === "Group" );
+	const groups = objects.filter( obj => obj.type === "Group" );
 
 	if ( groups.length ) {
 
@@ -217,7 +157,7 @@ COR.reset = function ( obj = [] ) {
 		console.log( "groups", groups  );
 	}
 
-	const model = new THREE.Group();
+	model = new THREE.Group();
 
 	model.name = FRX.fileName;
 	model.userData.extension = FRX.extension;
@@ -230,6 +170,7 @@ COR.reset = function ( obj = [] ) {
 	scene.traverse( function ( object ) {
 
 		if ( object.isMesh ) {
+
 			object.geometry.computeVertexNormals();
 			object.receiveShadow = object.castShadow = true;
 			object.material.side = 2;
@@ -239,76 +180,37 @@ COR.reset = function ( obj = [] ) {
 
 	} );
 
-	if ( FRX.extension !== "json" ) {
 
-		THR.zoomObjectBoundingSphere();
-		//THRU.toggleBoundingBoxHelper();
+	THR.zoomObjectBoundingSphere();
 
-	}
-
-	//const details = navMenu.querySelectorAll( "details" );
-
-	//Array.from( details ).slice( 25 ).forEach( det => det.open = false ); // how to update automatically?
-
-	THRR.init();
+	THRR.init(); // Three Raycaster
 
 	//console.log( "model", model );
 
 	if ( chkNewFile.checked === false ) {
 
-		dragControls = new THREE.DragControls( [ model ], THR.camera, THR.renderer.domElement );
+		THR.dragControls = new THREE.DragControls( [ model ], THR.camera, THR.renderer.domElement );
 
-		dragControls.transformGroup = true;
-		dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
-		dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
+		THR.dragControls.transformGroup = true;
+		THR.dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
+		THR.dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
 
 	}
 
-
-// 	THR.group.add( TXT.getSimpleText( {
-// 		text:
-// `New Features
-// Every Week`, color: 0x0000ff, size: 2.5, x: 0, y: 12, z: -10 } ) );
-
+	JTVdet.open = false;
+	JTVdivJsonTree.innerHTML = ""
 
 };
 
 
-// AMF = Add multiple files;
+COR.addDragControls = function () {
 
-const AMF = {};
-AMF.count = 0;
+	THR.dragControls = new THREE.DragControls( [ model ], THR.camera, THR.renderer.domElement );
 
-
-
-AMF.fileList = [
-	//"jti-json-tree-init.js",
-	"jte-json-tree-edit.js",
-	"jtf-json-tree-finder.js",
-	"jth-json-tree-helper.js",
-	"jtp-json-tree-parse.js"
-];
+	THR.dragControls.transformGroup = true;
+	THR.dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
+	THR.dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
 
 
 
-AMF.addFiles = function ( list = AMF.fileList, callback = AMF.callback ) {
-
-	list.forEach( file => AMF.addFile( AMF.path + file, callback = () =>{} ) );
-
-};
-
-
-AMF.addFile = function ( url, callback ) {
-
-	const loader = document.body.appendChild( document.createElement( 'script' ) );
-
-	loader.onload = () => {
-
-		AMF.count++;
-		if ( AMF.count === AMF.fileList.length ) { callback(); }
-
-	};
-
-	loader.src = url;
-
-};
+}

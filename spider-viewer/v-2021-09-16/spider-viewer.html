@@ -7,7 +7,7 @@
 	<meta name="description"
 		content="Ladybug Tools / Spider Viewer is a 3D file viewer, composer and exporter designed to be forked, hacked and remixed with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
 	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
-	<meta name="date" content="2021-09-15">
+	<meta name="date" content="2021-09-16">
 	<title>Spider Viewer</title>
 	<!-- Copyright 2021 Theo Armour. MIT license -->
 
@@ -40,7 +40,7 @@
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/utils/BufferGeometryUtils.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/controls/DragControls.js"></script>
 
-	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thr-three/thr-threejs-2021-09-09.js"></script>
+	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thr-three/thr-threejs-2021-09-16.js"></script>
 	<script
 		src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
 	<script
@@ -58,7 +58,7 @@
 	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib/mnu-menu/v-2021-08-17/mnu-menu.js"></script>
 
 	<script
-	src="https://pushme-pullyou.github.io/tootoo-2021/lib09/frx-file-read-xhr/v-2021-09-16/frx-file-read-xhr.js"></script>
+	src="../../../pushme-pullyou-tootoo-2021/lib09/frx-file-read-xhr/v-2021-09-16/frx-file-read-xhr.js"></script>
 
 	<script
 		src="https://pushme-pullyou.github.io/tootoo-2021/lib/gra-github-repo-access/v-2021-07-13/gra-github-repo-access.js"></script>
@@ -72,7 +72,7 @@
 	<script
 		src="https://ladybug.tools/spider-2021/lib-spider-09/exp-exporter/v-2021-09-03/exp-exporter.js"></script>
 
-	<script src="https://ladybug.tools/spider-2021/lib-spider-09/jtv-json-tree-view/v-2021-09-10/jti-json-tree-init.js"></script>
+	<script src="../../lib-spider-09/jtv-json-tree-view/v-2021-09-16/jti-json-tree-init.js"></script>
 
 	<script
 		src="https://ladybug.tools/spider-2021/lib-spider-09/sso-set-surface-opacity/v-2021-09-15/sso-set-surface-opacity.js"></script>
@@ -80,6 +80,8 @@
 	<script src="js/main.js"></script>
 
 	<script src="js/txt-text.js"></script>
+
+	<script src="js/splash-screen.js"></script>
 
 
 	<details id=detNavMenu class="gmd-4">
@@ -94,7 +96,7 @@
 
 			<p>
 				<label title="Combine multiple models into one scene">
-					<input type="checkbox" id="chkNewFile" checked> Open new file
+					<input type="checkbox" id="chkNewFile" onchange=COR.addDragControls(); checked> Open new file
 				</label>
 			</p>
 
@@ -116,7 +118,7 @@
 
 			<div id=TXTdivDetails></div>
 
-			<div id=CORdivStats></div>
+			<div id=THRdivStatistics></div>
 
 			<div id=MNUdivFooter></div>
 
