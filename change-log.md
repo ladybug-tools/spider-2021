@@ -16,7 +16,7 @@
 	* Help text throughout
 	* Search and highlight facility
 
-Current development focusses on Honeybee JSON. In a week or so, development will return focus to gbXML - adding the new simpler speedier parsing and display algorithms and more
+Current development focuses on Honeybee JSON. In a week or so, development will return focus to gbXML - adding the new simpler speedier parsing and display algorithms and more
 
 ## 2021-09-11
 
