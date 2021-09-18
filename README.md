@@ -18,17 +18,25 @@ _Spider Viewer 2021_
 ## Concept
 
 
-### 2021-08-29
+### 2021-09-18
 
-The Spider Viewer 2021 is now an early stage work-in-progress.
 
-* Mix and match OSM, RAD, HBJSON and gbXML files in the same scene
-* Load multiple files via URL, file dialog or drag & drop
-* Drag and drop models in the scene to new locations
-* Decompress and load models from ZIP file automatically
-* Explore dozens of sample files
+
+
+* The Spider Viewer 2021 is now an early stage work-in-progress
+
+* Open, mix and match 3D: gbXML, Honeybee JSON, Rhino, Radiance, Open Studio, GLTF, STL, OBJ in the same scene
+* Open "flat" files: text, HTML, PDF, MP4, WEBM, CSV, GIF, JPG, PNG, SVG etc
+* Load files using drag & drop, the file system dialog box or link to files on the Web
+* Access dozens of sample files of many types in order to test, experiment and play
+* Load many files into a scene, move them about, and save the results to a new file
+* Decompress and load models from ZIP files automatically
 * View renderer statistics and frames per seconds
-* Right-click surfaces to view their details in a pop-up
+* Right-click on any item to view its details in a pop-up menu
+* Explore all the JSON data in tree view menu
+* Dashboard to adjust: view, scene, model and statistics is speedy easy way
+* 1|2|3 fingers to rotate|zoom|pan
+* Huge files load fast
 
 Instead of multiple viewers each supporting a single file format, it's now one viewer that reads any number of formats. There's more on the way:
 
@@ -38,8 +46,8 @@ Instead of multiple viewers each supporting a single file format, it's
 * Of course many - if not all - the features you have enjoyed from previous releases will be added.
 
 As always with the Spider scripts, 
-* you don't have to change your ways! All the previous releases will continue to be available. Choose to work the way you want.
-* The code is so simple and easy to tweak it even runs is Discourse!
+* You don't have to change your ways! All the previous releases continue to be available. Choose to work the way you want.
+* The code is so simple and easy to tweak it even runs in Discourse!
 
 And - as is so often the case with open source apps:
 
