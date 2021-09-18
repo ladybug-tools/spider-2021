@@ -30,7 +30,11 @@ JTI.init = function () {
 
 	JTI.path = COR.path + "lib-spider-09/jtv-json-tree-view/v-2021-09-16/";
 
-	const info = "life is good!";
+	const info = `parse and display JSON data in a speedy and readable way<br>
+<br>
+Module name: jtv-json-tree-view<br>
+Name space: JTV<br>
+Release: 2021-09-16`;
 
 	const htm = `
 <details id=JTVdet ontoggle=JTI.onToggle() >
@@ -64,7 +68,7 @@ JTI.onToggle = function () {
 	if ( JTI.scriptCount > 0 ) {
 
 		JTI.onLoad();
-		
+
 		return;
 	}
 
@@ -88,7 +92,7 @@ JTI.addOneScript = function ( url, callback ) {
 
 	loader.onload = () => {
 
-		console.log( "url", url );
+		//console.log( "url", url );
 
 		JTI.scriptCount++;
 		if ( JTI.scriptCount === JTI.scriptList.length ) { callback(); }
