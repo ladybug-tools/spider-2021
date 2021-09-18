@@ -69,7 +69,7 @@ function init () {
 
 		window.history.pushState( "", "", "../" );
 
-		COR.path = "./";
+		COR.path = "../";
 
 	} else {
 
