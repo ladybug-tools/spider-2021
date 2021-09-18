@@ -1,5 +1,23 @@
 # Change Log
 
+## 2021-09-18
+
+* Dashboard ~ Adjust: view, scene, model and statistics
+	* Four buttons to click
+	* Touch each button for pop-up menu with more choices
+	* Not all choices fully operational or debugged
+* JSON Tree View
+	* View JSON files a tree view
+	* Very simple code
+	* HTML5 only
+	* No CSS needed
+	* Good number of sample files available for testing
+	* View raw data
+	* Help text throughout
+	* Search and highlight facility
+
+Current development focusses on Honeybee JSON. In a week or so, development will return focus to gbXML - adding the new simpler speedier parsing and display algorithms and more
+
 ## 2021-09-11
 
 * Spider Viewer and TooToo combine into one app. View files of many types - 3D and 2D - including Markdown, PDF, HTML files and many more. Menus are beginning to work together. Library files being made deployable to any repo
