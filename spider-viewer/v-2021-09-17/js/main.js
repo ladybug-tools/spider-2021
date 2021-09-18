@@ -6,7 +6,7 @@ const COR = {
 	user: "ladybug-tools",
 	repo: "spider-2021",
 	branch: "main",
-	path: "./",
+	path: "../",
 	//pathTooToo: "../../../pushme-pullyou-tootoo-2021/",
 	pathTooToo: "https://pushme-pullyou.github.io/tootoo-2021/",
 	defaultFile: "../../home-page.md",
