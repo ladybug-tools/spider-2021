@@ -11,7 +11,8 @@
 	<title>Spider Viewer</title>
 	<!-- Copyright 2021 Theo Armour. MIT license -->
 
-	<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo-2021/lib/style/style-2021-07-12.css">
+	<link id=CORstyle rel="stylesheet"
+		href="https://pushme-pullyou.github.io/tootoo-2021/lib/style/style-2021-07-12.css">
 
 	<style>
 		:root {
@@ -117,6 +118,7 @@
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/controls/OrbitControls.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/utils/BufferGeometryUtils.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/controls/DragControls.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/loaders/DRACOLoader.js"></script>
 
 	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thr-three/thr-threejs-2021-09-16.js"></script>
 	<script
@@ -127,12 +129,12 @@
 		src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thru-three-utilities/thru-three-utilities-2021-09-17.js"></script>
 
 
-	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/loaders/DRACOLoader.js"></script>
-
 	<script src="https://cdn.jsdelivr.net/npm/jszip@3.7.1/dist/jszip.min.js"></script>
 
 
 	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib/mnu-menu/v-2021-08-17/mnu-menu.js"></script>
+
+	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib09/ckeditor/v-2021-09-12/cke-ckeditor.js"></script>
 
 	<script
 		src="https://pushme-pullyou.github.io/tootoo-2021/lib09/frx-file-read-xhr/v-2021-09-16/frx-file-read-xhr.js"></script>
@@ -142,8 +144,6 @@
 
 	<script
 		src="https://pushme-pullyou.github.io/tootoo-2021/lib/grv-github-repo-tree-view/v-2021-09-11/grv-github-repo-tree-view.js"></script>
-
-	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib09/ckeditor/v-2021-09-12/cke-ckeditor.js"></script>
 
 	<script
 		src="https://ladybug.tools/spider-2021/lib-spider-09/gff-github-folder-files/v-2021-09-09/gff-github-folder-files.js"></script>
@@ -155,6 +155,7 @@
 
 	<script
 		src="https://ladybug.tools/spider-2021/lib-spider-09/sso-set-surface-opacity/v-2021-09-15/sso-set-surface-opacity.js"></script>
+
 
 	<script src="js/main.js"></script>
 
@@ -195,7 +196,7 @@
 
 			<div id=SSOdivSetSurfaceOpacity></div>
 
-			<div id=whatever ></div>
+			<div id=whatever></div>
 
 			<div id=EXPdivMenuExporters></div>
 
@@ -222,7 +223,6 @@
 		init(); // see ./js/main.js
 
 	</script>
-
 
 </body>
 
