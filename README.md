@@ -20,11 +20,9 @@ _Spider Viewer 2021_
 
 ### 2021-09-18
 
-
-
-
 * The Spider Viewer 2021 is now an early stage work-in-progress
 
+Features
 * Open, mix and match 3D: gbXML, Honeybee JSON, Rhino, Radiance, Open Studio, GLTF, STL, OBJ in the same scene
 * Open "flat" files: text, HTML, PDF, MP4, WEBM, CSV, GIF, JPG, PNG, SVG etc
 * Load files using drag & drop, the file system dialog box or link to files on the Web
@@ -190,6 +188,11 @@ To-Do
 * Add insert text
 * Edit model position, scale and rotation
 * Add Three.js axis editor
+
+## Links of Interest
+
+* https://newbuildings.org/
+* https://patternguide.advancedbuildings.net/using-this-guide/analysis-methods/daylight-factor.html
 
 
 ***

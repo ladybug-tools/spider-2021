@@ -34,6 +34,8 @@ COR.files = [
 	"https://cdn.jsdelivr.net/gh/ladybug-tools/honeybee-schema@master/samples/model_large/single_family_home.hbjson",
 	"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/hbjson-sample-files/2021/b10d47.hbjson",
 	"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/hbjson-sample-files/2021/2bo0tugx.rzj.hbjson",
+
+	"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/hbjson-sample-files/2021/tk/spider_DF.hbjson",
 	"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/gltf-sample-files/2021/Avocado.glb",
 	"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/idf-sample-files/2020/2020-06-08-michal.idf",
 	"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/obj/female02.obj",
@@ -87,7 +89,7 @@ function init () {
 
 	THR.addGround();
 
-	THRU.resetScene()
+	THRU.resetScene();
 
 	//THR.group = THR.getGroupNew();
 	//THRU.addMeshes( 100 );
@@ -102,7 +104,7 @@ function init () {
 	//CKE.init();
 
 	FRX.init();
-	FRX.defaultFile = COR.files[ 5 ];
+	FRX.defaultFile = COR.files[ 7 ];
 
 	GRA.init();
 
