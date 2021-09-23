@@ -28,7 +28,7 @@ let radius = 0;
 
 A3H.init = function () {
 
-	A3HdivAxes.style.cssText = "bottom: 0; position: absolute; right: 0; cursor:grab;";
+	A3HdivAxes.style.cssText = "bottom: 0; position: absolute; right: 0; cursor:crosshair;";
 
 	A3HdivAxes.title = "Click the dots to rotate the model!"
 
