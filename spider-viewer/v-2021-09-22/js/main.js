@@ -7,8 +7,8 @@ const COR = {
 	repo: "spider-2021",
 	branch: "main",
 	path: "../",
-	pathTooToo: "../../../pushme-pullyou-tootoo-2021/",
-	//pathTooToo: "https://pushme-pullyou.github.io/tootoo-2021/",
+	//pathTooToo: "../../../pushme-pullyou-tootoo-2021/",
+	pathTooToo: "https://pushme-pullyou.github.io/tootoo-2021/",
 	defaultFile: "../../home-page.md",
 	defaultIgnoreFolders: [],
 	//ignoreFolders: ["archive", "lib", "lib3d", "lib-templates"],
@@ -71,11 +71,12 @@ function init () {
 
 		//window.history.pushState( "", "", "../" );
 
-		COR.path = "../";
+		//COR.path = "../";
 
 	} else {
 
 		COR.path = "../../";
+		COR.pathTooToo = "../../../pushme-pullyou-tootoo-2021/",
 
 		//THR.controls.autoRotate = false;
 
