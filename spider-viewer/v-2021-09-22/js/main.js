@@ -76,7 +76,7 @@ function init () {
 	} else {
 
 		COR.path = "../../";
-		COR.pathTooToo = "../../../pushme-pullyou-tootoo-2021/",
+		COR.pathTooToo = "../../../pushme-pullyou-tootoo-2021/";
 
 		//THR.controls.autoRotate = false;
 
