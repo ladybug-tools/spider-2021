@@ -1,12 +1,11 @@
 
 
-// This places is becoming very messy
+// This place is becoming very messy
 
 const COR = {
 	user: "ladybug-tools",
 	repo: "spider-2021",
 	branch: "main",
-	//path: "../",
 	pathContent: "../",
 	//pathTooToo: "../../../pushme-pullyou-tootoo-2021/",
 	pathTooToo: "https://pushme-pullyou.github.io/tootoo-2021/",
@@ -68,11 +67,9 @@ function init () {
 
 	// if running on server, keep address bar pointed to latest rev
 
-	if ( !location.hash && location.protocol === "https:" ) {
+	if ( location.protocol === "https:" ) {
 
 		window.history.pushState( "", "", "../" );
-
-		COR.pathContent = "../";
 
 	} else {
 
@@ -102,7 +99,6 @@ function init () {
 	MNU.init();
 	sumNavMenu.hidden = false;
 
-
 	//CKE.init();
 
 	FRX.init();
@@ -111,8 +107,6 @@ function init () {
 	GRA.init();
 
 	GFF.init();
-
-
 
 	//GFFdet.open = true;
 
@@ -134,14 +128,16 @@ function init () {
 
 	FRX.onProgress( FRX.size || 0, "Load complete" );
 
-	COR.pathContent = "";
+	//COR.pathContent = "";
+
 	THR.initStats();
 
 	//AMF.addFiles();
 
 	SSL.init();  // Splash Screen Loader
 
-	DBD.init()
+	DBD.init();// dahboard
+
 
 };
 
@@ -210,6 +206,7 @@ COR.reset = function ( obj = [] ) {
 	JTVdivJsonTree.innerHTML = "";
 
 };
+
 
 
 COR.addDragControls = function () {
