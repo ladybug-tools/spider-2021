@@ -28,7 +28,7 @@ JTI.init = function () {
 
 	JTI.scriptCount = 0;
 
-	JTI.path = COR.path + "lib-spider-09/jtv-json-tree-view/v-2021-09-16/";
+	JTI.path = COR.pathContent + "lib-spider-09/jtv-json-tree-view/v-2021-09-16/";
 
 	const info = `parse and display JSON data in a speedy and readable way<br>
 <br>
