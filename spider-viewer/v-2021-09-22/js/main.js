@@ -69,9 +69,9 @@ function init () {
 
 	if ( !location.hash && location.protocol === "https:" ) {
 
-		//window.history.pushState( "", "", "../" );
+		window.history.pushState( "", "", "../" );
 
-		COR.path = "../../";
+		COR.path = "../";
 
 	} else {
 
