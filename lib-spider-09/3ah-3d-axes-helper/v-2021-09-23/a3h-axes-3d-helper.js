@@ -28,7 +28,9 @@ let radius = 0;
 
 A3H.init = function () {
 
-	A3HdivAxes.style.cssText = "bottom: 1rem; position: absolute; right:1rem;";
+	A3HdivAxes.style.cssText = "bottom: 0; position: absolute; right: 0; cursor:grab;";
+
+	A3HdivAxes.title = "Click the dots to rotate the model!"
 
 	A3HdivAxes.addEventListener( 'mouseup', function ( event ) {
 		//console.log( "event", event );

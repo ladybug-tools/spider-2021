@@ -9,8 +9,6 @@
 const SSL = {}; //
 
 
-
-
 SSL.init = function() {
 
 	// const loader = new THREE.FontLoader();
@@ -25,7 +23,7 @@ SSL.init = function() {
 	main.hidden = false;
 	main.style.cssText = "border: 0px solid red; font-size: calc( 0.5vw + 1vh); text-align: center;";
 	divMainContent.innerHTML = `
-<h1 style="text-shadow: 0 0 3px #FF0000; color:lightgreen;" >Welcome to the Open Source CAD viewer of your dreams</h1>
+<h1 style="text-shadow: 0 0 3px #FF0000; color:lightgreen;" >Welcome to the Open Source CAD viewer of your dreams!</h1>
 <h2>Open 3D: gbXML, Honeybee JSON, Rhino, Radiance, Open Studio, GLTF, STL, OBJ</h2>
 <h2>Open "flat" files: text, HTML, PDF, MP4, WEBM, CSV, GIF, JPG, PNG, SVG etc</h2>
 <h2>Load files using drag & drop, the file system dialog box or link to files on the Web</h2>
@@ -34,8 +32,8 @@ SSL.init = function() {
 <h2>Right-click on any item to view its details in a pop-up menu</h2>
 <h2>View rendering statistics and frames per second</h2>
 <h2>Explore all the JSON data in tree view menu</h2>
-<h2>1|2|3 fingers to rotate|zoom|pan</h2>
-<h2 style=color:magenta; >Huge files load fast</h2>
+<h2>1|2|3 fingers to rotate|zoom|pan ~ <span class=highlight title="New 2021-09-23">Interactive 3D axes helper</span></h2>
+<h2 style=color:magenta; >Huge files load fast!!</h2>
 ❦
 <h2>Click anywhere or press spacebar to continue</h2>
 `;

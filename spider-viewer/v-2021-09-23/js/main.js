@@ -69,7 +69,7 @@ function init () {
 
 	if ( location.protocol === "https:" ) {
 
-		window.history.pushState( "", "", "../" + location.hash);
+		if ( !location.href.includes( "dev" ) ) { window.history.pushState( "", "", "../" + location.hash ); }
 
 	} else {
 
