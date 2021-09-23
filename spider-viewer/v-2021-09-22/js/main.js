@@ -6,7 +6,8 @@ const COR = {
 	user: "ladybug-tools",
 	repo: "spider-2021",
 	branch: "main",
-	path: "../",
+	//path: "../",
+	pathContent: "../",
 	//pathTooToo: "../../../pushme-pullyou-tootoo-2021/",
 	pathTooToo: "https://pushme-pullyou.github.io/tootoo-2021/",
 	defaultFile: "../../home-page.md",
@@ -71,11 +72,11 @@ function init () {
 
 		window.history.pushState( "", "", "../" );
 
-		COR.path = "../";
+		COR.pathContent = "../";
 
 	} else {
 
-		COR.path = "../../";
+		COR.pathContent = "../../";
 		COR.pathTooToo = "../../../pushme-pullyou-tootoo-2021/";
 
 		//THR.controls.autoRotate = false;
@@ -110,6 +111,9 @@ function init () {
 	GRA.init();
 
 	GFF.init();
+
+
+
 	//GFFdet.open = true;
 
 	// //GRV.getFiles = GRV.getFilesAll;
@@ -130,7 +134,7 @@ function init () {
 
 	FRX.onProgress( FRX.size || 0, "Load complete" );
 
-
+	COR.pathContent = "";
 	THR.initStats();
 
 	//AMF.addFiles();
