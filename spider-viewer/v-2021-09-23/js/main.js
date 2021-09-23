@@ -106,7 +106,7 @@ function init () {
 
 	GRA.init();
 
-	GFF.init();
+	//GFF.init();
 
 	//GFFdet.open = true;
 
