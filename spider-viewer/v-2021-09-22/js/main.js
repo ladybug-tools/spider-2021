@@ -69,7 +69,7 @@ function init () {
 
 	if ( !location.hash && location.protocol === "https:" ) {
 
-		window.history.pushState( "", "", "../" );
+		//window.history.pushState( "", "", "../" );
 
 		COR.path = "../";
 
@@ -111,7 +111,6 @@ function init () {
 	GFF.init();
 	//GFFdet.open = true;
 
-
 	// //GRV.getFiles = GRV.getFilesAll;
 	// GRV.getFiles = GRV.getFilesCurated;
 	// GRV.init();
@@ -140,7 +139,6 @@ function init () {
 	DBD.init()
 
 };
-
 
 
 
@@ -206,8 +204,6 @@ COR.reset = function ( obj = [] ) {
 	JTVdet.open = false;
 	JTVdivJsonTree.innerHTML = "";
 
-
-
 };
 
 
@@ -219,6 +215,4 @@ COR.addDragControls = function () {
 	THR.dragControls.addEventListener( 'dragstart', function ( event ) { THR.controls.enabled = false; } );
 	THR.dragControls.addEventListener( 'dragend', function ( event ) { THR.controls.enabled = true; } );
 
-
-
-}
+};
