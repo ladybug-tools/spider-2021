@@ -120,7 +120,6 @@ function init () {
 	JTI.init(); // Json Tree View
 
 	SSO.init(); // Set surface type opacity
-	//SSOdet.open = true;
 
 	EXP.init(); // Export
 
@@ -134,7 +133,11 @@ function init () {
 
 	//AMF.addFiles();
 
-	SSL.init();  // Splash Screen Loader
+	if ( window.self === window.top ) { // no load in iframe
+
+		SSL.init();  // Splash Screen Loader
+
+	}
 
 	DBD.init();// dshboard
 
