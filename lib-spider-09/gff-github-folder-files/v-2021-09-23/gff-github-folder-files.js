@@ -12,7 +12,7 @@ GFF.foldersMeta = [];
 
 GFF.init = function () {
 
-	GFF.jsonReposFolders = COR.pathContent + `spider-viewer/v-${ COR.version }/js/gff-multiple.js`;
+	GFF.jsonReposFolders = COR.pathContent + `v-${ COR.version }/js/gff-multiple.js`;
 
 
 	GFFdivDetails.addEventListener( "contextmenu", GFF.onContextMenu );
