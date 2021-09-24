@@ -15,6 +15,7 @@ const COR = {
 	filterFiles: [ "gif", "md", "jpg", "html", "license", "pdf", "png", "svg", "txt" ],
 	urlSource: "https://github.com/ladybug-tools/spider-2021/tree/main/spider-viewer",
 	urlAssets: "https://pushme-pullyou.github.io/tootoo-2021/",
+		iconRepo: `<img style=width:1.5rem; src="https://ladybug.tools/assets/svg/ladybug.svg">`,
 	iconGitHub: `<img src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/mark-github.svg">`,
 	iconInfo: `<img class=infoImg src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/noun_Information_585560.svg">`,
 	iconExternalFile: `<img class=infoImg  src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/icon-external-link.svg">`,
