@@ -126,62 +126,6 @@ _Further revisions of this document will highlight relevant goal, targets and in
 https://rufus31415.github.io/sandbox/3d-viewer/
 
 
-### Blender BLEND files
-
-* https://github.com/acweathersby/js.blend
-
-
-### gbXML
-
-* Schema: https://gbxml.org
-
-
-### IDF and OSM
-
-* originator: https://www.energyplus.net/
-
-
-### Honeybee JSON & VTK
-
-* schema: https://github.com/ladybug-tools/honeybee-schema
-* https://github.com/ladybug-tools/honeybee-schema/wiki
-* schema: https://github.com/ladybug-tools/dragonfly-schema
-
-VTK
-
-* https://github.com/ladybug-tools/honeybee-vtk
-* nhttps://github.com/ladybug-tools/honeybee-vtk/blob/master/honeybee_vtk/model.py - has colors in HSL
-
-
-### Radiance ~ RAD
-
-* schema: https://radiance-online.org/
-
-To-do
-
-* 2021-08-25 ~ fix a number of small issues
-* 2021-08-25 ~ add materials
-
-
-### VTK
-
-* https://vtk.org/Wiki/VTK
-
-
-### Industry Foundation Classes  ~ IFC
-
-* Your 3D happy place for [IFC]( https://en.wikipedia.org/wiki/Industry_Foundation_Classes ) files is over at [xeoLabs]( https://xeolabs.com/ ). Tell Lindsay that Theo sent you.
-* https://github.com/agviegas/IFC.js??
-
-
-## Export
-
-To-Do
-
-* gbXML
-* Export to other formats as requested
-
-
 ## To Do and wishlist
 
 * 2021-08-25 ~ frx.progress text everywhere
