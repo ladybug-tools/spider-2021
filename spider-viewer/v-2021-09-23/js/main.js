@@ -69,7 +69,7 @@ function init () {
 
 	if ( location.protocol === "https:" ) {
 
-		if ( COR.version !== "2021-09-23" ) { window.history.pushState( "", "", "../" + location.hash ); }
+		if ( COR.version !== "2021-09-2xx" ) { window.history.pushState( "", "", "../" + location.hash ); }
 
 	} else {
 
