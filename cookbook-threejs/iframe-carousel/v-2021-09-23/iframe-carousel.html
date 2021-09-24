@@ -59,7 +59,7 @@
 
 	<div id="header">
 		<div id="title"></div>
-		<div id="contents"></div>
+		<div id="contents" ><button onclick=IFC.stop(); style=font-size:24px;position:absolute;top:1rem;right:1rem;>stop</button></div>
 	</div>
 
 	<iframe id=IFCifr></iframe>
@@ -69,49 +69,19 @@
 
 		let IFC = {};
 
-		IFC.sites =
-			[
-				[ "https://www.ladybug.tools/spider-2021/spider-viewer/", "Aragog gbXML Viewer" ],
-				[ "https://www.ladybug.tools/spider-covid-19-viz-3d/", "Radiance RAD File Viewer" ],
-				[ "https://prediqtiv.github.io/eye-cue/replay/dev", "predIQtiv" ],
-				[ "https://webmath.github.io/algesurf/ray-marching/r3/algesurf-ray-marching-r3.html", "algeSurf" ],
-				[ "https://www.ladybug.tools/spider/analemma3d/index.html#r20/analemma3d.html", "Analemma 3D" ],
-				[ "https://www.ladybug.tools/spider/build-well/r14/build-well.html", "Build Well" ],
-				[ "https://www.ladybug.tools/spider/burning-manalemma-2017/index.html#r10/burning-manalemma-2017.html#latitude:40.786944,longitude:-119.204444,zoom:11,offsetUTC:-420", "BurningmAnalemma" ],
-				[ "https://www.ladybug.tools/spider/cookbook/scatter-well/r1/index.html", "Scatter Well" ],
-				[ "https://www.ladybug.tools/spider/cookbook/rad-to-threejs/r5/rad-to-three.html", "Radiance RAD File Viewer" ]
-			];
-
 		IFC.sites = [
 			"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/gbxml-sample-files/revit-sample-files/2020_rac_advanced_sample_project.xml",
 			"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/gbxml-sample-files/files-open-fast/annapolis-md-single-family-residential-2016.xml",
-			"https://cdn.jsdelivr.net/gh/GreenBuildingXML/Sample-gbXML-Files@master/gbXML_TRK.xml",
+			"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/gbxml-sample-files/zip/winchester-school-560-surfaces.zip",
 			"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/3dm-sample-files/heart_signet.3dm",
 			"https://cdn.jsdelivr.net/gh/ladybug-tools/honeybee-schema@master/samples/model_large/single_family_home.hbjson",
 			"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/hbjson-sample-files/2021/b10d47.hbjson",
-			"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/hbjson-sample-files/2021/2bo0tugx.rzj.hbjson",
+			"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/hbjson-sample-files/2021/office-9-floors-4mb.hbjson",
 			"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/gltf-sample-files/2021/Avocado.glb",
 			"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/idf-sample-files/2020/2020-06-08-michal.idf",
 			"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/obj/female02.obj",
-			"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/rad-sample-files/various-sources/DaylightingJSONTestBuilding.rad",
-			"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/stl-samples/Geometric_Knot.stl",
-			//"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/hbjson-sample-files/Spider_Df_file.3dm"
-
-			//"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/gbxml-sample-files/files-open-fast/8-a.xml",
-			//"https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/bilt-2019-template.zip",
-			// "https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/gbxml-sample-files/bristol-clifton-downs-fixed.xml",
-			// "https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/gbxml-sample-files/bristol-clifton-down-road-utf16.xml",
-			// "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/warwick-university-5k-surfaces.zip",
-			// "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/annapolis-md-single-family-residential-2016.xml",
-			// "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/pittsburg-airport.zip",
-			//"https://www.ladybug.tools/spider/gbxml-sample-files/aspen-co-resort-retail.xml",
-			//"https://www.ladybug.tools/spider/gbxml-sample-files/samples-2/Berlin_Office_SAM2017.xml",
-			// "https://GreenBuildingXML.github.io/Sample_gbXML_Files/ChapelHillOffice.xml",
-			// "https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/gbxml-sample-files/samples-2/18141-M18.xml",
-			// "https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/idf-sample-files/2020/HospitalLowEnergy.idf",
-			// "../../lib-spider/idf-parser/HospitalLowEnergy.idf",
-			//"../../lib-spider/gltf-parser/Duck1.gltf",
-			//"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/hbjson-sample-files/2021/Lab_Building.hbjson"
+			"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/hbjson-sample-files/2021/city-center-10mb.hbjson",
+			"https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/stl-samples/bigmakerbottable4.stl"
 
 		];
 
@@ -124,17 +94,15 @@
 
 			clearInterval( IFC.timer );
 
-			url = "https://www.ladybug.tools/spider-2021/spider-viewer/#";
+			//url = "https://www.ladybug.tools/spider-2021/spider-viewer/#";
 
-			url = "../../../spider-viewer/index.html#";
+			IFC.url = "../../../spider-viewer/index.html#";
 
-			IFCifr.src = url + IFC.sites[ IFC.index ];
+			IFCifr.src = IFC.url + IFC.sites[ IFC.index ];
 
-			IFC.displayNext();
+			//IFC.displayNext();
 
 			IFC.timer = setInterval( IFC.displayNext, 6000 );
-
-			//window.addEventListener( "click", IFC.stop );
 
 		}
 
@@ -142,9 +110,15 @@
 
 		IFC.stop = function () {
 
+			console.log( "", 23 );
+
 			clearInterval( IFC.timer );
 
+			clearInterval( IFC.timer2 );
+
 			IFCifr.className = "fade-in";
+
+			IFCifr.contentWindow.THR.controls.autoRotate = false;
 
 		}
 
@@ -152,16 +126,17 @@
 
 		IFC.displayNext = function () {
 
+			IFC.index++;
 
 			IFC.index = IFC.index >= IFC.sites.length ? 0 : IFC.index;
 
 			IFCifr.onload = function () { IFCifr.className = "fade-in"; }
 
-			//setTimeout( function () { IFCifr.className = "fade-out"; }, 00 );
+			IFC.timer2 = setTimeout( function () { IFCifr.className = "fade-out"; }, 5200 );
 
 			//IFCifr.contentWindow.location.hash = IFC.sites[ IFC.index ];
 
-			IFCifr.src = url + IFC.sites[ IFC.index ];
+			IFCifr.src = IFC.url + IFC.sites[ IFC.index ];
 
 			//console.log( "IFCifr.src", IFCifr.src );
 
@@ -169,7 +144,7 @@
 
 			history.replaceState( "", document.title, window.location.pathname );
 
-			IFC.index++;
+
 
 		}
 

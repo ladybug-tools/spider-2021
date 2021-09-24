@@ -62,5 +62,6 @@ SSL.onStart = function () {
 	main.removeEventListener( "touchmove", SSL.onStart );
 	main.removeEventListener( "touchend", SSL.onStart );
 	main.removeEventListener( "wheel", SSL.onStart );
+	
 };
 
