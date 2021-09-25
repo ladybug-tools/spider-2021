@@ -26,11 +26,11 @@ SSL.init = function() {
 <h1 style="text-shadow: 0 0 3px #FF0000; color:lightgreen;" >Welcome to the Open Source CAD viewer of your dreams!</h1>
 <h2>Open 3D: gbXML, Honeybee JSON, Rhino, Radiance, Open Studio, GLTF, STL, OBJ</h2>
 <h2>Open "flat" files: text, HTML, PDF, MP4, WEBM, CSV, GIF, JPG, PNG, SVG etc</h2>
-<h2>Load files using drag & drop, the file system dialog box or link to files on the Web</h2>
-<h2>Access dozens of sample files of many types in order to test, experiment and play</h2>
+<h2>Load files using drag & drop, file system dialog box, or link to files on the Web</h2>
+<h2>Access dozens of sample files of many types to test, experiment and play</h2>
 <h2>Load many files into a scene, move them about, and save the results to a new file</h2>
 <h2>Right-click on any item to view its details in a pop-up menu</h2>
-<h2>View rendering statistics and frames per second</h2>
+<h2>View render statistics and frames/second. <span class=highlight title="New 2021-09-24">Export screen captures & animated GIFs</span></h2>
 <h2>Explore all the JSON data in tree view menu</h2>
 <h2>1|2|3 fingers to rotate|zoom|pan ~ <span class=highlight title="New 2021-09-23">Interactive 3D axes helper</span></h2>
 <h2 style=color:magenta; >Huge files load fast!!</h2>
@@ -62,6 +62,6 @@ SSL.onStart = function () {
 	main.removeEventListener( "touchmove", SSL.onStart );
 	main.removeEventListener( "touchend", SSL.onStart );
 	main.removeEventListener( "wheel", SSL.onStart );
-	
+
 };
 
