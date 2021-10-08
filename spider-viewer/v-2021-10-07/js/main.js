@@ -74,7 +74,7 @@ function init () {
 
 	} else {
 
-		COR.pathContent = "../../";
+		//COR.pathContent = "../../";
 		COR.pathTooToo = "../../../pushme-pullyou-tootoo-2021/";
 
 		//THR.controls.autoRotate = false;
