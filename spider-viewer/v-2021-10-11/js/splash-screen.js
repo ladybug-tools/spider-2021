@@ -21,8 +21,9 @@ SSL.init = function() {
 	// https://stackoverflow.com/questions/16056591/font-scaling-based-on-width-of-container
 
 	main.hidden = false;
-	main.style.cssText = "border: 0px solid red; font-size: calc( 0.5vw + 1vh); text-align: center;";
+	//divMainContent.style.cssText = "border: 0px solid red; font-size: calc( 0.5vw + 1vh); text-align: center;";
 	divMainContent.innerHTML = `
+<div style="border: 0px solid red; font-size: calc( 0.5vw + 1vh); text-align: center;" >
 <h1 style="text-shadow: 0 0 3px #FF0000; color:lightgreen;" >Welcome to the Open Source CAD viewer of your dreams!</h1>
 <h2>Open 3D: gbXML, Honeybee JSON, Rhino, Radiance, Open Studio, GLTF, STL, OBJ</h2>
 <h2>Open "flat" files: text, HTML, PDF, MP4, WEBM, CSV, GIF, JPG, PNG, SVG etc</h2>
@@ -36,6 +37,7 @@ SSL.init = function() {
 <h2 style=color:magenta; >Huge files load fast!!</h2>
 ❦
 <h2>Click anywhere or press spacebar to continue</h2>
+</div>
 `;
 
 	window.addEventListener( "keydown", SSL.onStart );
