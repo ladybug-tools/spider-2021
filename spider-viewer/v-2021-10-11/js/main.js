@@ -70,7 +70,7 @@ function init () {
 
 	if ( location.protocol === "https:" ) {
 
-		if ( COR.version !== "2021-09-XX" ) { window.history.pushState( "", "", "../" + location.hash ); }
+		if ( COR.version !== "2021-10-11" ) { window.history.pushState( "", "", "../" + location.hash ); }
 
 		COR.ignoreFolders = COR.defaultIgnoreFolders;
 
