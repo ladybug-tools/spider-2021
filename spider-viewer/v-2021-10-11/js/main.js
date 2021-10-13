@@ -102,7 +102,7 @@ function init () {
 	sumNavMenu.hidden = false;
 
 	FRX.init();
-	FRX.defaultFile = COR.files[ 7 ];
+	FRX.defaultFile = COR.files[ 8 ];
 
 	GRA.init();
 
