@@ -7,8 +7,8 @@ const COR = {
 	repo: "spider-2021",
 	branch: "main",
 	pathContent: "../",
-	//pathTooToo: "../../../pushme-pullyou-tootoo-2021/",
-	pathTooToo: "https://pushme-pullyou.github.io/tootoo-2021/",
+	pathTooToo: "../../../pushme-pullyou-tootoo-2021/",
+	//pathTooToo: "https://pushme-pullyou.github.io/tootoo-2021/",
 	defaultFile: "../../home-page.md",
 	defaultIgnoreFolders: [],
 	//ignoreFolders: ["archive", "lib", "lib3d", "lib-templates"],
@@ -102,7 +102,7 @@ function init () {
 	sumNavMenu.hidden = false;
 
 	FRX.init();
-	FRX.defaultFile = COR.files[ 8 ];
+	FRX.defaultFile = COR.files[ 7 ];
 
 	GRA.init();
 
