@@ -122,6 +122,7 @@ EXP.exportStl = function() {
 }
 
 
+
 EXP.exportGltf = function() {
 
 	//divPopUp.innerHTML = "processing...";
@@ -183,11 +184,19 @@ EXP.captureScreen = function () {
 
 EXP.loadGGF = function () {
 
-	scr = document.body.appendChild( document.createElement( 'script' ) );
-	scr.src = `https://cdn.jsdelivr.net/npm/omggif@1.0.10/omggif.min.js`;
+	const scrGIF = document.body.appendChild( document.createElement( 'script' ) );
+	scrGIF.src = `https://cdn.jsdelivr.net/npm/omggif@1.0.10/omggif.min.js`;
 
-	scr = document.body.appendChild( document.createElement( 'script' ) );
-	scr.src = `https://www.ladybug.tools/spider-2021/lib-spider-10/exp-exporter/${ EXP.release }/ggf-generate-gif.js`;
+	const scr = document.body.appendChild( document.createElement( 'script' ) );
+
+	if ( location.protocol === "https:" ) {
+
+		scr.src = `https://www.ladybug.tools/spider-2021/lib-spider-10/exp-exporter/${ EXP.release }/ggf-generate-gif.js`;
+
+	} else {
+
+		scr.src = `../../lib-spider-10/exp-exporter/${ EXP.release }/ggf-generate-gif.js`;
+	}
 
 };
 
@@ -198,7 +207,7 @@ EXP.saveFile = function () {
 	const blob = new Blob( [ txtArea.value ] );
 	let a = document.createElement( 'a' );
 	a.href = window.URL.createObjectURL( blob );
-	a.download = `hello-world-${ new Date().toISOString().slice( 0, 10 ) }.${ extension }`;
+	a.download = `${ FRX.fileName }-${ new Date().toISOString().slice( 0, 10 ) }.${ extension }`;
 	a.click();
 	a = null;
 

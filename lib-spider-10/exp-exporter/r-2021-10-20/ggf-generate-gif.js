@@ -9,9 +9,9 @@ GGF.init = function () {
 
 		GGFdet.innerHTML += `
 <p>
-		<button id="butGenerateGIF" onclick=GGF.onClick();>Generate GIF</button>
-		<progress id="prgGenerateGIF" value="0" max="1" style="display:none"></progress>
-		<div id=divMessage></div>
+	<button id="butGenerateGIF" onclick=GGF.onClick();>Generate GIF</button>
+	<progress id="prgGenerateGIF" value="0" max="1" style="display:none"></progress>
+	<div id=divMessage></div>
 </p>`;
 
 		canvas = document.body.appendChild( document.createElement( "canvas" ) );
@@ -23,19 +23,9 @@ GGF.init = function () {
 };
 
 
-function bbbrender ( progress ) {
 
-	// progress goes from 0 to 1
-
-	THR.scene.rotation.z = progress * Math.PI * 2;
-	//THR.scene.rotation.y = - progress * Math.PI * 2;
-
-	THR.renderer.render( THR.scene, THR.camera );
-
-}
 
 GGF.onClick = async function () {
-
 
 	THR.controls.autoRotate = false;
 	THR.controls.enabled = false;
@@ -58,51 +48,42 @@ GGF.onClick = async function () {
 
 	THR.renderer = renderer;
 
+	GGF.distance = THR.camera.position.distanceTo( THR.center );
 
-	GGF.distance = THR.camera.position.distanceTo( THR.center )
+
 
 	THR.render = function ( progress ) {
 
-		//console.log( "progress", progress, THR.camera.position.distanceTo( THR.center  ) );
+		console.log( "progress", progress );
 		// progress goes from 0 to 1
 
 		//THR.scene.rotation.z = progress * Math.PI * 2;
 
-		const timer = Date.now() * 0.0005;
-
 		THR.camera.position.x = THR.center.x + Math.cos( progress * Math.PI * 2 ) * GGF.distance;
 		THR.camera.position.y = THR.center.y + Math.sin( progress * Math.PI * 2 ) * GGF.distance;
+		THR.camera.position.z = THR.center.z + Math.sin( progress * Math.PI * 1 ) * GGF.distance;
 
 		THR.camera.lookAt( THR.center );
+
 		//mesh.rotation.y = - progress * Math.PI * 2;
 
 		THR.renderer.render( THR.scene, THR.camera );
 
 	}
 
+
+
 	THR.animation = function animation ( time ) {
-
-		if ( prgGenerateGIF.style.display === 'none' ) {
-
-			// Only render when not generating
-			theta += 0.5;
-			THR.render( theta );
-
-		}
 
 		requestAnimationFrame( THR.animate );
 
 	}
 
-	butGenerateGIF.style.display = 'none';
-	prgGenerateGIF.style.display = '';
-
 	// Generate
 
-	const buffer = await GGF.generateGIF( canvas, THR.render, 8, 30 );
-
-	butGenerateGIF.style.display = '';
-	prgGenerateGIF.style.display = 'none';
+	const duration = 8
+	const fps = 30;
+	const buffer = await GGF.generateGIF( canvas, THR.render, duration, fps );
 
 	// Download
 
