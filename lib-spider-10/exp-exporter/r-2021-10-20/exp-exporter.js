@@ -15,7 +15,7 @@ EXP.release = "r-2021-10-20";
 EXP.info = `
 "Save models in a variety of file formats. More formats will be added.<br>
 Also: create an animated GIF.<br>
-release: r-2021-10-20<br>
+release: ${ EXP.release }<br>
 <a href="${ EXP.source }" target="_blank">Source code</a>
 `
 
@@ -94,7 +94,7 @@ EXP.exportObj = function () {
 
 	};
 
-	script.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/exporters/OBJExporter.js";
+	script.src = `https://cdn.jsdelivr.net/gh/mrdoob/three.js@${ COR.releaseThree }/examples/js/exporters/OBJExporter.js`;
 
 };
 
@@ -117,7 +117,7 @@ EXP.exportStl = function() {
 
 	};
 
-	script.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/exporters/STLExporter.js";
+	script.src = `https://cdn.jsdelivr.net/gh/mrdoob/three.js@${ COR.releaseThree }/examples/js/exporters/STLExporter.js`;
 
 }
 
@@ -141,7 +141,7 @@ EXP.exportGltf = function() {
 
 	};
 
-	script.src = "https://cdn.jsdelivr.net/gh/mrdoob/three.js@r132/examples/js/exporters/GLTFExporter.js";
+	script.src = `https://cdn.jsdelivr.net/gh/mrdoob/three.js@${ COR.releaseThree }/examples/js/exporters/GLTFExporter.js`;
 
 }
 
@@ -184,10 +184,10 @@ EXP.captureScreen = function () {
 EXP.loadGGF = function () {
 
 	scr = document.body.appendChild( document.createElement( 'script' ) );
-	scr.src = "https://cdn.jsdelivr.net/npm/omggif@1.0.10/omggif.min.js";
+	scr.src = `https://cdn.jsdelivr.net/npm/omggif@1.0.10/omggif.min.js`;
 
 	scr = document.body.appendChild( document.createElement( 'script' ) );
-	scr.src = "https://www.ladybug.tools/spider-2021/lib-spider-09/exp-exporter/v-2021-09-2/ggf-generate-gif.js";
+	scr.src = `https://www.ladybug.tools/spider-2021/lib-spider-10/exp-exporter/${ EXP.release }/ggf-generate-gif.js`;
 
 };
 

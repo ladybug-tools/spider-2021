@@ -23,6 +23,8 @@ const COR = {
 	title: document.title ? document.title : location.href.split( "/" ).pop().slice( 0, - 5 ).replace( /-/g, " " ),
 	version: document.head.querySelector( "[ name=date ]" ).content,
 	description: document.head.querySelector( "[ name=description ]" ).content,
+	release: "r-2021-10-20",
+	releaseThree: "r133"
 };
 
 
