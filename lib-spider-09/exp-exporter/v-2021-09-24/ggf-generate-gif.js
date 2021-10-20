@@ -7,9 +7,7 @@ GGF.init = function () {
 
 	} else {
 
-		GGFdet.innerHTML +=
-
-			`
+		GGFdet.innerHTML += `
 <p>
 		<button id="butGenerateGIF" onclick=GGF.onClick();>Generate GIF</button>
 		<progress id="prgGenerateGIF" value="0" max="1" style="display:none"></progress>
@@ -60,9 +58,6 @@ GGF.onClick = async function () {
 
 	THR.renderer = renderer;
 
-
-
-	// THR.onWindowResize();
 
 	GGF.distance = THR.camera.position.distanceTo( THR.center )
 
