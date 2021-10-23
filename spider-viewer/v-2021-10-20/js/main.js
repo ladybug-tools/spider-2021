@@ -148,7 +148,7 @@ function init () {
 
 	A3H.init();
 
-	//OBT.init() // OBJ wuith materials
+	OBT.init() // OBJ wuith materials
 
 };
 

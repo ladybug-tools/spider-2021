@@ -28,7 +28,7 @@ OBT.init = function () {
 	FRXdivDetails.innerHTML += `
 <p><button onclick=OBT.init() >test obj</button> <input type=file id=inpObj  onchange=OBT.parseObj() multiple ></p>`;
 
-	FRX.loadLoaders( OBT.loader, OBT.scripts, OBT.loadScripts );
+	FRX.loadLoaders( OBT, OBT.scripts, OBT.loadScripts );
 
 
 };
