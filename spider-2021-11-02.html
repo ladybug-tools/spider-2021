@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
+	<meta name="description"
+		content="TooToo 2021 uses the GitHub API to provide access to all the current files in a repository hosted with GitHub Pages.">
+	<meta name="keywords" content="JavaScript,Markdown,GitHub,FOSS">
+	<meta name="date" content="2021-11-02">
+	<title>Spider</title>
+
+	<!-- Copyright 2021 Theo Armour. MIT license -->
+	<link id=CORstyle rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo-2021/lib11/style/style-2021-11-02.css">
+
+	<style>
+		:root {
+			/* --mnu-width: 20rem; */
+			--main-hue: 240;
+			/* 0 to 360 0=red 120=green 240=blue */
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib11/mnu-menu/r-2021-11-02/mnu-menu.js"></script>
+
+	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib11/frx-file-read-xhr/r-2021-11-02/frx-file-read-xhr.js"></script>
+
+	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib11/grv-github-repo-tree-view/v-2021-11-02/grv-github-repo-tree-view.js"></script>
+
+
+	<div id=MNUdivShowHide></div>
+
+
+
+	<main id=main>
+
+		<div id="divMainContent"></div>
+
+	</main>
+
+
+	<script>
+
+		const COR = {
+			// Used by GRV
+			user: "ladybug-tools",
+			repo: "spider-2021",
+			branch: "main",
+
+			// Used by FRX
+			pathContent: "https://www.ladybug.tools/spider-2021/",
+
+			pathTooToo: "https://pushme-pullyou.github.io/tootoo-2021/",
+			// pathTooToo: "./",
+			// defaultFile: "README.md",
+			// //defaultIgnoreFolders: [],
+			defaultIgnoreFolders: [ "archive", "lib", "lib3d", "lib-geo", "lib-templates" ],
+			filterFiles: [ "gif", "md", "html", "jpg", "license", "pdf", "png", "svg", "txt" ],
+			// urlAssets: "https://pushme-pullyou.github.io/tootoo-2021/",
+
+
+			// Used by MNU
+			description: document.head.querySelector( "[ name=description ]" ).content,
+			iconExternalFile: `<img class=infoImg  src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/icon-external-link.svg">`,
+			iconGitHub: `<img src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/mark-github.svg">`,
+			iconInfo: `<img class=infoImg src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/noun_Information_585560.svg">`,
+			iconRepo: "❦",
+			title: document.title ? document.title : location.href.split( "/" ).pop().slice( 0, - 5 ).replace( /-/g, " " ),
+			urlSource: "https://github.com/ladybug-tools/spider-2021/",
+			version: document.head.querySelector( "[ name=date ]" ).content,
+		};
+
+
+		init();
+
+
+		function init() {
+
+			// MNU = Menu ~ mnu-menu.js
+			MNU.init();
+			//MNU.getSample();
+			sumNavMenu.hidden = false;
+
+			//const htm = "Hello, World!";
+			//MNU.init( { description: htm } );
+			//MNUaSource.hidden = true;
+			//MNUspnVersion.hidden = true;
+
+			// FRX = File Read XHR
+			FRX.init();
+
+			// GR
+			//GRA.init();
+
+			// GRV = GitHub Repo View
+			GRV.getFiles = GRV.getFilesAll;
+			GRV.getFiles = GRV.getFilesCurated;
+			GRV.init();
+			GRVdet.open = true;
+			//GRVsumRepo.hidden = true;
+			GRV.getRepo();
+
+
+			FRX.onHashChange();
+
+
+			// if running on server, keeps address bar pointed to latest dev
+
+			if ( location.protocol === "https:" ) {
+
+				if ( COR.version !== "2021-11-02" ) { window.history.pushState( "", "", "../" + location.hash ); }
+
+				COR.ignoreFolders = COR.defaultIgnoreFolders;
+
+			} else {
+
+				COR.ignoreFolders = [];
+
+			}
+
+		}
+
+	</script>
+
+</body>
+
+</html>
