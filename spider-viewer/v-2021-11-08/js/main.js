@@ -7,9 +7,9 @@ const COR = {
 	repo: "spider-2021",
 	branch: "main",
 	pathContent: "../",
-	pathTooToo: "../../../pushme-pullyou-tootoo-2021/",
-	//pathTooToo: "https://pushme-pullyou.github.io/tootoo-2021/",
-	defaultFile: "../../home-page.md",
+	//pathTooToo: "../../../pushme-pullyou-tootoo-2021/",
+	pathTooToo: "https://pushme-pullyou.github.io/tootoo-2021/",
+	defaultFile: "../home-page.md",
 	defaultIgnoreFolders: [],
 	//ignoreFolders: ["archive", "lib", "lib3d", "lib-templates"],
 	filterFiles: [ "gif", "md", "jpg", "html", "license", "pdf", "png", "svg", "txt" ],
@@ -23,8 +23,8 @@ const COR = {
 	title: document.title ? document.title : location.href.split( "/" ).pop().slice( 0, - 5 ).replace( /-/g, " " ),
 	version: document.head.querySelector( "[ name=date ]" ).content,
 	description: document.head.querySelector( "[ name=description ]" ).content,
-	release: "r-2021-10-20",
-	releaseThree: "r133"
+	release: "r-2021-11-08",
+	releaseThree: "r134"
 };
 
 
@@ -103,8 +103,19 @@ function init () {
 	MNU.init();
 	sumNavMenu.hidden = false;
 
+	check = MNUdivContent.appendChild( document.createElement( 'div' ) );
+	check.innerHTML = `
+			<p>
+				<label title="Uncheck to combine multiple models into one scene">
+					<input type="checkbox" id="chkNewFile" onchange=COR.addDragControls(); checked> Open new file
+				</label>
+			</p>
+	`
+
+	COR.defaultFile = COR.files[ 7 ];
+
+
 	FRX.init();
-	FRX.defaultFile = COR.files[ 7 ];
 
 	//GRA.init();
 
@@ -119,18 +130,22 @@ function init () {
 	// //GRVsumRepo.hidden = true;
 
 
-	JTI.init(); // Json Tree View
+	//JTVdivJsonTreeView  = MNUdivContent.appendChild( document.createElement( 'div' ) );
+	//JTI.init(); // Json Tree View
 
-	SSO.init(); // Set surface type opacity
+	//SSOdivSetSurfaceOpacity = MNUdivContent.appendChild( document.createElement( 'div' ) );
+	//SSO.init(); // Set surface type opacity
 
-	EXP.init(); // Export
+	//EXP.init(); // Export
 
+	//COR.defaultFile = COR.files[ 7 ];
+	FRX.defaultUrl = COR.files[ 7 ];
 	FRX.onHashChange();
 
-	FRX.onProgress( FRX.size || 0, "Load complete" );
+	FRX.onProgress( FRX.size || 0, "Load complete",  FRX.url );
 
-	//COR.pathContent = "";
 
+	THRdivStatistics = MNUdivContent.appendChild( document.createElement( 'div' ) );
 	THR.initStats();
 
 	//AMF.addFiles();
@@ -212,8 +227,8 @@ COR.reset = function ( obj = [] ) {
 
 	}
 
-	JTVdet.open = false;
-	JTVdivJsonTree.innerHTML = "";
+	//JTVdet.open = false;
+	//JTVdivJsonTree.innerHTML = "";
 
 };
 
