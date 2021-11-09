@@ -258,6 +258,21 @@ GFF.foldersMeta = [
 		<a href="https://github.com/ladybug-tools/3d-models/tree/master/obj" target="_blank">sample OBJ files</a>
 	 	on GitHub from a variety of sources`
 	},
+	{
+		"extensions": [ "obj" ],
+		"user": "dashdotdotdashdotdot",
+		"repo": "/Lines",
+		"branch": "master",
+		"pathRepo": "",
+		"title": "OBJ dashdotdotdashdotdot",
+		"subTitle":
+			`dashdotdotdashdotdot  / Lines
+		<a href="https://github.com/dashdotdotdashdotdot/Lines" target="_blank">sample OBJ files</a>
+	 	on GitHub from dashdotdotdashdotdot
+/`
+	},
+
+
 	{ "group": "<b>RAD</b>" },
 	{
 		"extensions": ["rad"],
