@@ -3,10 +3,12 @@
 // This place is becoming very messy
 
 const COR = {
+	// Used by GRV
 	user: "ladybug-tools",
-	repo: "spider-2021",
-	branch: "main",
+	//repo: "spider-2021",
+	//branch: "main",
 
+	// Used by FRX
 	pathContent: "../",
 	pathTooToo: "../../../pushme-pullyou-tootoo-2021/",
 	//pathTooToo: "https://pushme-pullyou.github.io/tootoo-2021/",
@@ -14,18 +16,21 @@ const COR = {
 	defaultIgnoreFolders: [],
 	//ignoreFolders: ["archive", "lib", "lib3d", "lib-templates"],
 	filterFiles: [ "gif", "md", "jpg", "html", "license", "pdf", "png", "svg", "txt" ],
-	urlSource: "https://github.com/ladybug-tools/spider-2021/tree/main/spider-viewer",
-	iconRepo: `<img style=color:green; title="Your AEC 3D viewer happy place!" height="24" width="24" src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico">`,
-	urlAssets: "https://pushme-pullyou.github.io/tootoo-2021/",
+
+	// Used by MNU
+	description: document.head.querySelector( "[ name=description ]" ).content,
+	iconExternalFile: `<img class=infoImg  src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/icon-external-link.svg">`,
 	iconGitHub: `<img src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/mark-github.svg">`,
 	iconInfo: `<img class=infoImg src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/noun_Information_585560.svg">`,
-	iconExternalFile: `<img class=infoImg  src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/icon-external-link.svg">`,
+	iconRepo: `<img style=color:green; title="Your AEC 3D viewer happy place!" height="24" width="24" src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico">`,
 	iconPencil: `<img class=infoImg  src="https://pushme-pullyou.github.io/tootoo-2021/lib/assets/icons/icon-pencil-edit.svg">`,
+	release: "r-2021-11-11",
+	releaseThree: "r134",
 	title: document.title ? document.title : location.href.split( "/" ).pop().slice( 0, - 5 ).replace( /-/g, " " ),
+	urlAssets: "https://pushme-pullyou.github.io/tootoo-2021/",
+	urlSource: "https://github.com/ladybug-tools/spider-2021/tree/main/spider-viewer",
 	version: document.head.querySelector( "[ name=date ]" ).content,
-	description: document.head.querySelector( "[ name=description ]" ).content,
-	release: "r-2021-11-08",
-	releaseThree: "r134"
+
 };
 
 
@@ -139,8 +144,7 @@ function init () {
 
 	//EXP.init(); // Export
 
-	//COR.defaultFile = COR.files[ 7 ];
-	FRX.defaultUrl = COR.files[ 7 ];
+	FRX.defaultUrl = COR.files[ 0 ];
 	FRX.onHashChange();
 
 	FRX.onProgress( FRX.size || 0, "Load complete",  FRX.url );

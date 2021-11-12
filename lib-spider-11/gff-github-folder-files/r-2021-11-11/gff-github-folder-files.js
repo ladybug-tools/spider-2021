@@ -23,7 +23,7 @@ GFF.init = function () {
 <br>
 File name: <a href="https://github.com/ladybug-tools/spider-2021/tree/main/lib-spider-09/gff-github-folder-files" target="_blank">gff-github-folder-files.js</a><br>
 Name space: GFF<br>
-Release: 2021-11-08`;
+Release: 2021-11-11`;
 
 
 	GFFdivDetails.innerHTML = `
@@ -288,10 +288,13 @@ GFF.sites =
 
 
 GFF.timer;
-GFF.index = 0; // Math.floor( Math.random() * sites.length );
 
 
 GFF.viewAllFiles = function () {
+
+	GFF.index = 0; // Math.floor( Math.random() * sites.length );
+
+	THR.controls.autoRotate = true;
 
 	clearInterval( GFF.timer );
 
@@ -304,32 +307,19 @@ GFF.viewAllFiles = function () {
 
 GFF.displayNext = function () {
 
-	GFF.index = GFF.index >= GFF.files.length ? 0 : GFF.index;
+	const ext = GFF.files[ GFF.index ].name.toLowerCase().split( "." ).pop();
 
-	//GFFifr.onload = function () { GFFifr.className = "fade-in"; };
+	if ( GFF.extensions.includes( ext ) ) {
 
-	//const file = GFF.files[ GFF.index ].download_url;
+		const file = 'https://cdn.jsdelivr.net/gh/' + GFF.folderMeta.user + GFF.folderMeta.repo +
+		'@' + GFF.folderMeta.branch + '/' + GFF.files[ GFF.index ].path;
 
-	//file = "https://cdn.jsdelivr.net/gh/ladybug-tools/3d-models@master/" + GFF.files[ GFF.index ].path;
+		location.hash = file;
 
-	const file = 'https://cdn.jsdelivr.net/gh/' + GFF.folderMeta.user + GFF.folderMeta.repo + '@' + GFF.folderMeta.branch + '/' + GFF.files[ GFF.index ].path;
-
-	location.hash = file;
-
-	//console.log( "file", GFF.index, file  );
-
-	setTimeout( function () { THR.renderer.domElement.className = "fade-out"; }, 4000 );
-
-	//GFFifr.src = GFF.sites[ GFF.index ][ 0 ];
-
-	//history.replaceState( "", document.title, window.location.pathname );
-
-	THR.controls.autoRotate = true;
+	}
 
 	GFF.index++;
 
+	GFF.index = GFF.index >= GFF.files.length ? 0 : GFF.index;
+
 };
-
-
-
-
