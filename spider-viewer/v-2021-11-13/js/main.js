@@ -159,6 +159,8 @@ function init () {
 
 		SSL.init();  // Splash Screen Loader
 
+
+
 	}
 
 	DBD.init();// dashboard
@@ -176,7 +178,6 @@ function init () {
 COR.reset = function ( obj = [] ) {
 
 	if ( chkNewFile.checked ) { THR.group = THR.getGroupNew(); }
-
 
 	THR.group.name = "THR.groupsParent";
 

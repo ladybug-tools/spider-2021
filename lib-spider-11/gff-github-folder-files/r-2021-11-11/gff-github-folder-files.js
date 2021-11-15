@@ -292,6 +292,8 @@ GFF.timer;
 
 GFF.viewAllFiles = function () {
 
+	SSL.onStart();
+
 	GFF.index = 0; // Math.floor( Math.random() * sites.length );
 
 	THR.controls.autoRotate = true;
