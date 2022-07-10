@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0" />
+	<meta name="description"
+		content="Ladybug Tools / Spider Viewer is a 3D file viewer, composer and exporter designed to be forked, hacked and remixed with real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library" />
+	<meta name="keywords" content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM" />
+	<meta name="date" content="2022-07-09">
+	<title>Viewer4UCSF</title>
+	<!-- Copyright 2022 Theo Armour. MIT license -->
+
+	<link id=CORstyle rel="stylesheet"
+		href="https://pushme-pullyou.github.io/tootoo-2021/lib11/style/style-2021-11-02.css">
+
+	<style>
+		:root {
+			--main-hue: 125;
+			/* 0 to 360 0=red 120=green 240=blue */
+			--mnu-width: 24rem;
+		}
+
+		#sumNavMenu { z-index: 3 }
+		#navMenu { z-index: 2 }
+
+		#DBDdivDashboard {
+			background-color: rgba(0, 0, 0, 0.05);
+			border-radius: 1rem;
+			bottom: 1ch;
+			left: 0;
+			margin: 0 auto;
+			opacity: 0.85;
+			position: fixed;
+			right: 0;
+			text-align: center;
+			max-width: 50%;
+			z-index: 1;
+		}
+
+		.THRbutChild {
+			border-radius: 0.5rem;
+			margin: 0.5rem 0;
+		}
+
+		.THRbutParent {
+			/* border: 1px solid red; */
+			background-color: var(--color-3-background);
+			border-radius: 0.5ch;
+			font-size: 2rem;
+			margin: 0 1rem;
+			vertical-align: bottom;`
+			z-index: 2;
+		}
+
+		.THRdivButtonGroup {
+			display: inline-block;
+			position: relative;
+			z-index: 1;
+		}
+
+		.THRdivButtonGroup:hover>.THRdivChild {
+			display: block;
+		}
+
+		.THRdivChild,
+		.THRdivChildParent {
+			background-color: var(--color-3-background);
+			border-radius: 1rem;
+			bottom: 2.5rem;
+			display: none;
+			/* left: 5rem; */
+			padding: 0.5rem;
+			position: absolute;
+			text-align: left;
+			width: 8rem;
+			z-index: -1;
+		}
+
+		.THRdivChildChild {
+			background-color: #fafffa;
+			border-radius: 0.5ch;
+			bottom: 2.9rem;
+			left: 4rem;
+			padding: 1rem;
+			position: absolute;
+			text-align: left;
+			width: 18rem;
+		}
+
+
+		@media all and (max-width: 800px) {
+			#DBDdivDashboard {
+				/* background-color: red; */
+				max-width: 95%;
+			}
+		}
+
+		@media all and (max-height: 500px) {
+			#DBDdivDashboard {
+				width: 95%;
+			}
+		}
+
+	</style>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129035557"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push( arguments ); }
+		gtag( 'js', new Date() );
+
+		gtag( 'config', 'UA-129035557' );
+	</script>
+
+</head>
+
+<body>
+
+	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib11/mnu-menu/r-2021-11-05/mnu-menu.js"></script>
+
+	<script
+		src="../../../pushme-pullyou-tootoo-2021/lib11/frx-file-read-xhr/r-2021-11-11/frx-file-read-xhr.js"></script>
+
+
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r134/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r134/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r134/examples/js/utils/BufferGeometryUtils.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r134/examples/js/loaders/DRACOLoader.js"></script>
+
+	<script src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thr-three/thr-threejs-2021-09-16.js"></script>
+	<script
+		src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thrc-three-set-colors/thrc-three-set-colors-2020-07-11.js"></script>
+	<script
+		src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thrr-three-raycaster/v-2021-09-15/thrr-three-raycaster-mousedown.js"></script>
+	<script
+		src="https://pushme-pullyou.github.io/tootoo-2021/lib3d/thru-three-utilities/thru-three-utilities-2021-09-17.js"></script>
+
+
+	<!-- <script src="https://cdn.jsdelivr.net/npm/jszip@3.7.1/dist/jszip.min.js"></script> -->
+
+
+	<script
+		src="https://ladybug.tools/spider-2021/lib-spider-09/3ah-3d-axes-helper/v-2021-09-23/a3h-axes-3d-helper.js"></script>
+
+	<script
+		src="../../lib-spider-10/exp-exporter/r-2021-10-20/exp-exporter.js"></script>
+
+	<script
+		src="../../lib-spider-11/gff-github-folder-files/r-2021-11-11/gff-github-folder-files.js"></script>
+
+	<script
+		src="https://ladybug.tools/spider-2021/lib-spider-09/jtv-json-tree-view/v-2021-09-16/jti-json-tree-init.js"></script>
+
+	<script
+		src="https://ladybug.tools/spider-2021/lib-spider-09/sso-set-surface-opacity/v-2021-09-15/sso-set-surface-opacity.js"></script>
+
+
+	<script src="js/main.js"></script>
+
+	<script src="js/dashboard.js"></script>
+
+	<script src="js/txt-text.js"></script>
+
+	<script src="js/splash-screen.js"></script>
+
+	<script src="js/obt-obj-test.js"></script>
+
+
+	<div id=MNUdivShowHide></div>
+
+	<!-- <details id=detNavMenu class="gmd-4">
+
+		<summary id=sumNavMenu class="summary-nav gmd-1">
+			☰ <span id=spnMenuHelp>show&darr; || hide&uarr; menu</span>
+		</summary>
+
+		<nav id="navMenu" class="">
+
+			<div id=MNUdivHeader></div>
+
+			<p>
+				<label title="Uncheck to combine multiple models into one scene">
+					<input type="checkbox" id="chkNewFile" onchange=COR.addDragControls(); checked> Open new file
+				</label>
+			</p>
+
+			<div id=GORdivDetails></div>
+
+			<div id=CKEdivCkeditor></div>
+
+			<div id=GRVdivDetails></div>
+
+			<div id=FRXdivDetails></div>
+
+			<div id=GFFdivDetails></div>
+
+			<div id=JTVdivJsonTreeView></div>
+
+			<div id=SSOdivSetSurfaceOpacity></div>
+
+			<div id=EXPdivMenuExporters></div>
+
+			<div id=TXTdivDetails></div>
+
+			<div id=whatever></div>
+
+			<hr>
+
+			<div id=THRdivStatistics></div>
+
+
+			<div id=MNUdivFooter></div>
+
+		</nav>
+
+	</details> -->
+
+
+	<main id=main>
+
+		<div id="divMainContent"></div>
+
+	</main>
+
+	<div id=DBDdivDashboard></div>
+
+	<div id=A3HdivAxes></div>
+
+	<script>
+
+		init(); // see ./js/main.js
+
+	</script>
+
+</body>
+
+</html>
