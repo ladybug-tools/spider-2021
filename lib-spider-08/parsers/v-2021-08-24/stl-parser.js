@@ -48,6 +48,7 @@ STL.readFile = function ( inpFiles ) {
 };
 
 
+
 STL.loadUrl = function ( url ) {
 
 	const loader = new THREE.STLLoader();
