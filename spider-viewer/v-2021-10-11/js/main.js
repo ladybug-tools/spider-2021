@@ -154,7 +154,6 @@ COR.reset = function ( obj = [] ) {
 
 	if ( chkNewFile.checked ) { THR.group = THR.getGroupNew(); }
 
-
 	THR.group.name = "THR.groupsParent";
 
 	const objects = Array.isArray( obj ) ? obj : [ obj ];
